@@ -1,0 +1,25 @@
+﻿<Application
+    x:Class="FluidWeather.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+
+
+        <ResourceDictionary>
+
+            <FontFamily x:Key="FluentIcons">/Assets/Fonts/SegoeFluentIcons.ttf#Segoe Fluent Icons</FontFamily>
+
+            <x:Double x:Key="ContentDialogMaxWidth">2000</x:Double>
+            <ResourceDictionary.MergedDictionaries>
+
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="Styles/Button.xaml" />
+                <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.xaml" />
+                <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.Themeresources.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

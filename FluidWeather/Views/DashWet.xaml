@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="FluidWeather.Views.DashWet"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FluidWeather"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:models="using:FluidWeather.Models"
+
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+
+    <Page.Resources>
+        <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
+               BasedOn="{StaticResource DefaultListViewItemStyle}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <TextBlock x:Name="MainTextBox" Grid.Row="1" Text="Dashboard" FontSize="42" VerticalAlignment="Top"
+                   Margin="32,16,0,0" />
+<!--
+                <RelativePanel Grid.Row="2"
+                       Margin="18"
+                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                       CornerRadius="8"
+                       Padding="12"
+                       BorderThickness="1"
+                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+        -->
+
+
+        <RelativePanel Grid.Row="2"
+                       Margin="18"
+                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+            <AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged"
+                            SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                            Width="300" AutomationProperties.Name="Basic AutoSuggestBox"
+                            ItemContainerStyle="{StaticResource ControlFullStretchStyle}">
+
+
+                <AutoSuggestBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:Location">
+                        <RelativePanel Margin="2,0,0,0">
+                            <TextBlock x:Name="text1" Text="{x:Bind address}" />
+                        </RelativePanel>
+                    </DataTemplate>
+                </AutoSuggestBox.ItemTemplate>
+
+            </AutoSuggestBox>
+
+        </RelativePanel>
+
+    </Grid>
+</Page>
