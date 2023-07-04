@@ -51,12 +51,13 @@ namespace FluidWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-                var finalitems = new List<Location>();
+                var finalitems = new List<SearchedLocation>();
 
                 //get language code from system (like en-us)
                 var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
-                var response = await sharedClient.GetAsync("location/searchflat?locationType=city&query=" + sender.Text + "&language=" + language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
+                var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" + language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
+                //&locationType=city (x solo citta)
 
                 response.EnsureSuccessStatusCode();
 
@@ -64,7 +65,7 @@ namespace FluidWeather.Views
                 Debug.WriteLine($"{jsonResponse}\n");
 
 
-                var myDeserializedClass = JsonConvert.DeserializeObject<LocationResponse>(jsonResponse);
+                var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
 
                 foreach (var location in myDeserializedClass.location)
                 {
@@ -82,9 +83,21 @@ namespace FluidWeather.Views
 
         }
 
-        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            throw new NotImplementedException();
+            var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+
+            var response = await sharedClient.GetAsync("aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-15day;v3-location-point?format=json&placeid="+ ((SearchedLocation)args.SelectedItem).placeId + "&units=m&language=" +
+                                                       language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+            //&locationType=city (x solo citta)
+
+            response.EnsureSuccessStatusCode();
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            //Debug.WriteLine($"{jsonResponse}\n");
+
+
+            var myDeserializedClass = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
         }
     }
 }

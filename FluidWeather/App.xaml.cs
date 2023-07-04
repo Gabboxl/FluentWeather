@@ -1,8 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -11,8 +9,6 @@ using Windows.UI.Xaml.Navigation;
 using FluidWeather.Services;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Formatting = System.Xml.Formatting;
 
 namespace FluidWeather
 {

@@ -46,16 +46,18 @@
 
         <RelativePanel Grid.Row="2"
                        Margin="18"
-                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                       >
 
             <AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged"
                             SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                             Width="300" AutomationProperties.Name="Basic AutoSuggestBox"
+                            TextMemberPath="address"
                             ItemContainerStyle="{StaticResource ControlFullStretchStyle}">
 
 
                 <AutoSuggestBox.ItemTemplate>
-                    <DataTemplate x:DataType="models:Location">
+                    <DataTemplate x:DataType="models:SearchedLocation">
                         <RelativePanel Margin="2,0,0,0">
                             <TextBlock x:Name="text1" Text="{x:Bind address}" />
                         </RelativePanel>
