@@ -9,9 +9,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:models="using:FluidWeather.Models"
 
-    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals">
 
     <Page.Resources>
         <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
@@ -30,36 +28,46 @@
         </Grid.RowDefinitions>
 
 
-        <TextBlock x:Name="MainTextBox" Grid.Row="1" Text="Dashboard" FontSize="42" VerticalAlignment="Top"
-                   Margin="32,16,0,0" />
-<!--
-                <RelativePanel Grid.Row="2"
-                       Margin="18"
-                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                       CornerRadius="8"
-                       Padding="12"
-                       BorderThickness="1"
-                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-        -->
+        <ParallaxView
+
+            Grid.RowSpan="10"
+
+            Source="{x:Bind mainScroll}" VerticalShift="50">
+
+            <!-- Background element -->
+            <Image x:Name="BackgroundImage" Source="/Assets/bgs/1.jpg"
+                   Stretch="UniformToFill"/>
+        </ParallaxView>
 
 
-        <RelativePanel Grid.Row="2"
+
+        <RelativePanel Grid.Row="1"
                        Margin="18"
                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                        >
 
             <AutoSuggestBox TextChanged="AutoSuggestBox_TextChanged"
                             SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                            Width="300" AutomationProperties.Name="Basic AutoSuggestBox"
+                            Width="400" AutomationProperties.Name="Basic AutoSuggestBox"
                             TextMemberPath="address"
+                            PlaceholderText="Search a place..."
                             ItemContainerStyle="{StaticResource ControlFullStretchStyle}">
 
 
                 <AutoSuggestBox.ItemTemplate>
                     <DataTemplate x:DataType="models:SearchedLocation">
                         <RelativePanel Margin="2,0,0,0">
-                            <TextBlock x:Name="text1" Text="{x:Bind address}" />
+
+
+                            <FontIcon x:Name="icon"
+                                      FontSize="24"
+                                      RelativePanel.AlignVerticalCenterWithPanel="True"
+                                      FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
+
+
+                            <TextBlock x:Name="text1" Text="{x:Bind address}"
+                                        Margin="8,0,0,0"
+                                       RelativePanel.RightOf="icon" />
                         </RelativePanel>
                     </DataTemplate>
                 </AutoSuggestBox.ItemTemplate>
@@ -68,5 +76,265 @@
 
         </RelativePanel>
 
+
+
+        <ScrollViewer Grid.Row="2"
+x:Name="mainScroll"
+                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+
+            <Grid Padding="40">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <RelativePanel Grid.Row="0">
+                    <!-- icon of place with text of the place -->
+                    <FontIcon x:Name="placeIcon"
+                              FontSize="24"
+                              RelativePanel.AlignVerticalCenterWithPanel="True"
+                              FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
+
+                    <TextBlock x:Name="PlaceText"  Text="place"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Margin="8,0,0,0"
+                               RelativePanel.RightOf="placeIcon" />
+
+
+
+                </RelativePanel>
+
+                <RelativePanel
+                    Grid.Row="1">
+
+                    <Image x:Name="mainIcon"
+                           Width="75"
+                           RelativePanel.AlignVerticalCenterWithPanel="True"
+                           Stretch="Uniform">
+                        <Image.Source>
+                            <SvgImageSource/>
+                        </Image.Source>
+                    </Image>
+
+                    <TextBlock x:Name="CurrentTempText"  Text="temperature"
+
+                               Style="{StaticResource DisplayTextBlockStyle}"
+                               Margin="8,0,0,0"
+                               
+                               RelativePanel.RightOf="mainIcon"/>
+
+                    <TextBlock x:Name="MainPhraseText"  Text="phrase"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Margin="16,0,0,0"
+                               RelativePanel.Above="FeelsLikeText"
+                               RelativePanel.AlignLeftWith="FeelsLikeText"
+                               />
+
+
+                    <TextBlock x:Name="FeelsLikeText"  Text="feelslike"
+
+                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                               Margin="16,0,0,16"
+                               Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                               RelativePanel.AlignBottomWithPanel="True"
+                               RelativePanel.RightOf="CurrentTempText"/>
+                </RelativePanel>
+
+
+
+
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            >
+
+                    <RelativePanel x:Name="WindPanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="wtext"  Text="Wind"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+
+                        />
+
+                        <TextBlock x:Name="WindText"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Text="wind" 
+                                   Margin="0,0,0,0"
+                                   RelativePanel.Below="wtext"/>
+
+                    </RelativePanel>
+
+
+
+                    <!-- pressure panel -->
+                    <RelativePanel x:Name="PressurePanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   >
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="ptext"  Text="Pressure"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                        />
+
+                        <TextBlock x:Name="PressureText"  Text="pressure" 
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   RelativePanel.Below="ptext"/>
+
+
+                    </RelativePanel>
+
+
+
+                    <RelativePanel x:Name="HumidityPanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   >
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="htext"  Text="Humidity" 
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                        />
+
+                        <TextBlock x:Name="HumidityText"  Text="humid" 
+                                   Margin="0,0,0,0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   RelativePanel.Below="htext"/>
+                    </RelativePanel>
+
+
+
+                    <RelativePanel x:Name="VisivilityPanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   >
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="vtext"  Text="Visivility"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                        />
+
+                        <TextBlock x:Name="VisibilityText"  Text="humid"
+                                   Margin="0,0,0,0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   RelativePanel.Below="vtext"/>
+                    </RelativePanel>
+
+
+
+
+
+                    <RelativePanel x:Name="DewPanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   >
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="dewtext"  Text="Dew point"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                        />
+
+                        <TextBlock x:Name="DewPointText"  Text="humid"
+                                   Margin="0,0,0,0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   RelativePanel.Below="dewtext"/>
+                    </RelativePanel>
+
+
+                    <RelativePanel x:Name="PollenPanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="polltext"  Text="Pollen index"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                        />
+
+                        <TextBlock x:Name="PollenText"  Text="humid" 
+                                   Margin="0,0,0,0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   RelativePanel.Below="polltext"/>
+
+                    </RelativePanel>
+
+
+
+
+                    <RelativePanel x:Name="UltravPanel"
+                                   Margin="4"
+                                   CornerRadius="6"
+                                   Padding="8"
+                                   BorderThickness="0"
+                                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   >
+
+                        <!-- textblock with BodyTextBlockStyle -->
+                        <TextBlock x:Name="uvtext"  Text="UV Index"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Margin="0,0,0,0"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                        />
+
+                        <TextBlock x:Name="UVIndexText"  Text="humid" 
+                                   Margin="0,0,0,0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   RelativePanel.Below="uvtext"/>
+                    </RelativePanel>
+
+
+
+
+                </StackPanel>
+
+
+
+
+
+
+
+
+            </Grid>
+
+
+        </ScrollViewer>
     </Grid>
 </Page>

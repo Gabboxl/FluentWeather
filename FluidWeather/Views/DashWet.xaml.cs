@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using FluidWeather.Models;
 using Newtonsoft.Json;
 using HttpClient = System.Net.Http.HttpClient;
+using Windows.UI.Popups;
 
 namespace FluidWeather.Views
 {
@@ -18,14 +22,21 @@ namespace FluidWeather.Views
         {
             this.InitializeComponent();
 
+            //set page background image from assets
+            var uri = new Uri("ms-appx:///Assets/bgs/1.jpg");
+            var bitmap = new BitmapImage(uri);
+            var brush = new ImageBrush
+            {
+                ImageSource = bitmap,
+                Stretch = Stretch.UniformToFill
+            };
+            //this.Background = brush;
+
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-
-
 
         }
 
@@ -94,10 +105,52 @@ namespace FluidWeather.Views
             response.EnsureSuccessStatusCode();
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            //Debug.WriteLine($"{jsonResponse}\n");
 
 
             var myDeserializedClass = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+
+            updateUi(myDeserializedClass);
+        }
+
+
+        private void updateUi(RootV3Response myDeserializedClass)
+        {
+            PlaceText.Text = myDeserializedClass.v3locationpoint.LocationV3.displayName + ", " + myDeserializedClass.v3locationpoint.LocationV3.adminDistrict + ", " + myDeserializedClass.v3locationpoint.LocationV3.country;
+
+            MainPhraseText.Text = myDeserializedClass.v3wxobservationscurrent.cloudCoverPhrase;
+
+            CurrentTempText.Text = myDeserializedClass.v3wxobservationscurrent.temperature + "°C";
+
+            FeelsLikeText.Text = "Feels like " + myDeserializedClass.v3wxobservationscurrent.temperatureFeelsLike + "°C";
+
+            WindText.Text = myDeserializedClass.v3wxobservationscurrent.windSpeed + " km/h" + " " + myDeserializedClass.v3wxobservationscurrent.windDirectionCardinal;
+
+            HumidityText.Text = myDeserializedClass.v3wxobservationscurrent.relativeHumidity + "%";
+
+            PressureText.Text = myDeserializedClass.v3wxobservationscurrent.pressureMeanSeaLevel + " hPa";
+
+            VisibilityText.Text = myDeserializedClass.v3wxobservationscurrent.visibility + " km";
+
+            DewPointText.Text = myDeserializedClass.v3wxobservationscurrent.temperatureDewPoint + "°C";
+
+            UVIndexText.Text = myDeserializedClass.v3wxobservationscurrent.uvIndex + " (" + myDeserializedClass.v3wxobservationscurrent.uvDescription + ")";
+
+
+            //imagesource class creation
+
+            var asd = new Uri("ms-appx:///Assets/weticons/" + myDeserializedClass.v3wxobservationscurrent.iconCode + ".svg");
+
+            //imagesource
+            //var imageSource = new SvgImageSource(asd);
+
+
+            //get svgimagesource object from image source
+            var svgImageSource = (SvgImageSource)mainIcon.Source;
+
+            svgImageSource.UriSource = asd;
+
+            mainIcon.Source = svgImageSource;
+
         }
     }
 }

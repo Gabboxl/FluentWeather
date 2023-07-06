@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="auto" height="auto">
+  <radialGradient id="5ojPPr0x1QpzBEMUmoo9Ca" cx="18.906" cy="22.876" r="19.009" gradientUnits="userSpaceOnUse">
+    <stop offset=".313" stop-color="#fcfcfc" />
+    <stop offset=".465" stop-color="#eff0f1" />
+    <stop offset=".741" stop-color="#ced1d3" />
+    <stop offset="1" stop-color="#aaafb3" />
+  </radialGradient>
+  <path fill="url(#5ojPPr0x1QpzBEMUmoo9Ca)" d="M15,5C8.925,5,4,9.925,4,16s4.925,11,11,11s11-4.925,11-11S21.075,5,15,5z" />
+  <radialGradient id="5ojPPr0x1QpzBEMUmoo9Cb" cx="14.71" cy="11.25" r="3.456" gradientUnits="userSpaceOnUse">
+    <stop offset=".313" stop-color="#9da2a6" stop-opacity="0" />
+    <stop offset="1" stop-color="#9da2a6" />
+  </radialGradient>
+  <path fill="url(#5ojPPr0x1QpzBEMUmoo9Cb)" d="M14,8c-1.105,0-2,0.895-2,2s0.895,2,2,2s2-0.895,2-2S15.105,8,14,8z" />
+  <radialGradient id="5ojPPr0x1QpzBEMUmoo9Cc" cx="9.355" cy="16.625" r="1.728" gradientUnits="userSpaceOnUse">
+    <stop offset=".313" stop-color="#9da2a6" stop-opacity="0" />
+    <stop offset="1" stop-color="#9da2a6" />
+  </radialGradient>
+  <path fill="url(#5ojPPr0x1QpzBEMUmoo9Cc)" d="M9,15c-0.552,0-1,0.448-1,1s0.448,1,1,1s1-0.448,1-1S9.552,15,9,15z" />
+  <linearGradient id="5ojPPr0x1QpzBEMUmoo9Cd" x1="21.313" x2="25.618" y1="14.079" y2="39.448" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#bac0ff" />
+    <stop offset=".398" stop-color="#8a91e7" />
+    <stop offset=".796" stop-color="#6069d1" />
+    <stop offset="1" stop-color="#5059c9" />
+  </linearGradient>
+  <path fill="url(#5ojPPr0x1QpzBEMUmoo9Cd)" d="M34,19c-0.331,0-0.657,0.018-0.98,0.049C30.741,15.99,27.108,14,23,14c-5.713,0-10.52,3.837-12.012,9.071C7.049,23.569,4,26.925,4,31c0,4.418,3.582,8,8,8c1.818,0,20.107,0,22,0c5.523,0,10-4.477,10-10C44,23.477,39.523,19,34,19z" />
+  <path fill="#199be2" d="M28.049,45.649c-0.469,0.469-1.228,0.469-1.697,0c-0.469-0.469-0.469-1.228,0-1.697C26.82,43.483,29,43,29,43S28.517,45.18,28.049,45.649z" />
+  <path fill="#199be2" d="M17.414,47.414c-0.781,0.781-2.047,0.781-2.828,0c-0.781-0.781-0.781-2.047,0-2.828C15.367,43.805,19,43,19,43S18.195,46.633,17.414,47.414z" />
+</svg>

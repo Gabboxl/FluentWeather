@@ -136,6 +136,7 @@ namespace FluidWeather.Models
 
     public class V3LocationPoint
     {
+        [JsonProperty("location")]
         public LocationV3 LocationV3 { get; set; }
     }
 
