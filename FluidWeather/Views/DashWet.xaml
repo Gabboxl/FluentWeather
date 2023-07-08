@@ -89,7 +89,8 @@ x:Name="mainScroll"
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <RelativePanel Grid.Row="0">
+                <RelativePanel Grid.Row="0"
+                Margin="8,0,0,16">
                     <!-- icon of place with text of the place -->
                     <FontIcon x:Name="placeIcon"
                               FontSize="24"
