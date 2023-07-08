@@ -187,9 +187,6 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewViewModel.cs" />
     <Compile Include="ViewModels\ViewModelHolder.cs" />
-    <Compile Include="Views\DashWet.xaml.cs">
-      <DependentUpon>DashWet.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -229,10 +226,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Button.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\DashWet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
