@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
+    <Compile Include="Adapters\DayButtonAdapter.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask1.cs" />
     <Compile Include="Dialogs\FirstRunDialog.xaml.cs">
@@ -182,6 +183,7 @@
     <Compile Include="Services\ToastNotificationsService.cs" />
     <Compile Include="Services\ToastNotificationsService.Samples.cs" />
     <Compile Include="Services\WhatsNewDisplayService.cs" />
+    <Compile Include="Utils\VariousUtils.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -294,6 +296,8 @@
     <Content Include="Assets\StoreLogo.scale-150.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\varicons\blur.svg" />
+    <Content Include="Assets\varicons\precip.svg" />
     <Content Include="Assets\weticons\0.svg" />
     <Content Include="Assets\weticons\1.svg" />
     <Content Include="Assets\weticons\10.svg" />

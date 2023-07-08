@@ -98,8 +98,8 @@ namespace FluidWeather.Models
         public string countryCode { get; set; }
         public string ianaTimeZone { get; set; }
         public string displayName { get; set; }
-        public DateTime dstEnd { get; set; }
-        public DateTime dstStart { get; set; }
+        public DateTime? dstEnd { get; set; }
+        public DateTime? dstStart { get; set; }
         public string dmaCd { get; set; }
         public string placeId { get; set; }
         public bool disputedArea { get; set; }
@@ -127,7 +127,11 @@ namespace FluidWeather.Models
         public V3WxObservationsCurrent v3wxobservationscurrent { get; set; }
 
         [JsonProperty("v3-wx-forecast-daily-15day")]
-        public V3WxForecastDaily15day v3wxforecastdaily15day { get; set; }
+        public V3WxForecastDaily v3wxforecastdaily15day { get; set; }
+
+        [JsonProperty("v3-wx-forecast-daily-10day")]
+        public V3WxForecastDaily v3wxforecastdaily10day { get; set; }
+
         public object v3alertsHeadlines { get; set; }
 
         [JsonProperty("v3-location-point")]
@@ -140,7 +144,7 @@ namespace FluidWeather.Models
         public LocationV3 LocationV3 { get; set; }
     }
 
-    public class V3WxForecastDaily15day
+    public class V3WxForecastDaily
     {
         public List<int?> calendarDayTemperatureMax { get; set; }
         public List<int> calendarDayTemperatureMin { get; set; }
@@ -166,6 +170,7 @@ namespace FluidWeather.Models
         public List<int> validTimeUtc { get; set; }
         public List<Daypart> daypart { get; set; }
     }
+
 
     public class V3WxObservationsCurrent
     {

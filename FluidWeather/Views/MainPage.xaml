@@ -9,6 +9,7 @@
     xmlns:helpers="using:FluidWeather.Helpers"
     xmlns:views="using:FluidWeather.Views"
     xmlns:models="using:FluidWeather.Models"
+    xmlns:adapters="using:FluidWeather.Adapters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -19,6 +20,117 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
 
         </Style>
+
+        <Style x:Key="SelectedButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="Background" Value="#1f2022" />
+
+        </Style>
+
+        <StackPanel x:Key="sidestack"></StackPanel>
+
+
+        <Style x:Key="ButtonStyle1" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="Background" Value="#1f2022" />
+            <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}" /> <!-- moddato -->
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+            <Setter Property="FocusVisualMargin" Value="-3" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          Background="{TemplateBinding Background}"
+                                          BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          CornerRadius="{TemplateBinding CornerRadius}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Padding="{TemplateBinding Padding}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#303236" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#1f2022" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBackgroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
 
     </Page.Resources>
 
@@ -31,14 +143,10 @@
 
 
         <ParallaxView
-
+            x:Name="parallaxView"
             Grid.RowSpan="10"
 
             Source="{x:Bind mainScroll}" VerticalShift="50">
-
-            <!-- Background element -->
-            <Image x:Name="BackgroundImage" Source="/Assets/bgs/1.jpg"
-                   Stretch="UniformToFill" />
         </ParallaxView>
 
 
@@ -121,6 +229,7 @@
                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                 <AutoSuggestBox
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
                     TextChanged="AutoSuggestBox_TextChanged"
                     SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                     Width="400" AutomationProperties.Name="Basic AutoSuggestBox"
@@ -162,7 +271,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
                     <RelativePanel Grid.Row="0"
                                    Margin="8,0,0,16">
@@ -217,7 +330,8 @@
 
 
                     <StackPanel Grid.Row="2"
-                                Orientation="Horizontal">
+                                Orientation="Horizontal"
+                                Margin="0,16,0,0">
 
                         <RelativePanel x:Name="WindPanel"
                                        Margin="4"
@@ -373,6 +487,91 @@
 
                     </StackPanel>
 
+                    <Grid Grid.Row="3"
+                          Margin="0,32,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="ForecastText"
+                                   Grid.Row="0"
+                                   Text="Detailed forecast"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+
+                                   Margin="0,0,0,16"/>
+
+                        <ScrollViewer Grid.Row="1"
+                            VerticalScrollMode="Disabled"
+                            VerticalScrollBarVisibility="Disabled"
+                            HorizontalScrollBarVisibility="Visible">
+
+                            <muxc:ItemsRepeater
+                                x:Name="repeaterDays">
+
+                                <muxc:ItemsRepeater.ItemTemplate>
+                                    <DataTemplate x:DataType="adapters:DayButtonAdapter">
+                                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch"
+                                                Width="135"
+                                                Height="70"
+                                                Click="DayButtonClick">
+                                            <Button.Content>
+                                                <RelativePanel HorizontalAlignment="Stretch"
+                                                               VerticalAlignment="Stretch">
+
+                                                    <Image x:Name="mainIcon"
+                                                           Width="28"
+                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                           Stretch="Uniform"
+                                                           RelativePanel.AlignTopWithPanel="True"
+                                                           RelativePanel.AlignLeftWithPanel="True"
+                                                           Source="{x:Bind svgImageIcon}">
+                                                    </Image>
+
+                                                    <TextBlock Text="{x:Bind ShortEventName }"
+                                                               RelativePanel.AlignTopWithPanel="True"
+                                                               RelativePanel.AlignRightWithPanel="True" />
+
+                                                    <TextBlock
+                                                        Text="{x:Bind Temperature }"
+                                                        RelativePanel.AlignBottomWithPanel="True"
+                                                        RelativePanel.AlignLeftWithPanel="True"
+                                                        ></TextBlock>
+
+                                                    <Image x:Name="precipIcon"
+                                                           Width="16"
+                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                           Stretch="Uniform"
+                                                           RelativePanel.AlignBottomWithPanel="True"
+                                                           RelativePanel.LeftOf="precipChanceText"
+                                                           Margin="0,0,4,0"
+                                                           Source="{x:Bind svgPrecipIcon}">
+                                                        
+                                                    </Image>
+
+                                                    <TextBlock
+                                                        x:Name="precipChanceText"
+                                                        Text="{x:Bind PrecipitationChance }"
+                                                        RelativePanel.AlignBottomWithPanel="True"
+                                                        RelativePanel.AlignRightWithPanel="True"
+                                                        ></TextBlock>
+                                                </RelativePanel>
+                                            </Button.Content>
+
+                                        </Button>
+                                    </DataTemplate>
+                                </muxc:ItemsRepeater.ItemTemplate>
+
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:StackLayout Spacing="8"
+                                                      Orientation="Horizontal" />
+                                </muxc:ItemsRepeater.Layout>
+                            </muxc:ItemsRepeater>
+
+                        </ScrollViewer>
+                    </Grid>
 
                 </Grid>
 

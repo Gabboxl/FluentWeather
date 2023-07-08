@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Windows.UI.Xaml.Media.Imaging;
+using FluidWeather.Adapters;
 
 namespace FluidWeather.Views
 {
@@ -41,6 +42,27 @@ namespace FluidWeather.Views
             Initialize();
 
             this.AppViewModel = ViewModelHolder.GetViewModel();
+
+
+
+            //set parallaxview image
+            var image = new Image();
+
+            var bitmap = new BitmapImage();
+            bitmap.UriSource = new Uri("ms-appx:///Assets/bgs/1.jpg");
+
+            //darken bitmap image without effects
+
+
+            image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
+            image.Source = bitmap;
+
+
+
+
+            parallaxView.Child = image;
+
+
         }
 
         private void Initialize()
@@ -98,7 +120,7 @@ namespace FluidWeather.Views
                 var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" + language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
-                response.EnsureSuccessStatusCode();
+                //response.EnsureSuccessStatusCode();
 
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine($"{jsonResponse}\n");
@@ -126,7 +148,7 @@ namespace FluidWeather.Views
         {
             var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
-            var response = await sharedClient.GetAsync("aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-15day;v3-location-point?format=json&placeid=" + ((SearchedLocation)args.SelectedItem).placeId + "&units=m&language=" +
+            var response = await sharedClient.GetAsync("aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid=" + ((SearchedLocation)args.SelectedItem).placeId + "&units=m&language=" +
                                                        language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
             //&locationType=city (x solo citta)
 
@@ -143,6 +165,25 @@ namespace FluidWeather.Views
 
         private void updateUi(RootV3Response myDeserializedClass)
         {
+            //imagesource class creation
+
+            var asd = new Uri("ms-appx:///Assets/weticons/" + myDeserializedClass.v3wxobservationscurrent.iconCode + ".svg");
+
+            //imagesource
+            //var imageSource = new SvgImageSource(asd);
+
+
+            //get svgimagesource object from image source
+            var svgImageSource = (SvgImageSource)mainIcon.Source;
+
+            svgImageSource.UriSource = asd;
+
+            mainIcon.Source = svgImageSource;
+
+
+            //update chips
+
+
             PlaceText.Text = myDeserializedClass.v3locationpoint.LocationV3.displayName + ", " + myDeserializedClass.v3locationpoint.LocationV3.adminDistrict + ", " + myDeserializedClass.v3locationpoint.LocationV3.country;
 
             MainPhraseText.Text = myDeserializedClass.v3wxobservationscurrent.cloudCoverPhrase;
@@ -164,22 +205,53 @@ namespace FluidWeather.Views
             UVIndexText.Text = myDeserializedClass.v3wxobservationscurrent.uvIndex + " (" + myDeserializedClass.v3wxobservationscurrent.uvDescription + ")";
 
 
-            //imagesource class creation
+            int numdays = myDeserializedClass.v3wxforecastdaily10day.dayOfWeek.Count;
 
-            var asd = new Uri("ms-appx:///Assets/weticons/" + myDeserializedClass.v3wxobservationscurrent.iconCode + ".svg");
+            //update days repeater itemssource with creating for every day a new DayButtonAdapter class
+            List<DayButtonAdapter> dayButtonAdapters = new List<DayButtonAdapter>();
 
-            //imagesource
-            //var imageSource = new SvgImageSource(asd);
+            int i = 0;
+
+            foreach (var day in myDeserializedClass.v3wxforecastdaily10day.dayOfWeek)
+            {
+                dayButtonAdapters.Add(new DayButtonAdapter(myDeserializedClass.v3wxforecastdaily10day, i));
+
+                i++;
+            }
+
+            repeaterDays.ItemsSource = dayButtonAdapters;
 
 
-            //get svgimagesource object from image source
-            var svgImageSource = (SvgImageSource)mainIcon.Source;
-
-            svgImageSource.UriSource = asd;
-
-            mainIcon.Source = svgImageSource;
 
         }
+
+
+        private Button _lastSelectedDayButton;
+
+        private void DayButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Reset the style of the previously selected button
+            if (_lastSelectedDayButton != null)
+            {
+                //apply default button style of winui
+                _lastSelectedDayButton.Style = (Style)Application.Current.Resources["DefaultButtonStyle"];
+
+            }
+
+            // Apply the style to the selected button
+            var button = (Button)sender;
+            button.Style = (Style)Resources["ButtonStyle1"];
+
+            // Keep track of the selected button
+            _lastSelectedDayButton = button;
+
+
+
+            
+        }
+
+
+
 
 
     }
