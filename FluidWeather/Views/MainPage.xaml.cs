@@ -16,6 +16,8 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Windows.UI.Xaml.Hosting;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using FluidWeather.Adapters;
 
@@ -36,6 +38,11 @@ namespace FluidWeather.Views
 
         public MainPage()
         {
+            //use the EntranceNavigationTransition when showing the page at startup (pageload)
+            this.Transitions = new TransitionCollection();
+            this.Transitions.Add(new EntranceThemeTransition());
+
+
             this.InitializeComponent();
 
             this.DataContext = this; //DataContext = ViewModel;
@@ -205,9 +212,12 @@ namespace FluidWeather.Views
             UVIndexPanel.Value = myDeserializedClass.v3wxobservationscurrent.uvIndex + " (" + myDeserializedClass.v3wxobservationscurrent.uvDescription + ")";
 
 
-            int numdays = myDeserializedClass.v3wxforecastdaily10day.dayOfWeek.Count;
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
+
+            int numdays = myDeserializedClass.v3wxforecastdaily10day.dayOfWeek.Count;
+
+            
             List<DayButtonAdapter> dayButtonAdapters = new List<DayButtonAdapter>();
 
             int i = 0;
@@ -218,6 +228,27 @@ namespace FluidWeather.Views
 
                 i++;
             }
+
+
+            var element = repeaterDays;
+            var compositor = ElementCompositionPreview.GetElementVisual(element).Compositor;
+            var animation = compositor.CreateScopedBatch(Windows.UI.Composition.CompositionBatchTypes.Animation);
+            animation.Completed += (s, e) => { animation.Dispose(); };
+            var slideAnimation = compositor.CreateScalarKeyFrameAnimation();
+            slideAnimation.InsertKeyFrame(0f, 1000.0f);
+            slideAnimation.InsertKeyFrame(1.0f, 0.0f);
+            slideAnimation.Duration = TimeSpan.FromMilliseconds(600);
+
+            //var animationGroup = compositor.CreateAnimationGroup();
+            //animationGroup.Add(slideAnimation);
+
+            var elementVisual = ElementCompositionPreview.GetElementVisual(element);
+            elementVisual.StartAnimation(
+                "Offset.x",
+                slideAnimation
+            );
+
+     
 
             repeaterDays.ItemsSource = dayButtonAdapters;
 
@@ -246,14 +277,20 @@ namespace FluidWeather.Views
             _lastSelectedDayButton = button;
 
 
-
-            
         }
+
+
 
 
         private void ReloadButton_OnClick(object sender, RoutedEventArgs e)
         {
             //update ui
+
+            //show entrance animation effect when reloading the page
+            //var entranceAnimation = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("EntranceAnimation", mainIcon);
+            //entranceAnimation.Configuration = new DirectConnectedAnimationConfiguration();
+
+
         }
     }
 }

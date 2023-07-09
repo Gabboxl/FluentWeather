@@ -10,6 +10,8 @@
     xmlns:views="using:FluidWeather.Views"
     xmlns:controls="using:FluidWeather.Controls"
     xmlns:models="using:FluidWeather.Models"
+    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
+    xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,7)"
     xmlns:adapters="using:FluidWeather.Adapters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -22,12 +24,6 @@
 
         </Style>
 
-        <Style x:Key="SelectedButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
-            <Setter Property="Background" Value="#1f2022" />
-
-        </Style>
-
-        <StackPanel x:Key="sidestack"></StackPanel>
 
 
         <Style x:Key="ButtonStyle1" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
@@ -222,6 +218,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
 
@@ -277,8 +274,9 @@
                           HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                <Grid Padding="40">
+                <Grid Padding="40,20,0,0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -423,7 +421,7 @@
                         <ScrollViewer Grid.Row="1"
                             VerticalScrollMode="Disabled"
                             VerticalScrollBarVisibility="Disabled"
-                            HorizontalScrollBarVisibility="Visible">
+                            HorizontalScrollBarVisibility="Hidden">
 
                             <muxc:ItemsRepeater
                                 x:Name="repeaterDays">
@@ -492,9 +490,35 @@
                         </ScrollViewer>
                     </Grid>
 
+
+
+
+                    <Grid Grid.Row="4"
+                          Margin="0,32,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock 
+                                   Grid.Row="0"
+                                   Text="Hourly"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   FontSize="20"
+                                   Margin="0,0,0,16"/>
+
+
+
+
+
+
+
+                        </Grid>
+
+
+
+
                 </Grid>
-
-
             </ScrollViewer>
 
 
