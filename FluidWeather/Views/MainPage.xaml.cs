@@ -30,7 +30,6 @@ namespace FluidWeather.Views
 {
     public sealed partial class MainPage : Page
     {
-
         public MainPageViewModel MainPageViewModel { get; } =
             new MainPageViewModel();
 
@@ -40,6 +39,59 @@ namespace FluidWeather.Views
         private static HttpClient sharedClient = new()
         {
             BaseAddress = new Uri("https://api.weather.com/v3/"),
+        };
+
+        //dictionary for every icon code and its corresponsing background image
+        private static Dictionary<string, string> iconCodeToBackgroundImageNameDictionary = new()
+        {
+            {"0", "2"},
+            {"1", "2"},
+            {"2", "2"},
+            {"3", "3"},
+            {"4", "3"},
+            {"5", "7"},
+            {"6", "4"},
+            {"7", "7"},
+            {"8", "4"},
+            {"9", "4"},
+            {"10", "4"},
+            {"11", "4"},
+            {"12", "4"},
+            {"13", "7"},
+            {"14", "7"},
+            {"15", "7"},
+            {"16", "7"},
+            {"17", "7"},
+            {"18", "4"},
+            {"19", "6"},
+            {"20", "2"},
+            {"21", "2"},
+            {"22", "2"},
+            {"23", "6"},
+            {"24", "6"},
+            {"25", "7"},
+            {"26", "5"},
+            {"27", "8"},
+            {"28", "5"},
+            {"29", "8"},
+            {"30", "5"},
+            {"31", "1"},
+            {"32", "9"},
+            {"33", "1"},
+            {"34", "9"},
+            {"35", "4"},
+            {"36", "9"},
+            {"37", "10"},
+            {"38", "3"},
+            {"39", "4"},
+            {"40", "4"},
+            {"41", "7"},
+            {"42", "7"},
+            {"43", "7"},
+            {"44", "9"},
+            {"45", "4"},
+            {"46", "7"},
+            {"47", "3"},
         };
 
 
@@ -62,7 +114,7 @@ namespace FluidWeather.Views
         private void Initialize()
         {
             //set parallaxview image
-            var image = new Image();
+            /*var image = new Image();
 
             var bitmap = new BitmapImage();
             bitmap.UriSource = new Uri("ms-appx:///Assets/bgs/1.jpg");
@@ -70,7 +122,7 @@ namespace FluidWeather.Views
             image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
             image.Source = bitmap;
 
-            parallaxView.Child = image;
+            parallaxView.Child = image; */
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -149,7 +201,6 @@ namespace FluidWeather.Views
         private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender,
             AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-
             var selectedPlaceId = ((SearchedLocation) args.SelectedItem).placeId;
 
 
@@ -192,12 +243,8 @@ namespace FluidWeather.Views
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
-                    async () =>
-                    {
-                        UpdateUi(myDeserializedClass);
-                    }
+                    async () => { UpdateUi(myDeserializedClass); }
                 );
-
             }
 
 
@@ -210,6 +257,20 @@ namespace FluidWeather.Views
 
         private void UpdateUi(RootV3Response rootV3Response)
         {
+            //set parallaxview image based on weather
+            var image = new Image();
+
+            var bitmap = new BitmapImage();
+
+            //urisource based on weather and the iconCodeToBackgroundImageNameDictionary
+            bitmap.UriSource = new Uri("ms-appx:///Assets/bgs/" +
+                                       iconCodeToBackgroundImageNameDictionary[rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
+
+            image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
+            image.Source = bitmap;
+
+            parallaxView.Child = image;
+
             //imagesource class creation
 
             var asd = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
@@ -228,6 +289,9 @@ namespace FluidWeather.Views
 
 
             //update chips
+
+            //updated-on text with current date
+            UpdatedOnText.Text = "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
 
 
             PlaceText.Text = rootV3Response.v3locationpoint.LocationV3.displayName + ", " +
@@ -309,7 +373,7 @@ namespace FluidWeather.Views
 
             // Apply the style to the selected button
             var button = (Button) sender;
-            button.Style = (Style) Resources["ButtonStyle1"];
+            button.Style = (Style) Resources["SelectedDayButtonStyle"];
 
             // Keep track of the selected button
             _lastSelectedDayButton = button;
@@ -318,11 +382,7 @@ namespace FluidWeather.Views
 
         private void ReloadButton_OnClick(object sender, RoutedEventArgs e)
         {
-            //update ui
-
-            //show entrance animation effect when reloading the page
-            //var entranceAnimation = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("EntranceAnimation", mainIcon);
-            //entranceAnimation.Configuration = new DirectConnectedAnimationConfiguration();
+            Task.Run(LoadApiData);
         }
     }
 }

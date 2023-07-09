@@ -26,7 +26,7 @@
 
 
 
-        <Style x:Key="ButtonStyle1" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+        <Style x:Key="SelectedDayButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
             <Setter Property="Background" Value="#1f2022" />
             <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
             <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
@@ -304,6 +304,13 @@
                                    Style="{StaticResource SubtitleTextBlockStyle}"
                                    Margin="8,0,0,0"
                                    RelativePanel.RightOf="placeIcon" />
+
+                        <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
+                                      Style="{StaticResource CaptionTextBlockStyle}"
+                                      Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
+                                      Margin="8,0,0,0"
+                                      RelativePanel.Below="PlaceText"
+                                      RelativePanel.AlignLeftWith="PlaceText" />
 
 
                     </RelativePanel>

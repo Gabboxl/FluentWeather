@@ -121,7 +121,7 @@
       <Version>0.0.18</Version>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm">
-      <Version>8.2.0</Version>
+      <Version>8.2.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
       <Version>5.0.2</Version>
@@ -257,11 +257,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\bgs\1.jpg" />
+    <Content Include="Assets\bgs\10.jpg" />
     <Content Include="Assets\bgs\2.jpg" />
     <Content Include="Assets\bgs\3.jpg" />
     <Content Include="Assets\bgs\4.jpg" />
     <Content Include="Assets\bgs\5.jpg" />
     <Content Include="Assets\bgs\6.jpg" />
+    <Content Include="Assets\bgs\7.jpg" />
+    <Content Include="Assets\bgs\8.jpg" />
+    <Content Include="Assets\bgs\9.jpg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
