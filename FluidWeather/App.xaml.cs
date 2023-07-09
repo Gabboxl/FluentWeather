@@ -9,11 +9,14 @@ using Windows.UI.Xaml.Navigation;
 using FluidWeather.Services;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
+using FluidWeather.ViewModels;
 
 namespace FluidWeather
 {
     public sealed partial class App : Application
     {
+        private AppViewModel AppViewModel { get; }
+
         private Lazy<ActivationService> _activationService;
 
         private ActivationService ActivationService
@@ -22,13 +25,10 @@ namespace FluidWeather
         }
 
 
-
         public IServiceProvider Container { get; }
 
         public IServiceProvider ConfigureDependencyInjection()
         {
-
-
             var serviceCollection = new ServiceCollection();
 
 
@@ -68,22 +68,8 @@ namespace FluidWeather
             _activationService = new Lazy<ActivationService>(CreateActivationService);
 
 
-            /*
-
-                        CoreApplication.UnhandledErrorDetected += (sender, eventArgs) =>
-                        {
-                            try
-                            {
-                                eventArgs.UnhandledError.Propagate();
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine("OKBRO:" + ex.StackTrace);
-                                ExceptionDispatchInfo.Capture(ex).Throw();
-
-                            }
-                        };
-                        */
+            //set the global view model which we can use anytime for things
+            this.AppViewModel = ViewModelHolder.GetViewModel();
         }
 
         /// <summary>

@@ -266,6 +266,12 @@
                     </StackPanel>
                 </Button>
 
+                <!-- progress ring -->
+                <muxc:ProgressRing x:Name="DataProgressRing"
+                              IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
+                              RelativePanel.RightOf="ReloadButton"
+                              Margin="8,0,0,0" />
+
             </RelativePanel>
 
 

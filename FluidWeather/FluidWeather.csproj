@@ -188,7 +188,7 @@
     <Compile Include="Services\WhatsNewDisplayService.cs" />
     <Compile Include="Utils\VariousUtils.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewViewModel.cs" />
     <Compile Include="ViewModels\ViewModelHolder.cs" />

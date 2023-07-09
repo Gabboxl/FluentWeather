@@ -16,16 +16,23 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using FluidWeather.Adapters;
+using Windows.Storage;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Controls.Primitives;
+using FluidWeather.Helpers;
 
 namespace FluidWeather.Views
 {
     public sealed partial class MainPage : Page
     {
-        private AppViewModel AppViewModel { get; }
+
+        public MainPageViewModel MainPageViewModel { get; } =
+            new MainPageViewModel();
 
         public NavigationViewViewModel NavigationViewViewModel { get; } =
             new NavigationViewViewModel();
@@ -48,32 +55,23 @@ namespace FluidWeather.Views
             this.DataContext = this; //DataContext = ViewModel;
             Initialize();
 
-            this.AppViewModel = ViewModelHolder.GetViewModel();
 
+            Task.Run(LoadApiData);
+        }
 
-
+        private void Initialize()
+        {
             //set parallaxview image
             var image = new Image();
 
             var bitmap = new BitmapImage();
             bitmap.UriSource = new Uri("ms-appx:///Assets/bgs/1.jpg");
 
-            //darken bitmap image without effects
-
-
             image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
             image.Source = bitmap;
 
-
-
-
             parallaxView.Child = image;
 
-
-        }
-
-        private void Initialize()
-        {
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
@@ -109,9 +107,6 @@ namespace FluidWeather.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
-
-
-
         private async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Since selecting an item will also change the text,
@@ -124,7 +119,9 @@ namespace FluidWeather.Views
                 //get language code from system (like en-us)
                 var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
-                var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" + language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
+                var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
+                                                           language +
+                                                           "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
                 //response.EnsureSuccessStatusCode();
@@ -145,43 +142,85 @@ namespace FluidWeather.Views
                 // the select statement above is the same as the foreach below
 
 
-
                 sender.ItemsSource = finalitems;
             }
-
         }
 
-        private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender,
+            AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
-            var response = await sharedClient.GetAsync("aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid=" + ((SearchedLocation)args.SelectedItem).placeId + "&units=m&language=" +
-                                                       language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
-            //&locationType=city (x solo citta)
-
-            response.EnsureSuccessStatusCode();
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var selectedPlaceId = ((SearchedLocation) args.SelectedItem).placeId;
 
 
-            var myDeserializedClass = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+            //save location to settings
+            await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
 
-            updateUi(myDeserializedClass);
+
+            await Task.Run(LoadApiData);
         }
 
 
-        private void updateUi(RootV3Response myDeserializedClass)
+        private async Task LoadApiData()
+        {
+            await CoreApplication.MainView.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal,
+                async () => { MainPageViewModel.IsLoadingData = true; }
+            );
+
+            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+            if (lastPlaceId != null)
+            {
+                var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+
+                var response = await sharedClient.GetAsync(
+                    "aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid=" +
+                    lastPlaceId
+                    + "&units=m&language=" +
+                    language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+                //&locationType=city (x solo citta)
+
+                response.EnsureSuccessStatusCode();
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+
+                var myDeserializedClass = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+
+
+                //we execute the code in the UI thread
+                await CoreApplication.MainView.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    async () =>
+                    {
+                        UpdateUi(myDeserializedClass);
+                    }
+                );
+
+            }
+
+
+            await CoreApplication.MainView.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal,
+                async () => { MainPageViewModel.IsLoadingData = false; }
+            );
+        }
+
+
+        private void UpdateUi(RootV3Response rootV3Response)
         {
             //imagesource class creation
 
-            var asd = new Uri("ms-appx:///Assets/weticons/" + myDeserializedClass.v3wxobservationscurrent.iconCode + ".svg");
+            var asd = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
+                              ".svg");
 
             //imagesource
             //var imageSource = new SvgImageSource(asd);
 
 
             //get svgimagesource object from image source
-            var svgImageSource = (SvgImageSource)mainIcon.Source;
+            var svgImageSource = (SvgImageSource) mainIcon.Source;
 
             svgImageSource.UriSource = asd;
 
@@ -191,40 +230,44 @@ namespace FluidWeather.Views
             //update chips
 
 
-            PlaceText.Text = myDeserializedClass.v3locationpoint.LocationV3.displayName + ", " + myDeserializedClass.v3locationpoint.LocationV3.adminDistrict + ", " + myDeserializedClass.v3locationpoint.LocationV3.country;
+            PlaceText.Text = rootV3Response.v3locationpoint.LocationV3.displayName + ", " +
+                             rootV3Response.v3locationpoint.LocationV3.adminDistrict + ", " +
+                             rootV3Response.v3locationpoint.LocationV3.country;
 
-            MainPhraseText.Text = myDeserializedClass.v3wxobservationscurrent.cloudCoverPhrase;
+            MainPhraseText.Text = rootV3Response.v3wxobservationscurrent.cloudCoverPhrase;
 
-            CurrentTempText.Text = myDeserializedClass.v3wxobservationscurrent.temperature + "°C";
+            CurrentTempText.Text = rootV3Response.v3wxobservationscurrent.temperature + "°C";
 
-            FeelsLikeText.Text = "Feels like " + myDeserializedClass.v3wxobservationscurrent.temperatureFeelsLike + "°C";
+            FeelsLikeText.Text =
+                "Feels like " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°C";
 
-            WindPanel.Value = myDeserializedClass.v3wxobservationscurrent.windSpeed + " km/h" + " " + myDeserializedClass.v3wxobservationscurrent.windDirectionCardinal;
+            WindPanel.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " km/h" + " " +
+                              rootV3Response.v3wxobservationscurrent.windDirectionCardinal;
 
-            HumidityPanel.Value = myDeserializedClass.v3wxobservationscurrent.relativeHumidity + "%";
+            HumidityPanel.Value = rootV3Response.v3wxobservationscurrent.relativeHumidity + "%";
 
-            PressurePanel.Value = myDeserializedClass.v3wxobservationscurrent.pressureMeanSeaLevel + " hPa";
+            PressurePanel.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " hPa";
 
-            VisibilityPanel.Value = myDeserializedClass.v3wxobservationscurrent.visibility + " km";
+            VisibilityPanel.Value = rootV3Response.v3wxobservationscurrent.visibility + " km";
 
-            DewPointPanel.Value = myDeserializedClass.v3wxobservationscurrent.temperatureDewPoint + "°C";
+            DewPointPanel.Value = rootV3Response.v3wxobservationscurrent.temperatureDewPoint + "°C";
 
-            UVIndexPanel.Value = myDeserializedClass.v3wxobservationscurrent.uvIndex + " (" + myDeserializedClass.v3wxobservationscurrent.uvDescription + ")";
-
+            UVIndexPanel.Value = rootV3Response.v3wxobservationscurrent.uvIndex + " (" +
+                                 rootV3Response.v3wxobservationscurrent.uvDescription + ")";
 
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
 
-            int numdays = myDeserializedClass.v3wxforecastdaily10day.dayOfWeek.Count;
+            int numdays = rootV3Response.v3wxforecastdaily10day.dayOfWeek.Count;
 
-            
+
             List<DayButtonAdapter> dayButtonAdapters = new List<DayButtonAdapter>();
 
             int i = 0;
 
-            foreach (var day in myDeserializedClass.v3wxforecastdaily10day.dayOfWeek)
+            foreach (var day in rootV3Response.v3wxforecastdaily10day.dayOfWeek)
             {
-                dayButtonAdapters.Add(new DayButtonAdapter(myDeserializedClass.v3wxforecastdaily10day, i));
+                dayButtonAdapters.Add(new DayButtonAdapter(rootV3Response.v3wxforecastdaily10day, i));
 
                 i++;
             }
@@ -248,12 +291,8 @@ namespace FluidWeather.Views
                 slideAnimation
             );
 
-     
 
             repeaterDays.ItemsSource = dayButtonAdapters;
-
-
-
         }
 
 
@@ -265,21 +304,16 @@ namespace FluidWeather.Views
             if (_lastSelectedDayButton != null)
             {
                 //apply default button style of winui
-                _lastSelectedDayButton.Style = (Style)Application.Current.Resources["DefaultButtonStyle"];
-
+                _lastSelectedDayButton.Style = (Style) Application.Current.Resources["DefaultButtonStyle"];
             }
 
             // Apply the style to the selected button
-            var button = (Button)sender;
-            button.Style = (Style)Resources["ButtonStyle1"];
+            var button = (Button) sender;
+            button.Style = (Style) Resources["ButtonStyle1"];
 
             // Keep track of the selected button
             _lastSelectedDayButton = button;
-
-
         }
-
-
 
 
         private void ReloadButton_OnClick(object sender, RoutedEventArgs e)
@@ -289,8 +323,6 @@ namespace FluidWeather.Views
             //show entrance animation effect when reloading the page
             //var entranceAnimation = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("EntranceAnimation", mainIcon);
             //entranceAnimation.Configuration = new DirectConnectedAnimationConfiguration();
-
-
         }
     }
 }
