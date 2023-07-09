@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:FluidWeather.Helpers"
     xmlns:views="using:FluidWeather.Views"
+    xmlns:controls="using:FluidWeather.Controls"
     xmlns:models="using:FluidWeather.Models"
     xmlns:adapters="using:FluidWeather.Adapters"
     mc:Ignorable="d"
@@ -229,6 +230,7 @@
                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                 <AutoSuggestBox
+                    x:Name="AutoSuggestBoxMain"
                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                     TextChanged="AutoSuggestBox_TextChanged"
                     SuggestionChosen="AutoSuggestBox_SuggestionChosen"
@@ -257,6 +259,15 @@
                     </AutoSuggestBox.ItemTemplate>
 
                 </AutoSuggestBox>
+
+                <Button Name="ReloadButton"
+                        Click="ReloadButton_OnClick"
+                        RelativePanel.RightOf="AutoSuggestBoxMain"
+                        Margin="8,0,0,0" >
+                    <StackPanel>
+                        <FontIcon Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
+                    </StackPanel>
+                </Button>
 
             </RelativePanel>
 
@@ -333,156 +344,64 @@
                                 Orientation="Horizontal"
                                 Margin="0,16,0,0">
 
-                        <RelativePanel x:Name="WindPanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="wtext" Text="Wind"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="WindText"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       Text="wind"
-                                       Margin="0,0,0,0"
-                                       RelativePanel.Below="wtext" />
-
-                        </RelativePanel>
+                        <controls:DetailChipControl
+                            x:Name="WindPanel"
+                            Title="Wind"
+                            >
+                        </controls:DetailChipControl>
 
 
                         <!-- pressure panel -->
-                        <RelativePanel x:Name="PressurePanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="ptext" Text="Pressure"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="PressureText" Text="pressure"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       RelativePanel.Below="ptext" />
+                        <controls:DetailChipControl
+                            x:Name="PressurePanel"
+                            Title="Pressure"
+                            >
+                        </controls:DetailChipControl>
 
 
-                        </RelativePanel>
+
+                        <!-- humidity panel -->
+                        <controls:DetailChipControl
+                            x:Name="HumidityPanel"
+                            Title="Humidity"
+                            >
+                        </controls:DetailChipControl>
 
 
-                        <RelativePanel x:Name="HumidityPanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
 
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="htext" Text="Humidity"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="HumidityText" Text="humid"
-                                       Margin="0,0,0,0"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       RelativePanel.Below="htext" />
-                        </RelativePanel>
+                        <!-- visibility panel -->
+                        <controls:DetailChipControl
+                            x:Name="VisibilityPanel"
+                            Title="Visibility"
+                            >
+                        </controls:DetailChipControl>
 
 
-                        <RelativePanel x:Name="VisivilityPanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
 
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="vtext" Text="Visivility"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="VisibilityText" Text="humid"
-                                       Margin="0,0,0,0"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       RelativePanel.Below="vtext" />
-                        </RelativePanel>
+                        <!-- dew point panel -->
+                        <controls:DetailChipControl
+                            x:Name="DewPointPanel"
+                            Title="Dew Point"
+                            >
+                        </controls:DetailChipControl>
 
 
-                        <RelativePanel x:Name="DewPanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
 
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="dewtext" Text="Dew point"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="DewPointText" Text="humid"
-                                       Margin="0,0,0,0"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       RelativePanel.Below="dewtext" />
-                        </RelativePanel>
+                        <!-- pollen panel -->
+                        <controls:DetailChipControl
+                            x:Name="PollenPanel"
+                            Title="Pollen"
+                            >
+                        </controls:DetailChipControl>
 
 
-                        <RelativePanel x:Name="PollenPanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
 
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="polltext" Text="Pollen index"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="PollenText" Text="humid"
-                                       Margin="0,0,0,0"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       RelativePanel.Below="polltext" />
-
-                        </RelativePanel>
-
-
-                        <RelativePanel x:Name="UltravPanel"
-                                       Margin="4"
-                                       CornerRadius="6"
-                                       Padding="8"
-                                       BorderThickness="0"
-                                       BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                       Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-
-                            <!-- textblock with BodyTextBlockStyle -->
-                            <TextBlock x:Name="uvtext" Text="UV Index"
-                                       Style="{StaticResource BodyTextBlockStyle}"
-                                       Margin="0,0,0,0"
-                                       Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
-
-                            <TextBlock x:Name="UVIndexText" Text="humid"
-                                       Margin="0,0,0,0"
-                                       Style="{StaticResource BodyStrongTextBlockStyle}"
-                                       RelativePanel.Below="uvtext" />
-                        </RelativePanel>
+                        <!-- uv index panel -->
+                        <controls:DetailChipControl
+                            x:Name="UVIndexPanel"
+                            Title="UV Index"
+                            >
+                        </controls:DetailChipControl>
 
 
                     </StackPanel>
@@ -553,7 +472,7 @@
 
                                                     <TextBlock
                                                         x:Name="precipChanceText"
-                                                        Text="{x:Bind PrecipitationChance }"
+                                                        Text="{x:Bind PrecipitationChance}"
                                                         RelativePanel.AlignBottomWithPanel="True"
                                                         RelativePanel.AlignRightWithPanel="True"
                                                         ></TextBlock>

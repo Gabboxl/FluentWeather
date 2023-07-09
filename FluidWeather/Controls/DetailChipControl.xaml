@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="FluidWeather.Controls.DetailChipControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FluidWeather.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <!-- pressure panel -->
+    <RelativePanel x:Name="MainChipPanel"
+                   Margin="4"
+                   CornerRadius="6"
+                   Padding="8"
+                   BorderThickness="0"
+                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                   Width="100">
+
+        <!-- textblock with BodyTextBlockStyle -->
+        <TextBlock x:Name="TitleText" Text="chiptitle"
+                   Style="{StaticResource BodyTextBlockStyle}"
+                   Margin="0,0,0,0"
+                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
+
+        <TextBlock x:Name="ValueText" Text="chipvalue"
+                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                   Margin="0,0,0,0"
+                   RelativePanel.Below="TitleText" />
+
+
+    </RelativePanel>
+</UserControl>

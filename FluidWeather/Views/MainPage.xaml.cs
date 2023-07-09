@@ -192,17 +192,17 @@ namespace FluidWeather.Views
 
             FeelsLikeText.Text = "Feels like " + myDeserializedClass.v3wxobservationscurrent.temperatureFeelsLike + "°C";
 
-            WindText.Text = myDeserializedClass.v3wxobservationscurrent.windSpeed + " km/h" + " " + myDeserializedClass.v3wxobservationscurrent.windDirectionCardinal;
+            WindPanel.Value = myDeserializedClass.v3wxobservationscurrent.windSpeed + " km/h" + " " + myDeserializedClass.v3wxobservationscurrent.windDirectionCardinal;
 
-            HumidityText.Text = myDeserializedClass.v3wxobservationscurrent.relativeHumidity + "%";
+            HumidityPanel.Value = myDeserializedClass.v3wxobservationscurrent.relativeHumidity + "%";
 
-            PressureText.Text = myDeserializedClass.v3wxobservationscurrent.pressureMeanSeaLevel + " hPa";
+            PressurePanel.Value = myDeserializedClass.v3wxobservationscurrent.pressureMeanSeaLevel + " hPa";
 
-            VisibilityText.Text = myDeserializedClass.v3wxobservationscurrent.visibility + " km";
+            VisibilityPanel.Value = myDeserializedClass.v3wxobservationscurrent.visibility + " km";
 
-            DewPointText.Text = myDeserializedClass.v3wxobservationscurrent.temperatureDewPoint + "°C";
+            DewPointPanel.Value = myDeserializedClass.v3wxobservationscurrent.temperatureDewPoint + "°C";
 
-            UVIndexText.Text = myDeserializedClass.v3wxobservationscurrent.uvIndex + " (" + myDeserializedClass.v3wxobservationscurrent.uvDescription + ")";
+            UVIndexPanel.Value = myDeserializedClass.v3wxobservationscurrent.uvIndex + " (" + myDeserializedClass.v3wxobservationscurrent.uvDescription + ")";
 
 
             int numdays = myDeserializedClass.v3wxforecastdaily10day.dayOfWeek.Count;
@@ -251,8 +251,9 @@ namespace FluidWeather.Views
         }
 
 
-
-
-
+        private void ReloadButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            //update ui
+        }
     }
 }
