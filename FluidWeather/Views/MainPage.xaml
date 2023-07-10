@@ -13,6 +13,8 @@
     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
     xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,7)"
     xmlns:adapters="using:FluidWeather.Adapters"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -287,6 +289,13 @@
                     </StackPanel>
                 </Button>
 
+                <labs:Segmented SelectedIndex="0" RelativePanel.RightOf="NextPageButton">
+                    <labs:SegmentedItem Content="°C" />
+                    <labs:SegmentedItem Content="°F" />
+                    <!-- <labs:SegmentedItem Content="Item 3" Icon="{ui:SymbolIcon Symbol=Home}" /> -->
+                </labs:Segmented>
+
+
                 <!-- progress ring -->
                 <muxc:ProgressRing x:Name="DataProgressRing"
                               IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
@@ -301,7 +310,7 @@
                           HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                <Grid Padding="40,20,0,0">
+                <Grid Padding="40,20,0,64">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -420,11 +429,11 @@
 
 
                         <!-- pollen panel -->
-                        <controls:DetailChipControl
+                        <!--<controls:DetailChipControl
                             x:Name="PollenPanel"
                             Title="Pollen"
                             >
-                        </controls:DetailChipControl>
+                        </controls:DetailChipControl>-->
 
 
 
@@ -447,7 +456,7 @@
 
                         <TextBlock x:Name="ForecastText"
                                    Grid.Row="0"
-                                   Text="Detailed forecast"
+                                   Text="Daily forecast"
                                    Style="{StaticResource SubtitleTextBlockStyle}"
 
                                    Margin="0,0,0,16"/>
@@ -481,7 +490,7 @@
                                                            Source="{x:Bind svgImageIcon}">
                                                     </Image>
 
-                                                    <TextBlock Text="{x:Bind ShortEventName }"
+                                                    <TextBlock Text="{x:Bind ShortDayName }"
                                                                RelativePanel.AlignTopWithPanel="True"
                                                                RelativePanel.AlignRightWithPanel="True" />
 
@@ -541,7 +550,102 @@
                                    FontSize="20"
                                    Margin="0,0,0,16"/>
 
+                        <ListView x:Name="hourlyListview"
+                                  Grid.Row="1"
+                                  ScrollViewer.VerticalScrollMode="Disabled"
+                                  ScrollViewer.HorizontalScrollMode="Enabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                  ScrollViewer.IsDeferredScrollingEnabled="False"
+                                  SelectionMode="None">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Horizontal" VirtualizationMode="Recycling" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
 
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Margin" Value="0" />
+                                    <Setter Property="Padding" Value="0" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="adapters:HourDataAdapter">
+                                    <Grid Width="100" Height="200" Margin="0">
+                                        <RelativePanel>
+
+                                            <Rectangle x:Name="Rectangle1"
+                                                Fill="White"
+                                                       Height="1"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       Width="100"
+                                                       Margin="0,8,0,0"/>
+                                            
+                                            <Image x:Name="wetIcon"
+                                                   Margin="0,8,0,0"
+                                                   Width="40"
+                                                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                   Stretch="Uniform"
+                                                   RelativePanel.Below="Rectangle1"
+                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                   Source="{x:Bind svgImageIcon}">
+                                            </Image>
+
+                                            <TextBlock x:Name="TemperatureText"
+                                                Text="{x:Bind Temperature }"
+                                                       RelativePanel.Below="wetIcon"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       TextAlignment="Center"
+                                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                                       FontSize="28"
+                                                       ></TextBlock>
+
+                                            <!-- phrase text -->
+                                            <TextBlock Text="{x:Bind Phrase }"
+                                                       RelativePanel.Below="TemperatureText"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       TextAlignment="Center"
+                                                       Style="{StaticResource BodyTextBlockStyle}"
+                                                       FontSize="12"
+                                                       ></TextBlock>
+
+                                            <!-- precip icon -->
+                                            <Image x:Name="precipIcon"
+                                                   Width="16"
+                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                   Stretch="Uniform"
+                                                   RelativePanel.Above="Rectangle2"
+                                                   RelativePanel.LeftOf="precipChanceText"
+                                                   Margin="0,0,4,0"
+                                                   Source="{x:Bind svgPrecipIcon}"/>
+
+                                            <!-- precip chance text -->
+                                            <TextBlock x:Name="precipChanceText"
+                                                Text="{x:Bind PrecipitationChance}"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       RelativePanel.Above="Rectangle2"
+                                                       ></TextBlock>
+
+                                            <!-- horizontal line -->
+                                            <Rectangle x:Name="Rectangle2"
+                                                Fill="White"
+                                                       Height="1"
+                                                       RelativePanel.Above="HourText"
+                                                       Width="100"
+                                                       Margin="0,8,0,0"/>
+
+                                            <TextBlock x:Name="HourText"
+                                                Text="{Binding Hour}"
+                                                Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       RelativePanel.AlignBottomWithPanel="True"/>
+
+                                        </RelativePanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
 
 

@@ -50,7 +50,7 @@ namespace FluidWeather.Adapters
             }
         }
 
-        public string ShortEventName
+        public string ShortDayName
         {
             get
             {

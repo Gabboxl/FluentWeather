@@ -138,6 +138,47 @@ namespace FluidWeather.Models
         public V3LocationPoint v3locationpoint { get; set; }
     }
 
+
+    public class V3WxForecastHourly
+    {
+        public List<int> cloudCover { get; set; }
+        public List<string> dayOfWeek { get; set; }
+        public List<string> dayOrNight { get; set; }
+        public List<int> expirationTimeUtc { get; set; }
+        public List<int> iconCode { get; set; }
+        public List<int> iconCodeExtend { get; set; }
+        public List<int> precipChance { get; set; }
+        public List<string> precipType { get; set; }
+        public List<double> pressureMeanSeaLevel { get; set; }
+        public List<double> qpf { get; set; }
+        public List<double> qpfSnow { get; set; }
+        public List<int> relativeHumidity { get; set; }
+        public List<int> temperature { get; set; }
+        public List<int> temperatureDewPoint { get; set; }
+        public List<int?> temperatureFeelsLike { get; set; }
+        public List<int> temperatureHeatIndex { get; set; }
+        public List<int> temperatureWindChill { get; set; }
+        public List<string> uvDescription { get; set; }
+        public List<int> uvIndex { get; set; }
+        public List<DateTime> validTimeLocal { get; set; }
+        public List<int> validTimeUtc { get; set; }
+        public List<double> visibility { get; set; }
+        public List<int> windDirection { get; set; }
+        public List<string> windDirectionCardinal { get; set; }
+        public List<int?> windGust { get; set; }
+        public List<int> windSpeed { get; set; }
+        public List<string> wxPhraseLong { get; set; }
+        public List<string> wxPhraseShort { get; set; }
+        public List<int> wxSeverity { get; set; }
+    }
+
+
+    public class RootStandaloneHourlyResponse
+    {
+        [JsonProperty("v3-wx-forecast-hourly-10day")]
+        public V3WxForecastHourly v3wxforecasthourly10day { get; set; }
+    }
+
     public class V3LocationPoint
     {
         [JsonProperty("location")]

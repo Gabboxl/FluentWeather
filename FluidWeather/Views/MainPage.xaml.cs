@@ -9,7 +9,6 @@ using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using WinUI = Microsoft.UI.Xaml.Controls;
 using FluidWeather.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -22,6 +21,8 @@ using Windows.UI.Xaml.Media.Imaging;
 using FluidWeather.Adapters;
 using Windows.Storage;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Automation.Peers;
+using Windows.UI.Xaml.Automation.Provider;
 using FluidWeather.Helpers;
 
 namespace FluidWeather.Views
@@ -96,8 +97,10 @@ namespace FluidWeather.Views
         public MainPage()
         {
             //use the EntranceNavigationTransition when showing the page at startup (pageload)
-            this.Transitions = new TransitionCollection();
-            this.Transitions.Add(new EntranceThemeTransition());
+            this.Transitions = new TransitionCollection
+            {
+                new EntranceThemeTransition()
+            };
 
 
             this.InitializeComponent();
@@ -109,7 +112,6 @@ namespace FluidWeather.Views
 
 
             Task.Run(LoadApiData);
-
         }
 
         private void Initialize()
@@ -141,8 +143,6 @@ namespace FluidWeather.Views
 
             //pagina di default
             //NavigationService.Navigate(typeof(Views.DashWet));
-
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -169,7 +169,6 @@ namespace FluidWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-                var finalitems = new List<SearchedLocation>();
 
                 //get language code from system (like en-us)
                 var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
@@ -193,7 +192,7 @@ namespace FluidWeather.Views
                 }
 
 
-                finalitems = myDeserializedClass.location.Select(x => x).ToList();
+                List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
                 // the select statement above is the same as the foreach below
 
 
@@ -218,8 +217,7 @@ namespace FluidWeather.Views
         private async Task LoadApiData()
         {
             await CoreApplication.MainView.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,
-                async () => { MainPageViewModel.IsLoadingData = true; }
+                CoreDispatcherPriority.Normal, () => { MainPageViewModel.IsLoadingData = true; }
             );
 
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
@@ -253,21 +251,59 @@ namespace FluidWeather.Views
 
             await CoreApplication.MainView.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal,
-                async () => { MainPageViewModel.IsLoadingData = false; }
+                async () =>
+                {
+                    MainPageViewModel.IsLoadingData = false;
+
+                    LoadHourlyData();
+                }
             );
+        }
+
+
+        private async void LoadHourlyData()
+        {
+            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+            var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+
+            var response = await sharedClient.GetAsync(
+                "aggcommon/v3-wx-forecast-hourly-10day?format=json&placeid=" +
+                lastPlaceId
+                + "&units=m&language=" +
+                language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var myDeserializedClass = JsonConvert.DeserializeObject<RootStandaloneHourlyResponse>(jsonResponse);
+
+
+
+            List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
+
+            int i = 0;
+
+            foreach (var day in myDeserializedClass.v3wxforecasthourly10day.validTimeLocal)
+            {
+                hourlyDataAdapters.Add(new HourDataAdapter(myDeserializedClass.v3wxforecasthourly10day, i));
+
+                i++;
+            }
+
+            hourlyListview.ItemsSource = hourlyDataAdapters;
         }
 
         /// <summary>
         /// storyboards code
         /// </summary>
-
-
         private Storyboard _storyboard1;
+
         private Storyboard _storyboard2;
         private bool _isImage1Active;
 
 
-        public void CrossfadeToImage(Uri newImageUri)
+        private void CrossfadeToImage(Uri newImageUri)
         {
             BitmapImage newImage = new BitmapImage(newImageUri);
 
@@ -287,14 +323,12 @@ namespace FluidWeather.Views
             {
                 if (_isImage1Active)
                 {
-
                     // Reset and start the storyboard
                     _storyboard1.Stop();
                     _storyboard2.Begin();
                 }
                 else
                 {
-
                     // Reset and start the storyboard
                     _storyboard2.Stop();
                     _storyboard1.Begin();
@@ -302,14 +336,8 @@ namespace FluidWeather.Views
 
                 _isImage1Active = !_isImage1Active;
             };
-
-
         }
 
-        private void NewImage_ImageOpened(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private void InitializeStoryboards()
         {
@@ -349,17 +377,15 @@ namespace FluidWeather.Views
         }
 
 
-
         /// <summary>
         /// update ui based on the api response
         /// </summary>
         /// <param name="rootV3Response"></param>
-
-
         private void UpdateUi(RootV3Response rootV3Response)
         {
             var lolo = new Uri("ms-appx:///Assets/bgs/" +
-                               iconCodeToBackgroundImageNameDictionary[rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
+                               iconCodeToBackgroundImageNameDictionary[
+                                   rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
 
             CrossfadeToImage(lolo);
 
@@ -377,10 +403,6 @@ namespace FluidWeather.Views
             image.Source = bitmap;
 
             parallaxView.Child = image;*/
-
-
-
-
 
 
             //imagesource class creation for weather icon
@@ -434,9 +456,6 @@ namespace FluidWeather.Views
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
 
-            int numdays = rootV3Response.v3wxforecastdaily10day.dayOfWeek.Count;
-
-
             List<DayButtonAdapter> dayButtonAdapters = new List<DayButtonAdapter>();
 
             int i = 0;
@@ -449,7 +468,7 @@ namespace FluidWeather.Views
             }
 
 
-            var element = repeaterDays;
+            /*var element = repeaterDays;
             var compositor = ElementCompositionPreview.GetElementVisual(element).Compositor;
             var animation = compositor.CreateScopedBatch(Windows.UI.Composition.CompositionBatchTypes.Animation);
             animation.Completed += (s, e) => { animation.Dispose(); };
@@ -464,16 +483,33 @@ namespace FluidWeather.Views
             var elementVisual = ElementCompositionPreview.GetElementVisual(element);
 
 
-            //elementVisual.StartAnimation("Offset.x", slideAnimation);
+            elementVisual.StartAnimation("Offset.x", slideAnimation);*/
 
 
             repeaterDays.ItemsSource = dayButtonAdapters;
+
+            //select first day button
+            EmulateDayButtonClick(0);
         }
 
 
         private Button _lastSelectedDayButton;
 
         private void DayButtonClick(object sender, RoutedEventArgs e)
+        {
+            var button = (Button) sender;
+
+            SetDayButtonClickedStyle(button);
+        }
+
+        /*private void SetDayButtonClickedStyle(int index)
+        {
+            var button = (Button) repeaterDays.GetOrCreateElement(index);
+
+            SetDayButtonStyle(button);
+        }*/
+
+        private void SetDayButtonClickedStyle(Button button)
         {
             // Reset the style of the previously selected button
             if (_lastSelectedDayButton != null)
@@ -483,11 +519,20 @@ namespace FluidWeather.Views
             }
 
             // Apply the style to the selected button
-            var button = (Button) sender;
             button.Style = (Style) Resources["SelectedDayButtonStyle"];
 
             // Keep track of the selected button
             _lastSelectedDayButton = button;
+        }
+
+        private void EmulateDayButtonClick(int index)
+        {
+            var button = (Button) repeaterDays.GetOrCreateElement(index);
+
+            //emulate click on button
+            var ap = new ButtonAutomationPeer(button);
+            var ip = ap.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            ip?.Invoke();
         }
 
 

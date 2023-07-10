@@ -17,7 +17,7 @@
                    BorderThickness="0"
                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                   Width="100">
+                   Width="108">
 
         <!-- textblock with BodyTextBlockStyle -->
         <TextBlock x:Name="TitleText" Text="chiptitle"
