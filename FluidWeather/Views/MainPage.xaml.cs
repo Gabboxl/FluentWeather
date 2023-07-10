@@ -274,21 +274,41 @@ namespace FluidWeather.Views
             if (_isImage1Active)
             {
                 Image2.Source = newImage;
-
-                // Reset and start the storyboard
-                _storyboard1.Stop();
-                _storyboard2.Begin();
             }
             else
             {
                 Image1.Source = newImage;
-
-                // Reset and start the storyboard
-                _storyboard2.Stop();
-                _storyboard1.Begin();
             }
 
-            _isImage1Active = !_isImage1Active;
+            //remeber that the imageopened event is fired only when the image is shown in some way :(
+
+
+            newImage.ImageOpened += (sender, args) =>
+            {
+                if (_isImage1Active)
+                {
+
+                    // Reset and start the storyboard
+                    _storyboard1.Stop();
+                    _storyboard2.Begin();
+                }
+                else
+                {
+
+                    // Reset and start the storyboard
+                    _storyboard2.Stop();
+                    _storyboard1.Begin();
+                }
+
+                _isImage1Active = !_isImage1Active;
+            };
+
+
+        }
+
+        private void NewImage_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void InitializeStoryboards()
