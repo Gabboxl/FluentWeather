@@ -138,12 +138,23 @@
 
         </Grid.RowDefinitions>
 
+        <Grid.Resources>
+         <!--   <Storyboard x:Name="CrossfadeStoryboard">
+                <FadeInThemeAnimation x:Name="FadeInAnimation" Storyboard.TargetProperty="Opacity" Duration="0:0:1" />
+                <FadeOutThemeAnimation x:Name="FadeOutAnimation" Storyboard.TargetProperty="Opacity" Duration="0:0:1" />
+            </Storyboard> -->
+        </Grid.Resources>
+
 
         <ParallaxView
             x:Name="parallaxView"
             Grid.RowSpan="10"
 
             Source="{x:Bind mainScroll}" VerticalShift="50">
+            <Grid x:Name="ParallaxContainer">
+                <Image x:Name="Image1" Stretch="UniformToFill" Opacity="1" />
+                <Image x:Name="Image2" Stretch="UniformToFill" Opacity="0" />
+            </Grid>
         </ParallaxView>
 
 
@@ -263,6 +274,16 @@
                         Margin="8,0,0,0" >
                     <StackPanel>
                         <FontIcon Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
+                    </StackPanel>
+                </Button>
+
+                <!-- next page button -->
+                <Button Name="NextPageButton"
+                        Click="NextPageButton_OnClick"
+                        RelativePanel.RightOf="ReloadButton"
+                        Margin="8,0,0,0" >
+                    <StackPanel>
+                        <FontIcon Glyph="&#xE76C;" FontFamily="{StaticResource FluentIcons}" />
                     </StackPanel>
                 </Button>
 

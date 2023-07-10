@@ -1,5 +1,4 @@
 ﻿using System;
-using FluidWeather.Services;
 using FluidWeather.ViewModels;
 using System.ComponentModel;
 using System.Net.Http;
@@ -23,7 +22,6 @@ using Windows.UI.Xaml.Media.Imaging;
 using FluidWeather.Adapters;
 using Windows.Storage;
 using Windows.UI.Core;
-using Windows.UI.Xaml.Controls.Primitives;
 using FluidWeather.Helpers;
 
 namespace FluidWeather.Views
@@ -107,8 +105,11 @@ namespace FluidWeather.Views
             this.DataContext = this; //DataContext = ViewModel;
             Initialize();
 
+            InitializeStoryboards();
+
 
             Task.Run(LoadApiData);
+
         }
 
         private void Initialize()
@@ -140,6 +141,8 @@ namespace FluidWeather.Views
 
             //pagina di default
             //NavigationService.Navigate(typeof(Views.DashWet));
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -254,11 +257,95 @@ namespace FluidWeather.Views
             );
         }
 
+        /// <summary>
+        /// storyboards code
+        /// </summary>
+
+
+        private Storyboard _storyboard1;
+        private Storyboard _storyboard2;
+        private bool _isImage1Active;
+
+
+        public void CrossfadeToImage(Uri newImageUri)
+        {
+            BitmapImage newImage = new BitmapImage(newImageUri);
+
+            if (_isImage1Active)
+            {
+                Image2.Source = newImage;
+
+                // Reset and start the storyboard
+                _storyboard1.Stop();
+                _storyboard2.Begin();
+            }
+            else
+            {
+                Image1.Source = newImage;
+
+                // Reset and start the storyboard
+                _storyboard2.Stop();
+                _storyboard1.Begin();
+            }
+
+            _isImage1Active = !_isImage1Active;
+        }
+
+        private void InitializeStoryboards()
+        {
+            _storyboard1 = CreateCrossfadeStoryboard(Image1, Image2);
+            _storyboard2 = CreateCrossfadeStoryboard(Image2, Image1);
+
+            _isImage1Active = true;
+        }
+
+        private Storyboard CreateCrossfadeStoryboard(Image fadeInImage, Image fadeOutImage)
+        {
+            DoubleAnimation fadeInAnimation = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(1),
+                EnableDependentAnimation = true
+            };
+            Storyboard.SetTarget(fadeInAnimation, fadeInImage);
+            Storyboard.SetTargetProperty(fadeInAnimation, "Opacity");
+
+            DoubleAnimation fadeOutAnimation = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = TimeSpan.FromSeconds(1),
+                EnableDependentAnimation = true
+            };
+            Storyboard.SetTarget(fadeOutAnimation, fadeOutImage);
+            Storyboard.SetTargetProperty(fadeOutAnimation, "Opacity");
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Children.Add(fadeInAnimation);
+            storyboard.Children.Add(fadeOutAnimation);
+
+            return storyboard;
+        }
+
+
+
+        /// <summary>
+        /// update ui based on the api response
+        /// </summary>
+        /// <param name="rootV3Response"></param>
+
 
         private void UpdateUi(RootV3Response rootV3Response)
         {
+            var lolo = new Uri("ms-appx:///Assets/bgs/" +
+                               iconCodeToBackgroundImageNameDictionary[rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
+
+            CrossfadeToImage(lolo);
+
+
             //set parallaxview image based on weather
-            var image = new Image();
+            /*var image = new Image();
 
             var bitmap = new BitmapImage();
 
@@ -269,9 +356,14 @@ namespace FluidWeather.Views
             image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
             image.Source = bitmap;
 
-            parallaxView.Child = image;
+            parallaxView.Child = image;*/
 
-            //imagesource class creation
+
+
+
+
+
+            //imagesource class creation for weather icon
 
             var asd = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
                               ".svg");
@@ -350,10 +442,9 @@ namespace FluidWeather.Views
             //animationGroup.Add(slideAnimation);
 
             var elementVisual = ElementCompositionPreview.GetElementVisual(element);
-            elementVisual.StartAnimation(
-                "Offset.x",
-                slideAnimation
-            );
+
+
+            //elementVisual.StartAnimation("Offset.x", slideAnimation);
 
 
             repeaterDays.ItemsSource = dayButtonAdapters;
@@ -383,6 +474,12 @@ namespace FluidWeather.Views
         private void ReloadButton_OnClick(object sender, RoutedEventArgs e)
         {
             Task.Run(LoadApiData);
+        }
+
+        private void NextPageButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            //navigate to next page
+            Frame.Navigate(typeof(BlankPage1));
         }
     }
 }
