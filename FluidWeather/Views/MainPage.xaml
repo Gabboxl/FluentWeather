@@ -15,6 +15,7 @@
     xmlns:adapters="using:FluidWeather.Adapters"
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
+    xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -154,7 +155,8 @@
 
             Source="{x:Bind mainScroll}" VerticalShift="50">
             <Grid x:Name="ParallaxContainer">
-                <Image x:Name="Image1" Stretch="UniformToFill" Opacity="1" />
+                <Image x:Name="Image1" Stretch="UniformToFill" Opacity="1" >
+                </Image>
                 <Image x:Name="Image2" Stretch="UniformToFill" Opacity="0" />
             </Grid>
         </ParallaxView>
@@ -289,11 +291,65 @@
                     </StackPanel>
                 </Button>
 
-                <labs:Segmented SelectedIndex="0" RelativePanel.RightOf="NextPageButton">
-                    <labs:SegmentedItem Content="°C" />
-                    <labs:SegmentedItem Content="°F" />
-                    <!-- <labs:SegmentedItem Content="Item 3" Icon="{ui:SymbolIcon Symbol=Home}" /> -->
-                </labs:Segmented>
+
+                <Button Name="SettingsButton"
+                        RelativePanel.RightOf="NextPageButton"
+                        Margin="8,0,0,0">
+
+
+                    <StackPanel>
+                        <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
+                            <muxc:AnimatedIcon.Source>
+                                <animatedVisuals:AnimatedSettingsVisualSource/>
+                            </muxc:AnimatedIcon.Source>
+                            <muxc:AnimatedIcon.FallbackIconSource>
+                                <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;"/>
+                            </muxc:AnimatedIcon.FallbackIconSource>
+                        </muxc:AnimatedIcon>
+                    </StackPanel>
+
+                    <Button.Flyout>
+                    <MenuFlyout x:Name="ProfileFlyout">
+
+
+                        <MenuFlyoutItem>
+                            <MenuFlyoutItem.Template>
+                                <ControlTemplate x:Name="FlyoutItemSettingsTemp">
+                                    <StackPanel Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Center" Margin="16">
+                                        <!-- title control -->
+                                        <TextBlock Text="Units"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                        <labs:Segmented SelectedIndex="0" Margin="0,8,0,0"
+                                                        x:Name="UnitsSegmented"
+                                                        SelectionChanged="UnitsSegmented_OnSelectionChanged">
+                                            <labs:SegmentedItem Content="Metric" />
+                                            <labs:SegmentedItem Content="Imperial" />
+                                            <labs:SegmentedItem Content="Hybrid" />
+
+                                        </labs:Segmented>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </MenuFlyoutItem.Template>
+                        </MenuFlyoutItem>
+
+                        <!--<MenuFlyoutSeparator />
+
+
+                        <MenuFlyoutItem Text="Esci"
+                                        x:Name="LogoutButton2"
+                                        Height="32"
+                                        RenderTransformOrigin="2.13,0.797" HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Top">
+
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf3b1;" />
+                                ~1~ or e966 @1@
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>-->
+                    </MenuFlyout>
+                </Button.Flyout>
+                </Button>
 
 
                 <!-- progress ring -->
@@ -543,12 +599,27 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock 
-                                   Grid.Row="0"
-                                   Text="Hourly"
-                                   Style="{StaticResource BodyTextBlockStyle}"
-                                   FontSize="20"
-                                   Margin="0,0,0,16"/>
+                        <RelativePanel Grid.Row="0">
+                            <TextBlock
+                                x:Name="HourlyTitleText"
+                                Grid.Row="0"
+                                Text="Hourly"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                FontSize="20"
+                                Margin="0,0,0,16"/>
+
+                            <!--<labs:Segmented SelectedIndex="0" RelativePanel.RightOf="HourlyTitleText"
+                                            Margin="16,0,0,0"
+                                            >
+                                <labs:SegmentedItem Content="Detailed" />
+                                <labs:SegmentedItem Content="Summary (coming soon)" IsEnabled="False" />
+                                
+                                ~1~ <labs:SegmentedItem Content="Item 3" Icon="{ui:SymbolIcon Symbol=Home}" /> @1@
+                            </labs:Segmented>-->
+
+                        </RelativePanel>
+
+
 
                         <ListView x:Name="hourlyListview"
                                   Grid.Row="1"

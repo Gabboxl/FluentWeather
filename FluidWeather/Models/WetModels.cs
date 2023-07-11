@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace FluidWeather.Models
 {
+    //list of units
+    public enum WetUnits
+    {
+        m = 0, //metric
+        e = 1, //imperial
+        h = 2, //hybrid
+        s = 3 //metric SI
+    }
+
     public class Locale
         {
             public string locale1 { get; set; }
