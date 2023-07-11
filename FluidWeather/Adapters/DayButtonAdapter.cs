@@ -16,7 +16,11 @@ namespace FluidWeather.Adapters
         {
             get
             {
-                return CurrentObject.temperatureMax[ItemIndex] + "°" + " / " + CurrentObject.temperatureMin[ItemIndex] + "°";
+                var maxTemp = CurrentObject.temperatureMax[ItemIndex];
+                var minTemp = CurrentObject.temperatureMin[ItemIndex];
+
+
+                return (maxTemp == null ? "--" : maxTemp)  + "°" + " / " + minTemp + "°";
             }
         }
 
@@ -35,7 +39,21 @@ namespace FluidWeather.Adapters
         {
             get
             {
-                return CurrentObject.daypart[0].precipChance[ItemIndex*2] + "%";
+                var precipChance = CurrentObject.daypart[0].precipChance[ItemIndex*2];
+
+                //if precipchange is null and it is today
+                if (precipChance == null && ItemIndex == 0)
+                {
+                    //return "--";
+
+                    //return this evening's precip chance
+                    return CurrentObject.daypart[0].precipChance[ItemIndex*2 + 1] + "%";
+                }
+                else
+                {
+                    return CurrentObject.daypart[0].precipChance[ItemIndex*2] + "%";
+                }
+
             }
         }
 
@@ -56,7 +74,9 @@ namespace FluidWeather.Adapters
             {
                 if (ItemIndex == 0)
                 {
-                    return "Oggi";
+                    var dayText = CurrentObject.daypart[0].daypartName[ItemIndex * 2];
+
+                    return (string.IsNullOrEmpty(dayText) ? CurrentObject.daypart[0].daypartName[ItemIndex * 2 + 1] : dayText);
                 }
                 else
                 {
