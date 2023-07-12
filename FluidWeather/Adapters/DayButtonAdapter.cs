@@ -28,9 +28,22 @@ namespace FluidWeather.Adapters
         {
             get
             {
+                var iconCode = CurrentObject.daypart[0].iconCode[ItemIndex*2];
+
+                if (iconCode == null && ItemIndex == 0)
+                {
+                    //tonight's icon
+                    iconCode = CurrentObject.daypart[0].iconCode[ItemIndex*2 + 1];
+                }
+                else
+                {
+                    //days's icon
+                    iconCode = CurrentObject.daypart[0].iconCode[ItemIndex*2];
+                }
+
                 return new SvgImageSource
                 {
-                    UriSource = new Uri("ms-appx:///Assets/weticons/" + CurrentObject.daypart[0].iconCode[ItemIndex*2] + ".svg")
+                    UriSource = new Uri("ms-appx:///Assets/weticons/" + iconCode + ".svg")
                 };
             }
         }
@@ -51,7 +64,7 @@ namespace FluidWeather.Adapters
                 }
                 else
                 {
-                    return CurrentObject.daypart[0].precipChance[ItemIndex*2] + "%";
+                    return precipChance + "%";
                 }
 
             }
