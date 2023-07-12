@@ -41,6 +41,18 @@ namespace FluidWeather.Views
             BaseAddress = new Uri("https://api.weather.com/v3/"),
         };
 
+        private Button _lastSelectedDayButton;
+
+
+        //segemented settings units selectedindex
+        public int SettingsUnitsSelectedIndex
+        {
+            get
+            {
+                return ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits").Result;
+            }
+        }
+
         //dictionary for every icon code and its corresponsing background image
         private static Dictionary<string, string> iconCodeToBackgroundImageNameDictionary = new()
         {
@@ -259,7 +271,6 @@ namespace FluidWeather.Views
                     async () =>
                     {
                         UpdateUi(myDeserializedClass);
-                        LoadHourlyData();
                     }
                 );
             }
@@ -274,40 +285,6 @@ namespace FluidWeather.Views
             );
         }
 
-
-        private async void LoadHourlyData()
-        {
-            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
-
-            var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-
-            var response = await sharedClient.GetAsync(
-                "aggcommon/v3-wx-forecast-hourly-10day?format=json&placeid=" +
-                lastPlaceId
-                + "&units=" + await GetUnitsCode() +
-                "&language=" +
-                language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
-
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-
-            var myDeserializedClass = JsonConvert.DeserializeObject<RootStandaloneHourlyResponse>(jsonResponse);
-
-
-
-            List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
-
-            int i = 0;
-
-            foreach (var day in myDeserializedClass.v3wxforecasthourly10day.validTimeLocal)
-            {
-                hourlyDataAdapters.Add(new HourDataAdapter(myDeserializedClass.v3wxforecasthourly10day, i));
-
-                i++;
-            }
-
-            hourlyListview.ItemsSource = hourlyDataAdapters;
-        }
 
         /// <summary>
         /// storyboards code
@@ -505,14 +482,60 @@ namespace FluidWeather.Views
             EmulateDayButtonClick(0);
         }
 
+        private async void LoadHourlyData(int dayToLoad)
+        {
+            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-        private Button _lastSelectedDayButton;
+            var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+
+            var response = await sharedClient.GetAsync(
+                "aggcommon/v3-wx-forecast-hourly-10day?format=json&placeid=" +
+                lastPlaceId
+                + "&units=" + await GetUnitsCode() +
+                "&language=" +
+                language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var deserializedResponse = JsonConvert.DeserializeObject<RootStandaloneHourlyResponse>(jsonResponse);
+
+
+            //update the ui
+            List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
+
+            int i = 0;
+
+
+            var firstDate = deserializedResponse.v3wxforecasthourly10day.validTimeLocal[0];
+
+            
+            foreach (var date in deserializedResponse.v3wxforecasthourly10day.validTimeLocal)
+            {
+                //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
+                if (date.Date == firstDate.Date.AddDays(dayToLoad))
+                {
+                    hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, i));
+                }
+
+                i++;
+            }
+
+            hourlyListview.ItemsSource = hourlyDataAdapters;
+        }
+
 
         private void DayButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
 
             SetDayButtonClickedStyle(button);
+
+            //get button's DayButtonAdapter object
+            var dayButtonAdapter = (DayButtonAdapter) button.DataContext;
+
+            //load hourly data
+            LoadHourlyData(dayButtonAdapter.ItemIndex);
         }
 
         /*private void SetDayButtonClickedStyle(int index)

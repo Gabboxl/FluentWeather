@@ -293,6 +293,7 @@
 
 
                 <Button Name="SettingsButton"
+                        
                         RelativePanel.RightOf="NextPageButton"
                         Margin="8,0,0,0">
 
@@ -315,19 +316,35 @@
                         <MenuFlyoutItem>
                             <MenuFlyoutItem.Template>
                                 <ControlTemplate x:Name="FlyoutItemSettingsTemp">
-                                    <StackPanel Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Center" Margin="16">
+                                    <StackPanel VerticalAlignment="Center" Margin="16">
                                         <!-- title control -->
                                         <TextBlock Text="Units"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                        <labs:Segmented SelectedIndex="0" Margin="0,8,0,0"
+                                        <labs:Segmented SelectedIndex="{Binding SettingsUnitsSelectedIndex}" Margin="0,8,0,0"
                                                         x:Name="UnitsSegmented"
-                                                        SelectionChanged="UnitsSegmented_OnSelectionChanged">
+                                                        SelectionChanged="UnitsSegmented_OnSelectionChanged"
+                                                        d:DataContext="{d:DesignInstance views:MainPage }">
                                             <labs:SegmentedItem Content="Metric" />
                                             <labs:SegmentedItem Content="Imperial" />
                                             <labs:SegmentedItem Content="Hybrid" />
 
                                         </labs:Segmented>
+
+                                        <TextBlock Text="Credits"
+                                                   Margin="0,16,0,0"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                        <TextBlock Text="UI design inspired by work of "
+                                                   Margin="0,16,0,0"
+
+                                                   Style="{ThemeResource BodyTextBlockStyle}" />
+
+                                        <TextBlock Text="&quot;FluentWeather&quot; developed by Gabboxl"
+                                                   Margin="0,16,0,0"
+
+                                                   Style="{ThemeResource BodyStrongTextBlockStyle}" />
+
                                     </StackPanel>
                                 </ControlTemplate>
                             </MenuFlyoutItem.Template>
@@ -528,6 +545,7 @@
                                 <muxc:ItemsRepeater.ItemTemplate>
                                     <DataTemplate x:DataType="adapters:DayButtonAdapter">
                                         <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                DataContext="{x:Bind}"
                                                 HorizontalContentAlignment="Stretch"
                                                 VerticalContentAlignment="Stretch"
                                                 Width="135"
@@ -630,7 +648,7 @@
                                   SelectionMode="None">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Horizontal" VirtualizationMode="Recycling" />
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
 
