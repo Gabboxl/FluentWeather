@@ -482,7 +482,7 @@ namespace FluidWeather.Views
             EmulateDayButtonClick(0);
         }
 
-        private async void LoadHourlyData(int dayToLoad)
+        private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
@@ -509,16 +509,35 @@ namespace FluidWeather.Views
 
             var firstDate = deserializedResponse.v3wxforecasthourly10day.validTimeLocal[0];
 
-            
-            foreach (var date in deserializedResponse.v3wxforecasthourly10day.validTimeLocal)
+            //subtract daytoload to firstdate to get the index of the first day to load
+            int daysDiff = dayToLoad.Date.Subtract(firstDate.Date).Days;
+
+            if (daysDiff == -1) //this means that we are still in a tonight state and we add hours only until 7AM
             {
-                //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
-                if (date.Date == firstDate.Date.AddDays(dayToLoad))
+
+                for (int j = 0; j < 7; j++) //check only the first 7 hours of the day
                 {
-                    hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, i));
+                    if (deserializedResponse.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
+                    {
+                        hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, j));
+                    }
+
                 }
 
-                i++;
+            }
+            else
+            {
+
+                foreach (var date in deserializedResponse.v3wxforecasthourly10day.validTimeLocal)
+                {
+                    //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
+                    if (date.Date == firstDate.Date.AddDays(daysDiff))
+                    {
+                        hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, i));
+                    }
+
+                    i++;
+                }
             }
 
             hourlyListview.ItemsSource = hourlyDataAdapters;
@@ -535,7 +554,7 @@ namespace FluidWeather.Views
             var dayButtonAdapter = (DayButtonAdapter) button.DataContext;
 
             //load hourly data
-            LoadHourlyData(dayButtonAdapter.ItemIndex);
+            LoadHourlyData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
         }
 
         /*private void SetDayButtonClickedStyle(int index)
