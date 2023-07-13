@@ -16,14 +16,14 @@
                    Padding="8"
                    BorderThickness="0"
                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                   Background="#1DFFFFFF"
                    Width="108">
 
         <!-- textblock with BodyTextBlockStyle -->
         <TextBlock x:Name="TitleText" Text="chiptitle"
                    Style="{StaticResource BodyTextBlockStyle}"
                    Margin="0,0,0,0"
-                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}" />
+                   Opacity="0.6" />
 
         <TextBlock x:Name="ValueText" Text="chipvalue"
                    Style="{StaticResource BodyStrongTextBlockStyle}"

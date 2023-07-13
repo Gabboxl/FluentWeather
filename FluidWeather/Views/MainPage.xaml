@@ -335,15 +335,25 @@
                                                    Margin="0,16,0,0"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                        <TextBlock Text="UI design inspired by work of "
+                                        <RichTextBlock
+                                                       Margin="0,16,0,0">
+                                            <Paragraph>
+                                                <Run>UI design inspired by the work of</Run> <Hyperlink Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" NavigateUri="https://twitter.com/zeealeid">@zeealeid</Hyperlink>
+                                            </Paragraph>
+                                        </RichTextBlock>
+
+                                        <RichTextBlock
                                                    Margin="0,16,0,0"
 
-                                                   Style="{ThemeResource BodyTextBlockStyle}" />
+                                                   Style="{ThemeResource BodyStrongTextBlockStyle}" >
+                                            <Paragraph>
+                                            <Run FontStyle="Italic">FluentWeather</Run> <Run>developed by</Run> <Hyperlink Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" NavigateUri="https://github.com/Gabboxl">Gabboxl</Hyperlink>
+                                            </Paragraph>
+                                        </RichTextBlock>
 
-                                        <TextBlock Text="&quot;FluentWeather&quot; developed by Gabboxl"
-                                                   Margin="0,16,0,0"
-
-                                                   Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                                        <HyperlinkButton
+                                            Margin="0,8,0,0"
+                                            Content="Source code" NavigateUri="http://github.com/Gabboxl/FluentWeather" />
 
                                     </StackPanel>
                                 </ControlTemplate>
@@ -638,6 +648,15 @@
                         </RelativePanel>
 
 
+                        <Grid
+                            Margin="0,0,32,0"
+                            Grid.Row="1"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            CornerRadius="8"
+                            Padding="12"
+                            BorderThickness="0"
+                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                            Background="#1DFFFFFF">
 
                         <ListView x:Name="hourlyListview"
                                   Grid.Row="1"
@@ -664,19 +683,19 @@
                                     <Grid Width="100" Height="200" Margin="0">
                                         <RelativePanel>
 
-                                            <Rectangle x:Name="Rectangle1"
-                                                Fill="White"
+                                           <!-- <Rectangle x:Name="Rectangle1"
+                                                Fill="#00FFFFFF"
                                                        Height="1"
                                                        RelativePanel.AlignTopWithPanel="True"
                                                        Width="100"
-                                                       Margin="0,8,0,0"/>
+                                                       Margin="0,8,0,0"/> -->
                                             
                                             <Image x:Name="wetIcon"
                                                    Margin="0,8,0,0"
                                                    Width="40"
                                                    RelativePanel.AlignVerticalCenterWithPanel="True"
                                                    Stretch="Uniform"
-                                                   RelativePanel.Below="Rectangle1"
+                                                   RelativePanel.AlignTopWithPanel="True"
                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
                                                    Source="{x:Bind svgImageIcon}">
                                             </Image>
@@ -718,7 +737,7 @@
 
                                             <!-- horizontal line -->
                                             <Rectangle x:Name="Rectangle2"
-                                                Fill="White"
+                                                Fill="#7FFFFFFF"
                                                        Height="1"
                                                        RelativePanel.Above="HourText"
                                                        Width="100"
@@ -736,6 +755,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
+                            </Grid>
 
 
 
