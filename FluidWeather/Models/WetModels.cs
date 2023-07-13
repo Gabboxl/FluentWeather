@@ -107,8 +107,8 @@ namespace FluidWeather.Models
         public string countryCode { get; set; }
         public string ianaTimeZone { get; set; }
         public string displayName { get; set; }
-        public DateTime? dstEnd { get; set; }
-        public DateTime? dstStart { get; set; }
+        public DateTimeOffset? dstEnd { get; set; }
+        public DateTimeOffset? dstStart { get; set; }
         public string dmaCd { get; set; }
         public string placeId { get; set; }
         public bool disputedArea { get; set; }
@@ -169,7 +169,7 @@ namespace FluidWeather.Models
         public List<int> temperatureWindChill { get; set; }
         public List<string> uvDescription { get; set; }
         public List<int> uvIndex { get; set; }
-        public List<DateTime> validTimeLocal { get; set; }
+        public List<DateTimeOffset> validTimeLocal { get; set; }
         public List<int> validTimeUtc { get; set; }
         public List<double> visibility { get; set; }
         public List<int> windDirection { get; set; }
@@ -205,18 +205,18 @@ namespace FluidWeather.Models
         public List<int> moonPhaseDay { get; set; }
         public List<object> moonriseTimeLocal { get; set; }
         public List<int?> moonriseTimeUtc { get; set; }
-        public List<DateTime> moonsetTimeLocal { get; set; }
+        public List<DateTimeOffset> moonsetTimeLocal { get; set; }
         public List<int> moonsetTimeUtc { get; set; }
         public List<string> narrative { get; set; }
         public List<double?> qpf { get; set; }
         public List<double> qpfSnow { get; set; }
-        public List<DateTime> sunriseTimeLocal { get; set; }
+        public List<DateTimeOffset> sunriseTimeLocal { get; set; }
         public List<int> sunriseTimeUtc { get; set; }
-        public List<DateTime> sunsetTimeLocal { get; set; }
+        public List<DateTimeOffset> sunsetTimeLocal { get; set; }
         public List<int> sunsetTimeUtc { get; set; }
         public List<int?> temperatureMax { get; set; }
         public List<int> temperatureMin { get; set; }
-        public List<DateTime> validTimeLocal { get; set; }
+        public List<DateTimeOffset> validTimeLocal { get; set; }
         public List<int> validTimeUtc { get; set; }
         public List<Daypart> daypart { get; set; }
     }
@@ -245,9 +245,9 @@ namespace FluidWeather.Models
         public double snow1Hour { get; set; }
         public double snow6Hour { get; set; }
         public double snow24Hour { get; set; }
-        public DateTime sunriseTimeLocal { get; set; }
+        public DateTimeOffset sunriseTimeLocal { get; set; }
         public int sunriseTimeUtc { get; set; }
-        public DateTime sunsetTimeLocal { get; set; }
+        public DateTimeOffset sunsetTimeLocal { get; set; }
         public int sunsetTimeUtc { get; set; }
         public int temperature { get; set; }
         public int temperatureChange24Hour { get; set; }
@@ -260,7 +260,7 @@ namespace FluidWeather.Models
         public int temperatureWindChill { get; set; }
         public string uvDescription { get; set; }
         public int uvIndex { get; set; }
-        public DateTime validTimeLocal { get; set; }
+        public DateTimeOffset validTimeLocal { get; set; }
         public int validTimeUtc { get; set; }
         public double visibility { get; set; }
         public int windDirection { get; set; }
