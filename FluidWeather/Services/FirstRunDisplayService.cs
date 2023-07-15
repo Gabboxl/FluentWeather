@@ -2,8 +2,11 @@
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.ApplicationModel.Core;
+using Windows.Storage;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
 using FluidWeather.Dialogs;
+using FluidWeather.Helpers;
 
 namespace FluidWeather.Services
 {
@@ -16,11 +19,16 @@ namespace FluidWeather.Services
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal, async () =>
                 {
-                    if (SystemInformation.Instance.IsFirstRun && !shown)
+
+                    string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+                    if (lastPlaceId == null && !shown)
                     {
                         shown = true;
-                        var dialog = new FirstRunDialog();
-                        await dialog.ShowAsync();
+                        var dialog2 = new FirstRunDialog();
+                        await dialog2.ShowAsync();
+
+
                     }
                 });
         }

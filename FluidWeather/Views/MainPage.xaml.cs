@@ -36,6 +36,8 @@ namespace FluidWeather.Views
         public NavigationViewViewModel NavigationViewViewModel { get; } =
             new NavigationViewViewModel();
 
+        private AppViewModel AppViewModel =  AppViewModelHolder.GetViewModel();
+
         private static HttpClient sharedClient = new()
         {
             BaseAddress = new Uri("https://api.weather.com/v3/"),
@@ -122,6 +124,11 @@ namespace FluidWeather.Views
             Initialize();
 
             InitializeStoryboards();
+
+            AppViewModel.UpdateUIAction += (() =>
+            {
+                Task.Run(LoadApiData);
+            });
 
 
             Task.Run(LoadApiData);

@@ -1,6 +1,6 @@
 ﻿namespace FluidWeather.ViewModels
 {
-    public static class ViewModelHolder
+    public static class AppViewModelHolder
     {
         private static AppViewModel _viewModel;
 

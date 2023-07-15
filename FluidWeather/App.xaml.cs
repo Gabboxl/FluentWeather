@@ -15,7 +15,7 @@ namespace FluidWeather
 {
     public sealed partial class App : Application
     {
-        private AppViewModel AppViewModel { get; }
+        private AppViewModel AppViewModel =  AppViewModelHolder.GetViewModel();
 
         private Lazy<ActivationService> _activationService;
 
@@ -69,7 +69,7 @@ namespace FluidWeather
 
 
             //set the global view model which we can use anytime for things
-            this.AppViewModel = ViewModelHolder.GetViewModel();
+            this.AppViewModel = AppViewModelHolder.GetViewModel();
         }
 
         /// <summary>

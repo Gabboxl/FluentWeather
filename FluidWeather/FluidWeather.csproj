@@ -199,7 +199,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelHolder.cs" />
+    <Compile Include="ViewModels\AppViewModelHolder.cs" />
     <Compile Include="Views\BlankPage1.xaml.cs">
       <DependentUpon>BlankPage1.xaml</DependentUpon>
     </Compile>
