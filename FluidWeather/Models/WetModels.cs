@@ -79,7 +79,7 @@ namespace FluidWeather.Models
         public List<int?> temperature { get; set; }
         public List<int?> temperatureHeatIndex { get; set; }
         public List<int?> temperatureWindChill { get; set; }
-        public List<object> thunderCategory { get; set; }
+        public List<string> thunderCategory { get; set; }
         public List<int?> thunderIndex { get; set; }
         public List<string> uvDescription { get; set; }
         public List<int?> uvIndex { get; set; }
@@ -203,17 +203,17 @@ namespace FluidWeather.Models
         public List<string> moonPhase { get; set; }
         public List<string> moonPhaseCode { get; set; }
         public List<int> moonPhaseDay { get; set; }
-        public List<object> moonriseTimeLocal { get; set; }
+        public List<DateTimeOffset?> moonriseTimeLocal { get; set; }
         public List<int?> moonriseTimeUtc { get; set; }
-        public List<DateTimeOffset> moonsetTimeLocal { get; set; }
-        public List<int> moonsetTimeUtc { get; set; }
+        public List<DateTimeOffset?> moonsetTimeLocal { get; set; }
+        public List<int?> moonsetTimeUtc { get; set; }
         public List<string> narrative { get; set; }
         public List<double?> qpf { get; set; }
         public List<double> qpfSnow { get; set; }
-        public List<DateTimeOffset> sunriseTimeLocal { get; set; }
-        public List<int> sunriseTimeUtc { get; set; }
-        public List<DateTimeOffset> sunsetTimeLocal { get; set; }
-        public List<int> sunsetTimeUtc { get; set; }
+        public List<DateTimeOffset?> sunriseTimeLocal { get; set; }
+        public List<int?> sunriseTimeUtc { get; set; }
+        public List<DateTimeOffset?> sunsetTimeLocal { get; set; }
+        public List<int?> sunsetTimeUtc { get; set; }
         public List<int?> temperatureMax { get; set; }
         public List<int> temperatureMin { get; set; }
         public List<DateTimeOffset> validTimeLocal { get; set; }
