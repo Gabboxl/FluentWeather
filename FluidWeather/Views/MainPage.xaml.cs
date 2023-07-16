@@ -36,7 +36,7 @@ namespace FluidWeather.Views
         public NavigationViewViewModel NavigationViewViewModel { get; } =
             new NavigationViewViewModel();
 
-        private AppViewModel AppViewModel =  AppViewModelHolder.GetViewModel();
+        private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
         private static HttpClient sharedClient = new()
         {
@@ -49,10 +49,7 @@ namespace FluidWeather.Views
         //segemented settings units selectedindex
         public int SettingsUnitsSelectedIndex
         {
-            get
-            {
-                return ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits").Result;
-            }
+            get { return ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits").Result; }
         }
 
         //dictionary for every icon code and its corresponsing background image
@@ -125,10 +122,7 @@ namespace FluidWeather.Views
 
             InitializeStoryboards();
 
-            AppViewModel.UpdateUIAction += (() =>
-            {
-                Task.Run(LoadApiData);
-            });
+            AppViewModel.UpdateUIAction += (() => { Task.Run(LoadApiData); });
 
 
             Task.Run(LoadApiData);
@@ -189,7 +183,6 @@ namespace FluidWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-
                 //get language code from system (like en-us)
                 var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
@@ -238,7 +231,7 @@ namespace FluidWeather.Views
             int units = await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
 
             //get unit code from enum
-            WetUnits unitCode = (WetUnits)units;
+            WetUnits unitCode = (WetUnits) units;
 
             return unitCode;
         }
@@ -275,20 +268,14 @@ namespace FluidWeather.Views
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
-                    async () =>
-                    {
-                        UpdateUi(myDeserializedClass);
-                    }
+                    async () => { UpdateUi(myDeserializedClass); }
                 );
             }
 
 
             await CoreApplication.MainView.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal,
-                async () =>
-                {
-                    MainPageViewModel.IsLoadingData = false;
-                }
+                async () => { MainPageViewModel.IsLoadingData = false; }
             );
         }
 
@@ -383,8 +370,8 @@ namespace FluidWeather.Views
         private async void UpdateUi(RootV3Response rootV3Response)
         {
             var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
-                               iconCodeToBackgroundImageNameDictionary[
-                                   rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
+                                      iconCodeToBackgroundImageNameDictionary[
+                                          rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
 
             CrossfadeToImage(newImageUri);
 
@@ -418,7 +405,8 @@ namespace FluidWeather.Views
 
 
             //update chips
-            WetUnits currentUnits = (WetUnits)await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
+            WetUnits currentUnits =
+                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
 
 
             UpdatedOnText.Text = "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
@@ -430,22 +418,28 @@ namespace FluidWeather.Views
 
             MainPhraseText.Text = rootV3Response.v3wxobservationscurrent.cloudCoverPhrase;
 
-            CurrentTempText.Text = rootV3Response.v3wxobservationscurrent.temperature + "°" + MeasureUnitUtils.GetTemperatureUnits(currentUnits);
+            CurrentTempText.Text = rootV3Response.v3wxobservationscurrent.temperature + "°" +
+                                   MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
             FeelsLikeText.Text =
-                "Feels like " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" + MeasureUnitUtils.GetTemperatureUnits(currentUnits);
+                "Feels like " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
+                MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
-            WindPanel.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " " + MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
+            WindPanel.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " " +
+                              MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
                               rootV3Response.v3wxobservationscurrent.windDirectionCardinal;
 
             HumidityPanel.Value = rootV3Response.v3wxobservationscurrent.relativeHumidity + "%";
 
-            PressurePanel.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " + MeasureUnitUtils.GetPressureUnits(currentUnits);
+            PressurePanel.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " +
+                                  MeasureUnitUtils.GetPressureUnits(currentUnits);
 
             //visibility with units based on the unit of measure saved in the settings
-            VisibilityPanel.Value = rootV3Response.v3wxobservationscurrent.visibility + " " + MeasureUnitUtils.GetVisibilityUnits(currentUnits);
+            VisibilityPanel.Value = rootV3Response.v3wxobservationscurrent.visibility + " " +
+                                    MeasureUnitUtils.GetVisibilityUnits(currentUnits);
 
-            DewPointPanel.Value = rootV3Response.v3wxobservationscurrent.temperatureDewPoint + "°" + MeasureUnitUtils.GetTemperatureUnits(currentUnits);
+            DewPointPanel.Value = rootV3Response.v3wxobservationscurrent.temperatureDewPoint + "°" +
+                                  MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
             UVIndexPanel.Value = rootV3Response.v3wxobservationscurrent.uvIndex + " (" +
                                  rootV3Response.v3wxobservationscurrent.uvDescription + ")";
@@ -521,20 +515,16 @@ namespace FluidWeather.Views
 
             if (daysDiff == -1) //this means that we are still in a tonight state and we add hours only until 7AM
             {
-
                 for (int j = 0; j < 7; j++) //check only the first 7 hours of the day
                 {
                     if (deserializedResponse.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
                     {
                         hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, j));
                     }
-
                 }
-
             }
             else
             {
-
                 foreach (var date in deserializedResponse.v3wxforecasthourly10day.validTimeLocal)
                 {
                     //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
@@ -617,7 +607,6 @@ namespace FluidWeather.Views
             await ApplicationData.Current.LocalSettings.SaveAsync("selectedUnits", segmented.SelectedIndex);
 
             await Task.Run(LoadApiData);
-
         }
     }
 }
