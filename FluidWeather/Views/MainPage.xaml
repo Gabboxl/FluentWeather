@@ -197,12 +197,138 @@
             <Grid HorizontalAlignment="Stretch"
                   Grid.Row="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"></ColumnDefinition>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RelativePanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                    <!-- progress ring -->
+                    <muxc:ProgressRing x:Name="DataProgressRing"
+                                       IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
+                                       Margin="8,0,0,0" />
+                </RelativePanel>
+
+            </Grid>
+
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="140" />
+                </Grid.ColumnDefinitions>
+
+
+                    <Button Name="SettingsButton"
+                            HorizontalAlignment="Right"
+                            Grid.Column="1"
+                            Margin="0,0,0,0">
+
+                        <StackPanel>
+                            <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
+                                <muxc:AnimatedIcon.Source>
+                                    <animatedVisuals:AnimatedSettingsVisualSource />
+                                </muxc:AnimatedIcon.Source>
+                                <muxc:AnimatedIcon.FallbackIconSource>
+                                    <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
+                                </muxc:AnimatedIcon.FallbackIconSource>
+                            </muxc:AnimatedIcon>
+                        </StackPanel>
+
+                        <Button.Flyout>
+                            <MenuFlyout x:Name="SettingsFlyout">
+
+                                <MenuFlyoutItem>
+                                    <MenuFlyoutItem.Template>
+                                        <ControlTemplate x:Name="FlyoutItemSettingsTemp">
+                                            <StackPanel VerticalAlignment="Center" Margin="16">
+                                                <!-- title control -->
+                                                <TextBlock Text="Units"
+                                                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <labs:Segmented
+                                                    SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
+                                                    Margin="0,8,0,0"
+                                                    x:Name="UnitsSegmented"
+                                                    SelectionChanged="UnitsSegmented_OnSelectionChanged"
+                                                    d:DataContext="{d:DesignInstance views:MainPage }">
+                                                    <labs:SegmentedItem Content="Metric" />
+                                                    <labs:SegmentedItem Content="Imperial" />
+                                                    <labs:SegmentedItem Content="Hybrid" />
+
+                                                </labs:Segmented>
+
+                                                <TextBlock Text="Credits"
+                                                           Margin="0,16,0,0"
+                                                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <RichTextBlock
+                                                    Margin="0,16,0,0">
+                                                    <Paragraph>
+                                                        <Run>UI design inspired by the work of</Run>
+                                                        <Hyperlink
+                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                            NavigateUri="https://twitter.com/zeealeid">
+                                                            @zeealeid
+                                                        </Hyperlink>
+                                                    </Paragraph>
+                                                </RichTextBlock>
+
+                                                <RichTextBlock
+                                                    Margin="0,16,0,0"
+
+                                                    Style="{ThemeResource BodyStrongTextBlockStyle}">
+                                                    <Paragraph>
+                                                        <Run FontStyle="Italic">FluentWeather</Run>
+                                                        <Run>developed by</Run>
+                                                        <Hyperlink
+                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                            NavigateUri="https://github.com/Gabboxl">
+                                                            Gabboxl
+                                                        </Hyperlink>
+                                                    </Paragraph>
+                                                </RichTextBlock>
+
+                                                <HyperlinkButton
+                                                    Margin="0,8,0,0"
+                                                    Content="Source code"
+                                                    NavigateUri="http://github.com/Gabboxl/FluentWeather" />
+
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </MenuFlyoutItem.Template>
+                                </MenuFlyoutItem>
+
+                                <!--<MenuFlyoutSeparator />
+
+
+                        <MenuFlyoutItem Text="Esci"
+                                        x:Name="LogoutButton2"
+                                        Height="32"
+                                        RenderTransformOrigin="2.13,0.797" HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Top">
+
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf3b1;" />
+                                ~1~ or e966 @1@
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>-->
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch"
+                  Grid.Row="0">
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="LeftMarginColumn" Width="190" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="190" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1" MaxWidth="500">
+
                     <AutoSuggestBox
                         x:Name="AutoSuggestBoxMain"
                         HorizontalAlignment="Stretch"
@@ -282,27 +408,12 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
 
-            <RelativePanel Grid.Row="1"
-                           Margin="18"
-                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-
-
-                <Button Name="ReloadButton"
-                        Click="ReloadButton_OnClick"
-                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                        Margin="8,0,0,0">
-                    <StackPanel>
-                        <FontIcon Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
-                    </StackPanel>
-                </Button>
-
-                <!-- next page button -->
+                <!--
                 <Button Name="NextPageButton"
                         Click="NextPageButton_OnClick"
                         RelativePanel.RightOf="ReloadButton"
@@ -310,123 +421,17 @@
                     <StackPanel>
                         <FontIcon Glyph="&#xE76C;" FontFamily="{StaticResource FluentIcons}" />
                     </StackPanel>
-                </Button>
+                </Button> -->
 
 
-                <Button Name="SettingsButton"
-
-                        RelativePanel.RightOf="NextPageButton"
-                        Margin="8,0,0,0">
 
 
-                    <StackPanel>
-                        <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
-                            <muxc:AnimatedIcon.Source>
-                                <animatedVisuals:AnimatedSettingsVisualSource />
-                            </muxc:AnimatedIcon.Source>
-                            <muxc:AnimatedIcon.FallbackIconSource>
-                                <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
-                            </muxc:AnimatedIcon.FallbackIconSource>
-                        </muxc:AnimatedIcon>
-                    </StackPanel>
-
-                    <Button.Flyout>
-                        <MenuFlyout x:Name="ProfileFlyout">
-
-
-                            <MenuFlyoutItem>
-                                <MenuFlyoutItem.Template>
-                                    <ControlTemplate x:Name="FlyoutItemSettingsTemp">
-                                        <StackPanel VerticalAlignment="Center" Margin="16">
-                                            <!-- title control -->
-                                            <TextBlock Text="Units"
-                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                            <labs:Segmented SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
-                                                            Margin="0,8,0,0"
-                                                            x:Name="UnitsSegmented"
-                                                            SelectionChanged="UnitsSegmented_OnSelectionChanged"
-                                                            d:DataContext="{d:DesignInstance views:MainPage }">
-                                                <labs:SegmentedItem Content="Metric" />
-                                                <labs:SegmentedItem Content="Imperial" />
-                                                <labs:SegmentedItem Content="Hybrid" />
-
-                                            </labs:Segmented>
-
-                                            <TextBlock Text="Credits"
-                                                       Margin="0,16,0,0"
-                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                            <RichTextBlock
-                                                Margin="0,16,0,0">
-                                                <Paragraph>
-                                                    <Run>UI design inspired by the work of</Run>
-                                                    <Hyperlink
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        NavigateUri="https://twitter.com/zeealeid">
-                                                        @zeealeid
-                                                    </Hyperlink>
-                                                </Paragraph>
-                                            </RichTextBlock>
-
-                                            <RichTextBlock
-                                                Margin="0,16,0,0"
-
-                                                Style="{ThemeResource BodyStrongTextBlockStyle}">
-                                                <Paragraph>
-                                                    <Run FontStyle="Italic">FluentWeather</Run> <Run>developed by</Run>
-                                                    <Hyperlink
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        NavigateUri="https://github.com/Gabboxl">
-                                                        Gabboxl
-                                                    </Hyperlink>
-                                                </Paragraph>
-                                            </RichTextBlock>
-
-                                            <HyperlinkButton
-                                                Margin="0,8,0,0"
-                                                Content="Source code"
-                                                NavigateUri="http://github.com/Gabboxl/FluentWeather" />
-
-                                        </StackPanel>
-                                    </ControlTemplate>
-                                </MenuFlyoutItem.Template>
-                            </MenuFlyoutItem>
-
-                            <!--<MenuFlyoutSeparator />
-
-
-                        <MenuFlyoutItem Text="Esci"
-                                        x:Name="LogoutButton2"
-                                        Height="32"
-                                        RenderTransformOrigin="2.13,0.797" HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Top">
-
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf3b1;" />
-                                ~1~ or e966 @1@
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>-->
-                        </MenuFlyout>
-                    </Button.Flyout>
-                </Button>
-
-
-                <!-- progress ring -->
-                <muxc:ProgressRing x:Name="DataProgressRing"
-                                   IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
-                                   RelativePanel.RightOf="ReloadButton"
-                                   Margin="8,0,0,0" />
-
-            </RelativePanel>
-
-
-            <ScrollViewer Grid.Row="2"
+            <ScrollViewer Grid.Row="1"
                           x:Name="mainScroll"
                           HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
-                <Grid Padding="40,20,0,64">
+                <Grid Padding="40,64,0,64">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -457,6 +462,15 @@
                                    Margin="8,0,0,0"
                                    RelativePanel.Below="PlaceText"
                                    RelativePanel.AlignLeftWith="PlaceText" />
+
+                        <Button Name="ReloadButton"
+                                Click="ReloadButton_OnClick"
+                                RelativePanel.RightOf="PlaceText"
+                                Margin="16,0,0,0">
+                            <StackPanel>
+                                <FontIcon Width="25" Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
+                            </StackPanel>
+                        </Button>
 
 
                     </RelativePanel>
