@@ -152,7 +152,7 @@ namespace FluidWeather.Views
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
             AppTitleTextBlock.Text = "" + AppInfo.Current.DisplayInfo.DisplayName;
-            Window.Current.SetTitleBar(AppTitleBar);
+            Window.Current.SetTitleBar(TitleBarGrid);
 
             //remove the solid-colored backgrounds behind the caption controls and system back button
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
