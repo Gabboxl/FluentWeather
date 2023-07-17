@@ -45,6 +45,8 @@ namespace FluidWeather.Views
 
         private readonly string systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
+        RootV3Response lastApiData;
+
         private Button _lastSelectedDayButton;
 
 
@@ -184,8 +186,6 @@ namespace FluidWeather.Views
                 //response.EnsureSuccessStatusCode();
 
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine($"{jsonResponse}\n");
-
 
                 var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
 
@@ -238,7 +238,7 @@ namespace FluidWeather.Views
             if (lastPlaceId != null)
             {
                 var response = await sharedClient.GetAsync(
-                    "aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid="
+                    "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid="
                     + lastPlaceId
                     + "&units=" + await GetUnitsCode()
                     + "&language=" +
@@ -250,13 +250,13 @@ namespace FluidWeather.Views
                 var jsonResponse = await response.Content.ReadAsStringAsync();
 
 
-                var myDeserializedClass = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
-                    async () => { UpdateUi(myDeserializedClass); }
+                    async () => { UpdateUi(lastApiData); }
                 );
             }
 
@@ -364,7 +364,7 @@ namespace FluidWeather.Views
 
             //imagesource class creation for weather icon
 
-            var asd = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
+            var newIconUri = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
                               ".svg");
 
             //imagesource
@@ -372,7 +372,7 @@ namespace FluidWeather.Views
 
             //get svgimagesource object from image source
             var svgImageSource = (SvgImageSource) mainIcon.Source;
-            svgImageSource.UriSource = asd;
+            svgImageSource.UriSource = newIconUri;
             mainIcon.Source = svgImageSource;
 
 
@@ -381,7 +381,7 @@ namespace FluidWeather.Views
                 (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
 
 
-            UpdatedOnText.Text = "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+            UpdatedOnText.Text = "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
 
             PlaceText.Text = rootV3Response.v3locationpoint.LocationV3.displayName + ", " +
@@ -406,7 +406,6 @@ namespace FluidWeather.Views
             PressurePanel.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " +
                                   MeasureUnitUtils.GetPressureUnits(currentUnits);
 
-            //visibility with units based on the unit of measure saved in the settings
             VisibilityPanel.Value = rootV3Response.v3wxobservationscurrent.visibility + " " +
                                     MeasureUnitUtils.GetVisibilityUnits(currentUnits);
 
@@ -459,17 +458,6 @@ namespace FluidWeather.Views
         {
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-            var response = await sharedClient.GetAsync(
-                "aggcommon/v3-wx-forecast-hourly-10day?format=json&placeid=" +
-                lastPlaceId
-                + "&units=" + await GetUnitsCode() +
-                "&language=" +
-                systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
-
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-
-            var deserializedResponse = JsonConvert.DeserializeObject<RootStandaloneHourlyResponse>(jsonResponse);
 
 
             //update the ui
@@ -478,7 +466,7 @@ namespace FluidWeather.Views
             int i = 0;
 
 
-            var firstDate = deserializedResponse.v3wxforecasthourly10day.validTimeLocal[0];
+            var firstDate = lastApiData.v3wxforecasthourly10day.validTimeLocal[0];
 
             //subtract daytoload to firstdate to get the index of the first day to load
             int daysDiff = dayToLoad.Date.Subtract(firstDate.Date).Days;
@@ -487,20 +475,20 @@ namespace FluidWeather.Views
             {
                 for (int j = 0; j < 7; j++) //check only the first 7 hours of the day
                 {
-                    if (deserializedResponse.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
+                    if (lastApiData.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, j));
+                        hourlyDataAdapters.Add(new HourDataAdapter(lastApiData.v3wxforecasthourly10day, j));
                     }
                 }
             }
             else
             {
-                foreach (var date in deserializedResponse.v3wxforecasthourly10day.validTimeLocal)
+                foreach (var date in lastApiData.v3wxforecasthourly10day.validTimeLocal)
                 {
                     //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
                     if (date.Date == firstDate.Date.AddDays(daysDiff))
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(deserializedResponse.v3wxforecasthourly10day, i));
+                        hourlyDataAdapters.Add(new HourDataAdapter(lastApiData.v3wxforecasthourly10day, i));
                     }
 
                     i++;

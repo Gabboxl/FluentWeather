@@ -141,6 +141,9 @@ namespace FluidWeather.Models
         [JsonProperty("v3-wx-forecast-daily-10day")]
         public V3WxForecastDaily v3wxforecastdaily10day { get; set; }
 
+        [JsonProperty("v3-wx-forecast-hourly-10day")]
+        public V3WxForecastHourly v3wxforecasthourly10day { get; set; }
+
         public object v3alertsHeadlines { get; set; }
 
         [JsonProperty("v3-location-point")]
