@@ -43,6 +43,8 @@ namespace FluidWeather.Views
             BaseAddress = new Uri("https://api.weather.com/v3/"),
         };
 
+        private readonly string systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+
         private Button _lastSelectedDayButton;
 
 
@@ -183,11 +185,9 @@ namespace FluidWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-                //get language code from system (like en-us)
-                var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
                 var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
-                                                           language +
+                                                           systemLanguage +
                                                            "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
@@ -247,14 +247,12 @@ namespace FluidWeather.Views
 
             if (lastPlaceId != null)
             {
-                var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-
                 var response = await sharedClient.GetAsync(
                     "aggcommon/v3-wx-observations-current;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid="
                     + lastPlaceId
                     + "&units=" + await GetUnitsCode()
                     + "&language=" +
-                    language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+                    systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
                 //&locationType=city (x solo citta)
 
                 response.EnsureSuccessStatusCode();
@@ -284,10 +282,8 @@ namespace FluidWeather.Views
         /// storyboards code
         /// </summary>
         private Storyboard _storyboard1;
-
         private Storyboard _storyboard2;
         private bool _isImage1Active;
-
 
         private void CrossfadeToImage(Uri newImageUri)
         {
@@ -487,14 +483,12 @@ namespace FluidWeather.Views
         {
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-            var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-
             var response = await sharedClient.GetAsync(
                 "aggcommon/v3-wx-forecast-hourly-10day?format=json&placeid=" +
                 lastPlaceId
                 + "&units=" + await GetUnitsCode() +
                 "&language=" +
-                language + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+                systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
 
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -554,12 +548,6 @@ namespace FluidWeather.Views
             LoadHourlyData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
         }
 
-        /*private void SetDayButtonClickedStyle(int index)
-        {
-            var button = (Button) repeaterDays.GetOrCreateElement(index);
-
-            SetDayButtonStyle(button);
-        }*/
 
         private void SetDayButtonClickedStyle(Button button)
         {
