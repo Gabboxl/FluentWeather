@@ -132,16 +132,6 @@ namespace FluidWeather.Views
 
         private void Initialize()
         {
-            //set parallaxview image
-            /*var image = new Image();
-
-            var bitmap = new BitmapImage();
-            bitmap.UriSource = new Uri("ms-appx:///Assets/bgs/1.jpg");
-
-            image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
-            image.Source = bitmap;
-
-            parallaxView.Child = image; */
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -370,20 +360,6 @@ namespace FluidWeather.Views
                                           rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
 
             CrossfadeToImage(newImageUri);
-
-
-            //set parallaxview image based on weather
-            /*var image = new Image();
-
-            var bitmap = new BitmapImage();
-
-            //urisource based on weather and the iconCodeToBackgroundImageNameDictionary
-            bitmap.UriSource = new Uri("ms-appx:///Assets/bgs/" +
-                                       iconCodeToBackgroundImageNameDictionary[rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
-
-            image.Stretch = Windows.UI.Xaml.Media.Stretch.UniformToFill;
-            image.Source = bitmap;
-            parallaxView.Child = image;*/
 
 
             //imagesource class creation for weather icon
