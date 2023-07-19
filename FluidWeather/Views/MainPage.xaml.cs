@@ -53,7 +53,23 @@ namespace FluidWeather.Views
         //segemented settings units selectedindex
         public int SettingsUnitsSelectedIndex
         {
-            get { return ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits").Result; }
+            get
+            {
+                int settingsData = default;
+
+                //run in background to avoid a deadlock/ui freeze
+                Task.Run(async () =>
+                {
+                    settingsData = await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
+                }).Wait();
+
+                if (settingsData == default)
+                {
+                    return 0;
+                }
+
+                return settingsData;
+            }
         }
 
         //dictionary for every icon code and its corresponsing background image
