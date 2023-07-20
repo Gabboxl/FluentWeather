@@ -575,6 +575,14 @@ namespace FluidWeather.Views
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
+
+
+            //day summary
+            var daySummaryString = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDay];
+
+            DaySummaryText.Text =  daySummaryString ?? "--";
+            NightSummaryText.Text = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDay + 1];
+
         }
 
 

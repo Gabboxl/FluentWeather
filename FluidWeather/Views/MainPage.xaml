@@ -10,11 +10,8 @@
     xmlns:views="using:FluidWeather.Views"
     xmlns:controls="using:FluidWeather.Controls"
     xmlns:models="using:FluidWeather.Models"
-    xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
-    xmlns:contract7NotPresent="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractNotPresent(Windows.Foundation.UniversalApiContract,7)"
     xmlns:adapters="using:FluidWeather.Adapters"
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
-    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     mc:Ignorable="d"
@@ -27,10 +24,23 @@
                       TintColor="#FCFCFC"
                       TintOpacity="0"
                       TintLuminosityOpacity="0"
-                      FallbackColor="#1DFFFFFF"/>
+                      FallbackColor="#1DFFFFFF" />
+
+        <AcrylicBrush x:Key="MyAcrylicBrushLine"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0"
+                      TintLuminosityOpacity="0.1"
+                      FallbackColor="#1DFFFFFF" />
+
+        <AcrylicBrush x:Key="MyAcrylicBrushTitleText"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0.7"
+                      TintLuminosityOpacity="0.8"
+                      FallbackColor="#1DFFFFFF" />
 
         <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
-
 
 
         <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
@@ -232,87 +242,87 @@
                 </Grid.ColumnDefinitions>
 
 
-                    <Button Name="SettingsButton"
-                            HorizontalAlignment="Right"
-                            Grid.Column="1"
-                            Margin="0,0,0,0">
+                <Button Name="SettingsButton"
+                        HorizontalAlignment="Right"
+                        Grid.Column="1"
+                        Margin="0,0,0,0">
 
-                        <StackPanel>
-                            <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
-                                <muxc:AnimatedIcon.Source>
-                                    <animatedVisuals:AnimatedSettingsVisualSource />
-                                </muxc:AnimatedIcon.Source>
-                                <muxc:AnimatedIcon.FallbackIconSource>
-                                    <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
-                                </muxc:AnimatedIcon.FallbackIconSource>
-                            </muxc:AnimatedIcon>
-                        </StackPanel>
+                    <StackPanel>
+                        <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
+                            <muxc:AnimatedIcon.Source>
+                                <animatedVisuals:AnimatedSettingsVisualSource />
+                            </muxc:AnimatedIcon.Source>
+                            <muxc:AnimatedIcon.FallbackIconSource>
+                                <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
+                            </muxc:AnimatedIcon.FallbackIconSource>
+                        </muxc:AnimatedIcon>
+                    </StackPanel>
 
-                        <Button.Flyout>
-                            <MenuFlyout x:Name="SettingsFlyout">
+                    <Button.Flyout>
+                        <MenuFlyout x:Name="SettingsFlyout">
 
-                                <MenuFlyoutItem>
-                                    <MenuFlyoutItem.Template>
-                                        <ControlTemplate x:Name="FlyoutItemSettingsTemp">
-                                            <StackPanel VerticalAlignment="Center" Margin="16">
-                                                <!-- title control -->
-                                                <TextBlock Text="Units"
-                                                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+                            <MenuFlyoutItem>
+                                <MenuFlyoutItem.Template>
+                                    <ControlTemplate x:Name="FlyoutItemSettingsTemp">
+                                        <StackPanel VerticalAlignment="Center" Margin="16">
+                                            <!-- title control -->
+                                            <TextBlock Text="Units"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                                <labs:Segmented
-                                                    SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
-                                                    Margin="0,8,0,0"
-                                                    x:Name="UnitsSegmented"
-                                                    SelectionChanged="UnitsSegmented_OnSelectionChanged"
-                                                    d:DataContext="{d:DesignInstance views:MainPage }">
-                                                    <labs:SegmentedItem Content="Metric" />
-                                                    <labs:SegmentedItem Content="Imperial" />
-                                                    <labs:SegmentedItem Content="Hybrid" />
+                                            <labs:Segmented
+                                                SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
+                                                Margin="0,8,0,0"
+                                                x:Name="UnitsSegmented"
+                                                SelectionChanged="UnitsSegmented_OnSelectionChanged"
+                                                d:DataContext="{d:DesignInstance views:MainPage }">
+                                                <labs:SegmentedItem Content="Metric" />
+                                                <labs:SegmentedItem Content="Imperial" />
+                                                <labs:SegmentedItem Content="Hybrid" />
 
-                                                </labs:Segmented>
+                                            </labs:Segmented>
 
-                                                <TextBlock Text="Credits"
-                                                           Margin="0,16,0,0"
-                                                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                            <TextBlock Text="Credits"
+                                                       Margin="0,16,0,0"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                                <RichTextBlock
-                                                    Margin="0,16,0,0">
-                                                    <Paragraph>
-                                                        <Run>UI design inspired by the work of</Run>
-                                                        <Hyperlink
-                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                            NavigateUri="https://twitter.com/zeealeid">
-                                                            @zeealeid
-                                                        </Hyperlink>
-                                                    </Paragraph>
-                                                </RichTextBlock>
+                                            <RichTextBlock
+                                                Margin="0,16,0,0">
+                                                <Paragraph>
+                                                    <Run>UI design inspired by the work of</Run>
+                                                    <Hyperlink
+                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                        NavigateUri="https://twitter.com/zeealeid">
+                                                        @zeealeid
+                                                    </Hyperlink>
+                                                </Paragraph>
+                                            </RichTextBlock>
 
-                                                <RichTextBlock
-                                                    Margin="0,16,0,0"
+                                            <RichTextBlock
+                                                Margin="0,16,0,0"
 
-                                                    Style="{ThemeResource BodyStrongTextBlockStyle}">
-                                                    <Paragraph>
-                                                        <Run FontStyle="Italic">FluentWeather</Run>
-                                                        <Run>developed by</Run>
-                                                        <Hyperlink
-                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                            NavigateUri="https://github.com/Gabboxl">
-                                                            Gabboxl
-                                                        </Hyperlink>
-                                                    </Paragraph>
-                                                </RichTextBlock>
+                                                Style="{ThemeResource BodyStrongTextBlockStyle}">
+                                                <Paragraph>
+                                                    <Run FontStyle="Italic">FluentWeather</Run>
+                                                    <Run>developed by</Run>
+                                                    <Hyperlink
+                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                        NavigateUri="https://github.com/Gabboxl">
+                                                        Gabboxl
+                                                    </Hyperlink>
+                                                </Paragraph>
+                                            </RichTextBlock>
 
-                                                <HyperlinkButton
-                                                    Margin="0,8,0,0"
-                                                    Content="Source code"
-                                                    NavigateUri="http://github.com/Gabboxl/FluentWeather" />
+                                            <HyperlinkButton
+                                                Margin="0,8,0,0"
+                                                Content="Source code"
+                                                NavigateUri="http://github.com/Gabboxl/FluentWeather" />
 
-                                            </StackPanel>
-                                        </ControlTemplate>
-                                    </MenuFlyoutItem.Template>
-                                </MenuFlyoutItem>
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </MenuFlyoutItem.Template>
+                            </MenuFlyoutItem>
 
-                                <!--<MenuFlyoutSeparator />
+                            <!--<MenuFlyoutSeparator />
 
 
                         <MenuFlyoutItem Text="Esci"
@@ -326,9 +336,9 @@
                                 ~1~ or e966 @1@
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>-->
-                            </MenuFlyout>
-                        </Button.Flyout>
-                    </Button>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
             </Grid>
 
             <Grid HorizontalAlignment="Stretch"
@@ -425,7 +435,7 @@
             </Grid.RowDefinitions>
 
 
-                <!--
+            <!--
                 <Button Name="NextPageButton"
                         Click="NextPageButton_OnClick"
                         RelativePanel.RightOf="ReloadButton"
@@ -434,8 +444,6 @@
                         <FontIcon Glyph="&#xE76C;" FontFamily="{StaticResource FluentIcons}" />
                     </StackPanel>
                 </Button> -->
-
-
 
 
             <ScrollViewer Grid.Row="1"
@@ -820,7 +828,7 @@
                             <TextBlock
                                 x:Name="SuggestionsText"
                                 Grid.Row="0"
-                                Text="Weather Insights"    
+                                Text="Weather Insights"
                                 Style="{StaticResource BodyTextBlockStyle}"
                                 FontSize="20"
                                 Margin="0,0,0,16" />
@@ -831,8 +839,7 @@
 
                         <StackPanel
                             Grid.Row="1"
-                            Orientation="Horizontal"
-                            >
+                            Orientation="Horizontal">
 
                             <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
                             <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
@@ -848,7 +855,105 @@
 
                         </StackPanel>
 
-                        </Grid>
+                    </Grid>
+
+
+                    <Grid Grid.Row="6"
+                          Margin="0,12,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <RelativePanel Grid.Row="0">
+                            <!--<TextBlock
+                                x:Name="SuggestionsText"
+                                Grid.Row="0"
+                                Text="Weather Insights"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                FontSize="20"
+                                Margin="0,0,0,16" />-->
+
+
+                        </RelativePanel>
+
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Orientation="Horizontal">
+
+
+                            <Grid x:Name="testGrid"
+                                  Margin="4"
+                                  CornerRadius="6"
+                                  Padding="0"
+                                  BorderThickness="2"
+                                  BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                  Background="{ThemeResource MyAcrylicBrush}"
+                                  Width="293">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+
+                                    <TextBlock x:Name="ChipTitle" Text="Day Summary"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="8,8,0,0"
+                                               FontSize="16"
+                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                    />
+
+                                    <!-- horizontal line -->
+                                    <Rectangle x:Name="Rectangle2"
+                                               Fill="{ThemeResource MyAcrylicBrushLine}"
+                                               Height="1.2"
+                                               RelativePanel.Below="ChipTitle"
+                                               Width="288"
+                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                               Margin="0,6,0,0" />
+                                </RelativePanel>
+
+                                <RelativePanel Grid.Row="1"
+                                               Margin="8">
+
+                                    <TextBlock x:Name="DayTitle" Text="Day"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="0,0,0,0"
+                                               Opacity="0.6"
+                                               RelativePanel.AlignTopWithPanel="True"/>
+
+                                    <TextBlock x:Name="DaySummaryText" Text="hellox"
+                                               Style="{StaticResource BodyTextBlockStyle}"
+                                               Margin="0,6,0,0"
+                                               RelativePanel.Below="DayTitle"/>
+
+                                    <TextBlock x:Name="NightTitle" Text="Night"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="0,6,0,0"
+                                               Opacity="0.6"
+                                               RelativePanel.Below="DaySummaryText" />
+
+                                    <TextBlock x:Name="NightSummaryText" Text="hello"
+                                               Style="{StaticResource BodyTextBlockStyle}"
+                                               Margin="0,6,0,0"
+                                               RelativePanel.Below="NightTitle"/>
+
+
+                                </RelativePanel>
+
+
+                            </Grid>
+
+                        </StackPanel>
+
+                    </Grid>
 
 
                 </Grid>
