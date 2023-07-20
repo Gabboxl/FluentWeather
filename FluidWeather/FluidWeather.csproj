@@ -224,10 +224,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Assets\insighticons\insightIcons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\InsightControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
