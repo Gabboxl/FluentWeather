@@ -837,7 +837,9 @@
                             <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
                             <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
 
+                            <!--
                             <controls:InsightControl x:Name="PollenInsight"></controls:InsightControl>
+                            -->
 
                             <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
 
