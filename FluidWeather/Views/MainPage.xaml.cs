@@ -22,6 +22,7 @@ using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Automation.Provider;
+using Windows.UI.Xaml.Input;
 using CommunityToolkit.Labs.WinUI;
 using FluidWeather.Helpers;
 using FluidWeather.Utils;
@@ -148,7 +149,6 @@ namespace FluidWeather.Views
             InitializeStoryboards();
 
             AppViewModel.UpdateUIAction += (() => { Task.Run(LoadApiData); });
-
 
             Task.Run(LoadApiData);
         }
@@ -647,6 +647,21 @@ namespace FluidWeather.Views
             await ApplicationData.Current.LocalSettings.SaveAsync("selectedUnits", segmented.SelectedIndex);
 
             await Task.Run(LoadApiData);
+        }
+
+        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            // Only keeps the suggestions list open if no suggestion was chosen.
+
+                sender.IsSuggestionListOpen = true;
+
+        }
+
+        private void AutoSuggestBoxMain_OnKeyUp(object sender, KeyRoutedEventArgs e)
+        {
+            AutoSuggestBox sender2 = (AutoSuggestBox) sender;
+
+            sender2.IsSuggestionListOpen = true;
         }
     }
 }
