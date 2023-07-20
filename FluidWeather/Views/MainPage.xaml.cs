@@ -525,7 +525,7 @@ namespace FluidWeather.Views
             /*var indexOfDay =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
 
-            var indexOfDay =
+            var indexOfDayInsights =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x =>
                     x.Date == dayToLoad.Date);
 
@@ -533,9 +533,9 @@ namespace FluidWeather.Views
             RunningInsight.Insight = new Insight()
             {
                 Title = "Running",
-                Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDay],
+                Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
                 Description =
-                    lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDay],
+                    lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDayInsights],
                 Levels = InsightLevels.RunningLevels,
                 IconName = "running"
             };
@@ -544,10 +544,10 @@ namespace FluidWeather.Views
             {
                 Title = "Driving",
                 Value =
-                    lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDay],
+                    lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDayInsights],
                 Description =
                     lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[
-                        indexOfDay],
+                        indexOfDayInsights],
                 Levels = InsightLevels.DrivingLevels,
                 IconName = "driving"
             };
@@ -560,8 +560,8 @@ namespace FluidWeather.Views
             DryskinInsight.Insight = new Insight()
             {
                 Title = "Dry skin",
-                Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDay],
-                Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDay],
+                Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
+                Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
                 Levels = InsightLevels.DrySkinLevels,
                 IconName = "dry"
             };
@@ -569,19 +569,47 @@ namespace FluidWeather.Views
             WateringInsight.Insight = new Insight()
             {
                 Title = "Watering need",
-                Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDay],
+                Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDayInsights],
                 Description =
-                    lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDay],
+                    lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDayInsights],
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
 
 
+            var indexOfDayDailyData =
+                lastApiData.v3wxforecastdaily10day.validTimeLocal.FindIndex(x =>
+                    x.Date == dayToLoad.Date);
+
             //day summary
-            var daySummaryString = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDay];
+            var daySummaryString = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2];
 
             DaySummaryText.Text =  daySummaryString ?? "--";
-            NightSummaryText.Text = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDay + 1];
+            NightSummaryText.Text = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
+
+            //sunset and sunrise
+            var sunriseTime = lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
+            SunriseTimeText.Text = sunriseTime == null ? "--" : sunriseTime.Value.ToString("h:mm tt");
+
+            var sunsetTime = lastApiData.v3wxforecastdaily10day.sunsetTimeLocal[indexOfDayDailyData];
+            SunsetTimeText.Text = sunsetTime == null ? "--" : sunsetTime.Value.ToString("h:mm tt");
+
+            //moonrise and moonset
+            var moonriseTime = lastApiData.v3wxforecastdaily10day.moonriseTimeLocal[indexOfDayDailyData];
+            MoonriseTimeText.Text = moonriseTime == null ? "--" : moonriseTime.Value.ToString("h:mm tt");
+
+            var moonsetTime = lastApiData.v3wxforecastdaily10day.moonsetTimeLocal[indexOfDayDailyData];
+            MoonsetTimeText.Text = moonsetTime == null ? "--" : moonsetTime.Value.ToString("h:mm tt");
+
+            //lunar phase
+            var lunarPhase = lastApiData.v3wxforecastdaily10day.moonPhase[indexOfDayDailyData];
+            LunarphaseText.Text = lunarPhase;
+
+            //moon phase icon
+            var moonPhaseIcon = lastApiData.v3wxforecastdaily10day.moonPhaseCode[indexOfDayDailyData];
+
+            var svgImageSource = new SvgImageSource(new Uri($"ms-appx:///Assets/varicons/{moonPhaseIcon}.svg"));
+            LunarphaseIcon.Source = svgImageSource;
 
         }
 

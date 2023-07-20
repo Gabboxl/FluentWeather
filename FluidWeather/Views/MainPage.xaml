@@ -358,6 +358,10 @@
                         AutoMaximizeSuggestionArea="True"
                         MaxSuggestionListHeight="700"
                         PlaceholderText="Search a place..."
+                        QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                        KeyUp="AutoSuggestBoxMain_OnKeyUp"
+                        KeyDown="AutoSuggestBoxMain_OnKeyUp"
+
 
                         Style="{ThemeResource DefaultAutoSuggestBoxStyle}"
                         UpdateTextOnSelect="False"
@@ -883,14 +887,14 @@
                             Orientation="Horizontal">
 
 
-                            <Grid x:Name="testGrid"
-                                  Margin="4"
-                                  CornerRadius="6"
-                                  Padding="0"
-                                  BorderThickness="2"
-                                  BorderBrush="{ThemeResource MyAcrylicBrush}"
-                                  Background="{ThemeResource MyAcrylicBrush}"
-                                  Width="293">
+                            <Grid
+                                Margin="4"
+                                CornerRadius="6"
+                                Padding="0"
+                                BorderThickness="2"
+                                BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                Background="{ThemeResource MyAcrylicBrush}"
+                                Width="293">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
@@ -907,8 +911,7 @@
                                                Margin="8,8,0,0"
                                                FontSize="16"
                                                Foreground="{ThemeResource MyAcrylicBrushTitleText}"
-                                               RelativePanel.AlignTopWithPanel="True"
-                                    />
+                                               RelativePanel.AlignTopWithPanel="True" />
 
                                     <!-- horizontal line -->
                                     <Rectangle x:Name="Rectangle2"
@@ -927,12 +930,12 @@
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                                Margin="0,0,0,0"
                                                Opacity="0.6"
-                                               RelativePanel.AlignTopWithPanel="True"/>
+                                               RelativePanel.AlignTopWithPanel="True" />
 
                                     <TextBlock x:Name="DaySummaryText" Text="hellox"
                                                Style="{StaticResource BodyTextBlockStyle}"
                                                Margin="0,6,0,0"
-                                               RelativePanel.Below="DayTitle"/>
+                                               RelativePanel.Below="DayTitle" />
 
                                     <TextBlock x:Name="NightTitle" Text="Night"
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
@@ -943,10 +946,255 @@
                                     <TextBlock x:Name="NightSummaryText" Text="hello"
                                                Style="{StaticResource BodyTextBlockStyle}"
                                                Margin="0,6,0,0"
-                                               RelativePanel.Below="NightTitle"/>
+                                               RelativePanel.Below="NightTitle" />
 
 
                                 </RelativePanel>
+
+
+                            </Grid>
+
+
+                            <Grid
+                                Margin="4"
+                                CornerRadius="6"
+                                Padding="0"
+                                BorderThickness="2"
+                                BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                Background="{ThemeResource MyAcrylicBrush}"
+                                Width="294">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+
+                                    <TextBlock x:Name="SunChipTitle" Text="Sun"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="8,8,0,0"
+                                               FontSize="16"
+                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                               RelativePanel.AlignTopWithPanel="True" />
+
+                                    <Rectangle
+                                        Fill="{ThemeResource MyAcrylicBrushLine}"
+                                        Height="1.2"
+                                        RelativePanel.Below="SunChipTitle"
+                                        Width="288"
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        Margin="0,6,0,0" />
+                                </RelativePanel>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+
+                                    <RelativePanel Grid.Row="0"
+                                                   Margin="8">
+
+                                        <Image x:Name="SunriseIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/SunriseNew.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="SunriseTitle" Text="Sunrise"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,0,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="SunriseIcon" />
+
+                                        <TextBlock x:Name="SunriseTimeText" Text="risetime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,0,0,0"
+                                                   RelativePanel.AlignLeftWith="SunriseTitle"
+                                                   RelativePanel.Below="SunriseTitle" />
+
+
+                                    </RelativePanel>
+
+                                    <RelativePanel Grid.Row="1"
+                                                   Margin="8">
+
+                                        <Image x:Name="SunsetIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/SunsetNew.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="SunsetTitle" Text="Sunset"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="SunsetIcon" />
+
+                                        <TextBlock x:Name="SunsetTimeText" Text="settime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,0,0,0"
+                                                   RelativePanel.AlignLeftWith="SunsetTitle"
+                                                   RelativePanel.Below="SunsetTitle" />
+
+                                    </RelativePanel>
+
+                                </Grid>
+
+
+                            </Grid>
+
+
+                             <Grid
+                                Margin="4"
+                                CornerRadius="6"
+                                Padding="0"
+                                BorderThickness="2"
+                                BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                Background="{ThemeResource MyAcrylicBrush}"
+                                Width="293">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+
+                                    <TextBlock x:Name="MoonChipTitle" Text="Moon"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="8,8,0,0"
+                                               FontSize="16"
+                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                               RelativePanel.AlignTopWithPanel="True" />
+
+                                    <Rectangle
+                                        Fill="{ThemeResource MyAcrylicBrushLine}"
+                                        Height="1.2"
+                                        RelativePanel.Below="MoonChipTitle"
+                                        Width="288"
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        Margin="0,6,0,0" />
+                                </RelativePanel>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <RelativePanel Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Margin="8">
+
+                                        <Image x:Name="MoonriseIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/Moonrise.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="MoonriseTitle" Text="Moonrise"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="MoonriseIcon" />
+
+                                        <TextBlock x:Name="MoonriseTimeText" Text="risetime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,2,0,0"
+                                                   RelativePanel.AlignLeftWith="MoonriseTitle"
+                                                   RelativePanel.Below="MoonriseTitle" />
+
+
+                                    </RelativePanel>
+
+                                    <RelativePanel Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Margin="8">
+
+                                        <Image x:Name="MoonsetIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/Moonset.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="MoonsetTitle" Text="Moonset"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="MoonsetIcon" />
+
+                                        <TextBlock x:Name="MoonsetTimeText" Text="settime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,2,0,0"
+                                                   RelativePanel.AlignLeftWith="MoonsetTitle"
+                                                   RelativePanel.Below="MoonsetTitle" />
+
+                                    </RelativePanel>
+
+                                    <RelativePanel Grid.Row="0"
+                                                   Grid.RowSpan="2"
+                                                   Grid.Column="1"
+                                                   Margin="8">
+
+                                        <!-- vertical line on left -->
+                                        <Rectangle
+                                            x:Name="LunarphaseLine"
+                                            Fill="{ThemeResource MyAcrylicBrushLine}"
+                                            Height="100"
+                                            Width="1.2"
+                                            RelativePanel.AlignLeftWithPanel="True"
+                                            RelativePanel.AlignTopWithPanel="True"
+                                            Margin="0,8,0,0" />
+
+                                        <Image x:Name="LunarphaseIcon"
+                                               Margin="6,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.RightOf="LunarphaseLine"
+                                               RelativePanel.AlignTopWith="LunarphaseLine"
+                                        >
+                                        </Image>
+
+                                        <TextBlock x:Name="LunarphaseTitle" Text="Lunar phase"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="8,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.AlignTopWithPanel="True"
+                                                   RelativePanel.RightOf="LunarphaseIcon"/>
+
+                                        <TextBlock x:Name="LunarphaseText" Text="phase"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="8,2,0,0"
+                                                   RelativePanel.AlignLeftWith="LunarphaseTitle"
+                                                   RelativePanel.Below="LunarphaseTitle" />
+
+
+
+                                        </RelativePanel>
+
+                                </Grid>
 
 
                             </Grid>

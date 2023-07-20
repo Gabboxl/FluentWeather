@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="auto" height="auto">
+  <radialGradient id="s705_cdahANGMPiIl05Fta" cx="40.31" cy="43.238" r="43.767" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#6d75d6" />
+    <stop offset=".123" stop-color="#8189de" />
+    <stop offset=".384" stop-color="#a7adec" />
+    <stop offset=".625" stop-color="#c3c7f6" />
+    <stop offset=".838" stop-color="#d3d6fd" />
+    <stop offset="1" stop-color="#d9dcff" />
+  </radialGradient>
+  <path fill="url(#s705_cdahANGMPiIl05Fta)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z" />
+  <radialGradient id="s705_cdahANGMPiIl05Ftb" cx="22.224" cy="15.104" r="5.386" gradientTransform="translate(.675 .338) scale(.9625)" gradientUnits="userSpaceOnUse">
+    <stop offset=".313" stop-color="#6063e0" stop-opacity="0" />
+    <stop offset="1" stop-color="#6063e0" />
+  </radialGradient>
+  <path fill="url(#s705_cdahANGMPiIl05Ftb)" d="M21,10c-1.657,0-3,1.343-3,3s1.343,3,3,3s3-1.343,3-3S22.657,10,21,10z" />
+  <radialGradient id="s705_cdahANGMPiIl05Ftc" cx="13.71" cy="25.25" r="3.456" gradientUnits="userSpaceOnUse">
+    <stop offset=".313" stop-color="#6063e0" stop-opacity="0" />
+    <stop offset="1" stop-color="#6063e0" />
+  </radialGradient>
+  <path fill="url(#s705_cdahANGMPiIl05Ftc)" d="M13,22c-1.105,0-2,0.895-2,2s0.895,2,2,2s2-0.895,2-2S14.105,22,13,22z" />
+  <radialGradient id="s705_cdahANGMPiIl05Ftd" cx="37.033" cy="22.438" r="2.592" gradientUnits="userSpaceOnUse">
+    <stop offset=".313" stop-color="#6063e0" stop-opacity="0" />
+    <stop offset="1" stop-color="#6063e0" />
+  </radialGradient>
+  <path fill="url(#s705_cdahANGMPiIl05Ftd)" d="M36.5,20c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5s1.5-0.672,1.5-1.5S37.328,20,36.5,20z" />
+</svg>
