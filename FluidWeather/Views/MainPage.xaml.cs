@@ -155,7 +155,6 @@ namespace FluidWeather.Views
 
         private void Initialize()
         {
-
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
@@ -198,29 +197,31 @@ namespace FluidWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-
                 var response = await sharedClient3.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
-                                                           systemLanguage +
-                                                           "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
+                                                            systemLanguage +
+                                                            "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
                 //response.EnsureSuccessStatusCode();
 
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-
-                var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
-
-                foreach (var location in myDeserializedClass.location)
+                if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine(location.address);
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                    var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
+
+                    foreach (var location in myDeserializedClass.location)
+                    {
+                        Debug.WriteLine(location.address);
+                    }
+
+
+                    List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
+                    // the select statement above is the same as the foreach below
+
+
+                    sender.ItemsSource = finalitems;
                 }
-
-
-                List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
-                // the select statement above is the same as the foreach below
-
-
-                sender.ItemsSource = finalitems;
             }
         }
 
@@ -291,6 +292,7 @@ namespace FluidWeather.Views
         /// storyboards code
         /// </summary>
         private Storyboard _storyboard1;
+
         private Storyboard _storyboard2;
         private bool _isImage1Active;
 
@@ -385,7 +387,7 @@ namespace FluidWeather.Views
             //imagesource class creation for weather icon
 
             var newIconUri = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
-                              ".svg");
+                                     ".svg");
 
             //imagesource
             //var imageSource = new SvgImageSource(asd);
@@ -400,7 +402,8 @@ namespace FluidWeather.Views
             WetUnits currentUnits = await GetUnitsCode();
 
 
-            UpdatedOnText.Text = "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
+            UpdatedOnText.Text =
+                "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
 
             PlaceText.Text = rootV3Response.v3locationpoint.LocationV3.displayName + ", " +
@@ -478,7 +481,6 @@ namespace FluidWeather.Views
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
 
-
             //update the ui
             List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
 
@@ -520,23 +522,32 @@ namespace FluidWeather.Views
 
         private async void LoadInsightsData(DateTimeOffset dayToLoad)
         {
-
             /*var indexOfDay =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
 
-            var indexOfDay = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x => x.Date == dayToLoad.Date);
+            var indexOfDay =
+                lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x =>
+                    x.Date == dayToLoad.Date);
 
             //insights controls
-            RunningInsight.Insight = new Insight() {Title = "Running",
+            RunningInsight.Insight = new Insight()
+            {
+                Title = "Running",
                 Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDay],
-                Description = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDay],
+                Description =
+                    lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDay],
                 Levels = InsightLevels.RunningLevels,
                 IconName = "running"
             };
 
-            DrivingInsight.Insight = new Insight() {Title = "Driving",
-                Value = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDay],
-                Description = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[indexOfDay],
+            DrivingInsight.Insight = new Insight()
+            {
+                Title = "Driving",
+                Value =
+                    lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDay],
+                Description =
+                    lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[
+                        indexOfDay],
                 Levels = InsightLevels.DrivingLevels,
                 IconName = "driving"
             };
@@ -546,16 +557,21 @@ namespace FluidWeather.Views
                 Description = rootV3Response.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[0],
                 Levels = InsightLevels.RunningLevels};*/
 
-            DryskinInsight.Insight = new Insight() {Title = "Dry skin",
+            DryskinInsight.Insight = new Insight()
+            {
+                Title = "Dry skin",
                 Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDay],
                 Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDay],
                 Levels = InsightLevels.DrySkinLevels,
                 IconName = "dry"
             };
 
-            WateringInsight.Insight = new Insight() {Title = "Watering need",
+            WateringInsight.Insight = new Insight()
+            {
+                Title = "Watering need",
                 Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDay],
-                Description = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDay],
+                Description =
+                    lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDay],
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
