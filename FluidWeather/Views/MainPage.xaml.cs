@@ -520,18 +520,23 @@ namespace FluidWeather.Views
 
         private async void LoadInsightsData(DateTimeOffset dayToLoad)
         {
-            
+
+            /*var indexOfDay =
+                lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
+
+            var indexOfDay = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x => x.Date == dayToLoad.Date);
+
             //insights controls
             RunningInsight.Insight = new Insight() {Title = "Running",
-                Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[0],
-                Description = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[0],
+                Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDay],
+                Description = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDay],
                 Levels = InsightLevels.RunningLevels,
                 IconName = "running"
             };
 
             DrivingInsight.Insight = new Insight() {Title = "Driving",
-                Value = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[0],
-                Description = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[0],
+                Value = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDay],
+                Description = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[indexOfDay],
                 Levels = InsightLevels.DrivingLevels,
                 IconName = "driving"
             };
@@ -542,15 +547,15 @@ namespace FluidWeather.Views
                 Levels = InsightLevels.RunningLevels};*/
 
             DryskinInsight.Insight = new Insight() {Title = "Dry skin",
-                Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[0],
-                Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[0],
+                Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDay],
+                Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDay],
                 Levels = InsightLevels.DrySkinLevels,
                 IconName = "dry"
             };
 
             WateringInsight.Insight = new Insight() {Title = "Watering need",
-                Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[0],
-                Description = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[0],
+                Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDay],
+                Description = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDay],
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
