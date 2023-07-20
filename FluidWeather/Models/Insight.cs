@@ -62,10 +62,10 @@ namespace FluidWeather.Models
             {4, InsightLevel.High},
             {5, InsightLevel.Medium},
             {6, InsightLevel.Medium},
-            {7, InsightLevel.High},
-            {8, InsightLevel.High},
-            {9, InsightLevel.High},
-            {10, InsightLevel.High},
+            {7, InsightLevel.Low},
+            {8, InsightLevel.Low},
+            {9, InsightLevel.Low},
+            {10, InsightLevel.Low},
         };
 
         public static Dictionary<int, InsightLevel> WateringLevels = new()
@@ -77,10 +77,10 @@ namespace FluidWeather.Models
             {4, InsightLevel.High},
             {5, InsightLevel.Medium},
             {6, InsightLevel.Medium},
-            {7, InsightLevel.High},
-            {8, InsightLevel.High},
-            {9, InsightLevel.High},
-            {10, InsightLevel.High},
+            {7, InsightLevel.Low},
+            {8, InsightLevel.Low},
+            {9, InsightLevel.Low},
+            {10, InsightLevel.Low},
         };
     }
 }
