@@ -16,11 +16,23 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
 
     <Page.Resources>
+        <AcrylicBrush x:Key="MyAcrylicBrush"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0"
+                      TintLuminosityOpacity="0"
+                      FallbackColor="#1DFFFFFF"/>
+
+        <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
+
+
+
         <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
                BasedOn="{StaticResource DefaultListViewItemStyle}">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -438,6 +450,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -688,9 +702,9 @@
                             VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                             CornerRadius="8"
                             Padding="12"
-                            BorderThickness="0"
-                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                            Background="#1DFFFFFF">
+                            BorderThickness="2"
+                            BorderBrush="{ThemeResource MyAcrylicBrush}"
+                            Background="{ThemeResource MyAcrylicBrush}">
 
                             <ListView x:Name="hourlyListview"
                                       Grid.Row="1"
@@ -793,6 +807,46 @@
 
 
                     </Grid>
+
+
+                    <Grid Grid.Row="5"
+                          Margin="0,32,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <RelativePanel Grid.Row="0">
+                            <TextBlock
+                                x:Name="SuggestionsText"
+                                Grid.Row="0"
+                                Text="Weather Insights"    
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                FontSize="20"
+                                Margin="0,0,0,16" />
+
+
+                        </RelativePanel>
+
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Orientation="Horizontal"
+                            >
+
+                            <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
+                            <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
+
+                            <controls:InsightControl x:Name="PollenInsight"></controls:InsightControl>
+
+                            <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
+
+                            <controls:InsightControl x:Name="DryskinInsight"></controls:InsightControl>
+
+
+                        </StackPanel>
+
+                        </Grid>
 
 
                 </Grid>

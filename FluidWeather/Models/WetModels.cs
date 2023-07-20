@@ -148,6 +148,21 @@ namespace FluidWeather.Models
 
         [JsonProperty("v3-location-point")]
         public V3LocationPoint v3locationpoint { get; set; }
+
+        [JsonProperty("v2idxDriveDaypart10")]
+        public V2idxDriveDaypartResult v2idxDriveDaypart10days { get; set; }
+
+        [JsonProperty("v2idxRunDaypart10")]
+        public V2idxRunDaypartResult v2idxRunDaypart10days { get; set; }
+
+        [JsonProperty("v2idxPollenDaypart10")]
+        public V2idxPollenDaypartResult v2idxPollenDaypart10days { get; set; }
+
+        [JsonProperty("v2idxWateringDaypart10")]
+        public V2idxWateringDaypartResult V2IdxWateringDaypart10days { get; set; }
+
+        [JsonProperty("v2idxDrySkinDaypart10")]
+        public V2idxDrySkinDaypartResult V2IdxDrySkinDaypart10days { get; set; }
     }
 
 
@@ -275,5 +290,132 @@ namespace FluidWeather.Models
         public object wxPhraseShort { get; set; }
     }
 
+
+    //driving difficulty index
+
+    public class DrivingDifficultyIndexDaypart
+    {
+        public List<int> fcstValid { get; set; }
+        public List<DateTimeOffset> fcstValidLocal { get; set; }
+        public List<string> dayInd { get; set; }
+        public List<int> num { get; set; }
+        public List<string> daypartName { get; set; }
+        public List<int> drivingDifficultyIndex { get; set; }
+        public List<string> drivingDifficultyCategory { get; set; }
+    }
+
+    public class Metadata
+    {
+        public string language { get; set; }
+        public string transactionId { get; set; }
+        public string version { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
+        public int expireTimeGmt { get; set; }
+        public int statusCode { get; set; }
+    }
+
+    public class V2idxDriveDaypartResult
+    {
+        public Metadata metadata { get; set; }
+
+        [JsonProperty("drivingDifficultyIndex12hour")]
+        public DrivingDifficultyIndexDaypart drivingDifficultyIndex12hour { get; set; }
+    }
+
+
+    //running index
+
+    public class RunWeatherIndexDaypart
+    {
+        public List<int> fcstValid { get; set; }
+        public List<DateTimeOffset> fcstValidLocal { get; set; }
+        public List<string> dayInd { get; set; }
+        public List<int> num { get; set; }
+        public List<string> daypartName { get; set; }
+        public List<int> longRunWeatherIndex { get; set; }
+        public List<string> longRunWeatherCategory { get; set; }
+        public List<int> shortRunWeatherIndex { get; set; }
+        public List<string> shortRunWeatherCategory { get; set; }
+    }
+
+    public class V2idxRunDaypartResult
+    {
+        public Metadata metadata { get; set; }
+
+        [JsonProperty("runWeatherIndex12hour")]
+        public RunWeatherIndexDaypart RunWeatherIndexDaypart { get; set; }
+    }
+
+
+    //pollen index
+
+    public class PollenForecastDaypart
+    {
+        public List<int> fcstValid { get; set; }
+        public List<DateTime> fcstValidLocal { get; set; }
+        public List<string> dayInd { get; set; }
+        public List<int> num { get; set; }
+        public List<string> daypartName { get; set; }
+        public List<int> grassPollenIndex { get; set; }
+        public List<string> grassPollenCategory { get; set; }
+        public List<int> treePollenIndex { get; set; }
+        public List<string> treePollenCategory { get; set; }
+        public List<int> ragweedPollenIndex { get; set; }
+        public List<string> ragweedPollenCategory { get; set; }
+    }
+
+
+    public class V2idxPollenDaypartResult
+    {
+        public Metadata metadata { get; set; }
+
+        [JsonProperty("pollenForecast12hour")]
+        public PollenForecastDaypart PollenForecastDaypart { get; set; }
+    }
+
+
+    //watering needs index
+
+    public class V2idxWateringDaypartResult
+    {
+        public Metadata metadata { get; set; }
+
+        [JsonProperty("wateringNeedsIndex12hour")]
+        public WateringNeedsIndexDaypart WateringNeedsIndexDaypart { get; set; }
+    }
+
+    public class WateringNeedsIndexDaypart
+    {
+        public List<int> fcstValid { get; set; }
+        public List<DateTime> fcstValidLocal { get; set; }
+        public List<string> dayInd { get; set; }
+        public List<int> num { get; set; }
+        public List<string> daypartName { get; set; }
+        public List<int> wateringNeedsIndex { get; set; }
+        public List<string> wateringNeedsCategory { get; set; }
+    }
+
+
+    //dry skin index
+
+    public class DrySkinIndexDaypart
+    {
+        public List<int> fcstValid { get; set; }
+        public List<DateTime> fcstValidLocal { get; set; }
+        public List<string> dayInd { get; set; }
+        public List<int> num { get; set; }
+        public List<string> daypartName { get; set; }
+        public List<int> drySkinIndex { get; set; }
+        public List<string> drySkinCategory { get; set; }
+    }
+
+    public class V2idxDrySkinDaypartResult
+    {
+        public Metadata metadata { get; set; }
+
+        [JsonProperty("drySkinIndex12hour")]
+        public DrySkinIndexDaypart DrySkinIndexDaypart { get; set; }
+    }
 
 }

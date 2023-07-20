@@ -147,6 +147,9 @@
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>7.1.3</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Media">
+      <Version>7.1.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.8.5</Version>
     </PackageReference>
@@ -171,6 +174,9 @@
     <Compile Include="Adapters\DayButtonAdapter.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask1.cs" />
+    <Compile Include="Controls\InsightControl.xaml.cs">
+      <DependentUpon>InsightControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DetailChipControl.xaml.cs">
       <DependentUpon>DetailChipControl.xaml</DependentUpon>
     </Compile>
@@ -183,6 +189,7 @@
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
+    <Compile Include="Models\Insight.cs" />
     <Compile Include="Models\WetModels.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
@@ -217,6 +224,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Assets\insighticons\insightIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\InsightControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\DetailChipControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +296,11 @@
     <Content Include="Assets\bgs\7.jpg" />
     <Content Include="Assets\bgs\8.jpg" />
     <Content Include="Assets\bgs\9.jpg" />
+    <Content Include="Assets\insighticons\driving.svg" />
+    <Content Include="Assets\insighticons\dry.svg" />
+    <Content Include="Assets\insighticons\pollen.svg" />
+    <Content Include="Assets\insighticons\running.svg" />
+    <Content Include="Assets\insighticons\watering.svg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />

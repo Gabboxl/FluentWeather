@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Styles/AutoSuggestBox.xaml" />
                 <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.xaml" />
                 <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.Themeresources.xaml" />
+                <ResourceDictionary Source="Assets/insighticons/insightIcons.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 

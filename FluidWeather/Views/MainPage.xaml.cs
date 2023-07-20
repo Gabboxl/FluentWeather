@@ -38,9 +38,14 @@ namespace FluidWeather.Views
 
         private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
-        private static HttpClient sharedClient = new()
+        private static HttpClient sharedClient3 = new()
         {
             BaseAddress = new Uri("https://api.weather.com/v3/"),
+        };
+
+        private static HttpClient sharedClient2 = new()
+        {
+            BaseAddress = new Uri("https://api.weather.com/v2/"),
         };
 
         private readonly string systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
@@ -194,7 +199,7 @@ namespace FluidWeather.Views
                 && !string.IsNullOrEmpty(sender.Text))
             {
 
-                var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
+                var response = await sharedClient3.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
                                                            systemLanguage +
                                                            "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
@@ -234,12 +239,10 @@ namespace FluidWeather.Views
 
         private async Task<WetUnits> GetUnitsCode()
         {
-            int units = await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
+            WetUnits unitsCode =
+                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
 
-            //get unit code from enum
-            WetUnits unitCode = (WetUnits) units;
-
-            return unitCode;
+            return unitsCode;
         }
 
         private async Task LoadApiData()
@@ -253,8 +256,8 @@ namespace FluidWeather.Views
 
             if (lastPlaceId != null)
             {
-                var response = await sharedClient.GetAsync(
-                    "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point?format=json&placeid="
+                var response = await sharedClient2.GetAsync(
+                    "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
                     + lastPlaceId
                     + "&units=" + await GetUnitsCode()
                     + "&language=" +
@@ -304,9 +307,10 @@ namespace FluidWeather.Views
                 Image1.Source = newImage;
             }
 
-            //remeber that the imageopened event is fired only when the image is shown in some way :(
+            //remeber that the imageopened event is fired only when the image is shown in some way :( so we need to set the image soiurce before
 
 
+            //this ensures the animation is played only when the image is loaded
             newImage.ImageOpened += (sender, args) =>
             {
                 if (_isImage1Active)
@@ -393,8 +397,7 @@ namespace FluidWeather.Views
 
 
             //update chips
-            WetUnits currentUnits =
-                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
+            WetUnits currentUnits = await GetUnitsCode();
 
 
             UpdatedOnText.Text = "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
@@ -515,6 +518,45 @@ namespace FluidWeather.Views
         }
 
 
+        private async void LoadInsightsData(DateTimeOffset dayToLoad)
+        {
+            
+            //insights controls
+            RunningInsight.Insight = new Insight() {Title = "Running",
+                Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[0],
+                Description = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[0],
+                Levels = InsightLevels.RunningLevels,
+                IconName = "running"
+            };
+
+            DrivingInsight.Insight = new Insight() {Title = "Driving",
+                Value = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[0],
+                Description = lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[0],
+                Levels = InsightLevels.DrivingLevels,
+                IconName = "driving"
+            };
+
+            /*PollenInsight.Insight = new Insight() {Title = "Pollen",
+                Value = rootV3Response.v2idxPollenDaypart10days.PollenForecastDaypart.ind[0],
+                Description = rootV3Response.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[0],
+                Levels = InsightLevels.RunningLevels};*/
+
+            DryskinInsight.Insight = new Insight() {Title = "Dry skin",
+                Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[0],
+                Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[0],
+                Levels = InsightLevels.DrySkinLevels,
+                IconName = "dry"
+            };
+
+            WateringInsight.Insight = new Insight() {Title = "Watering need",
+                Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[0],
+                Description = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[0],
+                Levels = InsightLevels.WateringLevels,
+                IconName = "watering"
+            };
+        }
+
+
         private void DayButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
@@ -526,6 +568,7 @@ namespace FluidWeather.Views
 
             //load hourly data
             LoadHourlyData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
+            LoadInsightsData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
         }
 
 
