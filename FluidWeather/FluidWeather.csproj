@@ -284,6 +284,15 @@
   <ItemGroup>
     <Content Include="Assets\bgs\1.jpg" />
     <Content Include="Assets\bgs\10.jpg" />
+    <Content Include="Assets\bgs\11.jpg" />
+    <Content Include="Assets\bgs\12.jpg" />
+    <Content Include="Assets\bgs\13.jpg" />
+    <Content Include="Assets\bgs\14.jpg" />
+    <Content Include="Assets\bgs\15.jpg" />
+    <Content Include="Assets\bgs\16.jpg" />
+    <Content Include="Assets\bgs\17.jpg" />
+    <Content Include="Assets\bgs\18.jpg" />
+    <Content Include="Assets\bgs\19.jpg" />
     <Content Include="Assets\bgs\2.jpg" />
     <Content Include="Assets\bgs\3.jpg" />
     <Content Include="Assets\bgs\4.jpg" />
