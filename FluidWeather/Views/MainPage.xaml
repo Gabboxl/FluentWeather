@@ -472,37 +472,49 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <RelativePanel Grid.Row="0"
-                                   Margin="8,0,0,16">
-                        <!-- icon of place with text of the place -->
-                        <FontIcon x:Name="placeIcon"
-                                  FontSize="24"
-                                  RelativePanel.AlignVerticalCenterWithPanel="True"
-                                  FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
+                    <Grid Grid.Row="0"
+                          Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-                        <TextBlock x:Name="PlaceText" Text="place"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Margin="8,0,0,0"
-                                   RelativePanel.RightOf="placeIcon" />
+                        <RelativePanel
+                            Grid.Column="0">
+                            <!-- icon of place with text of the place -->
+                            <FontIcon x:Name="placeIcon"
+                                      FontSize="24"
+                                      RelativePanel.AlignVerticalCenterWithPanel="True"
+                                      FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
 
-                        <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
-                                   Style="{StaticResource CaptionTextBlockStyle}"
-                                   Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
-                                   Margin="8,0,0,0"
-                                   RelativePanel.Below="PlaceText"
-                                   RelativePanel.AlignLeftWith="PlaceText" />
+                            <TextBlock x:Name="PlaceText" Text="place"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Margin="8,0,0,0"
+                                       RelativePanel.RightOf="placeIcon" />
 
-                        <Button Name="ReloadButton"
-                                Click="ReloadButton_OnClick"
-                                RelativePanel.RightOf="PlaceText"
-                                Margin="16,0,0,0">
-                            <StackPanel>
-                                <FontIcon Width="25" Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
-                            </StackPanel>
-                        </Button>
+                            <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
+                                       Style="{StaticResource CaptionTextBlockStyle}"
+                                       Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
+                                       Margin="8,0,0,0"
+                                       RelativePanel.Below="PlaceText"
+                                       RelativePanel.AlignLeftWith="PlaceText" />
 
 
-                    </RelativePanel>
+                        </RelativePanel>
+
+                        <RelativePanel Grid.Column="1">
+                            <Button Name="ReloadButton"
+                                    Click="ReloadButton_OnClick"
+                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                    Margin="16,0,0,0">
+                                <StackPanel>
+                                    <FontIcon Width="25" Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
+                                </StackPanel>
+                            </Button>
+                        </RelativePanel>
+
+                    </Grid>
+
 
                     <RelativePanel
                         Grid.Row="1">
