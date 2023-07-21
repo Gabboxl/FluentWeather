@@ -1177,9 +1177,7 @@
                                             </RichTextBlock>
 
                                             <RichTextBlock
-                                                Margin="0,24,0,0"
-
-                                                Style="{ThemeResource BodyStrongTextBlockStyle}">
+                                                Margin="0,24,0,0">
                                                 <Paragraph>
                                                     <Run FontStyle="Normal" FontWeight="Bold">FluentWeather</Run>
                                                     <Run
