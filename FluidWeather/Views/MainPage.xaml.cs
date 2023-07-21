@@ -55,6 +55,14 @@ namespace FluidWeather.Views
 
         private Button _lastSelectedDayButton;
 
+        private string _appVersionText;
+
+        public string AppVersionText
+        {
+            get { return _appVersionText; }
+            set { Set(ref _appVersionText, value); }
+        }
+
 
         //segemented settings units selectedindex
         public int SettingsUnitsSelectedIndex
@@ -171,7 +179,19 @@ namespace FluidWeather.Views
 
             //pagina di default
             //NavigationService.Navigate(typeof(Views.DashWet));
+
+            AppVersionText = GetVersionDescription();
         }
+
+        private string GetVersionDescription()
+        {
+            var package = Package.Current;
+            var packageId = package.Id;
+            var version = packageId.Version;
+
+            return $"v{version.Major}.{version.Minor}.{version.Build}";
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

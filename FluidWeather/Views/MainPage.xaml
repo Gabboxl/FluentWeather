@@ -302,7 +302,10 @@
 
                                                 Style="{ThemeResource BodyStrongTextBlockStyle}">
                                                 <Paragraph>
-                                                    <Run FontStyle="Italic">FluentWeather</Run>
+                                                    <Run FontStyle="Normal" FontWeight="Bold">FluentWeather</Run>
+                                                    <Run
+                                                        d:DataContext="{d:DesignInstance views:MainPage }"
+                                                        Foreground="#A2FFFFFF" Text="{Binding AppVersionText}"></Run>
                                                     <Run>developed by</Run>
                                                     <Hyperlink
                                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
@@ -314,7 +317,7 @@
 
                                             <HyperlinkButton
                                                 Margin="0,8,0,0"
-                                                Content="Source code"
+                                                Content="GitHub project"
                                                 NavigateUri="http://github.com/Gabboxl/FluentWeather" />
 
                                         </StackPanel>
