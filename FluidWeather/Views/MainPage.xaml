@@ -324,12 +324,21 @@
         </muxc:NavigationView> -->
 
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" x:Name="MainInnerContentGrid"
+              Visibility="Collapsed"
+              >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
+            <!-- animate the content of the grid when making it visible -->
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition />
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
 
                 
 

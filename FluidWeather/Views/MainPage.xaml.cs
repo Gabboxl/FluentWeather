@@ -296,7 +296,11 @@ namespace FluidWeather.Views
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
-                    async () => { UpdateUi(_lastApiData); }
+                    async () =>
+                    {
+                        UpdateUi(_lastApiData);
+                        MainInnerContentGrid.Visibility = Visibility.Visible;
+                    }
                 );
             }
 
