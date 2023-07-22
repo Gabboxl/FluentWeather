@@ -40,6 +40,13 @@
                       TintLuminosityOpacity="0.8"
                       FallbackColor="#1DFFFFFF" />
 
+        <AcrylicBrush x:Key="MyAcrylicBrushButton"
+                      BackgroundSource="Backdrop"
+                      TintColor="#222CFCFC"
+                      TintOpacity="0.7"
+                      TintLuminosityOpacity="0.8"
+                      FallbackColor="#1DFFFFFF" />
+
         <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
 
 
@@ -161,13 +168,6 @@
             <RowDefinition Height="*" />
 
         </Grid.RowDefinitions>
-
-        <Grid.Resources>
-            <!--   <Storyboard x:Name="CrossfadeStoryboard">
-                <FadeInThemeAnimation x:Name="FadeInAnimation" Storyboard.TargetProperty="Opacity" Duration="0:0:1" />
-                <FadeOutThemeAnimation x:Name="FadeOutAnimation" Storyboard.TargetProperty="Opacity" Duration="0:0:1" />
-            </Storyboard> -->
-        </Grid.Resources>
 
 
         <ParallaxView
@@ -1121,7 +1121,8 @@
                         VerticalAlignment="Bottom"
                         Margin="0,0,24,24"
                         Width="48"
-                        Height="48">
+                        Height="48"
+                        Background="{ThemeResource MyAcrylicBrushButton}">
 
                     <StackPanel>
                         <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>

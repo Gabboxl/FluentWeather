@@ -87,7 +87,7 @@ namespace FluidWeather.Views
         }
 
         //dictionary for every icon code and its corresponsing background image
-        private static Dictionary<string, string> iconCodeToBackgroundImageNameDictionary = new()
+        private static readonly Dictionary<string, string> iconCodeToBackgroundImageNameDictionary = new()
         {
             {"0", "2"},
             {"1", "2"},
