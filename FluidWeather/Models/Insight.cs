@@ -10,16 +10,16 @@ namespace FluidWeather.Models
 
     public class Insight
     {
-        public string Title { get; set; }
-        public int Value { get; set; }
-        public string Description { get; set; }
-        public Dictionary<int, InsightLevel> Levels { get; set; }
-        public string IconName { get; set; }
+        public string Title { get; init; }
+        public int Value { get; init; }
+        public string Description { get; init; }
+        public Dictionary<int, InsightLevel> Levels { get; init; }
+        public string IconName { get; init; }
     }
 
     public static class InsightLevels
     {
-        public static Dictionary<int, InsightLevel> RunningLevels = new()
+        public static readonly Dictionary<int, InsightLevel> RunningLevels = new()
         {
             {1, InsightLevel.Low},
             {2, InsightLevel.Low},
@@ -33,7 +33,7 @@ namespace FluidWeather.Models
             {10, InsightLevel.High},
         };
 
-        public static Dictionary<int, InsightLevel> DrivingLevels = new()
+        public static readonly Dictionary<int, InsightLevel> DrivingLevels = new()
         {
             {0, InsightLevel.High},
             {1, InsightLevel.Medium},
@@ -44,7 +44,7 @@ namespace FluidWeather.Models
             {6, InsightLevel.Low},
         };
 
-        public static Dictionary<int, InsightLevel> PollenLevels = new()
+        public static readonly Dictionary<int, InsightLevel> PollenLevels = new()
         {
             {0, InsightLevel.High},
             {1, InsightLevel.High},
@@ -53,7 +53,7 @@ namespace FluidWeather.Models
             {4, InsightLevel.Low},
         };
 
-        public static Dictionary<int, InsightLevel> DrySkinLevels = new()
+        public static readonly Dictionary<int, InsightLevel> DrySkinLevels = new()
         {
             {0, InsightLevel.High},
             {1, InsightLevel.High},
@@ -68,7 +68,7 @@ namespace FluidWeather.Models
             {10, InsightLevel.Low},
         };
 
-        public static Dictionary<int, InsightLevel> WateringLevels = new()
+        public static readonly Dictionary<int, InsightLevel> WateringLevels = new()
         {
             {0, InsightLevel.High},
             {1, InsightLevel.High},
