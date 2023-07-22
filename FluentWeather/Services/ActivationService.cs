@@ -61,7 +61,7 @@ namespace FluentWeather.Services
 
         private async Task InitializeAsync()
         {
-            await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
+            //await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
         }
 
@@ -94,8 +94,11 @@ namespace FluentWeather.Services
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()
         {
-            yield return Singleton<ToastNotificationsService>.Instance;
-            yield return Singleton<BackgroundTaskService>.Instance;
+            //yield return Singleton<ToastNotificationsService>.Instance;
+            //yield return Singleton<BackgroundTaskService>.Instance;
+
+            //da rimuovere se c'è altre instanze
+            yield break;
         }
 
         private bool IsInteractive(object args)
