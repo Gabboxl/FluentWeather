@@ -1,5 +1,4 @@
 ﻿using FluidWeather.Models;
-using FluidWeather.Utils;
 using System;
 using System.Globalization;
 using Windows.UI.Xaml.Media.Imaging;

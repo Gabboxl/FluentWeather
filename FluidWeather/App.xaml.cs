@@ -27,7 +27,7 @@ namespace FluidWeather
 
         public IServiceProvider Container { get; }
 
-        public IServiceProvider ConfigureDependencyInjection()
+        private IServiceProvider ConfigureDependencyInjection()
         {
             var serviceCollection = new ServiceCollection();
 
