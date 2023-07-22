@@ -37,21 +37,21 @@ namespace FluidWeather.Views
         public NavigationViewViewModel NavigationViewViewModel { get; } =
             new NavigationViewViewModel();
 
-        private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
+        private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
-        private static HttpClient sharedClient3 = new()
+        private static readonly HttpClient sharedClient3 = new()
         {
             BaseAddress = new Uri("https://api.weather.com/v3/"),
         };
 
-        private static HttpClient sharedClient2 = new()
+        private static readonly HttpClient sharedClient2 = new()
         {
             BaseAddress = new Uri("https://api.weather.com/v2/"),
         };
 
-        private readonly string systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+        private readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
-        RootV3Response lastApiData;
+        private RootV3Response _lastApiData;
 
         private Button _lastSelectedDayButton;
 
@@ -156,7 +156,7 @@ namespace FluidWeather.Views
 
             InitializeStoryboards();
 
-            AppViewModel.UpdateUIAction += (() => { Task.Run(LoadApiData); });
+            AppViewModel.UpdateUIAction += () => { Task.Run(LoadApiData); };
 
             Task.Run(LoadApiData);
         }
@@ -218,7 +218,7 @@ namespace FluidWeather.Views
                 && !string.IsNullOrEmpty(sender.Text))
             {
                 var response = await sharedClient3.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
-                                                            systemLanguage +
+                                                            _systemLanguage +
                                                             "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
@@ -282,7 +282,7 @@ namespace FluidWeather.Views
                     + lastPlaceId
                     + "&units=" + await GetUnitsCode()
                     + "&language=" +
-                    systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+                    _systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
                 //&locationType=city (x solo citta)
 
                 response.EnsureSuccessStatusCode();
@@ -290,13 +290,13 @@ namespace FluidWeather.Views
                 var jsonResponse = await response.Content.ReadAsStringAsync();
 
 
-                lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
-                    async () => { UpdateUi(lastApiData); }
+                    async () => { UpdateUi(_lastApiData); }
                 );
             }
 
@@ -498,8 +498,6 @@ namespace FluidWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
-            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
-
 
             //update the ui
             List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
@@ -507,7 +505,7 @@ namespace FluidWeather.Views
             int i = 0;
 
 
-            var firstDate = lastApiData.v3wxforecasthourly10day.validTimeLocal[0];
+            var firstDate = _lastApiData.v3wxforecasthourly10day.validTimeLocal[0];
 
             //subtract daytoload to firstdate to get the index of the first day to load
             int daysDiff = dayToLoad.Date.Subtract(firstDate.Date).Days;
@@ -516,20 +514,20 @@ namespace FluidWeather.Views
             {
                 for (int j = 0; j < 7; j++) //check only the first 7 hours of the day
                 {
-                    if (lastApiData.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
+                    if (_lastApiData.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(lastApiData.v3wxforecasthourly10day, j));
+                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, j));
                     }
                 }
             }
             else
             {
-                foreach (var date in lastApiData.v3wxforecasthourly10day.validTimeLocal)
+                foreach (var date in _lastApiData.v3wxforecasthourly10day.validTimeLocal)
                 {
                     //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
                     if (date.Date == firstDate.Date.AddDays(daysDiff))
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(lastApiData.v3wxforecasthourly10day, i));
+                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i));
                     }
 
                     i++;
@@ -546,16 +544,16 @@ namespace FluidWeather.Views
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
 
             var indexOfDayInsights =
-                lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x =>
+                _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x =>
                     x.Date == dayToLoad.Date);
 
             //insights controls
             RunningInsight.Insight = new Insight()
             {
                 Title = "Running",
-                Value = lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
+                Value = _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
                 Description =
-                    lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDayInsights],
+                    _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDayInsights],
                 Levels = InsightLevels.RunningLevels,
                 IconName = "running"
             };
@@ -564,9 +562,9 @@ namespace FluidWeather.Views
             {
                 Title = "Driving",
                 Value =
-                    lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDayInsights],
+                    _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDayInsights],
                 Description =
-                    lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[
+                    _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[
                         indexOfDayInsights],
                 Levels = InsightLevels.DrivingLevels,
                 IconName = "driving"
@@ -580,8 +578,8 @@ namespace FluidWeather.Views
             DryskinInsight.Insight = new Insight()
             {
                 Title = "Dry skin",
-                Value = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
-                Description = lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
+                Value = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
+                Description = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
                 Levels = InsightLevels.DrySkinLevels,
                 IconName = "dry"
             };
@@ -589,44 +587,44 @@ namespace FluidWeather.Views
             WateringInsight.Insight = new Insight()
             {
                 Title = "Watering need",
-                Value = lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDayInsights],
+                Value = _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDayInsights],
                 Description =
-                    lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDayInsights],
+                    _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDayInsights],
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
 
 
             var indexOfDayDailyData =
-                lastApiData.v3wxforecastdaily10day.validTimeLocal.FindIndex(x =>
+                _lastApiData.v3wxforecastdaily10day.validTimeLocal.FindIndex(x =>
                     x.Date == dayToLoad.Date);
 
             //day summary
-            var daySummaryString = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2];
+            var daySummaryString = _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2];
 
             DaySummaryText.Text =  daySummaryString ?? "--";
-            NightSummaryText.Text = lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
+            NightSummaryText.Text = _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
 
             //sunset and sunrise
-            var sunriseTime = lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
+            var sunriseTime = _lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
             SunriseTimeText.Text = sunriseTime == null ? "--" : sunriseTime.Value.ToString("h:mm tt");
 
-            var sunsetTime = lastApiData.v3wxforecastdaily10day.sunsetTimeLocal[indexOfDayDailyData];
+            var sunsetTime = _lastApiData.v3wxforecastdaily10day.sunsetTimeLocal[indexOfDayDailyData];
             SunsetTimeText.Text = sunsetTime == null ? "--" : sunsetTime.Value.ToString("h:mm tt");
 
             //moonrise and moonset
-            var moonriseTime = lastApiData.v3wxforecastdaily10day.moonriseTimeLocal[indexOfDayDailyData];
+            var moonriseTime = _lastApiData.v3wxforecastdaily10day.moonriseTimeLocal[indexOfDayDailyData];
             MoonriseTimeText.Text = moonriseTime == null ? "--" : moonriseTime.Value.ToString("h:mm tt");
 
-            var moonsetTime = lastApiData.v3wxforecastdaily10day.moonsetTimeLocal[indexOfDayDailyData];
+            var moonsetTime = _lastApiData.v3wxforecastdaily10day.moonsetTimeLocal[indexOfDayDailyData];
             MoonsetTimeText.Text = moonsetTime == null ? "--" : moonsetTime.Value.ToString("h:mm tt");
 
             //lunar phase
-            var lunarPhase = lastApiData.v3wxforecastdaily10day.moonPhase[indexOfDayDailyData];
+            var lunarPhase = _lastApiData.v3wxforecastdaily10day.moonPhase[indexOfDayDailyData];
             LunarphaseText.Text = lunarPhase;
 
             //moon phase icon
-            var moonPhaseIcon = lastApiData.v3wxforecastdaily10day.moonPhaseCode[indexOfDayDailyData];
+            var moonPhaseIcon = _lastApiData.v3wxforecastdaily10day.moonPhaseCode[indexOfDayDailyData];
 
             var svgImageSource = new SvgImageSource(new Uri($"ms-appx:///Assets/varicons/{moonPhaseIcon}.svg"));
             LunarphaseIcon.Source = svgImageSource;
