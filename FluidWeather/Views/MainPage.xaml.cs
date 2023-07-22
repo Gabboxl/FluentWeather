@@ -413,9 +413,9 @@ namespace FluidWeather.Views
             //var imageSource = new SvgImageSource(asd);
 
             //get svgimagesource object from image source
-            var svgImageSource = (SvgImageSource) mainIcon.Source;
+            var svgImageSource = (SvgImageSource) MainIcon.Source;
             svgImageSource.UriSource = newIconUri;
-            mainIcon.Source = svgImageSource;
+            MainIcon.Source = svgImageSource;
 
 
             //update chips
@@ -490,7 +490,7 @@ namespace FluidWeather.Views
             elementVisual.StartAnimation("Offset.x", slideAnimation);*/
 
 
-            repeaterDays.ItemsSource = dayButtonAdapters;
+            RepeaterDays.ItemsSource = dayButtonAdapters;
 
             //select first day button
             EmulateDayButtonClick(0);
@@ -665,7 +665,7 @@ namespace FluidWeather.Views
 
         private void EmulateDayButtonClick(int index)
         {
-            var button = (Button) repeaterDays.GetOrCreateElement(index);
+            var button = (Button) RepeaterDays.GetOrCreateElement(index);
 
             //emulate click on button
             var ap = new ButtonAutomationPeer(button);

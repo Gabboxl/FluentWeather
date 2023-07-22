@@ -174,7 +174,7 @@
             x:Name="parallaxView"
             Grid.RowSpan="10"
 
-            Source="{x:Bind mainScroll}" VerticalShift="50">
+            Source="{x:Bind MainScroll}" VerticalShift="50">
             <Grid x:Name="ParallaxContainer">
                 <Image x:Name="Image1" Stretch="UniformToFill" Opacity="1">
                 </Image>
@@ -345,7 +345,7 @@
 
 
             <ScrollViewer Grid.Row="1"
-                          x:Name="mainScroll"
+                          x:Name="MainScroll"
                           HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
@@ -373,7 +373,7 @@
                         <RelativePanel
                             Grid.Column="0">
                             <!-- icon of place with text of the place -->
-                            <FontIcon x:Name="placeIcon"
+                            <FontIcon x:Name="PlaceIcon"
                                       FontSize="24"
                                       RelativePanel.AlignVerticalCenterWithPanel="True"
                                       FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
@@ -381,7 +381,7 @@
                             <TextBlock x:Name="PlaceText" Text="place"
                                        Style="{StaticResource SubtitleTextBlockStyle}"
                                        Margin="8,0,0,0"
-                                       RelativePanel.RightOf="placeIcon" />
+                                       RelativePanel.RightOf="PlaceIcon" />
 
                             <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
                                        Style="{StaticResource CaptionTextBlockStyle}"
@@ -410,7 +410,7 @@
                     <RelativePanel
                         Grid.Row="1">
 
-                        <Image x:Name="mainIcon"
+                        <Image x:Name="MainIcon"
                                Width="75"
                                RelativePanel.AlignVerticalCenterWithPanel="True"
                                Stretch="Uniform">
@@ -424,7 +424,7 @@
                                    Style="{StaticResource DisplayTextBlockStyle}"
                                    Margin="8,0,0,0"
 
-                                   RelativePanel.RightOf="mainIcon" />
+                                   RelativePanel.RightOf="MainIcon" />
 
                         <TextBlock x:Name="MainPhraseText" Text="phrase"
                                    Style="{StaticResource SubtitleTextBlockStyle}"
@@ -505,8 +505,8 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="ForecastText"
-                                   Grid.Row="0"
+                        <TextBlock
+                            Grid.Row="0"
                                    Text="Daily forecast"
                                    Style="{StaticResource SubtitleTextBlockStyle}"
 
@@ -518,7 +518,7 @@
                                       HorizontalScrollBarVisibility="Hidden">
 
                             <muxc:ItemsRepeater
-                                x:Name="repeaterDays">
+                                x:Name="RepeaterDays">
 
                                 <muxc:ItemsRepeater.ItemTemplate>
                                     <DataTemplate x:DataType="adapters:DayButtonAdapter">
@@ -596,7 +596,6 @@
                         <RelativePanel Grid.Row="0">
                             <TextBlock
                                 x:Name="HourlyTitleText"
-                                Grid.Row="0"
                                 Text="Hourly"
                                 Style="{StaticResource BodyTextBlockStyle}"
                                 FontSize="20"
@@ -625,7 +624,6 @@
                             Background="{ThemeResource MyAcrylicBrush}">
 
                             <ListView x:Name="hourlyListview"
-                                      Grid.Row="1"
                                       ScrollViewer.VerticalScrollMode="Disabled"
                                       ScrollViewer.HorizontalScrollMode="Enabled"
                                       ScrollViewer.HorizontalScrollBarVisibility="Visible"
@@ -737,7 +735,6 @@
                         <RelativePanel Grid.Row="0">
                             <TextBlock
                                 x:Name="SuggestionsText"
-                                Grid.Row="0"
                                 Text="Weather Insights"
                                 Style="{StaticResource BodyTextBlockStyle}"
                                 FontSize="20"
