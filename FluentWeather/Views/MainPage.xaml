@@ -1,0 +1,1238 @@
+﻿<Page
+    x:Class="FluentWeather.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FluentWeather"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:FluentWeather.Helpers"
+    xmlns:views="using:FluentWeather.Views"
+    xmlns:controls="using:FluentWeather.Controls"
+    xmlns:models="using:FluentWeather.Models"
+    xmlns:adapters="using:FluentWeather.Adapters"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+
+    <Page.Resources>
+        <AcrylicBrush x:Key="MyAcrylicBrush"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0"
+                      TintLuminosityOpacity="0"
+                      FallbackColor="#1DFFFFFF" />
+
+        <AcrylicBrush x:Key="MyAcrylicBrushLine"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0"
+                      TintLuminosityOpacity="0.1"
+                      FallbackColor="#1DFFFFFF" />
+
+        <AcrylicBrush x:Key="MyAcrylicBrushTitleText"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0.7"
+                      TintLuminosityOpacity="0.8"
+                      FallbackColor="#1DFFFFFF" />
+
+        <AcrylicBrush x:Key="MyAcrylicBrushButton"
+                      BackgroundSource="Backdrop"
+                      TintColor="#222CFCFC"
+                      TintOpacity="0.7"
+                      TintLuminosityOpacity="0.8"
+                      FallbackColor="#1DFFFFFF" />
+
+        <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
+
+
+        <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
+               BasedOn="{StaticResource DefaultListViewItemStyle}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+
+        </Style>
+
+
+        <Style x:Key="SelectedDayButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="Background" Value="#1f2022" />
+            <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource AccentFillColorDefaultBrush}" /> <!-- moddato -->
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+            <Setter Property="FocusVisualMargin" Value="-3" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          AutomationProperties.AccessibilityView="Raw"
+                                          Background="{TemplateBinding Background}"
+                                          BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          CornerRadius="{TemplateBinding CornerRadius}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTransitions="{TemplateBinding ContentTransitions}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Padding="{TemplateBinding Padding}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#303236" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#1f2022" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource AccentFillColorDefaultBrush}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBackgroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
+                                                                           Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="{ThemeResource ButtonForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+
+
+        <ParallaxView
+            x:Name="parallaxView"
+            Grid.RowSpan="10"
+
+            Source="{x:Bind MainScroll}" VerticalShift="50">
+            <Grid x:Name="ParallaxContainer">
+                <Image x:Name="Image1" Stretch="UniformToFill" Opacity="1">
+                </Image>
+                <Image x:Name="Image2" Stretch="UniformToFill" Opacity="0" />
+            </Grid>
+        </ParallaxView>
+
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="TitleBarGrid" Background="Transparent"
+                  Grid.Row="0">
+                <!-- Width of the padding columns is set in LayoutMetricsChanged handler. -->
+                <!-- Using padding columns instead of Margin ensures that the background
+             paints the area under the caption control buttons (for transparent buttons). -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
+                </Grid.ColumnDefinitions>
+
+
+                <Image Source="/Assets/Square44x44Logo.png"
+                       Grid.Column="1"
+                       HorizontalAlignment="Left"
+                       Width="24" Height="24"
+                       Margin="16,0,0,0" />
+                <TextBlock x:Name="AppTitleTextBlock"
+                           Text="test"
+                           Style="{StaticResource CaptionTextBlockStyle}"
+                           Grid.Column="3"
+                           VerticalAlignment="Center"
+                           Margin="0,0,0,0" />
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch"
+                  Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"></ColumnDefinition>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RelativePanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                    <!-- progress ring -->
+                    <muxc:ProgressRing x:Name="DataProgressRing"
+                                       IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
+                                       Margin="8,0,0,0" />
+                </RelativePanel>
+
+            </Grid>
+
+
+            <Grid HorizontalAlignment="Stretch"
+                  Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="LeftMarginColumn" Width="190" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="190" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="1" MaxWidth="500">
+
+                    <AutoSuggestBox
+                        x:Name="AutoSuggestBoxMain"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        AutoMaximizeSuggestionArea="True"
+                        MaxSuggestionListHeight="700"
+                        PlaceholderText="Search a place..."
+                        QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                        KeyUp="AutoSuggestBoxMain_OnKeyUp"
+                        KeyDown="AutoSuggestBoxMain_OnKeyUp"
+
+
+                        Style="{ThemeResource DefaultAutoSuggestBoxStyle}"
+                        UpdateTextOnSelect="False"
+
+                        TextMemberPath="address"
+                        TextChanged="AutoSuggestBox_TextChanged"
+                        SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                        ItemContainerStyle="{StaticResource ControlFullStretchStyle}"
+                        AutomationProperties.Name="Basic AutoSuggestBox">
+
+                        <AutoSuggestBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:SearchedLocation">
+                                <RelativePanel Margin="2,0,0,0">
+
+
+                                    <FontIcon x:Name="icon"
+                                              FontSize="24"
+                                              RelativePanel.AlignVerticalCenterWithPanel="True"
+                                              FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
+
+
+                                    <TextBlock x:Name="text1" Text="{x:Bind address}"
+                                               Margin="8,0,0,0"
+                                               RelativePanel.RightOf="icon" />
+                                </RelativePanel>
+                            </DataTemplate>
+                        </AutoSuggestBox.ItemTemplate>
+
+                    </AutoSuggestBox>
+                </Grid>
+            </Grid>
+
+
+        </Grid>
+
+
+        <!--     <muxc:NavigationView Grid.Row="1"
+                             IsTitleBarAutoPaddingEnabled="False"
+                             IsBackButtonVisible="Collapsed"
+                             IsBackEnabled="{x:Bind NavigationViewViewModel.IsBackEnabled, Mode=OneWay}"
+                             SelectedItem="{x:Bind NavigationViewViewModel.Selected, Mode=OneWay}"
+                             x:Name="navigationView"
+                             PaneDisplayMode="Left"
+                             IsPaneToggleButtonVisible="False">
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Content="Dashboard" helpers:NavHelper.NavigateTo="views:DashWet">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xe80f;" FontFamily="{StaticResource FluentIcons}" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Content="Agenda" helpers:NavHelper.NavigateTo="views:DashWet">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xe787;" FontFamily="{StaticResource FluentIcons}" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Content="Bacheca" helpers:NavHelper.NavigateTo="views:DashWet">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xe718;" FontFamily="{StaticResource FluentIcons}" />
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+            </muxc:NavigationView.MenuItems>
+
+            <Frame x:Name="contentFrame" IsTabStop="True" />
+
+        </muxc:NavigationView> -->
+
+
+        <Grid Grid.Row="1" x:Name="MainInnerContentGrid"
+              Visibility="Collapsed"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- animate the content of the grid when making it visible -->
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition />
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+
+                
+
+            <!--
+                <Button Name="NextPageButton"
+                        Click="NextPageButton_OnClick"
+                        RelativePanel.RightOf="ReloadButton"
+                        Margin="8,0,0,0">
+                    <StackPanel>
+                        <FontIcon Glyph="&#xE76C;" FontFamily="{StaticResource FluentIcons}" />
+                    </StackPanel>
+                </Button> -->
+
+
+            <ScrollViewer Grid.Row="1"
+                          x:Name="MainScroll"
+                          HorizontalScrollMode="Disabled"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                <Grid Padding="40,64,0,64">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0"
+                          Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <RelativePanel
+                            Grid.Column="0">
+                            <!-- icon of place with text of the place -->
+                            <FontIcon x:Name="PlaceIcon"
+                                      FontSize="24"
+                                      RelativePanel.AlignVerticalCenterWithPanel="True"
+                                      FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
+
+                            <TextBlock x:Name="PlaceText" Text="place"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                       Margin="8,0,0,0"
+                                       RelativePanel.RightOf="PlaceIcon" />
+
+                            <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
+                                       Style="{StaticResource CaptionTextBlockStyle}"
+                                       Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
+                                       Margin="8,0,0,0"
+                                       RelativePanel.Below="PlaceText"
+                                       RelativePanel.AlignLeftWith="PlaceText" />
+
+
+                        </RelativePanel>
+
+                        <RelativePanel Grid.Column="1">
+                            <Button Name="ReloadButton"
+                                    Click="ReloadButton_OnClick"
+                                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                                    Margin="16,0,0,0">
+                                <StackPanel>
+                                    <FontIcon Width="25" Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
+                                </StackPanel>
+                            </Button>
+                        </RelativePanel>
+
+                    </Grid>
+
+
+                    <RelativePanel
+                        Grid.Row="1">
+
+                        <Image x:Name="MainIcon"
+                               Width="75"
+                               RelativePanel.AlignVerticalCenterWithPanel="True"
+                               Stretch="Uniform">
+                            <Image.Source>
+                                <SvgImageSource />
+                            </Image.Source>
+                        </Image>
+
+                        <TextBlock x:Name="CurrentTempText" Text="temperature"
+
+                                   Style="{StaticResource DisplayTextBlockStyle}"
+                                   Margin="8,0,0,0"
+
+                                   RelativePanel.RightOf="MainIcon" />
+
+                        <TextBlock x:Name="MainPhraseText" Text="phrase"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                   Margin="16,0,0,0"
+                                   RelativePanel.Above="FeelsLikeText"
+                                   RelativePanel.AlignLeftWith="FeelsLikeText" />
+
+
+                        <TextBlock x:Name="FeelsLikeText" Text="feelslike"
+
+                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                   Margin="16,0,0,16"
+                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                                   RelativePanel.AlignBottomWithPanel="True"
+                                   RelativePanel.RightOf="CurrentTempText" />
+                    </RelativePanel>
+
+
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                Margin="0,16,0,0">
+
+                        <controls:DetailChipControl
+                            x:Name="WindPanel"
+                            Title="Wind">
+                        </controls:DetailChipControl>
+
+
+                        <!-- pressure panel -->
+                        <controls:DetailChipControl
+                            x:Name="PressurePanel"
+                            Title="Pressure">
+                        </controls:DetailChipControl>
+
+
+                        <!-- humidity panel -->
+                        <controls:DetailChipControl
+                            x:Name="HumidityPanel"
+                            Title="Humidity">
+                        </controls:DetailChipControl>
+
+
+                        <!-- visibility panel -->
+                        <controls:DetailChipControl
+                            x:Name="VisibilityPanel"
+                            Title="Visibility">
+                        </controls:DetailChipControl>
+
+
+                        <!-- dew point panel -->
+                        <controls:DetailChipControl
+                            x:Name="DewPointPanel"
+                            Title="Dew Point">
+                        </controls:DetailChipControl>
+
+
+                        <!-- pollen panel -->
+                        <!--<controls:DetailChipControl
+                            x:Name="PollenPanel"
+                            Title="Pollen"
+                            >
+                        </controls:DetailChipControl>-->
+
+
+                        <!-- uv index panel -->
+                        <controls:DetailChipControl
+                            x:Name="UVIndexPanel"
+                            Title="UV Index">
+                        </controls:DetailChipControl>
+
+
+                    </StackPanel>
+
+                    <Grid Grid.Row="3"
+                          Margin="0,32,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                                   Text="Daily forecast"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"
+
+                                   Margin="0,0,0,16" />
+
+                        <ScrollViewer Grid.Row="1"
+                                      VerticalScrollMode="Disabled"
+                                      VerticalScrollBarVisibility="Disabled"
+                                      HorizontalScrollBarVisibility="Hidden">
+
+                            <muxc:ItemsRepeater
+                                x:Name="RepeaterDays">
+
+                                <muxc:ItemsRepeater.ItemTemplate>
+                                    <DataTemplate x:DataType="adapters:DayButtonAdapter">
+                                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                DataContext="{x:Bind}"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch"
+                                                Width="135"
+                                                Height="70"
+                                                Click="DayButtonClick">
+                                            <Button.Content>
+                                                <RelativePanel HorizontalAlignment="Stretch"
+                                                               VerticalAlignment="Stretch">
+
+                                                    <Image x:Name="mainIcon"
+                                                           Width="28"
+                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                           Stretch="Uniform"
+                                                           RelativePanel.AlignTopWithPanel="True"
+                                                           RelativePanel.AlignLeftWithPanel="True"
+                                                           Source="{x:Bind svgImageIcon}">
+                                                    </Image>
+
+                                                    <TextBlock Text="{x:Bind ShortDayName }"
+                                                               RelativePanel.AlignTopWithPanel="True"
+                                                               RelativePanel.AlignRightWithPanel="True" />
+
+                                                    <TextBlock
+                                                        Text="{x:Bind Temperature }"
+                                                        RelativePanel.AlignBottomWithPanel="True"
+                                                        RelativePanel.AlignLeftWithPanel="True">
+                                                    </TextBlock>
+
+                                                    <Image x:Name="precipIcon"
+                                                           Width="16"
+                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                           Stretch="Uniform"
+                                                           RelativePanel.AlignBottomWithPanel="True"
+                                                           RelativePanel.LeftOf="precipChanceText"
+                                                           Margin="0,0,4,0"
+                                                           Source="{x:Bind svgPrecipIcon}">
+
+                                                    </Image>
+
+                                                    <TextBlock
+                                                        x:Name="precipChanceText"
+                                                        Text="{x:Bind PrecipitationChance}"
+                                                        RelativePanel.AlignBottomWithPanel="True"
+                                                        RelativePanel.AlignRightWithPanel="True">
+                                                    </TextBlock>
+                                                </RelativePanel>
+                                            </Button.Content>
+
+                                        </Button>
+                                    </DataTemplate>
+                                </muxc:ItemsRepeater.ItemTemplate>
+
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:StackLayout Spacing="8"
+                                                      Orientation="Horizontal" />
+                                </muxc:ItemsRepeater.Layout>
+                            </muxc:ItemsRepeater>
+
+                        </ScrollViewer>
+                    </Grid>
+
+
+                    <Grid Grid.Row="4"
+                          Margin="0,32,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <RelativePanel Grid.Row="0">
+                            <TextBlock
+                                x:Name="HourlyTitleText"
+                                Text="Hourly"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                FontSize="20"
+                                Margin="0,0,0,16" />
+
+                            <!--<labs:Segmented SelectedIndex="0" RelativePanel.RightOf="HourlyTitleText"
+                                            Margin="16,0,0,0"
+                                            >
+                                <labs:SegmentedItem Content="Detailed" />
+                                <labs:SegmentedItem Content="Summary (coming soon)" IsEnabled="False" />
+                                
+                                ~1~ <labs:SegmentedItem Content="Item 3" Icon="{ui:SymbolIcon Symbol=Home}" /> @1@
+                            </labs:Segmented>-->
+
+                        </RelativePanel>
+
+
+                        <Grid
+                            Margin="0,0,32,0"
+                            Grid.Row="1"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                            CornerRadius="8"
+                            Padding="12"
+                            BorderThickness="2"
+                            BorderBrush="{ThemeResource MyAcrylicBrush}"
+                            Background="{ThemeResource MyAcrylicBrush}">
+
+                            <ListView x:Name="hourlyListview"
+                                      ScrollViewer.VerticalScrollMode="Disabled"
+                                      ScrollViewer.HorizontalScrollMode="Enabled"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                      ScrollViewer.IsDeferredScrollingEnabled="False"
+                                      SelectionMode="None">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Margin" Value="0" />
+                                        <Setter Property="Padding" Value="0" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="adapters:HourDataAdapter">
+                                        <Grid Width="100" Height="200" Margin="0">
+                                            <RelativePanel>
+
+                                                <!-- <Rectangle x:Name="Rectangle1"
+                                                Fill="#00FFFFFF"
+                                                       Height="1"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       Width="100"
+                                                       Margin="0,8,0,0"/> -->
+
+                                                <Image x:Name="wetIcon"
+                                                       Margin="0,8,0,0"
+                                                       Width="40"
+                                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       Source="{x:Bind svgImageIcon}">
+                                                </Image>
+
+                                                <TextBlock x:Name="TemperatureText"
+                                                           Text="{x:Bind Temperature }"
+                                                           RelativePanel.Below="wetIcon"
+                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                           TextAlignment="Center"
+                                                           Style="{StaticResource SubtitleTextBlockStyle}"
+                                                           FontSize="28">
+                                                </TextBlock>
+
+                                                <!-- phrase text -->
+                                                <TextBlock Text="{x:Bind Phrase }"
+                                                           RelativePanel.Below="TemperatureText"
+                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                           TextAlignment="Center"
+                                                           Style="{StaticResource BodyTextBlockStyle}"
+                                                           FontSize="12">
+                                                </TextBlock>
+
+                                                <!-- precip icon -->
+                                                <Image x:Name="precipIcon"
+                                                       Width="16"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.Above="Rectangle2"
+                                                       RelativePanel.LeftOf="precipChanceText"
+                                                       Margin="0,0,4,0"
+                                                       Source="{x:Bind svgPrecipIcon}" />
+
+                                                <!-- precip chance text -->
+                                                <TextBlock x:Name="precipChanceText"
+                                                           Text="{x:Bind PrecipitationChance}"
+                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                           RelativePanel.Above="Rectangle2">
+                                                </TextBlock>
+
+                                                <!-- horizontal line -->
+                                                <Rectangle x:Name="Rectangle2"
+                                                           Fill="#7FFFFFFF"
+                                                           Height="1"
+                                                           RelativePanel.Above="HourText"
+                                                           Width="100"
+                                                           Margin="0,8,0,0" />
+
+                                                <TextBlock x:Name="HourText"
+                                                           Text="{Binding Hour}"
+                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                           RelativePanel.AlignBottomWithPanel="True" />
+
+                                            </RelativePanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </Grid>
+
+
+                    </Grid>
+
+
+                    <Grid Grid.Row="5"
+                          Margin="0,32,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <RelativePanel Grid.Row="0">
+                            <TextBlock
+                                x:Name="SuggestionsText"
+                                Text="Weather Insights"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                FontSize="20"
+                                Margin="0,0,0,16" />
+
+
+                        </RelativePanel>
+
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Orientation="Horizontal">
+
+                            <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
+                            <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
+
+                            <!--
+                            <controls:InsightControl x:Name="PollenInsight"></controls:InsightControl>
+                            -->
+
+                            <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
+
+                            <controls:InsightControl x:Name="DryskinInsight"></controls:InsightControl>
+
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+                    <Grid Grid.Row="6"
+                          Margin="0,12,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <RelativePanel Grid.Row="0">
+                            <!--<TextBlock
+                                x:Name="SuggestionsText"
+                                Grid.Row="0"
+                                Text="Weather Insights"
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                FontSize="20"
+                                Margin="0,0,0,16" />-->
+
+
+                        </RelativePanel>
+
+
+                        <StackPanel
+                            Grid.Row="1"
+                            Orientation="Horizontal">
+
+
+                            <Grid
+                                Margin="4"
+                                CornerRadius="6"
+                                Padding="0"
+                                BorderThickness="2"
+                                BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                Background="{ThemeResource MyAcrylicBrush}"
+                                Width="293">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+
+                                    <TextBlock x:Name="ChipTitle" Text="Day Summary"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="8,8,0,0"
+                                               FontSize="16"
+                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                               RelativePanel.AlignTopWithPanel="True" />
+
+                                    <!-- horizontal line -->
+                                    <Rectangle x:Name="Rectangle2"
+                                               Fill="{ThemeResource MyAcrylicBrushLine}"
+                                               Height="1.2"
+                                               RelativePanel.Below="ChipTitle"
+                                               Width="288"
+                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                               Margin="0,6,0,0" />
+                                </RelativePanel>
+
+                                <RelativePanel Grid.Row="1"
+                                               Margin="8">
+
+                                    <TextBlock x:Name="DayTitle" Text="Day"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="0,0,0,0"
+                                               Opacity="0.6"
+                                               RelativePanel.AlignTopWithPanel="True" />
+
+                                    <TextBlock x:Name="DaySummaryText" Text="hellox"
+                                               Style="{StaticResource BodyTextBlockStyle}"
+                                               Margin="0,6,0,0"
+                                               IsTextSelectionEnabled="True"
+                                               RelativePanel.Below="DayTitle" />
+
+                                    <TextBlock x:Name="NightTitle" Text="Night"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="0,6,0,0"
+                                               Opacity="0.6"
+                                               RelativePanel.Below="DaySummaryText" />
+
+                                    <TextBlock x:Name="NightSummaryText" Text="hello"
+                                               Style="{StaticResource BodyTextBlockStyle}"
+                                               Margin="0,6,0,0"
+                                               IsTextSelectionEnabled="True"
+                                               RelativePanel.Below="NightTitle" />
+
+
+                                </RelativePanel>
+
+
+                            </Grid>
+
+
+                            <Grid
+                                Margin="4"
+                                CornerRadius="6"
+                                Padding="0"
+                                BorderThickness="2"
+                                BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                Background="{ThemeResource MyAcrylicBrush}"
+                                Width="294">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+
+                                    <TextBlock x:Name="SunChipTitle" Text="Sun"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="8,8,0,0"
+                                               FontSize="16"
+                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                               RelativePanel.AlignTopWithPanel="True" />
+
+                                    <Rectangle
+                                        Fill="{ThemeResource MyAcrylicBrushLine}"
+                                        Height="1.2"
+                                        RelativePanel.Below="SunChipTitle"
+                                        Width="288"
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        Margin="0,6,0,0" />
+                                </RelativePanel>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+
+                                    <RelativePanel Grid.Row="0"
+                                                   Margin="8">
+
+                                        <Image x:Name="SunriseIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/SunriseNew.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="SunriseTitle" Text="Sunrise"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,0,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="SunriseIcon" />
+
+                                        <TextBlock x:Name="SunriseTimeText" Text="risetime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,0,0,0"
+                                                   RelativePanel.AlignLeftWith="SunriseTitle"
+                                                   RelativePanel.Below="SunriseTitle" />
+
+
+                                    </RelativePanel>
+
+                                    <RelativePanel Grid.Row="1"
+                                                   Margin="8">
+
+                                        <Image x:Name="SunsetIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/SunsetNew.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="SunsetTitle" Text="Sunset"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="SunsetIcon" />
+
+                                        <TextBlock x:Name="SunsetTimeText" Text="settime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,0,0,0"
+                                                   RelativePanel.AlignLeftWith="SunsetTitle"
+                                                   RelativePanel.Below="SunsetTitle" />
+
+                                    </RelativePanel>
+
+                                </Grid>
+
+
+                            </Grid>
+
+
+                             <Grid
+                                Margin="4"
+                                CornerRadius="6"
+                                Padding="0"
+                                BorderThickness="2"
+                                BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                Background="{ThemeResource MyAcrylicBrush}"
+                                Width="293">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+
+                                    <TextBlock x:Name="MoonChipTitle" Text="Moon"
+                                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                                               Margin="8,8,0,0"
+                                               FontSize="16"
+                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                               RelativePanel.AlignTopWithPanel="True" />
+
+                                    <Rectangle
+                                        Fill="{ThemeResource MyAcrylicBrushLine}"
+                                        Height="1.2"
+                                        RelativePanel.Below="MoonChipTitle"
+                                        Width="288"
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        Margin="0,6,0,0" />
+                                </RelativePanel>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <RelativePanel Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Margin="8">
+
+                                        <Image x:Name="MoonriseIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/Moonrise.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="MoonriseTitle" Text="Moonrise"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="MoonriseIcon" />
+
+                                        <TextBlock x:Name="MoonriseTimeText" Text="risetime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,2,0,0"
+                                                   RelativePanel.AlignLeftWith="MoonriseTitle"
+                                                   RelativePanel.Below="MoonriseTitle" />
+
+
+                                    </RelativePanel>
+
+                                    <RelativePanel Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Margin="8">
+
+                                        <Image x:Name="MoonsetIcon"
+                                               Margin="0,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.AlignTopWithPanel="True"
+                                               Source="/Assets/varicons/Moonset.svg">
+                                        </Image>
+
+                                        <TextBlock x:Name="MoonsetTitle" Text="Moonset"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="6,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.RightOf="MoonsetIcon" />
+
+                                        <TextBlock x:Name="MoonsetTimeText" Text="settime"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="6,2,0,0"
+                                                   RelativePanel.AlignLeftWith="MoonsetTitle"
+                                                   RelativePanel.Below="MoonsetTitle" />
+
+                                    </RelativePanel>
+
+                                    <RelativePanel Grid.Row="0"
+                                                   Grid.RowSpan="2"
+                                                   Grid.Column="1"
+                                                   Margin="8">
+
+                                        <!-- vertical line on left -->
+                                        <Rectangle
+                                            x:Name="LunarphaseLine"
+                                            Fill="{ThemeResource MyAcrylicBrushLine}"
+                                            Height="100"
+                                            Width="1.2"
+                                            RelativePanel.AlignLeftWithPanel="True"
+                                            RelativePanel.AlignTopWithPanel="True"
+                                            Margin="0,8,0,0" />
+
+                                        <Image x:Name="LunarphaseIcon"
+                                               Margin="6,8,0,0"
+                                               Width="40"
+                                               Stretch="Uniform"
+                                               RelativePanel.RightOf="LunarphaseLine"
+                                               RelativePanel.AlignTopWith="LunarphaseLine"
+                                        >
+                                        </Image>
+
+                                        <TextBlock x:Name="LunarphaseTitle" Text="Lunar phase"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   Margin="8,6,0,0"
+                                                   Opacity="0.6"
+                                                   RelativePanel.AlignTopWithPanel="True"
+                                                   RelativePanel.RightOf="LunarphaseIcon"/>
+
+                                        <TextBlock x:Name="LunarphaseText" Text="phase"
+                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                   Margin="8,2,0,0"
+                                                   RelativePanel.AlignLeftWith="LunarphaseTitle"
+                                                   RelativePanel.Below="LunarphaseTitle" />
+
+
+
+                                        </RelativePanel>
+
+                                </Grid>
+
+
+                            </Grid>
+
+                        </StackPanel>
+
+                    </Grid>
+
+
+                </Grid>
+            </ScrollViewer>
+
+
+
+
+            <Button Name="SettingsButton"
+                        HorizontalAlignment="Right"
+                        Grid.Row="1"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,24,24"
+                        Width="48"
+                        Height="48"
+                        Background="{ThemeResource MyAcrylicBrushButton}">
+
+                    <StackPanel>
+                        <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
+                            <muxc:AnimatedIcon.Source>
+                                <animatedVisuals:AnimatedSettingsVisualSource />
+                            </muxc:AnimatedIcon.Source>
+                            <muxc:AnimatedIcon.FallbackIconSource>
+                                <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
+                            </muxc:AnimatedIcon.FallbackIconSource>
+                        </muxc:AnimatedIcon>
+                    </StackPanel>
+
+                    <Button.Flyout>
+                        <MenuFlyout x:Name="SettingsFlyout">
+
+                            <MenuFlyoutItem>
+                                <MenuFlyoutItem.Template>
+                                    <ControlTemplate x:Name="FlyoutItemSettingsTemp">
+                                        <StackPanel VerticalAlignment="Center" Margin="16">
+                                            <!-- title control -->
+                                            <TextBlock Text="Units"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                            <labs:Segmented
+                                                SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
+                                                Margin="0,8,0,0"
+                                                x:Name="UnitsSegmented"
+                                                SelectionChanged="UnitsSegmented_OnSelectionChanged"
+                                                d:DataContext="{d:DesignInstance views:MainPage }">
+                                                <labs:SegmentedItem Content="Metric" />
+                                                <labs:SegmentedItem Content="Imperial" />
+                                                <labs:SegmentedItem Content="Hybrid" />
+
+                                            </labs:Segmented>
+
+                                            <TextBlock Text="Credits"
+                                                       Margin="0,16,0,0"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                            <RichTextBlock
+                                                Margin="0,16,0,0">
+                                                <Paragraph>
+                                                    <Run>UI design inspired by the work of</Run>
+                                                    <Hyperlink
+                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                        NavigateUri="https://twitter.com/zeealeid">
+                                                        @zeealeid
+                                                    </Hyperlink>
+                                                </Paragraph>
+                                            </RichTextBlock>
+
+                                            <RichTextBlock
+                                                Margin="0,24,0,0">
+                                                <Paragraph>
+                                                    <Run FontStyle="Normal" FontWeight="Bold">FluentWeather</Run>
+                                                    <Run
+                                                        d:DataContext="{d:DesignInstance views:MainPage }"
+                                                        Foreground="#A2FFFFFF" Text="{Binding AppVersionText}"></Run>
+                                                    <Run>developed by</Run>
+                                                    <Hyperlink
+                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                        NavigateUri="https://github.com/Gabboxl">
+                                                        Gabboxl
+                                                    </Hyperlink>
+                                                </Paragraph>
+                                            </RichTextBlock>
+
+                                            <HyperlinkButton
+                                                HorizontalAlignment="Center"
+                                                Margin="0,8,0,0"
+                                                Content="GitHub project"
+                                                NavigateUri="http://github.com/Gabboxl/FluentWeather" />
+
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </MenuFlyoutItem.Template>
+                            </MenuFlyoutItem>
+
+                            <!--<MenuFlyoutSeparator />
+
+
+                        <MenuFlyoutItem Text="Esci"
+                                        x:Name="LogoutButton2"
+                                        Height="32"
+                                        RenderTransformOrigin="2.13,0.797" HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Top">
+
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf3b1;" />
+                                ~1~ or e966 @1@
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>-->
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+
+
+        </Grid>
+
+
+    </Grid>
+
+
+</Page>

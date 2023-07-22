@@ -1,0 +1,69 @@
+﻿<UserControl
+    x:Class="FluentWeather.Controls.InsightControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <AcrylicBrush x:Key="MyAcrylicBrushBack"
+                      BackgroundSource="Backdrop"
+                      TintColor="#FCFCFC"
+                      TintOpacity="0"
+                      TintLuminosityOpacity="0"
+                      FallbackColor="#1DFFFFFF" />
+    </UserControl.Resources>
+
+    <Grid
+        Margin="4"
+        CornerRadius="6"
+        Padding="0"
+        BorderThickness="2"
+        BorderBrush="{ThemeResource MyAcrylicBrushBack}"
+        Background="{ThemeResource MyAcrylicBrushBack}"
+        Width="142">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- vertical status colored line on the left -->
+        <Rectangle x:Name="LevelRectangle"
+                   Fill="#FFFFFF"
+                   VerticalAlignment="Stretch"
+                   Width="4"
+                   Margin="0" />
+
+        <RelativePanel Grid.Column="1"
+                       Margin="8">
+
+            <Image x:Name="InsightIcon"
+                   Margin="0,0,0,0"
+                   Width="24"
+                   Stretch="Uniform"
+                   RelativePanel.AlignTopWithPanel="True"
+                   RelativePanel.AlignLeftWithPanel="True">
+            </Image>
+
+            <!-- textblock with BodyTextBlockStyle -->
+            <TextBlock x:Name="TitleText" Text="titlechip"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Margin="0,6,0,0"
+                       Opacity="0.6"
+                       RelativePanel.Below="InsightIcon" />
+
+            <TextBlock x:Name="ValueText" Text="valuechip"
+                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                       Margin="0,0,0,0"
+                       RelativePanel.Below="TitleText" />
+
+
+        </RelativePanel>
+
+
+    </Grid>
+
+</UserControl>
