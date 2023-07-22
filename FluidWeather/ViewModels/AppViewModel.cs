@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace FluidWeather.ViewModels
