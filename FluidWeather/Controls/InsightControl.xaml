@@ -10,29 +10,22 @@
     d:DesignWidth="400">
 
     <UserControl.Resources>
-        <AcrylicBrush x:Key="MyAcrylicBrush"
-                      BackgroundSource="Backdrop"
-                      TintColor="#FCFCFC"
-                      TintOpacity="0"
-                      TintLuminosityOpacity="1"
-                      FallbackColor="#1DFFFFFF"/>
-
         <AcrylicBrush x:Key="MyAcrylicBrushBack"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0"
                       TintLuminosityOpacity="0"
-                      FallbackColor="#1DFFFFFF"/>
+                      FallbackColor="#1DFFFFFF" />
     </UserControl.Resources>
 
-    <Grid x:Name="MainInsightChipPanel"
-          Margin="4"
-          CornerRadius="6"
-          Padding="0"
-          BorderThickness="2"
-          BorderBrush="{ThemeResource MyAcrylicBrushBack}"
-          Background="{ThemeResource MyAcrylicBrushBack}"
-          Width="142">
+    <Grid
+        Margin="4"
+        CornerRadius="6"
+        Padding="0"
+        BorderThickness="2"
+        BorderBrush="{ThemeResource MyAcrylicBrushBack}"
+        Background="{ThemeResource MyAcrylicBrushBack}"
+        Width="142">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -48,7 +41,7 @@
         <RelativePanel Grid.Column="1"
                        Margin="8">
 
-            <Image x:Name="insightIcon"
+            <Image x:Name="InsightIcon"
                    Margin="0,0,0,0"
                    Width="24"
                    Stretch="Uniform"
@@ -61,7 +54,7 @@
                        Style="{StaticResource BodyTextBlockStyle}"
                        Margin="0,6,0,0"
                        Opacity="0.6"
-                       RelativePanel.Below="insightIcon"/>
+                       RelativePanel.Below="InsightIcon" />
 
             <TextBlock x:Name="ValueText" Text="valuechip"
                        Style="{StaticResource BodyStrongTextBlockStyle}"

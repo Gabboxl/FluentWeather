@@ -9,14 +9,14 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <RelativePanel x:Name="MainChipPanel"
-                   Margin="4"
-                   CornerRadius="6"
-                   Padding="8"
-                   BorderThickness="0"
-                   BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                   Background="#1DFFFFFF"
-                   Width="108">
+    <RelativePanel
+        Margin="4"
+        CornerRadius="6"
+        Padding="8"
+        BorderThickness="0"
+        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+        Background="#1DFFFFFF"
+        Width="108">
 
         <!-- textblock with BodyTextBlockStyle -->
         <TextBlock x:Name="TitleText" Text="chiptitle"

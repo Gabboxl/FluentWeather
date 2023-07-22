@@ -50,7 +50,7 @@ namespace FluidWeather.Controls
 
             var test2 = await CreateSvgImageSource(test1);
 
-            currentInstance.insightIcon.Source = test2;
+            currentInstance.InsightIcon.Source = test2;
         }
 
         public static string ChangeSvgColor(string svgFilePath, string newColor)

@@ -24,7 +24,7 @@ namespace FluidWeather.Controls
         {
             var currentInstance = (DetailChipControl)d;
 
-            var newValue = e.NewValue as string;
+            var newValue = (string)e.NewValue;
 
             currentInstance.TitleText.Text = newValue;
         }
@@ -47,7 +47,7 @@ namespace FluidWeather.Controls
         {
             var currentInstance = (DetailChipControl) d;
 
-            var newValue = e.NewValue as string;
+            var newValue = (string)e.NewValue;
 
             currentInstance.ValueText.Text = newValue;
         }
