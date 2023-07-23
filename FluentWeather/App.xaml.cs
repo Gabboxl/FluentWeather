@@ -61,6 +61,8 @@ namespace FluentWeather
                     typeof(Microsoft.AppCenter.Crashes.Crashes)
                 );
 
+                //Microsoft.AppCenter.Crashes.Crashes.SetEnabledAsync()
+
                 //Microsoft.AppCenter.Analytics.Analytics.TrackEvent("App started");
             }
 
@@ -155,7 +157,7 @@ namespace FluentWeather
             var attachments = new List<ErrorAttachmentLog>();
 
 
-            Trace.WriteLine("SIDE2: " + exceptionThatDoesntGoAway.StackTrace);
+            //Trace.WriteLine("SIDE2: " + exceptionThatDoesntGoAway.StackTrace);
 
             e.Handled = true;
 
