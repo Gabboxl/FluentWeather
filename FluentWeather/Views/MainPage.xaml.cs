@@ -430,7 +430,7 @@ namespace FluentWeather.Views
                 "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
 
-            //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty)
+            //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty) and remove duplicate names
             string placeName = string.Join(", ",
                                new[]
                                {
@@ -438,7 +438,9 @@ namespace FluentWeather.Views
                     rootV3Response.v3locationpoint.LocationV3.city,
                     rootV3Response.v3locationpoint.LocationV3.adminDistrict,
                     rootV3Response.v3locationpoint.LocationV3.country
-                }.Where(s => !string.IsNullOrEmpty(s)));
+                }.Where(s => !string.IsNullOrEmpty(s)).Distinct());
+
+
 
             PlaceText.Text = placeName;
 
