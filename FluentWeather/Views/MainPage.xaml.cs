@@ -430,9 +430,17 @@ namespace FluentWeather.Views
                 "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
 
-            PlaceText.Text = rootV3Response.v3locationpoint.LocationV3.displayName + ", " +
-                             rootV3Response.v3locationpoint.LocationV3.adminDistrict + ", " +
-                             rootV3Response.v3locationpoint.LocationV3.country;
+            //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty)
+            string placeName = string.Join(", ",
+                               new[]
+                               {
+                    rootV3Response.v3locationpoint.LocationV3.displayName,
+                    rootV3Response.v3locationpoint.LocationV3.city,
+                    rootV3Response.v3locationpoint.LocationV3.adminDistrict,
+                    rootV3Response.v3locationpoint.LocationV3.country
+                }.Where(s => !string.IsNullOrEmpty(s)));
+
+            PlaceText.Text = placeName;
 
             MainPhraseText.Text = rootV3Response.v3wxobservationscurrent.cloudCoverPhrase;
 
