@@ -30,13 +30,6 @@ namespace FluentWeather.Dialogs
 
             this.Closing += DialogClosingEvent;
 
-            /*var bounds = ApplicationView.GetForCurrentView().VisibleBounds;
-            var scaleFactor = DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
-
-
-
-            this.Resources["ContentDialogMaxWidth"] = bounds.Width*scaleFactor;
-            this.Resources["ContentDialogMaxHeight"] = bounds.Height*scaleFactor;*/
 
             //make the primary button colored
             this.DefaultButton = ContentDialogButton.Primary;
@@ -90,11 +83,6 @@ namespace FluentWeather.Dialogs
                     var jsonResponse = await response.Content.ReadAsStringAsync();
 
                     var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
-
-                    foreach (var location in myDeserializedClass.location)
-                    {
-                        Debug.WriteLine(location.address);
-                    }
 
 
                     List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
