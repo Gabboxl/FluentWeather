@@ -86,8 +86,6 @@ namespace FluentWeather.Dialogs
 
 
                     List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
-                    // the select statement above is the same as the foreach below
-
 
                     sender.ItemsSource = finalitems;
                 }
@@ -103,6 +101,9 @@ namespace FluentWeather.Dialogs
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
 
             this.IsPrimaryButtonEnabled = true;
+
+            //set the focus back to the dialog, to prevent the focus to go behind the dialog
+            this.Focus(FocusState.Programmatic);
         }
     }
 }
