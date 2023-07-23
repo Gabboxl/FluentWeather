@@ -23,7 +23,6 @@ namespace FluentWeather.Utils
         }
 
 
-
         public static string GetAbbreviatedDayName(string localDayName)
         {
             // Get the current culture's DateTimeFormatInfo

@@ -14,47 +14,47 @@ namespace FluentWeather.Models
     }
 
     public class Locale
-        {
-            public string locale1 { get; set; }
-            public string locale2 { get; set; }
-            public object locale3 { get; set; }
-            public object locale4 { get; set; }
-        }
+    {
+        public string locale1 { get; set; }
+        public string locale2 { get; set; }
+        public object locale3 { get; set; }
+        public object locale4 { get; set; }
+    }
 
-        public class SearchedLocation
-        {
-            public string address { get; set; }
-            public Locale locale { get; set; }
-            public string displayName { get; set; }
-            public string ianaTimeZone { get; set; }
-            public string adminDistrict { get; set; }
-            public object adminDistrictCode { get; set; }
-            public string city { get; set; }
-            public double longitude { get; set; }
-            public string postalCode { get; set; }
-            public double latitude { get; set; }
-            public string placeId { get; set; }
-            public object neighborhood { get; set; }
-            public string country { get; set; }
-            public string postalKey { get; set; }
-            public string countryCode { get; set; }
-            public bool disputedArea { get; set; }
-            public object disputedCountries { get; set; }
-            public object disputedCountryCodes { get; set; }
-            public object disputedCustomers { get; set; }
-            public List<bool> disputedShowCountry { get; set; }
-            public string iataCode { get; set; }
-            public string icaoCode { get; set; }
-            public string locId { get; set; }
-            public object locationCategory { get; set; }
-            public string pwsId { get; set; }
-            public string type { get; set; }
-        }
+    public class SearchedLocation
+    {
+        public string address { get; set; }
+        public Locale locale { get; set; }
+        public string displayName { get; set; }
+        public string ianaTimeZone { get; set; }
+        public string adminDistrict { get; set; }
+        public object adminDistrictCode { get; set; }
+        public string city { get; set; }
+        public double longitude { get; set; }
+        public string postalCode { get; set; }
+        public double latitude { get; set; }
+        public string placeId { get; set; }
+        public object neighborhood { get; set; }
+        public string country { get; set; }
+        public string postalKey { get; set; }
+        public string countryCode { get; set; }
+        public bool disputedArea { get; set; }
+        public object disputedCountries { get; set; }
+        public object disputedCountryCodes { get; set; }
+        public object disputedCustomers { get; set; }
+        public List<bool> disputedShowCountry { get; set; }
+        public string iataCode { get; set; }
+        public string icaoCode { get; set; }
+        public string locId { get; set; }
+        public object locationCategory { get; set; }
+        public string pwsId { get; set; }
+        public string type { get; set; }
+    }
 
-        public class SearchLocationResponse
-        {
-            public List<SearchedLocation> location { get; set; }
-        }
+    public class SearchLocationResponse
+    {
+        public List<SearchedLocation> location { get; set; }
+    }
 
 
     public class Daypart
@@ -143,17 +143,13 @@ namespace FluentWeather.Models
 
         public object v3alertsHeadlines { get; set; }
 
-        [JsonProperty("v3-location-point")]
-        public V3LocationPoint v3locationpoint { get; set; }
+        [JsonProperty("v3-location-point")] public V3LocationPoint v3locationpoint { get; set; }
 
-        [JsonProperty("v2idxDriveDaypart10")]
-        public V2idxDriveDaypartResult v2idxDriveDaypart10days { get; set; }
+        [JsonProperty("v2idxDriveDaypart10")] public V2idxDriveDaypartResult v2idxDriveDaypart10days { get; set; }
 
-        [JsonProperty("v2idxRunDaypart10")]
-        public V2idxRunDaypartResult v2idxRunDaypart10days { get; set; }
+        [JsonProperty("v2idxRunDaypart10")] public V2idxRunDaypartResult v2idxRunDaypart10days { get; set; }
 
-        [JsonProperty("v2idxPollenDaypart10")]
-        public V2idxPollenDaypartResult v2idxPollenDaypart10days { get; set; }
+        [JsonProperty("v2idxPollenDaypart10")] public V2idxPollenDaypartResult v2idxPollenDaypart10days { get; set; }
 
         [JsonProperty("v2idxWateringDaypart10")]
         public V2idxWateringDaypartResult V2IdxWateringDaypart10days { get; set; }
@@ -205,8 +201,7 @@ namespace FluentWeather.Models
 
     public class V3LocationPoint
     {
-        [JsonProperty("location")]
-        public LocationV3 LocationV3 { get; set; }
+        [JsonProperty("location")] public LocationV3 LocationV3 { get; set; }
     }
 
     public class V3WxForecastDaily
@@ -367,8 +362,7 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("pollenForecast12hour")]
-        public PollenForecastDaypart PollenForecastDaypart { get; set; }
+        [JsonProperty("pollenForecast12hour")] public PollenForecastDaypart PollenForecastDaypart { get; set; }
     }
 
 
@@ -411,8 +405,6 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("drySkinIndex12hour")]
-        public DrySkinIndexDaypart DrySkinIndexDaypart { get; set; }
+        [JsonProperty("drySkinIndex12hour")] public DrySkinIndexDaypart DrySkinIndexDaypart { get; set; }
     }
-
 }

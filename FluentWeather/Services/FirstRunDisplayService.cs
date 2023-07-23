@@ -19,7 +19,6 @@ namespace FluentWeather.Services
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal, async () =>
                 {
-
                     string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
                     if (lastPlaceId == null && !shown)
@@ -27,8 +26,6 @@ namespace FluentWeather.Services
                         shown = true;
                         var dialog2 = new FirstRunDialog();
                         await dialog2.ShowAsync();
-
-
                     }
                 });
         }

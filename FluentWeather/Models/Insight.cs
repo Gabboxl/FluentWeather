@@ -2,7 +2,13 @@
 
 namespace FluentWeather.Models
 {
-    public enum InsightLevel { None, Low, Medium, High }
+    public enum InsightLevel
+    {
+        None,
+        Low,
+        Medium,
+        High
+    }
 
     public class Insight
     {

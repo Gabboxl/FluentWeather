@@ -13,10 +13,7 @@ namespace FluentWeather.Adapters
 
         public string Temperature
         {
-            get
-            {
-                return CurrentObject.temperature[ItemIndex] + "°";
-            }
+            get { return CurrentObject.temperature[ItemIndex] + "°"; }
         }
 
         public SvgImageSource svgImageIcon
@@ -32,18 +29,12 @@ namespace FluentWeather.Adapters
 
         public string Phrase
         {
-            get
-            {
-                return CurrentObject.wxPhraseLong[ItemIndex];
-            }
+            get { return CurrentObject.wxPhraseLong[ItemIndex]; }
         }
 
         public string PrecipitationChance
         {
-            get
-            {
-                return CurrentObject.precipChance[ItemIndex] + "%";
-            }
+            get { return CurrentObject.precipChance[ItemIndex] + "%"; }
         }
 
         public SvgImageSource svgPrecipIcon

@@ -15,7 +15,7 @@ namespace FluentWeather
 {
     public sealed partial class App : Application
     {
-        private AppViewModel AppViewModel =  AppViewModelHolder.GetViewModel();
+        private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
         private Lazy<ActivationService> _activationService;
 

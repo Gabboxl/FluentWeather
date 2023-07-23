@@ -20,7 +20,7 @@ namespace FluentWeather.Adapters
                 var minTemp = CurrentObject.temperatureMin[ItemIndex];
 
 
-                return (maxTemp == null ? "--" : maxTemp)  + "°" + " / " + minTemp + "°";
+                return (maxTemp == null ? "--" : maxTemp) + "°" + " / " + minTemp + "°";
             }
         }
 
@@ -28,17 +28,17 @@ namespace FluentWeather.Adapters
         {
             get
             {
-                var iconCode = CurrentObject.daypart[0].iconCode[ItemIndex*2];
+                var iconCode = CurrentObject.daypart[0].iconCode[ItemIndex * 2];
 
                 if (iconCode == null && ItemIndex == 0)
                 {
                     //tonight's icon
-                    iconCode = CurrentObject.daypart[0].iconCode[ItemIndex*2 + 1];
+                    iconCode = CurrentObject.daypart[0].iconCode[ItemIndex * 2 + 1];
                 }
                 else
                 {
                     //days's icon
-                    iconCode = CurrentObject.daypart[0].iconCode[ItemIndex*2];
+                    iconCode = CurrentObject.daypart[0].iconCode[ItemIndex * 2];
                 }
 
                 return new SvgImageSource
@@ -52,7 +52,7 @@ namespace FluentWeather.Adapters
         {
             get
             {
-                var precipChance = CurrentObject.daypart[0].precipChance[ItemIndex*2];
+                var precipChance = CurrentObject.daypart[0].precipChance[ItemIndex * 2];
 
                 //if precipchange is null and it is today
                 if (precipChance == null && ItemIndex == 0)
@@ -60,13 +60,12 @@ namespace FluentWeather.Adapters
                     //return "--";
 
                     //return this evening's precip chance
-                    return CurrentObject.daypart[0].precipChance[ItemIndex*2 + 1] + "%";
+                    return CurrentObject.daypart[0].precipChance[ItemIndex * 2 + 1] + "%";
                 }
                 else
                 {
                     return precipChance + "%";
                 }
-
             }
         }
 
@@ -89,7 +88,9 @@ namespace FluentWeather.Adapters
                 {
                     var dayText = CurrentObject.daypart[0].daypartName[ItemIndex * 2];
 
-                    return (string.IsNullOrEmpty(dayText) ? CurrentObject.daypart[0].daypartName[ItemIndex * 2 + 1] : dayText);
+                    return (string.IsNullOrEmpty(dayText)
+                        ? CurrentObject.daypart[0].daypartName[ItemIndex * 2 + 1]
+                        : dayText);
                 }
                 else
                 {
@@ -97,16 +98,15 @@ namespace FluentWeather.Adapters
                     var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
 
-                    var abbname =  new CultureInfo(language).DateTimeFormat.GetAbbreviatedDayName(CurrentObject.validTimeLocal[ItemIndex]
+                    var abbname = new CultureInfo(language).DateTimeFormat.GetAbbreviatedDayName(CurrentObject
+                        .validTimeLocal[ItemIndex]
                         .DayOfWeek);
 
-                        //VariousUtils.UppercaseFirst(CurrentObject.dayOfWeek[ItemIndex]);
+                    //VariousUtils.UppercaseFirst(CurrentObject.dayOfWeek[ItemIndex]);
 
 
-                        //return short day name + day complete date
+                    //return short day name + day complete date
                     return VariousUtils.UppercaseFirst(abbname) + " " + CurrentObject.validTimeLocal[ItemIndex].Day;
-
-
                 }
             }
         }

@@ -20,9 +20,9 @@ namespace FluentWeather.Controls
 
         private static void OnTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var currentInstance = (DetailChipControl)d;
+            var currentInstance = (DetailChipControl) d;
 
-            var newValue = (string)e.NewValue;
+            var newValue = (string) e.NewValue;
 
             currentInstance.TitleText.Text = newValue;
         }
@@ -45,7 +45,7 @@ namespace FluentWeather.Controls
         {
             var currentInstance = (DetailChipControl) d;
 
-            var newValue = (string)e.NewValue;
+            var newValue = (string) e.NewValue;
 
             currentInstance.ValueText.Text = newValue;
         }

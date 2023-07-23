@@ -85,7 +85,8 @@ namespace FluentWeather.Controls
 
             lol++;
 
-            StorageFile tempFile = await tempFolder.CreateFileAsync("temp" + lol +  ".svg", CreationCollisionOption.ReplaceExisting);
+            StorageFile tempFile =
+                await tempFolder.CreateFileAsync("temp" + lol + ".svg", CreationCollisionOption.ReplaceExisting);
 
             // Write the SVG XML code to the temporary file.
             await FileIO.WriteTextAsync(tempFile, svgXml);

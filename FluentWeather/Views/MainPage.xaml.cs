@@ -432,14 +432,13 @@ namespace FluentWeather.Views
 
             //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty) and remove duplicate names
             string placeName = string.Join(", ",
-                               new[]
-                               {
+                new[]
+                {
                     rootV3Response.v3locationpoint.LocationV3.displayName,
                     rootV3Response.v3locationpoint.LocationV3.city,
                     rootV3Response.v3locationpoint.LocationV3.adminDistrict,
                     rootV3Response.v3locationpoint.LocationV3.country
                 }.Where(s => !string.IsNullOrEmpty(s)).Distinct());
-
 
 
             PlaceText.Text = placeName;
@@ -512,7 +511,6 @@ namespace FluentWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
-
             //update the ui
             List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
 
@@ -565,9 +563,11 @@ namespace FluentWeather.Views
             RunningInsight.Insight = new Insight()
             {
                 Title = "Running",
-                Value = _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
+                Value =
+                    _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
                 Description =
-                    _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDayInsights],
+                    _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory
+                        [indexOfDayInsights],
                 Levels = InsightLevels.RunningLevels,
                 IconName = "running"
             };
@@ -576,7 +576,8 @@ namespace FluentWeather.Views
             {
                 Title = "Driving",
                 Value =
-                    _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDayInsights],
+                    _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[
+                        indexOfDayInsights],
                 Description =
                     _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[
                         indexOfDayInsights],
@@ -593,7 +594,8 @@ namespace FluentWeather.Views
             {
                 Title = "Dry skin",
                 Value = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
-                Description = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
+                Description =
+                    _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
                 Levels = InsightLevels.DrySkinLevels,
                 IconName = "dry"
             };
@@ -601,9 +603,12 @@ namespace FluentWeather.Views
             WateringInsight.Insight = new Insight()
             {
                 Title = "Watering need",
-                Value = _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDayInsights],
+                Value =
+                    _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[
+                        indexOfDayInsights],
                 Description =
-                    _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDayInsights],
+                    _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[
+                        indexOfDayInsights],
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
@@ -616,8 +621,9 @@ namespace FluentWeather.Views
             //day summary
             var daySummaryString = _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2];
 
-            DaySummaryText.Text =  daySummaryString ?? "--";
-            NightSummaryText.Text = _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
+            DaySummaryText.Text = daySummaryString ?? "--";
+            NightSummaryText.Text =
+                _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
 
             //sunset and sunrise
             var sunriseTime = _lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
@@ -642,7 +648,6 @@ namespace FluentWeather.Views
 
             var svgImageSource = new SvgImageSource(new Uri($"ms-appx:///Assets/varicons/{moonPhaseIcon}.svg"));
             LunarphaseIcon.Source = svgImageSource;
-
         }
 
 
@@ -713,8 +718,7 @@ namespace FluentWeather.Views
         {
             // Only keeps the suggestions list open if no suggestion was chosen.
 
-                sender.IsSuggestionListOpen = true;
-
+            sender.IsSuggestionListOpen = true;
         }
 
         private void AutoSuggestBoxMain_OnKeyUp(object sender, KeyRoutedEventArgs e)

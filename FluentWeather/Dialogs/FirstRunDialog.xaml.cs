@@ -5,10 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Windows.Graphics.Display;
 using Windows.Storage;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluentWeather.Helpers;
@@ -23,7 +20,7 @@ namespace FluentWeather.Dialogs
             BaseAddress = new Uri("https://api.weather.com/v3/"),
         };
 
-        private AppViewModel AppViewModel =  AppViewModelHolder.GetViewModel();
+        private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
 
         public FirstRunDialog()
@@ -90,7 +87,6 @@ namespace FluentWeather.Dialogs
                 }
                 else
                 {
-
                     var jsonResponse = await response.Content.ReadAsStringAsync();
 
                     var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
@@ -106,7 +102,6 @@ namespace FluentWeather.Dialogs
 
 
                     sender.ItemsSource = finalitems;
-
                 }
             }
         }
