@@ -1,5 +1,7 @@
 <h1> <img align="center" src="https://github.com/Gabboxl/FluentWeather/assets/26819478/5a87f021-f8e1-4754-a4e9-ffad2acc5587" width=6% height=6%> FluentWeather </h1>
-A beautiful & modern UWP weather app for Windows
+A beautiful & modern UWP weather app for Windows.
+
+![dropshad2](https://github.com/Gabboxl/FluentWeather/assets/26819478/3c66be73-a8f4-4024-9ee2-83efd97fd26d)
 
 
 ## Downloads
