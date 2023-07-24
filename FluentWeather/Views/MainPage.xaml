@@ -227,6 +227,7 @@
 
                     <!-- progress ring -->
                     <muxc:ProgressRing x:Name="DataProgressRing"
+                                       IsTabStop="True"
                                        IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
                                        Margin="8,0,0,0" />
                 </RelativePanel>
