@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.ApplicationModel.Core;
 using Windows.Storage;
 using Windows.UI.Core;
-using Windows.UI.Xaml.Controls;
 using FluentWeather.Dialogs;
 using FluentWeather.Helpers;
 
