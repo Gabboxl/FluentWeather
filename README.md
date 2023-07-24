@@ -13,7 +13,7 @@ A beautiful & modern UWP weather app for Windows.
 
 ***Standalone package for sideloading***: [latest package from Github Releases](https://github.com/Gabboxl/FluentWeather/releases/latest)
 
-(*you have to run the `Install1.ps` script, or trust manually the certificate inside the release package*)
+(*you have to run the `Install.ps1` script, or trust manually the certificate inside the release package*)
 
 ### Requirements
 
