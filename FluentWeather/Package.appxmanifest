@@ -8,15 +8,15 @@
   IgnorableNamespaces="uap mp genTemplate">
 
   <Identity
-    Name="DEEB23B3-B336-446C-8C55-B96D2F137D73"
-    Publisher="CN=Gabriele"
+    Name="26937gabboxl.61420B4860E86"
+    Publisher="CN=BE63F29F-B5DE-4216-A286-0EE09F9F43D1"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="DEEB23B3-B336-446C-8C55-B96D2F137D73" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="4dddd3bc-245c-455f-8763-9eb8a66f6449" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>FluentWeather</DisplayName>
-    <PublisherDisplayName>Gabriele</PublisherDisplayName>
+    <PublisherDisplayName>gabboxl</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
