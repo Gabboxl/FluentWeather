@@ -522,15 +522,17 @@ namespace FluentWeather.Views
             //subtract daytoload to firstdate to get the index of the first day to load
             int daysDiff = dayToLoad.Date.Subtract(firstDate.Date).Days;
 
-            if (daysDiff == -1) //this means that we are still in a tonight state and we add hours only until 7AM
+            if (daysDiff == -1 || (daysDiff == 0 && _lastApiData.v3wxforecasthourly10day.validTimeLocal[0].Hour > 7)) //this means that we are still in a tonight/today state and we add hours only until 7AM
             {
-                for (int j = 0; j < 7; j++) //check only the first 7 hours of the day
+                int h = 0;
+
+                while (_lastApiData.v3wxforecasthourly10day.validTimeLocal[h].Hour != 7)
                 {
-                    if (_lastApiData.v3wxforecasthourly10day.validTimeLocal[j].Hour < 7)
-                    {
-                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, j));
-                    }
+                    hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, h));
+
+                    h++;
                 }
+
             }
             else
             {
