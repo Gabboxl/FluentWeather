@@ -54,7 +54,7 @@
                     RelativePanel.AlignHorizontalCenterWithPanel="True"
                     TextChanged="AutoSuggestBox_TextChanged"
                     SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                    PointerEntered="AutoSuggestBoxMain_OnGotFocus"                  
+                    PointerReleased="AutoSuggestBoxMain_OnGotFocus"                  
 
                     Width="400" AutomationProperties.Name="Basic AutoSuggestBox"
                     TextMemberPath="address"

@@ -7,6 +7,7 @@ using System.Net.Http;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using FluentWeather.Helpers;
 using FluentWeather.ViewModels;
 
@@ -102,7 +103,15 @@ namespace FluentWeather.Dialogs
             this.IsPrimaryButtonEnabled = true;
 
             //set the focus back to the dialog, to prevent the focus to go behind the dialog
-            this.Focus(FocusState.Programmatic);
+            //this.Focus(FocusState.Unfocused);
+        }
+
+
+        private void AutoSuggestBoxMain_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            AutoSuggestBox autoSuggestBox = (AutoSuggestBox) sender;
+
+            autoSuggestBox.IsSuggestionListOpen = true;
         }
     }
 }
