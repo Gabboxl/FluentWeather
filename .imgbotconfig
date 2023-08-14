@@ -1,5 +1,5 @@
 {
-    "schedule": "daily", // daily|weekly|monthly
+    "schedule": "daily",
     "ignoredFiles": [
         "FluentWeather/Assets/LargeTile*",
         "FluentWeather/Assets/LockScreenLogo*",
