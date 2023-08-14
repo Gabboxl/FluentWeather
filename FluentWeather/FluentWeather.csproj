@@ -205,6 +205,7 @@
     <Compile Include="Services\BackgroundTaskService.cs" />
     <Compile Include="Services\FirstRunDisplayService.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\AcrylicEffectsService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
     <Compile Include="Services\ToastNotificationsService.cs" />
     <Compile Include="Services\ToastNotificationsService.Samples.cs" />

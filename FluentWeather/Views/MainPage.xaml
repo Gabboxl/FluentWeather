@@ -14,6 +14,7 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
+    xmlns:services="using:FluentWeather.Services"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -24,28 +25,36 @@
                       TintColor="#FCFCFC"
                       TintOpacity="0"
                       TintLuminosityOpacity="0"
-                      FallbackColor="#1DFFFFFF" />
+                      FallbackColor="#1DFFFFFF"
+                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}"/>
 
         <AcrylicBrush x:Key="MyAcrylicBrushLine"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0"
                       TintLuminosityOpacity="0.1"
-                      FallbackColor="#1DFFFFFF" />
+                      FallbackColor="#1DFFFFFF"
+                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}"/>
 
         <AcrylicBrush x:Key="MyAcrylicBrushTitleText"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0.7"
                       TintLuminosityOpacity="0.8"
-                      FallbackColor="#1DFFFFFF" />
+                      FallbackColor="#1DFFFFFF"
+                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}"/>
 
         <AcrylicBrush x:Key="MyAcrylicBrushButton"
                       BackgroundSource="Backdrop"
                       TintColor="#222CFCFC"
                       TintOpacity="0.7"
                       TintLuminosityOpacity="0.8"
-                      FallbackColor="#1DFFFFFF" />
+                      FallbackColor="#1DFFFFFF"
+                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}"/>
 
         <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
 
@@ -1161,6 +1170,18 @@
                                             <labs:SegmentedItem Content="Hybrid" />
 
                                         </labs:Segmented>
+
+
+                                        <!-- toggle control to enable/disable acrylic effect -->
+                                        <TextBlock Text="Acrylic effects"
+                                                   Margin="0,16,0,0"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                        <ToggleSwitch x:Name="AcrylicToggle"
+                                                      Margin="0,8,0,0"
+                                                      d:DataContext="{d:DesignInstance views:MainPage }"
+                                                      IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
+                                                      Toggled="AcrylicToggle_OnToggled"/>
 
                                         <TextBlock Text="Credits"
                                                    Margin="0,16,0,0"

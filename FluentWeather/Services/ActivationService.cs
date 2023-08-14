@@ -6,6 +6,7 @@ using FluentWeather.Activation;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using FluentWeather.Core.Helpers;
 
 namespace FluentWeather.Services
 {
@@ -62,6 +63,8 @@ namespace FluentWeather.Services
         {
             //await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
+
+            await Singleton<AcrylicEffectsService>.Instance.InitializeAsync().ConfigureAwait(false);
         }
 
         private async Task HandleActivationAsync(object activationArgs)

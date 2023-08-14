@@ -23,9 +23,12 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Automation.Provider;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using CommunityToolkit.Labs.WinUI;
 using FluentWeather.Helpers;
+using FluentWeather.Services;
 using FluentWeather.Utils;
+using FluentWeather.Core.Helpers;
 
 namespace FluentWeather.Views
 {
@@ -36,6 +39,8 @@ namespace FluentWeather.Views
 
         public NavigationViewViewModel NavigationViewViewModel { get; } =
             new NavigationViewViewModel();
+
+        public AcrylicEffectsService AcrylicEffectsService { get; }  = Singleton<AcrylicEffectsService>.Instance;
 
         private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
@@ -161,7 +166,7 @@ namespace FluentWeather.Views
             Task.Run(LoadApiData);
         }
 
-        private void Initialize()
+        private async void Initialize()
         {
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -181,6 +186,7 @@ namespace FluentWeather.Views
             //NavigationService.Navigate(typeof(Views.DashWet));
 
             AppVersionText = GetVersionDescription();
+
         }
 
         private string GetVersionDescription()
@@ -728,6 +734,22 @@ namespace FluentWeather.Views
             AutoSuggestBox sender2 = (AutoSuggestBox) sender;
 
             sender2.IsSuggestionListOpen = true;
+        }
+
+        private async void AcrylicToggle_OnToggled(object sender, RoutedEventArgs e)
+        {
+            var acrylicToggle = (ToggleSwitch) sender;
+
+            //save selected index to local settings
+            await ApplicationData.Current.LocalSettings.SaveAsync("effectsEnabled", acrylicToggle.IsOn);
+
+            //bool currentAcrylic = MainPageViewModel.UseFallback;
+
+            //this also works instead of the viewmodel system
+            //var acrylicBrush = (AcrylicBrush)Resources["MyAcrylicBrush"];
+            //acrylicBrush.AlwaysUseFallback = !currentAcrylic;
+
+            await AcrylicEffectsService.SetThemeAsync( acrylicToggle.IsOn);
         }
     }
 }

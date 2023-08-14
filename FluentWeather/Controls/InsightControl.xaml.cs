@@ -10,11 +10,15 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using FluentWeather.Models;
 using Windows.UI.Xaml.Media.Imaging;
+using FluentWeather.Core.Helpers;
+using FluentWeather.Services;
 
 namespace FluentWeather.Controls
 {
     public sealed partial class InsightControl : UserControl
     {
+        public AcrylicEffectsService AcrylicEffectsService { get; } = Singleton<AcrylicEffectsService>.Instance;
+
         public Insight Insight
         {
             get { return (Insight) GetValue(InsightProperty); }
