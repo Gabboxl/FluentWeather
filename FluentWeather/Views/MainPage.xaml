@@ -43,7 +43,7 @@
                       TintColor="#FCFCFC"
                       TintOpacity="0.7"
                       TintLuminosityOpacity="0.8"
-                      FallbackColor="#1DFFFFFF"
+                      FallbackColor="#DDFCFCFC"
                       d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
                       AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}"/>
 
