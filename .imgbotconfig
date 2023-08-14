@@ -1,0 +1,12 @@
+{
+    "schedule": "daily", // daily|weekly|monthly
+    "ignoredFiles": [
+        "FluentWeather/Assets/LargeTile*",
+        "FluentWeather/Assets/LockScreenLogo*",
+        "FluentWeather/Assets/SmallTile*",
+        "FluentWeather/Assets/SplashScreen*",
+        "FluentWeather/Assets/StoreLogo*",
+        "FluentWeather/Assets/Square*",
+        "FluentWeather/Assets/Wide*",
+    ],
+}
