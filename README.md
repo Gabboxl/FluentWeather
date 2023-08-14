@@ -5,6 +5,12 @@ A beautiful & modern UWP weather app for Windows.
 
 ## Downloads
 
+### Requirements
+
+* Windows 10 version 1809 (build 17763) and up
+
+--------
+
  ***Microsoft Store (recommended)***:
  
  <a href="https://apps.microsoft.com/store/detail/9PFD136M8457?launch=true&mode=mini" > <img src="https://get.microsoft.com/images/en-US%20dark.svg" width=20% height=20%/> </a>
@@ -15,9 +21,6 @@ A beautiful & modern UWP weather app for Windows.
 
 (*you have to run the `Install.ps1` script, or trust manually the certificate inside the release package*)
 
-### Requirements
-
-* Windows 10 version 1809 (build 17763) and up
 
 
 ## Roadmap
