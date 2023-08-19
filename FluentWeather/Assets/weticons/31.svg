@@ -1,15 +1,1 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="auto" height="auto">
-  <linearGradient id="MucICSH0ICrOB_hDrQ6vaa" x1="24" x2="24" y1="6.121" y2="42.039" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#5961c3" />
-    <stop offset=".002" stop-color="#5961c3" />
-    <stop offset=".616" stop-color="#424ab2" />
-    <stop offset="1" stop-color="#3a41ac" />
-  </linearGradient>
-  <path fill="url(#MucICSH0ICrOB_hDrQ6vaa)" d="M40,42H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v32C42,41.1,41.1,42,40,42z" />
-  <path fill="#fff" d="M31.78,15c0.373,1.234,0.578,2.541,0.578,3.897c0,7.434-6.027,13.461-13.461,13.461c-1.356,0-2.663-0.205-3.897-0.578c2.178,3.151,5.811,5.22,9.932,5.22C31.596,37,37,31.596,37,24.932C37,20.811,34.932,17.178,31.78,15z" />
-  <circle cx="17.5" cy="12.5" r="1.5" fill="#989ef5" />
-  <circle cx="24" cy="17" r="1" fill="#646dd1" />
-  <circle cx="21" cy="24" r="1" fill="#646dd1" />
-  <circle cx="12.5" cy="20.5" r="1.5" fill="#8a91f2" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="auto" height="auto" viewBox="0 0 48 48"><linearGradient id="MucICSH0ICrOB_hDrQ6vaa" x1="24" x2="24" y1="6.121" y2="42.039" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5961c3"/><stop offset=".002" stop-color="#5961c3"/><stop offset=".616" stop-color="#424ab2"/><stop offset="1" stop-color="#3a41ac"/></linearGradient><path fill="url(#MucICSH0ICrOB_hDrQ6vaa)" d="M40,42H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v32C42,41.1,41.1,42,40,42z"/><path fill="#fff" d="M31.78,15c0.373,1.234,0.578,2.541,0.578,3.897c0,7.434-6.027,13.461-13.461,13.461c-1.356,0-2.663-0.205-3.897-0.578c2.178,3.151,5.811,5.22,9.932,5.22C31.596,37,37,31.596,37,24.932C37,20.811,34.932,17.178,31.78,15z"/><circle cx="17.5" cy="12.5" r="1.5" fill="#989ef5"/><circle cx="24" cy="17" r="1" fill="#646dd1"/><circle cx="21" cy="24" r="1" fill="#646dd1"/><circle cx="12.5" cy="20.5" r="1.5" fill="#8a91f2"/></svg>
