@@ -1,0 +1,3 @@
+files:
+  - source: /FluentWeather/Strings/en-us/Resources.resw
+    translation: /FluentWeather/Strings/%locale%/%original_file_name%
