@@ -2,11 +2,9 @@
     x:Class="FluentWeather.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FluentWeather"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:helpers="using:FluentWeather.Helpers"
     xmlns:views="using:FluentWeather.Views"
     xmlns:controls="using:FluentWeather.Controls"
     xmlns:models="using:FluentWeather.Models"
@@ -14,7 +12,6 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
-    xmlns:services="using:FluentWeather.Services"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -255,16 +252,15 @@
                 <Grid Grid.Column="1" MaxWidth="500">
 
                     <AutoSuggestBox
+                        x:Uid="SearchAutoSuggestBox"
                         x:Name="AutoSuggestBoxMain"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         AutoMaximizeSuggestionArea="True"
                         MaxSuggestionListHeight="700"
-                        PlaceholderText="Search a place..."
                         QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                         KeyUp="AutoSuggestBoxMain_OnKeyUp"
                         KeyDown="AutoSuggestBoxMain_OnKeyUp"
-
 
                         Style="{ThemeResource DefaultAutoSuggestBoxStyle}"
                         UpdateTextOnSelect="False"
@@ -465,36 +461,36 @@
                                 Margin="0,16,0,0">
 
                         <controls:DetailChipControl
-                            x:Name="WindPanel"
-                            Title="Wind">
+                            x:Name="WindChipControl"
+                            x:Uid="WindChipControl">
                         </controls:DetailChipControl>
 
 
                         <!-- pressure panel -->
                         <controls:DetailChipControl
-                            x:Name="PressurePanel"
-                            Title="Pressure">
+                            x:Name="PressureChipControl"
+                            x:Uid="PressureChipControl">
                         </controls:DetailChipControl>
 
 
                         <!-- humidity panel -->
                         <controls:DetailChipControl
-                            x:Name="HumidityPanel"
-                            Title="Humidity">
+                            x:Name="HumidityChipControl"
+                            x:Uid="HumidityChipControl">
                         </controls:DetailChipControl>
 
 
                         <!-- visibility panel -->
                         <controls:DetailChipControl
-                            x:Name="VisibilityPanel"
-                            Title="Visibility">
+                            x:Name="VisibilityChipControl"
+                            x:Uid="VisibilityChipControl">
                         </controls:DetailChipControl>
 
 
                         <!-- dew point panel -->
                         <controls:DetailChipControl
-                            x:Name="DewPointPanel"
-                            Title="Dew Point">
+                            x:Name="DewPointChipControl"
+                            x:Uid="DewPointChipControl">
                         </controls:DetailChipControl>
 
 
@@ -508,8 +504,8 @@
 
                         <!-- uv index panel -->
                         <controls:DetailChipControl
-                            x:Name="UVIndexPanel"
-                            Title="UV Index">
+                            x:Name="UVIndexChipControl"
+                            x:Uid="UVIndexChipControl">
                         </controls:DetailChipControl>
 
 
@@ -524,7 +520,7 @@
 
                         <TextBlock
                             Grid.Row="0"
-                            Text="Daily forecast"
+                            x:Uid="DailyForecastTitleTextBlock"
                             Style="{StaticResource SubtitleTextBlockStyle}"
 
                             Margin="0,0,0,16" />
@@ -613,7 +609,7 @@
                         <RelativePanel Grid.Row="0">
                             <TextBlock
                                 x:Name="HourlyTitleText"
-                                Text="Hourly"
+                                x:Uid="HourlyTitleText"
                                 Style="{StaticResource BodyTextBlockStyle}"
                                 FontSize="20"
                                 Margin="0,0,0,16" />
@@ -751,8 +747,8 @@
 
                         <RelativePanel Grid.Row="0">
                             <TextBlock
-                                x:Name="SuggestionsText"
-                                Text="Weather Insights"
+                                x:Name="WeatherInsightsTitleText"
+                                x:Uid="WeatherInsightsTitleText"
                                 Style="{StaticResource BodyTextBlockStyle}"
                                 FontSize="20"
                                 Margin="0,0,0,16" />
@@ -826,7 +822,7 @@
 
                                 <RelativePanel Grid.Row="0">
 
-                                    <TextBlock x:Name="ChipTitle" Text="Day Summary"
+                                    <TextBlock x:Name="DaySummaryInsightTitle" x:Uid="DaySummaryInsightTitle"
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                                Margin="8,8,0,0"
                                                FontSize="16"
@@ -837,7 +833,7 @@
                                     <Rectangle x:Name="Rectangle2"
                                                Fill="{ThemeResource MyAcrylicBrushLine}"
                                                Height="1.2"
-                                               RelativePanel.Below="ChipTitle"
+                                               RelativePanel.Below="DaySummaryInsightTitle"
                                                Width="288"
                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
                                                Margin="0,6,0,0" />
@@ -846,7 +842,7 @@
                                 <RelativePanel Grid.Row="1"
                                                Margin="8">
 
-                                    <TextBlock x:Name="DayTitle" Text="Day"
+                                    <TextBlock x:Name="DaySummaryInsightSubtitle" x:Uid="DaySummaryInsightSubtitle"
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                                Margin="0,0,0,0"
                                                Opacity="0.6"
@@ -856,9 +852,9 @@
                                                Style="{StaticResource BodyTextBlockStyle}"
                                                Margin="0,6,0,0"
                                                IsTextSelectionEnabled="True"
-                                               RelativePanel.Below="DayTitle" />
+                                               RelativePanel.Below="DaySummaryInsightSubtitle" />
 
-                                    <TextBlock x:Name="NightTitle" Text="Night"
+                                    <TextBlock x:Name="NightSummaryInsightSubtitle" x:Uid="NightSummaryInsightSubtitle"
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                                Margin="0,6,0,0"
                                                Opacity="0.6"
@@ -868,7 +864,7 @@
                                                Style="{StaticResource BodyTextBlockStyle}"
                                                Margin="0,6,0,0"
                                                IsTextSelectionEnabled="True"
-                                               RelativePanel.Below="NightTitle" />
+                                               RelativePanel.Below="NightSummaryInsightSubtitle" />
 
 
                                 </RelativePanel>
@@ -896,7 +892,7 @@
 
                                 <RelativePanel Grid.Row="0">
 
-                                    <TextBlock x:Name="SunChipTitle" Text="Sun"
+                                    <TextBlock x:Name="SunInsightTitle" x:Uid="SunInsightTitle"
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                                Margin="8,8,0,0"
                                                FontSize="16"
@@ -906,7 +902,7 @@
                                     <Rectangle
                                         Fill="{ThemeResource MyAcrylicBrushLine}"
                                         Height="1.2"
-                                        RelativePanel.Below="SunChipTitle"
+                                        RelativePanel.Below="SunInsightTitle"
                                         Width="288"
                                         RelativePanel.AlignHorizontalCenterWithPanel="True"
                                         Margin="0,6,0,0" />
@@ -930,7 +926,7 @@
                                                Source="/Assets/varicons/SunriseNew.svg">
                                         </Image>
 
-                                        <TextBlock x:Name="SunriseTitle" Text="Sunrise"
+                                        <TextBlock x:Name="SunriseSubtitle" x:Uid="SunriseSubtitle"
                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
                                                    Margin="6,0,0,0"
                                                    Opacity="0.6"
@@ -939,8 +935,8 @@
                                         <TextBlock x:Name="SunriseTimeText" Text="risetime"
                                                    Style="{StaticResource BodyTextBlockStyle}"
                                                    Margin="6,0,0,0"
-                                                   RelativePanel.AlignLeftWith="SunriseTitle"
-                                                   RelativePanel.Below="SunriseTitle" />
+                                                   RelativePanel.AlignLeftWith="SunriseSubtitle"
+                                                   RelativePanel.Below="SunriseSubtitle" />
 
 
                                     </RelativePanel>
@@ -956,7 +952,7 @@
                                                Source="/Assets/varicons/SunsetNew.svg">
                                         </Image>
 
-                                        <TextBlock x:Name="SunsetTitle" Text="Sunset"
+                                        <TextBlock x:Name="SunsetSubtitle" x:Uid="SunsetSubtitle"
                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
                                                    Margin="6,6,0,0"
                                                    Opacity="0.6"
@@ -965,8 +961,8 @@
                                         <TextBlock x:Name="SunsetTimeText" Text="settime"
                                                    Style="{StaticResource BodyTextBlockStyle}"
                                                    Margin="6,0,0,0"
-                                                   RelativePanel.AlignLeftWith="SunsetTitle"
-                                                   RelativePanel.Below="SunsetTitle" />
+                                                   RelativePanel.AlignLeftWith="SunsetSubtitle"
+                                                   RelativePanel.Below="SunsetSubtitle" />
 
                                     </RelativePanel>
 
@@ -995,7 +991,7 @@
 
                                 <RelativePanel Grid.Row="0">
 
-                                    <TextBlock x:Name="MoonChipTitle" Text="Moon"
+                                    <TextBlock x:Name="MoonInsightTitle" x:Uid="MoonInsightTitle"
                                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                                Margin="8,8,0,0"
                                                FontSize="16"
@@ -1005,7 +1001,7 @@
                                     <Rectangle
                                         Fill="{ThemeResource MyAcrylicBrushLine}"
                                         Height="1.2"
-                                        RelativePanel.Below="MoonChipTitle"
+                                        RelativePanel.Below="MoonInsightTitle"
                                         Width="288"
                                         RelativePanel.AlignHorizontalCenterWithPanel="True"
                                         Margin="0,6,0,0" />
@@ -1034,7 +1030,7 @@
                                                Source="/Assets/varicons/Moonrise.svg">
                                         </Image>
 
-                                        <TextBlock x:Name="MoonriseTitle" Text="Moonrise"
+                                        <TextBlock x:Name="MoonriseSubtitle" x:Uid="MoonriseSubtitle"
                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
                                                    Margin="6,6,0,0"
                                                    Opacity="0.6"
@@ -1043,8 +1039,8 @@
                                         <TextBlock x:Name="MoonriseTimeText" Text="risetime"
                                                    Style="{StaticResource BodyTextBlockStyle}"
                                                    Margin="6,2,0,0"
-                                                   RelativePanel.AlignLeftWith="MoonriseTitle"
-                                                   RelativePanel.Below="MoonriseTitle" />
+                                                   RelativePanel.AlignLeftWith="MoonriseSubtitle"
+                                                   RelativePanel.Below="MoonriseSubtitle" />
 
 
                                     </RelativePanel>
@@ -1061,7 +1057,7 @@
                                                Source="/Assets/varicons/Moonset.svg">
                                         </Image>
 
-                                        <TextBlock x:Name="MoonsetTitle" Text="Moonset"
+                                        <TextBlock x:Name="MoonsetSubtitle" x:Uid="MoonsetSubtitle"
                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
                                                    Margin="6,6,0,0"
                                                    Opacity="0.6"
@@ -1070,8 +1066,8 @@
                                         <TextBlock x:Name="MoonsetTimeText" Text="settime"
                                                    Style="{StaticResource BodyTextBlockStyle}"
                                                    Margin="6,2,0,0"
-                                                   RelativePanel.AlignLeftWith="MoonsetTitle"
-                                                   RelativePanel.Below="MoonsetTitle" />
+                                                   RelativePanel.AlignLeftWith="MoonsetSubtitle"
+                                                   RelativePanel.Below="MoonsetSubtitle" />
 
                                     </RelativePanel>
 
@@ -1098,7 +1094,7 @@
                                                RelativePanel.AlignTopWith="LunarphaseLine">
                                         </Image>
 
-                                        <TextBlock x:Name="LunarphaseTitle" Text="Lunar phase"
+                                        <TextBlock x:Name="LunarphaseSubtitle" x:Uid="LunarphaseSubtitle"
                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
                                                    Margin="8,6,0,0"
                                                    Opacity="0.6"
@@ -1108,8 +1104,8 @@
                                         <TextBlock x:Name="LunarphaseText" Text="phase"
                                                    Style="{StaticResource BodyTextBlockStyle}"
                                                    Margin="8,2,0,0"
-                                                   RelativePanel.AlignLeftWith="LunarphaseTitle"
-                                                   RelativePanel.Below="LunarphaseTitle" />
+                                                   RelativePanel.AlignLeftWith="LunarphaseSubtitle"
+                                                   RelativePanel.Below="LunarphaseSubtitle" />
 
 
                                     </RelativePanel>
@@ -1156,7 +1152,7 @@
                                 <ControlTemplate x:Name="FlyoutItemSettingsTemp">
                                     <StackPanel VerticalAlignment="Center" Margin="16">
                                         <!-- title control -->
-                                        <TextBlock Text="Units"
+                                        <TextBlock x:Uid="UnitsSettingsTitle"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                                         <labs:Segmented
@@ -1165,15 +1161,15 @@
                                             x:Name="UnitsSegmented"
                                             SelectionChanged="UnitsSegmented_OnSelectionChanged"
                                             d:DataContext="{d:DesignInstance views:MainPage }">
-                                            <labs:SegmentedItem Content="Metric" />
-                                            <labs:SegmentedItem Content="Imperial" />
-                                            <labs:SegmentedItem Content="Hybrid" />
+                                            <labs:SegmentedItem x:Uid="MetricUnitsItem" />
+                                            <labs:SegmentedItem x:Uid="ImperialUnitsItem" />
+                                            <labs:SegmentedItem x:Uid="HybridUnitsItem" />
 
                                         </labs:Segmented>
 
 
                                         <!-- toggle control to enable/disable acrylic effect -->
-                                        <TextBlock Text="Acrylic effects"
+                                        <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
                                                    Margin="0,16,0,0"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
@@ -1183,14 +1179,14 @@
                                                       IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
                                                       Toggled="AcrylicToggle_OnToggled"/>
 
-                                        <TextBlock Text="Credits"
+                                        <TextBlock x:Uid="CreditsSettingsTitle"
                                                    Margin="0,16,0,0"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                                         <RichTextBlock
                                             Margin="0,16,0,0">
                                             <Paragraph>
-                                                <Run>UI design inspired by the work of</Run>
+                                                <Run x:Uid="InspiredByRun"></Run>
                                                 <Hyperlink
                                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                                     NavigateUri="https://twitter.com/zeealeid">
@@ -1207,7 +1203,7 @@
                                                     d:DataContext="{d:DesignInstance views:MainPage }"
                                                     Foreground="#A2FFFFFF" Text="{Binding AppVersionText}">
                                                 </Run>
-                                                <Run>developed by</Run>
+                                                <Run x:Uid="DevelopedByRun"></Run>
                                                 <Hyperlink
                                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                                     NavigateUri="https://github.com/Gabboxl">
@@ -1219,7 +1215,7 @@
                                         <HyperlinkButton
                                             HorizontalAlignment="Center"
                                             Margin="0,8,0,0"
-                                            Content="GitHub project"
+                                            x:Uid="GithubProjectButton"
                                             NavigateUri="http://github.com/Gabboxl/FluentWeather" />
 
                                     </StackPanel>

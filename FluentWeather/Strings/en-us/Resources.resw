@@ -192,4 +192,106 @@
     <value>Go ahead!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Search a place...</value>
+  </data>
+  <data name="FeelsLikeText" xml:space="preserve">
+    <value>Feels like</value>
+  </data>
+  <data name="RunningInsightTitle" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="DrivingInsightTitle" xml:space="preserve">
+    <value>Driving</value>
+  </data>
+  <data name="DrySkinInsightTitle" xml:space="preserve">
+    <value>Dry skin</value>
+  </data>
+  <data name="WateringNeedInsightTitle" xml:space="preserve">
+    <value>Watering need</value>
+  </data>
+  <data name="WindChipControl.Title" xml:space="preserve">
+    <value>Wind</value>
+  </data>
+  <data name="PressureChipControl.Title" xml:space="preserve">
+    <value>Pressure</value>
+  </data>
+  <data name="HumidityChipControl.Title" xml:space="preserve">
+    <value>Humidity</value>
+  </data>
+  <data name="VisibilityChipControl.Title" xml:space="preserve">
+    <value>Visibility</value>
+  </data>
+  <data name="DewPointChipControl.Title" xml:space="preserve">
+    <value>Dew Point</value>
+  </data>
+  <data name="UVIndexChipControl.Title" xml:space="preserve">
+    <value>UV Index</value>
+  </data>
+  <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
+    <value>Daily forecast</value>
+  </data>
+  <data name="HourlyTitleText.Text" xml:space="preserve">
+    <value>Hourly</value>
+  </data>
+  <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
+    <value>Weather Insights</value>
+  </data>
+  <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
+    <value>Day Summary</value>
+  </data>
+  <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="SunInsightTitle.Text" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="SunsetSubtitle.Text" xml:space="preserve">
+    <value>Sunset</value>
+  </data>
+  <data name="SunriseSubtitle.Text" xml:space="preserve">
+    <value>Sunrise</value>
+  </data>
+  <data name="MoonInsightTitle.Text" xml:space="preserve">
+    <value>Moon</value>
+  </data>
+  <data name="MoonriseSubtitle.Text" xml:space="preserve">
+    <value>Moonrise</value>
+  </data>
+  <data name="MoonsetSubtitle.Text" xml:space="preserve">
+    <value>Moonset</value>
+  </data>
+  <data name="LunarphaseSubtitle.Text" xml:space="preserve">
+    <value>Lunar phase</value>
+  </data>
+  <data name="UnitsSettingsTitle.Text" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
+    <value>Acrylic effects</value>
+  </data>
+  <data name="CreditsSettingsTitle.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="GithubProjectButton.Content" xml:space="preserve">
+    <value>GitHub project</value>
+  </data>
+  <data name="MetricUnitsItem.Content" xml:space="preserve">
+    <value>Metric</value>
+  </data>
+  <data name="ImperialUnitsItem.Content" xml:space="preserve">
+    <value>Imperial</value>
+  </data>
+  <data name="HybridUnitsItem.Content" xml:space="preserve">
+    <value>Hybrid</value>
+  </data>
+  <data name="InspiredByRun.Text" xml:space="preserve">
+    <value>UI design inspired by the work of</value>
+  </data>
+  <data name="DevelopedByRun.Text" xml:space="preserve">
+    <value>developed by</value>
+  </data>
 </root>

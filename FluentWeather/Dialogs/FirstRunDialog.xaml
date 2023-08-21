@@ -49,6 +49,7 @@
                 <TextBlock x:Uid="FirstRun_Body" TextWrapping="WrapWholeWords" />
 
                 <AutoSuggestBox
+                    x:Uid="SearchAutoSuggestBox"
                     Margin="0,16,0,0"
                     x:Name="AutoSuggestBoxMain"
                     RelativePanel.AlignHorizontalCenterWithPanel="True"
@@ -58,7 +59,6 @@
 
                     Width="400" AutomationProperties.Name="Basic AutoSuggestBox"
                     TextMemberPath="address"
-                    PlaceholderText="Search a place..."
                     ItemContainerStyle="{StaticResource ControlFullStretchStyle}">
 
 

@@ -455,25 +455,25 @@ namespace FluentWeather.Views
                                    MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
             FeelsLikeText.Text =
-                "Feels like " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
+                Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/FeelsLikeText").ValueAsString + " " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
                 MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
-            WindPanel.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " " +
+            WindChipControl.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " " +
                               MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
                               rootV3Response.v3wxobservationscurrent.windDirectionCardinal;
 
-            HumidityPanel.Value = rootV3Response.v3wxobservationscurrent.relativeHumidity + "%";
+            HumidityChipControl.Value = rootV3Response.v3wxobservationscurrent.relativeHumidity + "%";
 
-            PressurePanel.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " +
+            PressureChipControl.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " +
                                   MeasureUnitUtils.GetPressureUnits(currentUnits);
 
-            VisibilityPanel.Value = rootV3Response.v3wxobservationscurrent.visibility + " " +
+            VisibilityChipControl.Value = rootV3Response.v3wxobservationscurrent.visibility + " " +
                                     MeasureUnitUtils.GetVisibilityUnits(currentUnits);
 
-            DewPointPanel.Value = rootV3Response.v3wxobservationscurrent.temperatureDewPoint + "°" +
+            DewPointChipControl.Value = rootV3Response.v3wxobservationscurrent.temperatureDewPoint + "°" +
                                   MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
-            UVIndexPanel.Value = rootV3Response.v3wxobservationscurrent.uvIndex + " (" +
+            UVIndexChipControl.Value = rootV3Response.v3wxobservationscurrent.uvIndex + " (" +
                                  rootV3Response.v3wxobservationscurrent.uvDescription + ")";
 
 
@@ -570,7 +570,7 @@ namespace FluentWeather.Views
             //insights controls
             RunningInsight.Insight = new Insight()
             {
-                Title = "Running",
+                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/RunningInsightTitle").ValueAsString,
                 Value =
                     _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
                 Description =
@@ -582,7 +582,7 @@ namespace FluentWeather.Views
 
             DrivingInsight.Insight = new Insight()
             {
-                Title = "Driving",
+                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/DrivingInsightTitle").ValueAsString,
                 Value =
                     _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[
                         indexOfDayInsights],
@@ -600,7 +600,7 @@ namespace FluentWeather.Views
 
             DryskinInsight.Insight = new Insight()
             {
-                Title = "Dry skin",
+                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/DrySkinInsightTitle").ValueAsString,
                 Value = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
                 Description =
                     _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
@@ -610,7 +610,7 @@ namespace FluentWeather.Views
 
             WateringInsight.Insight = new Insight()
             {
-                Title = "Watering need",
+                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/WateringNeedInsightTitle").ValueAsString,
                 Value =
                     _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[
                         indexOfDayInsights],
