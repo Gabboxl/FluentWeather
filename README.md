@@ -3,6 +3,10 @@ A beautiful & modern UWP weather app for Windows.
 
 ![dropshad2](https://github.com/Gabboxl/FluentWeather/assets/26819478/4170effe-4594-415b-b1ca-02c61087f539)
 
+## Translate the app
+
+Everyone is invited to help with the translation of the app, [help us translate here!](https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251)
+
 ## Downloads
 
 ### Requirements
