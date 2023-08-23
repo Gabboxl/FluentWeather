@@ -69,9 +69,13 @@ namespace FluentWeather.Services
 
         private async Task HandleActivationAsync(object activationArgs)
         {
-            var activationHandler = GetActivationHandlers()
-                                                .FirstOrDefault(h => h.CanHandle(activationArgs));
 
+            var activationhandlersList = GetActivationHandlers();
+
+            //get the first activationhandler that can handle the activationargs
+            var activationHandler = activationhandlersList.FirstOrDefault(h => h.CanHandle(activationArgs));
+
+            //if there are activationhandlers that can handle the activationargs then handle it
             if (activationHandler != null)
             {
                 await activationHandler.HandleAsync(activationArgs);
@@ -96,7 +100,7 @@ namespace FluentWeather.Services
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()
         {
-            //yield return Singleton<ToastNotificationsService>.Instance;
+            yield return Singleton<ToastNotificationsService>.Instance;
             //yield return Singleton<BackgroundTaskService>.Instance;
 
             //da rimuovere se c'è altre instanze

@@ -7,7 +7,6 @@ using System.Net.Http;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using FluentWeather.Helpers;
 using FluentWeather.ViewModels;
 

@@ -5,6 +5,8 @@ using FluentWeather.Activation;
 
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Notifications;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace FluentWeather.Services
 {
@@ -26,6 +28,41 @@ namespace FluentWeather.Services
         {
             //// TODO: Handle activation from toast notification
             //// More details at https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/send-local-toast
+            ///
+            
+
+            //check what button was pressed of the toast notification
+
+            if (args.Argument == "ToastButtonActivationArguments")
+            {
+                //show UWP content dialog here
+
+                ContentDialog dialog = new ContentDialog();
+                dialog.Title = "yo";
+                dialog.PrimaryButtonText = "side";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                dialog.RequestedTheme = ((FrameworkElement)Window.Current.Content).RequestedTheme;
+                dialog.Content = "xdxd";
+
+                //dialog.FullSizeDesired = true;
+                var result = await dialog.ShowAsync();
+            }
+            else
+            {
+                //show UWP content dialog here
+
+                ContentDialog dialog = new ContentDialog();
+                dialog.Title = "yo";
+                dialog.PrimaryButtonText = "side";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                dialog.RequestedTheme = ((FrameworkElement)Window.Current.Content).RequestedTheme;
+                dialog.Content = "xdxd";
+
+                //dialog.FullSizeDesired = true;
+                var result = await dialog.ShowAsync();
+            }
+            
+
 
             await Task.CompletedTask;
         }
