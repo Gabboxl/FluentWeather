@@ -134,15 +134,15 @@
     <comment>Choose theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Scuro</value>
     <comment>Dark theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows default</value>
+    <value>Predefinito di Windows</value>
     <comment>Windows default theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Chiaro</value>
     <comment>Light theme text for Settings</comment>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
@@ -199,37 +199,37 @@
     <value>Feels like</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Running</value>
+    <value>Corsa</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Driving</value>
+    <value>Guida</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>Pelle secca</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
     <value>Watering need</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Wind</value>
+    <value>Vento</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Pressione</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Humidity</value>
+    <value>Umidità</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibility</value>
+    <value>Visibilità</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>Punto di rugiada</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>UV Index</value>
+    <value>Indice UV</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Daily forecast</value>
+    <value>Previsioni giornaliere</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
     <value>Hourly</value>
@@ -241,22 +241,22 @@
     <value>Day Summary</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>Giorno</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Notte</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Sole</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Tramonto</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Alba</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Luna</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
     <value>Moonrise</value>
@@ -265,19 +265,19 @@
     <value>Moonset</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Fase lunare</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Units</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>Effetti acrilici</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Credits</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>Progetto GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
     <value>Metric</value>
