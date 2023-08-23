@@ -276,7 +276,7 @@
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Credits</value>
   </data>
-  <data name="GithubProjectButton.Content" xml:space="preserve">
+  <data name="GithubProjectButton.Text" xml:space="preserve">
     <value>GitHub project</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
@@ -293,5 +293,8 @@
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
     <value>developed by</value>
+  </data>
+  <data name="TranslateAppText.Text" xml:space="preserve">
+    <value>Translate the app</value>
   </data>
 </root>
