@@ -432,6 +432,35 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <PRIResource Include="Strings\de-DE\Resources.resw" />
+    <PRIResource Include="Strings\da-DK\Resources.resw" />
+    <PRIResource Include="Strings\cs-CZ\Resources.resw" />
+    <PRIResource Include="Strings\ca-ES\Resources.resw" />
+    <PRIResource Include="Strings\ar-SA\Resources.resw" />
+    <PRIResource Include="Strings\af-ZA\Resources.resw" />
+    <PRIResource Include="Strings\el-GR\Resources.resw" />
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
+    <PRIResource Include="Strings\vi-VN\Resources.resw" />
+    <PRIResource Include="Strings\uk-UA\Resources.resw" />
+    <PRIResource Include="Strings\tr-TR\Resources.resw" />
+    <PRIResource Include="Strings\sv-SE\Resources.resw" />
+    <PRIResource Include="Strings\sr-SP\Resources.resw" />
+    <PRIResource Include="Strings\ru-RU\Resources.resw" />
+    <PRIResource Include="Strings\ro-RO\Resources.resw" />
+    <PRIResource Include="Strings\pt-PT\Resources.resw" />
+    <PRIResource Include="Strings\pt-BR\Resources.resw" />
+    <PRIResource Include="Strings\pl-PL\Resources.resw" />
+    <PRIResource Include="Strings\no-NO\Resources.resw" />
+    <PRIResource Include="Strings\nl-NL\Resources.resw" />
+    <PRIResource Include="Strings\ko-KR\Resources.resw" />
+    <PRIResource Include="Strings\ja-JP\Resources.resw" />
+    <PRIResource Include="Strings\it-IT\Resources.resw" />
+    <PRIResource Include="Strings\hu-HU\Resources.resw" />
+    <PRIResource Include="Strings\he-IL\Resources.resw" />
+    <PRIResource Include="Strings\fr-FR\Resources.resw" />
+    <PRIResource Include="Strings\fi-FI\Resources.resw" />
+    <PRIResource Include="Strings\es-ES\Resources.resw" />
+    <PRIResource Include="Strings\zh-TW\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
