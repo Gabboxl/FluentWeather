@@ -173,7 +173,7 @@
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>Novità di questa versione</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -181,22 +181,22 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Cerca e seleziona la tua posizione qui sotto:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Benvenuto in FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Go ahead!</value>
+    <value>Iniziamo!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Trova un luogo...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Feels like</value>
+    <value>Percepita</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
     <value>Corsa</value>
@@ -238,7 +238,7 @@
     <value>Weather Insights</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Day Summary</value>
+    <value>Riepilogo giornata</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
     <value>Giorno</value>
@@ -259,22 +259,22 @@
     <value>Luna</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Alba lunare</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Tramonto lunare</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
     <value>Fase lunare</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Units</value>
+    <value>Unità</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
     <value>Effetti acrilici</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Credits</value>
+    <value>Riconoscimenti</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
     <value>Progetto GitHub</value>
@@ -289,12 +289,12 @@
     <value>Hybrid</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>UI design inspired by the work of</value>
+    <value>Design dell'UI ispirato dal lavoro di</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>developed by</value>
+    <value>sviluppata da</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Translate the app</value>
+    <value>Traduci l'app</value>
   </data>
 </root>
