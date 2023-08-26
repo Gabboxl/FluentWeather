@@ -2,11 +2,15 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
+using Windows.Data.Xml.Dom;
 using Windows.System.Threading;
 using Windows.UI.Core;
+using Windows.UI.Notifications;
+using Windows.UI.StartScreen;
+using Windows.Web.Syndication;
 using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace FluentWeather.BackgroundTasks
@@ -22,7 +26,8 @@ namespace FluentWeather.BackgroundTasks
         public override void Register()
         {
             var taskName = GetType().Name;
-            var taskRegistration = BackgroundTaskRegistration.AllTasks.FirstOrDefault(t => t.Value.Name == taskName).Value;
+            var taskRegistration =
+                BackgroundTaskRegistration.AllTasks.FirstOrDefault(t => t.Value.Name == taskName).Value;
 
             if (taskRegistration == null)
             {
@@ -68,32 +73,32 @@ namespace FluentWeather.BackgroundTasks
                     CoreDispatcherPriority.Normal,
                     async () =>
                     {
-
                         new ToastContentBuilder()
-                            .SetToastScenario(ToastScenario.Reminder)        
-                            .AddArgument("action", "viewEvent")        
-                            .AddArgument("eventId", 1983)        
-                            .AddText("Adaptive Tiles Meeting")        
-                            .AddText("Conf Room 2001 / Building 135")        
-                            .AddText("10:00 AM - 10:30 AM")        
-                            .AddComboBox("snoozeTime", "15", ("1", "1 minute"),        
-                                ("15", "15 minutes"),        
-                                ("60", "1 hour"),        
-                                ("240", "4 hours"),        
-                                ("1440", "1 day"))        
+                            .SetToastScenario(ToastScenario.Reminder)
+                            .AddArgument("action", "viewEvent")
+                            .AddArgument("eventId", 1983)
+                            .AddText("Adaptive Tiles Meeting")
+                            .AddText("Conf Room 2001 / Building 135")
+                            .AddText("10:00 AM - 10:30 AM")
+                            .AddComboBox("snoozeTime", "15", ("1", "1 minute"),
+                                ("15", "15 minutes"),
+                                ("60", "1 hour"),
+                                ("240", "4 hours"),
+                                ("1440", "1 day"))
                             .AddButton(new ToastButton()
-                                .SetSnoozeActivation("snoozeTime"))        
+                                .SetSnoozeActivation("snoozeTime"))
                             .AddButton(new ToastButton()
                                 .SetDismissActivation())
                             .Show();
-
                     }
                 );
 
-                
-                _taskInstance = taskInstance;
-                ThreadPoolTimer.CreatePeriodicTimer(new TimerElapsedHandler(SampleTimerCallback), TimeSpan.FromSeconds(1));
 
+                _taskInstance = taskInstance;
+                ThreadPoolTimer.CreatePeriodicTimer(new TimerElapsedHandler(SampleTimerCallback),
+                    TimeSpan.FromSeconds(1));
+
+                UpdateTile();
             });
         }
 
@@ -101,8 +106,8 @@ namespace FluentWeather.BackgroundTasks
         {
             _cancelRequested = true;
 
-           // TODO: Insert code to handle the cancelation request here.
-           // Documentation: https://docs.microsoft.com/windows/uwp/launch-resume/handle-a-cancelled-background-task
+            // TODO: Insert code to handle the cancelation request here.
+            // Documentation: https://docs.microsoft.com/windows/uwp/launch-resume/handle-a-cancelled-background-task
         }
 
         private void SampleTimerCallback(ThreadPoolTimer timer)
@@ -127,6 +132,19 @@ namespace FluentWeather.BackgroundTasks
 
                 _deferral?.Complete();
             }
+        }
+
+
+        private static async void UpdateTile()
+        {
+            AppListEntry entry = (await Package.Current.GetAppListEntriesAsync())[0];
+
+// Check if Start supports your app
+            bool isSupported = StartScreenManager.GetDefault().SupportsAppListEntry(entry);
+
+
+// Check if your app is currently pinned
+            bool isPinned = await StartScreenManager.GetDefault().ContainsAppListEntryAsync(entry);
         }
     }
 }
