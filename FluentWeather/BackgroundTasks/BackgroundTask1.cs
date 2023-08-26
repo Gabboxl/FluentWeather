@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Windows.ApplicationModel.Background;
+using Windows.ApplicationModel.Core;
 using Windows.System.Threading;
+using Windows.UI.Core;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace FluentWeather.BackgroundTasks
 {
@@ -30,7 +34,7 @@ namespace FluentWeather.BackgroundTasks
                 // TODO: Define the trigger for your background task and set any (optional) conditions
                 // More details at https://docs.microsoft.com/windows/uwp/launch-resume/create-and-register-an-inproc-background-task
                 builder.SetTrigger(new TimeTrigger(15, false));
-                builder.AddCondition(new SystemCondition(SystemConditionType.UserPresent));
+                //builder.AddCondition(new SystemCondition(SystemConditionType.UserPresent));
 
                 builder.Register();
             }
@@ -59,8 +63,37 @@ namespace FluentWeather.BackgroundTasks
                 //// subscribe to the Progress and Completed events.
                 //// You can do this via "BackgroundTaskService.GetBackgroundTasksRegistration"
 
+                //we execute the code in the UI thread
+                CoreApplication.MainView.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    async () =>
+                    {
+
+                        new ToastContentBuilder()
+                            .SetToastScenario(ToastScenario.Reminder)        
+                            .AddArgument("action", "viewEvent")        
+                            .AddArgument("eventId", 1983)        
+                            .AddText("Adaptive Tiles Meeting")        
+                            .AddText("Conf Room 2001 / Building 135")        
+                            .AddText("10:00 AM - 10:30 AM")        
+                            .AddComboBox("snoozeTime", "15", ("1", "1 minute"),        
+                                ("15", "15 minutes"),        
+                                ("60", "1 hour"),        
+                                ("240", "4 hours"),        
+                                ("1440", "1 day"))        
+                            .AddButton(new ToastButton()
+                                .SetSnoozeActivation("snoozeTime"))        
+                            .AddButton(new ToastButton()
+                                .SetDismissActivation())
+                            .Show();
+
+                    }
+                );
+
+                
                 _taskInstance = taskInstance;
                 ThreadPoolTimer.CreatePeriodicTimer(new TimerElapsedHandler(SampleTimerCallback), TimeSpan.FromSeconds(1));
+
             });
         }
 
