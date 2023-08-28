@@ -297,4 +297,7 @@
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>Translate the app</value>
   </data>
+  <data name="UpdatedOnText" xml:space="preserve">
+    <value>Updated on </value>
+  </data>
 </root>

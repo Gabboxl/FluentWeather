@@ -88,7 +88,7 @@ namespace FluentWeather.BackgroundTasks
 
                 string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-                string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+                string systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
                 HttpClient sharedClient2 = new()
                 {
@@ -103,8 +103,7 @@ namespace FluentWeather.BackgroundTasks
                         + lastPlaceId
                         + "&units=" + await VariousUtils.GetUnitsCode()
                         + "&language=" +
-                        _systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
-                    //&locationType=city (x solo citta)
+                        systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
 
                     response.EnsureSuccessStatusCode();
 
