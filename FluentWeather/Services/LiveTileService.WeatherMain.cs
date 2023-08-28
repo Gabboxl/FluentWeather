@@ -40,12 +40,17 @@ namespace FluentWeather.Services
 
             // Medium Tile built using only builder method.
             builder.AddTile(TileSize.Medium)
+                .SetBackgroundImage( new Uri("ms-appx:///Assets/livetilesbgs/" + IconsDictionary.IconCodeToBackgroundImageNameDictionary[
+                    apiDataResponse.v3wxobservationscurrent.iconCode.ToString()] + ".jpg"), TileSize.Medium)
+
                 .AddText(cityName, TileSize.Medium, hintStyle: AdaptiveTextStyle.Base,
                     hintAlign: AdaptiveTextAlign.Center)
                 .AddAdaptiveTileVisualChild(MediumTileContent(imageIconPath, currentTemp), TileSize.Medium)
                 ;
 
             builder.AddTile(TileSize.Wide)
+                .SetBackgroundImage( new Uri("ms-appx:///Assets/livetilesbgs/" + IconsDictionary.IconCodeToBackgroundImageNameDictionary[
+                    apiDataResponse.v3wxobservationscurrent.iconCode.ToString()] + ".jpg"), TileSize.Wide)
                 .AddText(cityName, TileSize.Wide, hintStyle: AdaptiveTextStyle.Base,
                     hintAlign: AdaptiveTextAlign.Center)
                 .AddAdaptiveTileVisualChild(WideTileContent(imageIconPath, currentTemp), TileSize.Wide)
@@ -53,6 +58,8 @@ namespace FluentWeather.Services
                     hintAlign: AdaptiveTextAlign.Center);
 
             builder.AddTile(TileSize.Large)
+                .SetBackgroundImage( new Uri("ms-appx:///Assets/livetilesbgs/" + IconsDictionary.IconCodeToBackgroundImageNameDictionary[
+                    apiDataResponse.v3wxobservationscurrent.iconCode.ToString()] + ".jpg"), TileSize.Large)
                 .AddText(cityName, TileSize.Large, hintStyle: AdaptiveTextStyle.Title,
                     hintAlign: AdaptiveTextAlign.Center)
                 .AddAdaptiveTileVisualChild(LargeTileContent(imageIconPath, currentTemp), TileSize.Large)
