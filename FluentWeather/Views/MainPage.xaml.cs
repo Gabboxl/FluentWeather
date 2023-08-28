@@ -23,7 +23,6 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Automation.Provider;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using CommunityToolkit.Labs.WinUI;
 using FluentWeather.Helpers;
 using FluentWeather.Services;
@@ -264,13 +263,6 @@ namespace FluentWeather.Views
             await Task.Run(LoadApiData);
         }
 
-        private async Task<WetUnits> GetUnitsCode()
-        {
-            WetUnits unitsCode =
-                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
-
-            return unitsCode;
-        }
 
         private async Task LoadApiData()
         {
@@ -286,7 +278,7 @@ namespace FluentWeather.Views
                 var response = await sharedClient2.GetAsync(
                     "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
                     + lastPlaceId
-                    + "&units=" + await GetUnitsCode()
+                    + "&units=" + await VariousUtils.GetUnitsCode()
                     + "&language=" +
                     _systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
                 //&locationType=city (x solo citta)
@@ -298,6 +290,8 @@ namespace FluentWeather.Views
 
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
+                //update main LiveTile
+                Singleton<LiveTileService>.Instance.UpdateWeather(_lastApiData);
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
@@ -429,7 +423,7 @@ namespace FluentWeather.Views
 
 
             //update chips
-            WetUnits currentUnits = await GetUnitsCode();
+            WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
 
             UpdatedOnText.Text =
@@ -517,7 +511,6 @@ namespace FluentWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
-            //update the ui
             List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
 
             int i = 0;

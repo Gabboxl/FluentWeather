@@ -63,7 +63,8 @@ namespace FluentWeather.Services
 
         private async Task InitializeAsync()
         {
-            await Singleton<LiveTileService>.Instance.EnableQueueAsync().ConfigureAwait(false);
+            //TODO: reenable if livetile queue is needed
+            //await Singleton<LiveTileService>.Instance.EnableQueueAsync().ConfigureAwait(false);
             await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
 
@@ -99,7 +100,7 @@ namespace FluentWeather.Services
             await ThemeSelectorService.SetRequestedThemeAsync();
             await WhatsNewDisplayService.ShowIfAppropriateAsync();
             await FirstRunDisplayService.ShowIfAppropriateAsync();
-            Singleton<LiveTileService>.Instance.SampleUpdate();
+            //Singleton<LiveTileService>.Instance.SampleUpdate();
         }
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()

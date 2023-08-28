@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
-using Windows.Data.Xml.Dom;
-using Windows.System.Threading;
-using Windows.UI.Core;
-using Windows.UI.Notifications;
+using Windows.Storage;
 using Windows.UI.StartScreen;
-using Windows.Web.Syndication;
 using Microsoft.Toolkit.Uwp.Notifications;
+using FluentWeather.Core.Helpers;
+using FluentWeather.Helpers;
+using FluentWeather.Models;
+using FluentWeather.Services;
+using Newtonsoft.Json;
+using FluentWeather.Utils;
 
 namespace FluentWeather.BackgroundTasks
 {
@@ -54,7 +56,7 @@ namespace FluentWeather.BackgroundTasks
 
             _deferral = taskInstance.GetDeferral();
 
-            return Task.Run(() =>
+            return Task.Run(async () =>
             {
                 //// TODO: Insert the code that should be executed in the background task here.
                 //// This sample initializes a timer that counts to 100 in steps of 10.  It updates Message each time.
@@ -68,35 +70,53 @@ namespace FluentWeather.BackgroundTasks
                 //// subscribe to the Progress and Completed events.
                 //// You can do this via "BackgroundTaskService.GetBackgroundTasksRegistration"
 
-                //we execute the code in the UI thread
-                CoreApplication.MainView.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    async () =>
-                    {
-                        new ToastContentBuilder()
-                            .SetToastScenario(ToastScenario.Reminder)
-                            .AddArgument("action", "viewEvent")
-                            .AddArgument("eventId", 1983)
-                            .AddText("Adaptive Tiles Meeting")
-                            .AddText("Conf Room 2001 / Building 135")
-                            .AddText("10:00 AM - 10:30 AM")
-                            .AddComboBox("snoozeTime", "15", ("1", "1 minute"),
-                                ("15", "15 minutes"),
-                                ("60", "1 hour"),
-                                ("240", "4 hours"),
-                                ("1440", "1 day"))
-                            .AddButton(new ToastButton()
-                                .SetSnoozeActivation("snoozeTime"))
-                            .AddButton(new ToastButton()
-                                .SetDismissActivation())
-                            .Show();
-                    }
-                );
+
+                new ToastContentBuilder()
+                    .SetToastScenario(ToastScenario.Reminder)
+                    .AddArgument("action", "viewEvent")
+                    .AddText("Test notification2")
+                    .AddText("weather update")
+                    //.AddText("10:00 AM - 10:30 AM")
+                    .Show();
 
 
-                _taskInstance = taskInstance;
-                ThreadPoolTimer.CreatePeriodicTimer(new TimerElapsedHandler(SampleTimerCallback),
-                    TimeSpan.FromSeconds(1));
+                _taskInstance = taskInstance; //it can be removed as it isnt used anywhere
+
+
+                //update livetile data
+
+
+                string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+                string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+
+                HttpClient sharedClient2 = new()
+                {
+                    BaseAddress = new Uri("https://api.weather.com/v2/"),
+                };
+
+
+                if (lastPlaceId != null)
+                {
+                    var response = await sharedClient2.GetAsync(
+                        "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
+                        + lastPlaceId
+                        + "&units=" + await VariousUtils.GetUnitsCode()
+                        + "&language=" +
+                        _systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+                    //&locationType=city (x solo citta)
+
+                    response.EnsureSuccessStatusCode();
+
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+
+
+                    var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+
+
+                    Singleton<LiveTileService>.Instance.UpdateWeather(newApiData);
+                }
+
 
                 UpdateTile();
             });
@@ -108,30 +128,6 @@ namespace FluentWeather.BackgroundTasks
 
             // TODO: Insert code to handle the cancelation request here.
             // Documentation: https://docs.microsoft.com/windows/uwp/launch-resume/handle-a-cancelled-background-task
-        }
-
-        private void SampleTimerCallback(ThreadPoolTimer timer)
-        {
-            if ((_cancelRequested == false) && (_taskInstance.Progress < 100))
-            {
-                _taskInstance.Progress += 10;
-                Message = $"Background Task {_taskInstance.Task.Name} running";
-            }
-            else
-            {
-                timer.Cancel();
-
-                if (_cancelRequested)
-                {
-                    Message = $"Background Task {_taskInstance.Task.Name} cancelled";
-                }
-                else
-                {
-                    Message = $"Background Task {_taskInstance.Task.Name} finished";
-                }
-
-                _deferral?.Complete();
-            }
         }
 
 

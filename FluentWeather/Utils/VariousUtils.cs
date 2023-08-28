@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading.Tasks;
+using Windows.Storage;
+using FluentWeather.Helpers;
+using FluentWeather.Models;
 
 namespace FluentWeather.Utils
 {
@@ -35,6 +39,14 @@ namespace FluentWeather.Utils
 
             // Return an empty string if the day name is not found
             return string.Empty;
+        }
+
+        public static async Task<WetUnits> GetUnitsCode()
+        {
+            WetUnits unitsCode =
+                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
+
+            return unitsCode;
         }
     }
 }
