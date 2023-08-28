@@ -17,9 +17,8 @@ using FluentWeather.Utils;
 
 namespace FluentWeather.BackgroundTasks
 {
-    public sealed class BackgroundTask1 : BackgroundTask
+    public sealed class LiveTileBackgroundTask : BackgroundTask
     {
-        public static string Message { get; set; }
 
         private volatile bool _cancelRequested = false;
         private IBackgroundTaskInstance _taskInstance;

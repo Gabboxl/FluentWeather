@@ -182,7 +182,7 @@
     <Compile Include="Adapters\HourDataAdapter.cs" />
     <Compile Include="Adapters\DayButtonAdapter.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask.cs" />
-    <Compile Include="BackgroundTasks\BackgroundTask1.cs" />
+    <Compile Include="BackgroundTasks\LiveTileBackgroundTask.cs" />
     <Compile Include="Controls\InsightControl.xaml.cs">
       <DependentUpon>InsightControl.xaml</DependentUpon>
     </Compile>
