@@ -207,7 +207,6 @@
     <Compile Include="Services\FirstRunDisplayService.cs" />
     <Compile Include="Services\LiveTileService.cs" />
     <Compile Include="Services\LiveTileService.WeatherMain.cs" />
-    <Compile Include="Services\LiveTileService.Samples.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\AcrylicEffectsService.cs" />
     <Compile Include="Services\ThemeSelectorService.cs" />
