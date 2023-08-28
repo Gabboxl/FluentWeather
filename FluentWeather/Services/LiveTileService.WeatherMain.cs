@@ -32,6 +32,8 @@ namespace FluentWeather.Services
             string currentTemp = apiDataResponse.v3wxobservationscurrent.temperature + "°" +
                                  MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
+            string mainPhrase = apiDataResponse.v3wxobservationscurrent.cloudCoverPhrase;
+
 
 
             var builder = new TileContentBuilder();
@@ -40,15 +42,16 @@ namespace FluentWeather.Services
 
             // Medium Tile built using only builder method.
             builder.AddTile(TileSize.Medium)
-                .AddText(cityName, TileSize.Medium, hintStyle: AdaptiveTextStyle.Base)
+                .AddText(cityName, TileSize.Medium, hintStyle: AdaptiveTextStyle.Base, hintAlign: AdaptiveTextAlign.Center)
                 .AddAdaptiveTileVisualChild(MediumTileContent(imageIconPath, currentTemp), TileSize.Medium)
-                .AddText(currentTemp, TileSize.Medium, hintStyle: AdaptiveTextStyle.Subtitle);
+                ;
 
             builder.AddTile(Microsoft.Toolkit.Uwp.Notifications.TileSize.Wide)
-                .AddText(cityName, TileSize.Wide)
-                .AddAdaptiveTileVisualChild(WideTileContent(imageIconPath, currentTemp), TileSize.Wide);
+                .AddText(cityName, TileSize.Wide, hintStyle: AdaptiveTextStyle.Base, hintAlign: AdaptiveTextAlign.Center)
+            .AddAdaptiveTileVisualChild(WideTileContent(imageIconPath, currentTemp), TileSize.Wide)
+                .AddText(mainPhrase, TileSize.Wide, hintStyle: AdaptiveTextStyle.BaseSubtle, hintAlign: AdaptiveTextAlign.Center);
 
-            builder.AddTile(Microsoft.Toolkit.Uwp.Notifications.TileSize.Large)
+                builder.AddTile(Microsoft.Toolkit.Uwp.Notifications.TileSize.Large)
                 .AddText(cityName, TileSize.Large)
                 .AddAdaptiveTileVisualChild(MediumTileContent(imageIconPath, currentTemp), TileSize.Large);
 
@@ -72,39 +75,26 @@ namespace FluentWeather.Services
             {
                 Children =
                 {
-                    new AdaptiveSubgroup()
-                    {
-                        HintWeight = 1
-                    },
-
 
                     new AdaptiveSubgroup()
                     {
-                        HintWeight = 3,
-
+                        HintWeight = 1,
                         Children =
                         {
                             new AdaptiveImage()
                             {
-                                Source = iconPath,
+                                Source =  iconPath,
                                 HintRemoveMargin = true,
+                                HintAlign = AdaptiveImageAlign.Center
                             },
-
                             new AdaptiveText()
                             {
                                 Text = currentTemp,
-                                HintStyle = AdaptiveTextStyle.Base,
                                 HintAlign = AdaptiveTextAlign.Center,
-                            },
+                                HintStyle = AdaptiveTextStyle.Subtitle
+                            }
                         }
                     },
-
-
-                    new AdaptiveSubgroup()
-                    {
-                        HintWeight = 1
-                    },
-
 
 
 
@@ -114,41 +104,49 @@ namespace FluentWeather.Services
         }
 
 
+        
         private ITileBindingContentAdaptiveChild WideTileContent(string iconPath, string currentTemp)
         {
             return new AdaptiveGroup()
             {
                 Children =
                 {
+                    new AdaptiveSubgroup() { HintWeight = 1 },
+
                     new AdaptiveSubgroup()
                     {
-                        //HintWeight = 33,
-
+                        HintWeight = 2,
                         Children =
                         {
                             new AdaptiveImage()
                             {
-                                Source = iconPath
-
-                            }
+                                Source =  iconPath,
+                                HintRemoveMargin = true,
+                                HintAlign = AdaptiveImageAlign.Center
+                            },
                         }
                     },
 
                     new AdaptiveSubgroup()
                     {
+                        HintWeight = 2,
                         HintTextStacking = AdaptiveSubgroupTextStacking.Center,
-
                         Children =
                         {
                             new AdaptiveText()
                             {
                                 Text = currentTemp,
+                                HintAlign = AdaptiveTextAlign.Center,
                                 HintStyle = AdaptiveTextStyle.Subtitle
-                            },
-
+                            }
                         }
-                    }
+                    },
+
+                    new AdaptiveSubgroup() { HintWeight = 1 },
+
+
                 }
+
             };
         }
 
