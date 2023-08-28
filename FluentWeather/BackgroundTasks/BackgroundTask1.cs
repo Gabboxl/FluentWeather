@@ -71,20 +71,10 @@ namespace FluentWeather.BackgroundTasks
                 //// You can do this via "BackgroundTaskService.GetBackgroundTasksRegistration"
 
 
-                new ToastContentBuilder()
-                    .SetToastScenario(ToastScenario.Reminder)
-                    .AddArgument("action", "viewEvent")
-                    .AddText("Test notification2")
-                    .AddText("weather update")
-                    //.AddText("10:00 AM - 10:30 AM")
-                    .Show();
-
-
                 _taskInstance = taskInstance; //it can be removed as it isnt used anywhere
 
 
                 //update livetile data
-
 
                 string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
