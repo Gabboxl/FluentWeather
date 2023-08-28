@@ -35,34 +35,31 @@ namespace FluentWeather.Services
             string mainPhrase = apiDataResponse.v3wxobservationscurrent.cloudCoverPhrase;
 
 
-
             var builder = new TileContentBuilder();
-
 
 
             // Medium Tile built using only builder method.
             builder.AddTile(TileSize.Medium)
-                .AddText(cityName, TileSize.Medium, hintStyle: AdaptiveTextStyle.Base, hintAlign: AdaptiveTextAlign.Center)
+                .AddText(cityName, TileSize.Medium, hintStyle: AdaptiveTextStyle.Base,
+                    hintAlign: AdaptiveTextAlign.Center)
                 .AddAdaptiveTileVisualChild(MediumTileContent(imageIconPath, currentTemp), TileSize.Medium)
                 ;
 
-            builder.AddTile(Microsoft.Toolkit.Uwp.Notifications.TileSize.Wide)
-                .AddText(cityName, TileSize.Wide, hintStyle: AdaptiveTextStyle.Base, hintAlign: AdaptiveTextAlign.Center)
-            .AddAdaptiveTileVisualChild(WideTileContent(imageIconPath, currentTemp), TileSize.Wide)
-                .AddText(mainPhrase, TileSize.Wide, hintStyle: AdaptiveTextStyle.BaseSubtle, hintAlign: AdaptiveTextAlign.Center);
+            builder.AddTile(TileSize.Wide)
+                .AddText(cityName, TileSize.Wide, hintStyle: AdaptiveTextStyle.Base,
+                    hintAlign: AdaptiveTextAlign.Center)
+                .AddAdaptiveTileVisualChild(WideTileContent(imageIconPath, currentTemp), TileSize.Wide)
+                .AddText(mainPhrase, TileSize.Wide, hintStyle: AdaptiveTextStyle.BaseSubtle,
+                    hintAlign: AdaptiveTextAlign.Center);
 
-                builder.AddTile(Microsoft.Toolkit.Uwp.Notifications.TileSize.Large)
-                .AddText(cityName, TileSize.Large)
-                .AddAdaptiveTileVisualChild(MediumTileContent(imageIconPath, currentTemp), TileSize.Large);
+            builder.AddTile(TileSize.Large)
+                .AddText(cityName, TileSize.Large, hintStyle: AdaptiveTextStyle.Title,
+                    hintAlign: AdaptiveTextAlign.Center)
+                .AddAdaptiveTileVisualChild(LargeTileContent(imageIconPath, currentTemp), TileSize.Large)
+                .AddText(mainPhrase, TileSize.Large, hintStyle: AdaptiveTextStyle.SubtitleSubtle,
+                    hintAlign: AdaptiveTextAlign.Center);
 
 
-            // Large Tile using custom-made layout conjunction with builder helper method
-           /* builder.AddTile(TileSize.Large)
-                .AddAdaptiveTileVisualChild(CreateLargeTileLogoPayload(avatarLogoSource), TileSize.Large)
-                .AddText("Hi,", TileSize.Large, hintAlign: AdaptiveTextAlign.Center, hintStyle: AdaptiveTextStyle.Title)
-                .AddText(username, TileSize.Large, hintAlign: AdaptiveTextAlign.Center, hintStyle: AdaptiveTextStyle.SubtitleSubtle);
-
-            */
             // Then create the tile notification
             var notification = new Windows.UI.Notifications.TileNotification(builder.Content.GetXml());
             UpdateTile(notification);
@@ -75,7 +72,6 @@ namespace FluentWeather.Services
             {
                 Children =
                 {
-
                     new AdaptiveSubgroup()
                     {
                         HintWeight = 1,
@@ -83,9 +79,11 @@ namespace FluentWeather.Services
                         {
                             new AdaptiveImage()
                             {
-                                Source =  iconPath,
+                                Source = iconPath,
                                 HintRemoveMargin = true,
-                                HintAlign = AdaptiveImageAlign.Center
+                                HintAlign = AdaptiveImageAlign
+                                    .Center //Images can be set to align left, center, or right using the hint-align attribute.
+                                //---> This will also cause images to display at their native resolution instead of stretching to fill width.
                             },
                             new AdaptiveText()
                             {
@@ -95,23 +93,18 @@ namespace FluentWeather.Services
                             }
                         }
                     },
-
-
-
                 }
-
             };
         }
 
 
-        
         private ITileBindingContentAdaptiveChild WideTileContent(string iconPath, string currentTemp)
         {
             return new AdaptiveGroup()
             {
                 Children =
                 {
-                    new AdaptiveSubgroup() { HintWeight = 1 },
+                    new AdaptiveSubgroup() {HintWeight = 1},
 
                     new AdaptiveSubgroup()
                     {
@@ -120,7 +113,7 @@ namespace FluentWeather.Services
                         {
                             new AdaptiveImage()
                             {
-                                Source =  iconPath,
+                                Source = iconPath,
                                 HintRemoveMargin = true,
                                 HintAlign = AdaptiveImageAlign.Center
                             },
@@ -142,15 +135,52 @@ namespace FluentWeather.Services
                         }
                     },
 
-                    new AdaptiveSubgroup() { HintWeight = 1 },
-
-
+                    new AdaptiveSubgroup() {HintWeight = 1},
                 }
-
             };
         }
 
 
+        private ITileBindingContentAdaptiveChild LargeTileContent(string iconPath, string currentTemp)
+        {
+            return new AdaptiveGroup()
+            {
+                Children =
+                {
+                    new AdaptiveSubgroup() {HintWeight = 1},
 
+                    new AdaptiveSubgroup()
+                    {
+                        HintWeight = 2,
+                        Children =
+                        {
+                            new AdaptiveImage()
+                            {
+                                Source = iconPath,
+                                HintRemoveMargin = true,
+                                HintAlign = AdaptiveImageAlign.Center
+                            },
+                        }
+                    },
+
+                    new AdaptiveSubgroup()
+                    {
+                        HintWeight = 2,
+                        HintTextStacking = AdaptiveSubgroupTextStacking.Center,
+                        Children =
+                        {
+                            new AdaptiveText()
+                            {
+                                Text = currentTemp,
+                                HintAlign = AdaptiveTextAlign.Center,
+                                HintStyle = AdaptiveTextStyle.Title
+                            }
+                        }
+                    },
+
+                    new AdaptiveSubgroup() {HintWeight = 1},
+                }
+            };
+        }
     }
 }
