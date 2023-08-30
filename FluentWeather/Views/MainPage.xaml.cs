@@ -23,7 +23,6 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Automation.Provider;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using CommunityToolkit.Labs.WinUI;
 using FluentWeather.Helpers;
 using FluentWeather.Services;
@@ -41,6 +40,8 @@ namespace FluentWeather.Views
             new NavigationViewViewModel();
 
         public AcrylicEffectsService AcrylicEffectsService { get; }  = Singleton<AcrylicEffectsService>.Instance;
+
+        public LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
 
         private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
@@ -90,59 +91,6 @@ namespace FluentWeather.Views
                 return settingsData;
             }
         }
-
-        //dictionary for every icon code and its corresponsing background image
-        private static readonly Dictionary<string, string> iconCodeToBackgroundImageNameDictionary = new()
-        {
-            {"0", "2"},
-            {"1", "2"},
-            {"2", "2"},
-            {"3", "3"},
-            {"4", "3"},
-            {"5", "7"},
-            {"6", "4"},
-            {"7", "7"},
-            {"8", "4"},
-            {"9", "4"},
-            {"10", "4"},
-            {"11", "4"},
-            {"12", "4"},
-            {"13", "7"},
-            {"14", "7"},
-            {"15", "7"},
-            {"16", "7"},
-            {"17", "7"},
-            {"18", "4"},
-            {"19", "6"},
-            {"20", "2"},
-            {"21", "2"},
-            {"22", "2"},
-            {"23", "12"},
-            {"24", "12"},
-            {"25", "13"},
-            {"26", "5"},
-            {"27", "8"},
-            {"28", "17"},
-            {"29", "8"}, //da ved
-            {"30", "16"},
-            {"31", "1"},
-            {"32", "18"},
-            {"33", "1"},
-            {"34", "19"},
-            {"35", "4"},
-            {"36", "9"},
-            {"37", "10"},
-            {"38", "3"},
-            {"39", "4"},
-            {"40", "4"},
-            {"41", "7"},
-            {"42", "7"},
-            {"43", "7"},
-            {"44", "9"},
-            {"45", "4"},
-            {"46", "7"},
-            {"47", "3"},
-        };
 
 
         public MainPage()
@@ -264,13 +212,6 @@ namespace FluentWeather.Views
             await Task.Run(LoadApiData);
         }
 
-        private async Task<WetUnits> GetUnitsCode()
-        {
-            WetUnits unitsCode =
-                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
-
-            return unitsCode;
-        }
 
         private async Task LoadApiData()
         {
@@ -286,7 +227,7 @@ namespace FluentWeather.Views
                 var response = await sharedClient2.GetAsync(
                     "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
                     + lastPlaceId
-                    + "&units=" + await GetUnitsCode()
+                    + "&units=" + await VariousUtils.GetUnitsCode()
                     + "&language=" +
                     _systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
                 //&locationType=city (x solo citta)
@@ -298,6 +239,11 @@ namespace FluentWeather.Views
 
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
+                if (LiveTileService.MainLiveTileEnabled)
+                {
+                    //update main LiveTile
+                    Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
+                }
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
@@ -408,7 +354,7 @@ namespace FluentWeather.Views
         private async void UpdateUi(RootV3Response rootV3Response)
         {
             var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
-                                      iconCodeToBackgroundImageNameDictionary[
+                                      IconsDictionary.IconCodeToBackgroundImageNameDictionary[
                                           rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
 
             CrossfadeToImage(newImageUri);
@@ -429,11 +375,11 @@ namespace FluentWeather.Views
 
 
             //update chips
-            WetUnits currentUnits = await GetUnitsCode();
+            WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
 
             UpdatedOnText.Text =
-                "Updated on " + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
+                Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/UpdatedOnText").ValueAsString + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
 
             //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty) and remove duplicate names
@@ -517,7 +463,6 @@ namespace FluentWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
-            //update the ui
             List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
 
             int i = 0;
@@ -749,7 +694,7 @@ namespace FluentWeather.Views
             //var acrylicBrush = (AcrylicBrush)Resources["MyAcrylicBrush"];
             //acrylicBrush.AlwaysUseFallback = !currentAcrylic;
 
-            await AcrylicEffectsService.SetThemeAsync( acrylicToggle.IsOn);
+            await AcrylicEffectsService.SetThemeAsync(acrylicToggle.IsOn);
         }
     }
 }

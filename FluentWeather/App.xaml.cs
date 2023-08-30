@@ -42,7 +42,7 @@ namespace FluentWeather
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            //this.Suspending += OnSuspending;
             Container = ConfigureDependencyInjection();
 
             UnhandledException += OnAppUnhandledException;
@@ -135,6 +135,7 @@ namespace FluentWeather
 
         private ActivationService CreateActivationService()
         {
+            //return new ActivationService(this, typeof(Views.MainPage), new Lazy<UIElement>(CreateShell));
             return new ActivationService(this, typeof(Views.MainPage), null);
         }
 
@@ -142,5 +143,11 @@ namespace FluentWeather
         {
             return new Views.ShellPage();
         } */
+
+
+        protected override async void OnBackgroundActivated(BackgroundActivatedEventArgs args)
+        {
+            await ActivationService.ActivateAsync(args);
+        }
     }
 }

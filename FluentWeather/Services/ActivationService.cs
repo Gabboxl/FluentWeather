@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using FluentWeather.Activation;
+using FluentWeather.Core.Helpers;
+
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using FluentWeather.Core.Helpers;
 
 namespace FluentWeather.Services
 {
@@ -61,10 +63,14 @@ namespace FluentWeather.Services
 
         private async Task InitializeAsync()
         {
-            //await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
+            //TODO: reenable if livetile queue is needed
+            //await Singleton<LiveTileService>.Instance.EnableQueueAsync().ConfigureAwait(false);
+            await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
 
             await Singleton<AcrylicEffectsService>.Instance.InitializeAsync().ConfigureAwait(false);
+
+            await Singleton<LiveTileService>.Instance.InitializeAsync().ConfigureAwait(false);
         }
 
         private async Task HandleActivationAsync(object activationArgs)
@@ -96,15 +102,17 @@ namespace FluentWeather.Services
             await ThemeSelectorService.SetRequestedThemeAsync();
             await WhatsNewDisplayService.ShowIfAppropriateAsync();
             await FirstRunDisplayService.ShowIfAppropriateAsync();
+            //Singleton<LiveTileService>.Instance.SampleUpdate();
         }
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()
         {
+            yield return Singleton<LiveTileService>.Instance;
             yield return Singleton<ToastNotificationsService>.Instance;
-            //yield return Singleton<BackgroundTaskService>.Instance;
+            yield return Singleton<BackgroundTaskService>.Instance;
 
             //da rimuovere se c'è altre instanze
-            yield break;
+            //yield break;
         }
 
         private bool IsInteractive(object args)

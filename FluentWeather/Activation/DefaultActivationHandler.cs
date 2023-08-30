@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using FluentWeather.Core.Helpers;
 using FluentWeather.Services;
 using Windows.ApplicationModel.Activation;
 

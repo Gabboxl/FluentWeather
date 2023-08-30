@@ -74,7 +74,7 @@ namespace FluentWeather.Services
         {
             var backgroundTasks = new List<BackgroundTask>();
 
-            backgroundTasks.Add(new BackgroundTask1());
+            backgroundTasks.Add(new LiveTileBackgroundTask());
             return backgroundTasks;
         }
     }
