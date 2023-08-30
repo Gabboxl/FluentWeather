@@ -1181,16 +1181,24 @@
                                                       IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
                                                       Toggled="AcrylicToggle_OnToggled" />
 
+                                        <StackPanel Orientation="Horizontal" Margin="0,16,0,0" Spacing="16">
 
-                                        <TextBlock x:Uid="WeatherLiveTileSettingsText"
-                                                   Margin="0,16,0,0"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                            <TextBlock x:Uid="WeatherLiveTileSettingsText"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+
+                                            <FontIcon x:Uid="LiveTileInfoIcon"
+                                                      Glyph="&#xE946;"
+                                                      FontFamily="{StaticResource FluentIcons}"
+                                                      FontSize="16"
+                                                      VerticalAlignment="Center"/>
+
+                                        </StackPanel>
 
                                         <ToggleSwitch x:Name="LiveTileToggle"
                                                       Margin="8,8,0,0"
                                                       d:DataContext="{d:DesignInstance views:MainPage }"
-                                                      IsOn="{Binding LiveTileService.MainLiveTileEnabled, Mode=TwoWay}"
-                                                      />
+                                                      IsOn="{Binding LiveTileService.MainLiveTileEnabled, Mode=TwoWay}" />
 
                                         <TextBlock x:Uid="CreditsSettingsTitle"
                                                    Margin="0,16,0,0"
