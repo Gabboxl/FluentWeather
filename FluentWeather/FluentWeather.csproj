@@ -213,6 +213,7 @@
     <Compile Include="Services\ToastNotificationsService.cs" />
     <Compile Include="Services\ToastNotificationsService.Samples.cs" />
     <Compile Include="Services\WhatsNewDisplayService.cs" />
+    <Compile Include="Utils\ApiUtils.cs" />
     <Compile Include="Utils\MeasureUnitUtils.cs" />
     <Compile Include="Utils\VariousUtils.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />

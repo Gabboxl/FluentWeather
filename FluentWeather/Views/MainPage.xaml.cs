@@ -41,6 +41,8 @@ namespace FluentWeather.Views
 
         public AcrylicEffectsService AcrylicEffectsService { get; }  = Singleton<AcrylicEffectsService>.Instance;
 
+        public LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
+
         private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
         private static readonly HttpClient sharedClient3 = new()
@@ -237,8 +239,11 @@ namespace FluentWeather.Views
 
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
-                //update main LiveTile
-                Singleton<LiveTileService>.Instance.UpdateWeather(_lastApiData);
+                if (LiveTileService.MainLiveTileEnabled)
+                {
+                    //update main LiveTile
+                    Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
+                }
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
@@ -689,7 +694,7 @@ namespace FluentWeather.Views
             //var acrylicBrush = (AcrylicBrush)Resources["MyAcrylicBrush"];
             //acrylicBrush.AlwaysUseFallback = !currentAcrylic;
 
-            await AcrylicEffectsService.SetThemeAsync( acrylicToggle.IsOn);
+            await AcrylicEffectsService.SetThemeAsync(acrylicToggle.IsOn);
         }
     }
 }

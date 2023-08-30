@@ -77,36 +77,23 @@ namespace FluentWeather.BackgroundTasks
 
                 string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-                string systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+                var response = await new ApiUtils().GetFullData(lastPlaceId);
 
-                HttpClient sharedClient2 = new()
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    BaseAddress = new Uri("https://api.weather.com/v2/"),
-                };
-
-
-                if (lastPlaceId != null)
-                {
-                    var response = await sharedClient2.GetAsync(
-                        "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
-                        + lastPlaceId
-                        + "&units=" + await VariousUtils.GetUnitsCode()
-                        + "&language=" +
-                        systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
-
-                    response.EnsureSuccessStatusCode();
 
                     var jsonResponse = await response.Content.ReadAsStringAsync();
 
-
                     var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
+                    Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(newApiData);
 
-                    Singleton<LiveTileService>.Instance.UpdateWeather(newApiData);
+
+                    UpdateTile();
                 }
 
-
-                UpdateTile();
+                //inform the system that the background task is completed
+                _deferral.Complete();
             });
         }
 
@@ -116,6 +103,7 @@ namespace FluentWeather.BackgroundTasks
 
             // TODO: Insert code to handle the cancelation request here.
             // Documentation: https://docs.microsoft.com/windows/uwp/launch-resume/handle-a-cancelled-background-task
+
         }
 
 

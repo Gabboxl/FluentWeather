@@ -1,20 +1,62 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using FluentWeather.Activation;
+using FluentWeather.Core.Helpers;
 using FluentWeather.Helpers;
 
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
 using Windows.Storage;
 using Windows.UI.Notifications;
 using Windows.UI.StartScreen;
+using FluentWeather.BackgroundTasks;
 
 namespace FluentWeather.Services
 {
-    internal partial class LiveTileService : ActivationHandler<LaunchActivatedEventArgs>
+    public partial class LiveTileService : ActivationHandler<LaunchActivatedEventArgs>, INotifyPropertyChanged
     {
         private const string QueueEnabledKey = "LiveTileNotificationQueueEnabled";
+        private const string MainLiveTileSettingsKey = "MainLiveTileEnabled";
+
+
+        private bool _mainLiveTileEnabled = true;
+
+        public bool MainLiveTileEnabled
+        {
+            get { return _mainLiveTileEnabled; }
+            set
+            {
+                SetField(ref _mainLiveTileEnabled, value);
+                SaveSettingsAsync(value, MainLiveTileSettingsKey);
+
+                if (value)
+                {
+                    //use Singleton<BackgroundTaskService>.Instance.Start(); to start the background task, it takes in input IBackgroundTaskInstane
+
+                    Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
+
+                    Singleton<LiveTileService>.Instance.UpdateWeatherFull();
+                }else
+                {
+                    ClearTile();
+
+                    var asd = BackgroundTaskService.GetBackgroundTasksRegistration<LiveTileBackgroundTask>();
+
+                    asd.Unregister(false);
+                }
+            }
+        }
+
+        public async Task InitializeAsync()
+        {
+            MainLiveTileEnabled = await ApplicationData.Current.LocalSettings.ReadAsync<bool>(MainLiveTileSettingsKey);
+        }
+
 
         public async Task EnableQueueAsync()
         {
@@ -35,6 +77,18 @@ namespace FluentWeather.Services
             catch (Exception)
             {
                 // TODO: Updating LiveTile can fail in rare conditions, please handle exceptions as appropriate to your scenario.
+            }
+        }
+
+        public void ClearTile()
+        {
+            try
+            {
+                TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -89,6 +143,28 @@ namespace FluentWeather.Services
             // If app is launched from a LiveTile notification update, TileContent arguments property is contained in args.TileActivatedInfo.RecentlyShownNotifications
             // TODO: Implement your own logic to determine if you can handle the LiveTile notification update activation
             return false;
+        }
+
+
+        public async Task SaveSettingsAsync(bool newValue, string SettingsKey)
+        {
+            await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, newValue);
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
         }
     }
 }

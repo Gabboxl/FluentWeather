@@ -1,14 +1,35 @@
 ﻿using System;
 using System.Linq;
+using Windows.Storage;
+using FluentWeather.Helpers;
 using Microsoft.Toolkit.Uwp.Notifications;
 using FluentWeather.Models;
 using FluentWeather.Utils;
+using Newtonsoft.Json;
 
 namespace FluentWeather.Services
 {
-    internal partial class LiveTileService
+    public partial class LiveTileService
     {
-        public async void UpdateWeather(RootV3Response apiDataResponse)
+        public async void UpdateWeatherFull()
+        {
+            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+            var response = await new ApiUtils().GetFullData(lastPlaceId);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+
+                UpdateWeatherMainTile(newApiData);
+
+            }
+        }
+
+        public async void UpdateWeatherMainTile(RootV3Response apiDataResponse)
         {
             var newIconUri = new Uri("ms-appx:///Assets/weticons/" + apiDataResponse.v3wxobservationscurrent.iconCode +
                                      ".svg");
@@ -158,6 +179,7 @@ namespace FluentWeather.Services
 
                     new AdaptiveSubgroup()
                     {
+                        HintTextStacking = AdaptiveSubgroupTextStacking.Center,
                         HintWeight = 2,
                         Children =
                         {

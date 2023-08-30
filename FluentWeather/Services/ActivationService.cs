@@ -69,6 +69,8 @@ namespace FluentWeather.Services
             await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
 
             await Singleton<AcrylicEffectsService>.Instance.InitializeAsync().ConfigureAwait(false);
+
+            await Singleton<LiveTileService>.Instance.InitializeAsync().ConfigureAwait(false);
         }
 
         private async Task HandleActivationAsync(object activationArgs)
