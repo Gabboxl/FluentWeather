@@ -305,6 +305,8 @@
     <value>Weather LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Live Tiles are available natively on Windows 10 only.</value>
+    <value>You have to pin FluentWeather to the start menu first.
+
+Live Tiles are available natively on Windows 10 only.</value>
   </data>
 </root>
