@@ -1182,7 +1182,7 @@
                                                       Toggled="AcrylicToggle_OnToggled" />
 
 
-                                        <TextBlock Text="LiveTile weather"
+                                        <TextBlock x:Uid="WeatherLiveTileSettingsText"
                                                    Margin="0,16,0,0"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
