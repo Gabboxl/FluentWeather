@@ -297,4 +297,13 @@
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>Translate the app</value>
   </data>
+  <data name="UpdatedOnText" xml:space="preserve">
+    <value>Updated on </value>
+  </data>
+  <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
+    <value>Weather LiveTile</value>
+  </data>
+  <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Live Tiles are available natively on Windows 10 only.</value>
+  </data>
 </root>
