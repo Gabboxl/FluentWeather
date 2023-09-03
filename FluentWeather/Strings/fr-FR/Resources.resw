@@ -166,10 +166,11 @@
     <comment>Personalization text for Settings</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- Added a toggle to enable/disable acrylic effects in-app
-- Adjusted luminance of background images
-- Show weather forecast until 7AM for tonight state
-- Fix minimum required Windows version</value>
+    <value>- LiveTile support for Windows 10 is now available!
+- The UI is now localizable (check out the settings section)
+- Optimized app startup code
+- Reduced image sizes
+- Updated dependencies</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
@@ -296,5 +297,16 @@
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>Translate the app</value>
+  </data>
+  <data name="UpdatedOnText" xml:space="preserve">
+    <value>Updated on </value>
+  </data>
+  <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
+    <value>Weather LiveTile</value>
+  </data>
+  <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
+    <value>You have to pin FluentWeather to the start menu first.
+
+Live Tiles are available natively on Windows 10 only.</value>
   </data>
 </root>
