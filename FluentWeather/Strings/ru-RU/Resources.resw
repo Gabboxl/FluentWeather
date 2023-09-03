@@ -203,10 +203,10 @@
     <value>Занятие спортом</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Влияние на управление транспортом</value>
+    <value>Управление транспортом</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Влияние на кожу</value>
+    <value>Открытую кожу</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
     <value>Необходимость питья</value>
@@ -236,7 +236,7 @@
     <value>Почасовой</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Погодные подробности</value>
+    <value>Влияние погоды на</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Итог дня</value>
