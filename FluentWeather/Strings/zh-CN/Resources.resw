@@ -129,48 +129,17 @@
     <value>首页</value>
     <comment>Navigation view item name for Main</comment>
   </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>选择主题</value>
-    <comment>Choose theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>深色</value>
-    <comment>Dark theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows 默认</value>
-    <comment>Windows default theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>浅色</value>
-    <comment>Light theme text for Settings</comment>
-  </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>关于此应用</value>
-    <comment>About this application title for Settings</comment>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>设置页面占位符文本。您的应用描述在这里。</value>
-    <comment>About this application description for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>隐私声明</value>
-    <comment>Privacy Statement link content for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacurlGoesHere/</value>
-    <comment>Here is your Privacy Statement url for Settings</comment>
-  </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>个性化</value>
-    <comment>Personalization text for Settings</comment>
-  </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- 现在支持 Windows 10 动态磁贴！
-- 界面现在可以本地化 (查看设置部分)
-- 优化应用启动代码
-- 减少图像大小
-- 更新依赖关系</value>
+    <value>1.2.1:
+- Some UI fixes
+- Updated translations
+
+1.2.0:
+- LiveTile support for Windows 10 is now available!
+- The UI is now localizable (check out the settings section)
+- Optimized app startup code
+- Reduced image sizes
+- Updated dependencies</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
