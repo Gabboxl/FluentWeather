@@ -130,7 +130,12 @@
     <comment>Navigation view item name for Main</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- LiveTile support for Windows 10 is now available!
+    <value>1.2.1:
+- Some UI fixes
+- Updated translations
+
+1.2.0:
+- LiveTile support for Windows 10 is now available!
 - The UI is now localizable (check out the settings section)
 - Optimized app startup code
 - Reduced image sizes
