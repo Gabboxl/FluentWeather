@@ -126,35 +126,35 @@
     <comment>Application description</comment>
   </data>
   <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Main</value>
+    <value>Principal</value>
     <comment>Navigation view item name for Main</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Choose Theme</value>
+    <value>Alege temă</value>
     <comment>Choose theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Întunecat</value>
     <comment>Dark theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows default</value>
+    <value>Setare Windows prestabilită</value>
     <comment>Windows default theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Luminat</value>
     <comment>Light theme text for Settings</comment>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
+    <value>Despre aplicație</value>
     <comment>About this application title for Settings</comment>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Settings page placeholder text.  Your app description goes here.</value>
+    <value>Text temporar pagină setare. Descrierea aplicației se introduce aici.</value>
     <comment>About this application description for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Declaratie de confidentialitate</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
@@ -162,19 +162,19 @@
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Personalizare</value>
     <comment>Personalization text for Settings</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+    <value>- Suport LiveTile pentru Windows 10 este acum disponibil!
+- Interfața este acum localizabilă (verificați secțiunea din setări)
+- Codul de pornire al aplicației optimizat
+- Reducerea dimensiunilor imaginii
+- Dependențe actualizate</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>Ce este nou in aceasta versiune</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -182,103 +182,103 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Caută și selectează locația de mai jos:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Bun venit în FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Go ahead!</value>
+    <value>Înainte!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Caută un loc...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Feels like</value>
+    <value>Temperatura resimțită</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Running</value>
+    <value>Rulează</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Driving</value>
+    <value>Șofat</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>Piele uscată</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>Hidratare</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Wind</value>
+    <value>Vânt</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Presiune</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Humidity</value>
+    <value>Umiditate</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibility</value>
+    <value>Vizibilitate</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>Punct de rouă</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>UV Index</value>
+    <value>Indice UV</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Daily forecast</value>
+    <value>Prognoză zilnică</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hourly</value>
+    <value>La fiecare ora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>Informații meteo</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Day Summary</value>
+    <value>Rezumatul zilei</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>Zi</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Noapte</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Soare</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Apus</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Răsărit</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Lună</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Răsăritul lunii</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Apusul lunii</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Fază lunară</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Units</value>
+    <value>Unități</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>Efecte acrilice</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Credits</value>
+    <value>Contribuții</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>Proiect GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
     <value>Metric</value>
@@ -287,26 +287,26 @@
     <value>Imperial</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Hibrid</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>UI design inspired by the work of</value>
+    <value>Design UI inspirat de munca lui</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>developed by</value>
+    <value>dezvoltat de</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Translate the app</value>
+    <value>Traduceți aplicația</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>Actualizat </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>LiveTile meteo</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Trebuie să fixezi mai întâi FluentWeather în meniul de început.
 
-Live Tiles are available natively on Windows 10 only.</value>
+Tileurile Live sunt disponibile doar pe Windows 10.</value>
   </data>
 </root>

@@ -126,35 +126,35 @@
     <comment>Application description</comment>
   </data>
   <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Main</value>
+    <value>Главное</value>
     <comment>Navigation view item name for Main</comment>
   </data>
   <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Choose Theme</value>
+    <value>Выбрать Тему</value>
     <comment>Choose theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Темная тема</value>
     <comment>Dark theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows default</value>
+    <value>Стандартный</value>
     <comment>Windows default theme text for Settings</comment>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Light</value>
+    <value>Светлая тема</value>
     <comment>Light theme text for Settings</comment>
   </data>
   <data name="Settings_About.Text" xml:space="preserve">
-    <value>About this application</value>
+    <value>О программе</value>
     <comment>About this application title for Settings</comment>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Settings page placeholder text.  Your app description goes here.</value>
+    <value>Страница настроек. Настройки программы находятся здесь.</value>
     <comment>About this application description for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Privacy Statement</value>
+    <value>Политика конфиденциальности</value>
     <comment>Privacy Statement link content for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
@@ -162,151 +162,151 @@
     <comment>Here is your Privacy Statement url for Settings</comment>
   </data>
   <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalization</value>
+    <value>Персонализация</value>
     <comment>Personalization text for Settings</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+    <value>- Поддержка "Живых плиток" для Windows 10!
+- Интерфейс теперь локализуется (проверьте раздел настроек)
+- Оптимизированный код запуска приложения
+- уменьшенные размеры изображения
+- Обновленные зависимости</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>Что нового в этой версии</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>Применить</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Поиск и выбор местоположения ниже:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Добро пожаловать в FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Go ahead!</value>
+    <value>Вперед!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Поиск места...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Feels like</value>
+    <value>Ощущается как</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Running</value>
+    <value>Занятие спортом</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Driving</value>
+    <value>Управление транспортом</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>Открытую кожу</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>Необходимость питья</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Wind</value>
+    <value>Ветер</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Давление</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Humidity</value>
+    <value>Влажность</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibility</value>
+    <value>Видимость</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>Точка росы</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>UV Index</value>
+    <value>УФ индекс</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Daily forecast</value>
+    <value>Ежедневный прогноз</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hourly</value>
+    <value>Почасовой</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>Влияние погоды на</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Day Summary</value>
+    <value>Итог дня</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>День</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Ночь</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Солнце</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Закат</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Рассвет</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Луна</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Восход Луны</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Заход Луны</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Фаза Луны</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Units</value>
+    <value>Единицы измерения</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>Эффект размытия</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Credits</value>
+    <value>Благодарности</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>Проект на GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Metric</value>
+    <value>Метрическая</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Imperial</value>
+    <value>Британская</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Гибридная</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>UI design inspired by the work of</value>
+    <value>Дизайн пользовательского интерфейса, основанный на работе</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>developed by</value>
+    <value>разработано</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Translate the app</value>
+    <value>Помочь с переводом</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>Обновлено </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>Погода на "Живых плитках"</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Сначала вы должны закрепить FluentWeather в меню Пуск.
 
-Live Tiles are available natively on Windows 10 only.</value>
+"Живые плитки" доступны только в Windows 10.</value>
   </data>
 </root>
