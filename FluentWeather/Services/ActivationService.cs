@@ -66,7 +66,9 @@ namespace FluentWeather.Services
             //TODO: reenable if livetile queue is needed
             //await Singleton<LiveTileService>.Instance.EnableQueueAsync().ConfigureAwait(false);
             await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
-            await ThemeSelectorService.InitializeAsync().ConfigureAwait(false);
+
+            //TODO: reenable if theme selection is needed
+            //await ThemeSelectorService.InitializeAsync().ConfigureAwait(false); 
 
             await Singleton<AcrylicEffectsService>.Instance.InitializeAsync().ConfigureAwait(false);
 
@@ -99,7 +101,12 @@ namespace FluentWeather.Services
 
         private async Task StartupAsync()
         {
-            await ThemeSelectorService.SetRequestedThemeAsync();
+            //always set the theme to dark
+            await ThemeSelectorService.SetThemeAsync(ElementTheme.Dark);
+
+            //TODO: reenable if theme selection is needed
+            //await ThemeSelectorService.SetRequestedThemeAsync();
+
             await WhatsNewDisplayService.ShowIfAppropriateAsync();
             await FirstRunDisplayService.ShowIfAppropriateAsync();
             //Singleton<LiveTileService>.Instance.SampleUpdate();
