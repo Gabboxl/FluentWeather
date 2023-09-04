@@ -129,44 +129,13 @@
     <value>Główna</value>
     <comment>Navigation view item name for Main</comment>
   </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Wybierz motyw</value>
-    <comment>Choose theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Ciemny</value>
-    <comment>Dark theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Domyślny dla systemu Windows</value>
-    <comment>Windows default theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Jasny</value>
-    <comment>Light theme text for Settings</comment>
-  </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>O tej aplikacji</value>
-    <comment>About this application title for Settings</comment>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Settings page placeholder text.  Your app description goes here.</value>
-    <comment>About this application description for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Polityka prywatności</value>
-    <comment>Privacy Statement link content for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
-    <comment>Here is your Privacy Statement url for Settings</comment>
-  </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalizacja</value>
-    <comment>Personalization text for Settings</comment>
-  </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- LiveTile support for Windows 10 is now available!
+    <value>1.2.1:
+- Some UI fixes
+- Updated translations
+
+1.2.0:
+- LiveTile support for Windows 10 is now available!
 - The UI is now localizable (check out the settings section)
 - Optimized app startup code
 - Reduced image sizes
