@@ -131,15 +131,15 @@
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
     <value>1.2.1:
-- Some UI fixes
-- Updated translations
+- Unele ajustări pentru UI
+- Traduceri actualizate
 
 1.2.0:
-- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+- Suportul LiveTile pentru Windows 10 este acum disponibil!
+- Interfața este acum localizabilă (verificați secțiunea de setări)
+- Codul de pornire optim pentru aplicații
+- Reducerea dimensiunilor imaginii
+- Dependențe actualizate</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
