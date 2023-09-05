@@ -72,7 +72,7 @@ namespace FluentWeather.ViewModels
         {
             if (args.IsSettingsInvoked)
             {
-                NavigationService.Navigate(typeof(SettingsPage), null, args.RecommendedNavigationTransitionInfo);
+                //NavigationService.Navigate(typeof(SettingsPage), null, args.RecommendedNavigationTransitionInfo);
             }
             else
             {
@@ -100,11 +100,11 @@ namespace FluentWeather.ViewModels
         {
             IsBackEnabled = NavigationService.CanGoBack;
 
-            if (e.SourcePageType == typeof(SettingsPage))
+            /*if (e.SourcePageType == typeof(SettingsPage))
             {
                 Selected = _navigationView.SettingsItem as WinUI.NavigationViewItem;
                 return;
-            }
+            }*/
 
             var selectedItem = GetSelectedItem(_navigationView.MenuItems, e.SourcePageType);
             if (selectedItem != null)
