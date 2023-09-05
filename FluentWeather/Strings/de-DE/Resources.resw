@@ -129,48 +129,17 @@
     <value>Startseite</value>
     <comment>Navigation view item name for Main</comment>
   </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Thema wählen</value>
-    <comment>Choose theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Dunkel</value>
-    <comment>Dark theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Windows-Standard</value>
-    <comment>Windows default theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Hell</value>
-    <comment>Light theme text for Settings</comment>
-  </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>Über diese Anwendung</value>
-    <comment>About this application title for Settings</comment>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Platzhaltertext. App-Beschreibung wird hier erscheinen.</value>
-    <comment>About this application description for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
-    <comment>Privacy Statement link content for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
-    <comment>Here is your Privacy Statement url for Settings</comment>
-  </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalisierung</value>
-    <comment>Personalization text for Settings</comment>
-  </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+    <value>1.2.1:
+- Einige UI-Korrekturen
+- Aktualisierte Übersetzungen
+
+1.2.0:
+- LiveTile-Unterstützung für Windows 10 ist jetzt verfügbar!
+- Die Oberfläche ist nun lokalisierbar (Option in den Einstellungen verfügbar)
+- Optimierter App-Startcode
+- Reduzierte Bildgrößen
+- Aktualisierte Paket-Abhängigkeiten</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">

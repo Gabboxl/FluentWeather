@@ -129,46 +129,15 @@
     <value>Principal</value>
     <comment>Navigation view item name for Main</comment>
   </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Alege temă</value>
-    <comment>Choose theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Dark.Content" xml:space="preserve">
-    <value>Întunecat</value>
-    <comment>Dark theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Default.Content" xml:space="preserve">
-    <value>Setare Windows prestabilită</value>
-    <comment>Windows default theme text for Settings</comment>
-  </data>
-  <data name="Settings_Theme_Light.Content" xml:space="preserve">
-    <value>Luminat</value>
-    <comment>Light theme text for Settings</comment>
-  </data>
-  <data name="Settings_About.Text" xml:space="preserve">
-    <value>Despre aplicație</value>
-    <comment>About this application title for Settings</comment>
-  </data>
-  <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Text temporar pagină setare. Descrierea aplicației se introduce aici.</value>
-    <comment>About this application description for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">
-    <value>Declaratie de confidentialitate</value>
-    <comment>Privacy Statement link content for Settings</comment>
-  </data>
-  <data name="Settings_PrivacyTermsLink.NavigateUri" xml:space="preserve">
-    <value>https://YourPrivacyUrlGoesHere/</value>
-    <comment>Here is your Privacy Statement url for Settings</comment>
-  </data>
-  <data name="Settings_Personalization.Text" xml:space="preserve">
-    <value>Personalizare</value>
-    <comment>Personalization text for Settings</comment>
-  </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- Suport LiveTile pentru Windows 10 este acum disponibil!
-- Interfața este acum localizabilă (verificați secțiunea din setări)
-- Codul de pornire al aplicației optimizat
+    <value>1.2.1:
+- Unele ajustări pentru UI
+- Traduceri actualizate
+
+1.2.0:
+- Suportul LiveTile pentru Windows 10 este acum disponibil!
+- Interfața este acum localizabilă (verificați secțiunea de setări)
+- Codul de pornire optim pentru aplicații
 - Reducerea dimensiunilor imaginii
 - Dependențe actualizate</value>
     <comment>What's new prompt message body</comment>
