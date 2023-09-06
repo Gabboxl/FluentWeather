@@ -639,6 +639,8 @@
                             Background="{ThemeResource MyAcrylicBrush}">
 
                             <ListView x:Name="hourlyListview"
+
+                                      Padding="0,0,0,18"
                                       ScrollViewer.VerticalScrollMode="Disabled"
                                       ScrollViewer.HorizontalScrollMode="Enabled"
                                       ScrollViewer.HorizontalScrollBarVisibility="Visible"
