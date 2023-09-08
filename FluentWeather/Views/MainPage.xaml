@@ -761,10 +761,8 @@
                         </RelativePanel>
 
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Orientation="Horizontal">
-
+                        <GridView SelectionMode="None"
+                                  Grid.Row="1">
                             <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
                             <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
 
@@ -775,9 +773,7 @@
                             <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
 
                             <controls:InsightControl x:Name="DryskinInsight"></controls:InsightControl>
-
-
-                        </StackPanel>
+                        </GridView>
 
                     </Grid>
 
@@ -802,11 +798,8 @@
                         </RelativePanel>
 
 
-                        <StackPanel
-                            Grid.Row="1"
-                            Orientation="Horizontal">
-
-
+                        <GridView SelectionMode="None"
+                            Grid.Row="1">
                             <Grid
                                 Margin="4"
                                 CornerRadius="6"
@@ -1119,7 +1112,7 @@
 
                             </Grid>
 
-                        </StackPanel>
+                        </GridView>
 
                     </Grid>
 
