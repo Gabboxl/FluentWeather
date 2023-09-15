@@ -125,10 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Main</value>
-    <comment>Navigation view item name for Main</comment>
-  </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
     <value>1.2.1:
 - Some UI fixes
@@ -205,7 +201,7 @@
     <value>Hourly</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>Approfondimenti meteo</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Riepilogo giornata</value>

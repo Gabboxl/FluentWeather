@@ -125,10 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Startseite</value>
-    <comment>Navigation view item name for Main</comment>
-  </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
     <value>1.2.1:
 - Einige UI-Korrekturen
