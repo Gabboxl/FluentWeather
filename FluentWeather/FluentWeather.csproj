@@ -127,7 +127,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Labs.Uwp.SegmentedControl">
-      <Version>0.1.230809</Version>
+      <Version>0.1.230830</Version>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Labs.Uwp.SettingsControls">
       <Version>0.0.18</Version>
