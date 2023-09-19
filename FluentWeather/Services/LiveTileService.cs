@@ -4,11 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-
 using FluentWeather.Activation;
 using FluentWeather.Core.Helpers;
 using FluentWeather.Helpers;
-
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
 using Windows.Storage;
@@ -41,13 +39,19 @@ namespace FluentWeather.Services
                     Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
 
                     Singleton<LiveTileService>.Instance.UpdateWeatherFull();
-                }else
+                }
+                else
                 {
                     ClearTile();
 
-                    var taskRegistration = BackgroundTaskService.GetBackgroundTasksRegistration<LiveTileBackgroundTask>();
+                    //questo potrebbe essere nullo
+                    var taskRegistration =
+                        BackgroundTaskService.GetBackgroundTasksRegistration<LiveTileBackgroundTask>();
 
-                    taskRegistration.Unregister(false);
+                    if (taskRegistration != null)
+                    {
+                        taskRegistration.Unregister(true);
+                    }
                 }
             }
         }
@@ -88,7 +92,6 @@ namespace FluentWeather.Services
             }
             catch (Exception)
             {
-
             }
         }
 

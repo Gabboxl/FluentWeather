@@ -43,6 +43,9 @@ namespace FluentWeather.BackgroundTasks
                 //builder.AddCondition(new SystemCondition(SystemConditionType.UserPresent));
 
                 builder.Register();
+
+                //update the tile for the first time
+                Singleton<LiveTileService>.Instance.UpdateWeatherFull();
             }
         }
 
@@ -75,20 +78,7 @@ namespace FluentWeather.BackgroundTasks
 
                 //update livetile data
 
-                string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
-
-                var response = await new ApiUtils().GetFullData(lastPlaceId);
-
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-
-                    var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
-
-                    Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(newApiData);
-
-                }
+                Singleton<LiveTileService>.Instance.UpdateWeatherFull();
 
                 //inform the system that the background task is completed
                 _deferral.Complete();
