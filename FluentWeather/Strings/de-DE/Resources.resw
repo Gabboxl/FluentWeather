@@ -270,8 +270,8 @@
     <value>Wetter-Live-Kachel</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Du musst FluentWeather zuerst an das Startmenü anpinnen.
 
-Live Tiles are available natively on Windows 10 only.</value>
+Live Kacheln sind nur auf Windows 10 verfügbar.</value>
   </data>
 </root>

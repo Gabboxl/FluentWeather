@@ -127,15 +127,15 @@
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
     <value>1.2.1:
-- Some UI fixes
-- Updated translations
+- Algumas correções na interface do usuário (UI)
+- Atualização das traduções
 
 1.2.0:
-- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+- Suporte a LiveTile para Windows 10 agora está disponível!
+- A interface do usuário (UI) agora é localizável (verifique a seção de configurações)
+- Código de inicialização do aplicativo otimizado
+- Tamanhos de imagem reduzidos
+- Atualização das dependências</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
@@ -155,11 +155,11 @@
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Siga em frente!</value>
+    <value>Vá em frente!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Procurar um local...</value>
+    <value>Pesquisar um local...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>Sensação térmica</value>
@@ -174,7 +174,7 @@
     <value>Pele seca</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Necessidade de rega</value>
+    <value>Necessidade de regação</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vento</value>
@@ -201,7 +201,7 @@
     <value>De hora em hora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Insights do clima</value>
+    <value>Informações Sobre o Clima</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Resumo do Dia</value>
@@ -219,19 +219,19 @@
     <value>Pôr do sol</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Nascer do sol</value>
+    <value>Amanhecer</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
     <value>Lua</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Crescer</value>
+    <value>Luar</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
     <value>Pôr da Lua</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Fase lunar</value>
+    <value>Fases da lua</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Unidades</value>
@@ -255,7 +255,7 @@
     <value>Híbrido</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>Design da interface inspirado pela obra de</value>
+    <value>Design de interface de usuário inspirado por</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
     <value>Desenvolvido por</value>
