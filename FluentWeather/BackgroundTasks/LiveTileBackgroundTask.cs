@@ -88,8 +88,6 @@ namespace FluentWeather.BackgroundTasks
 
                     Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(newApiData);
 
-
-                    UpdateTile();
                 }
 
                 //inform the system that the background task is completed
@@ -112,7 +110,7 @@ namespace FluentWeather.BackgroundTasks
             AppListEntry entry = (await Package.Current.GetAppListEntriesAsync())[0];
 
 // Check if Start supports your app
-            bool isSupported = StartScreenManager.GetDefault().SupportsAppListEntry(entry);
+            //bool isSupported = StartScreenManager.GetDefault().SupportsAppListEntry(entry);
 
 
 // Check if your app is currently pinned

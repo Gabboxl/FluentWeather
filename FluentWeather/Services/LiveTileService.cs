@@ -45,9 +45,9 @@ namespace FluentWeather.Services
                 {
                     ClearTile();
 
-                    var asd = BackgroundTaskService.GetBackgroundTasksRegistration<LiveTileBackgroundTask>();
+                    var taskRegistration = BackgroundTaskService.GetBackgroundTasksRegistration<LiveTileBackgroundTask>();
 
-                    asd.Unregister(false);
+                    taskRegistration.Unregister(false);
                 }
             }
         }
