@@ -30,7 +30,7 @@ namespace FluentWeather.BackgroundTasks
             var taskRegistration =
                 BackgroundTaskRegistration.AllTasks.FirstOrDefault(t => t.Value.Name == taskName).Value;
 
-            if (taskRegistration == null)
+            if (taskRegistration == null && !VariousUtils.IsWindows11())
             {
                 var builder = new BackgroundTaskBuilder()
                 {

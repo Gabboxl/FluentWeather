@@ -55,6 +55,11 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/v2/"),
         };
 
+        public bool IsWindows10
+        {
+            get {return !VariousUtils.IsWindows11();}
+        }
+
         private readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
         private RootV3Response _lastApiData;

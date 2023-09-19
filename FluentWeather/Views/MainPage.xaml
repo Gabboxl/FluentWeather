@@ -1193,6 +1193,7 @@
                                         <ToggleSwitch x:Name="LiveTileToggle"
                                                       Margin="8,8,0,0"
                                                       d:DataContext="{d:DesignInstance views:MainPage }"
+                                                      IsEnabled="{Binding IsWindows10}"
                                                       IsOn="{Binding LiveTileService.MainLiveTileEnabled, Mode=TwoWay}" />
 
                                         <TextBlock x:Uid="CreditsSettingsTitle"

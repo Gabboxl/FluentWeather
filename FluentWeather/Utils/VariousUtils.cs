@@ -9,6 +9,11 @@ namespace FluentWeather.Utils
 {
     internal class VariousUtils
     {
+        public static bool IsWindows11()
+        {
+            return Environment.OSVersion.Version.Build >= 22000;
+        }
+
         public static string UppercaseFirst(string s)
         {
             // Check for empty string.
