@@ -126,8 +126,10 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Some UI fixes
+    <value>1.2.2:
+- Some UI fixes (insight cards now adapt to the window size)
+- Fixed startup infinite hang
+- Some exception fixes
 - Updated translations
 
 1.2.0:
