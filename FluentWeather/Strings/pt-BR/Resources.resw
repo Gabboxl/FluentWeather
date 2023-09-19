@@ -201,7 +201,7 @@
     <value>De hora em hora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Insights do clima</value>
+    <value>Informações Sobre o Clima</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Resumo do Dia</value>
