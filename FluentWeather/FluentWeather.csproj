@@ -189,6 +189,7 @@
     <Compile Include="Controls\DetailChipControl.xaml.cs">
       <DependentUpon>DetailChipControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BetterBoolToVisibilityConverter.cs" />
     <Compile Include="Dialogs\FirstRunDialog.xaml.cs">
       <DependentUpon>FirstRunDialog.xaml</DependentUpon>
     </Compile>
