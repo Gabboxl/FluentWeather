@@ -126,16 +126,18 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Einige UI-Korrekturen
+    <value>1.2.2:
+- Einige UI-Korrekturen (Einblickskarten passen sich jetzt an die Fenstergröße an)
+- Dauerhaftes Aufhängen der App beim Starten behoben
+- Einige Fehler wurden behoben
 - Aktualisierte Übersetzungen
 
 1.2.0:
-- LiveTile-Unterstützung für Windows 10 ist jetzt verfügbar!
-- Die Oberfläche ist nun lokalisierbar (Option in den Einstellungen verfügbar)
+- LiveTile Unterstützung für Windows 10 ist jetzt verfügbar!
+- Die Oberfläche ist nun lokalisierbar (siehe Sektion in den Einstellungen)
 - Optimierter App-Startcode
 - Reduzierte Bildgrößen
-- Aktualisierte Paket-Abhängigkeiten</value>
+- Aktualisierte Bibliotheks-Abhängigkeiten</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
