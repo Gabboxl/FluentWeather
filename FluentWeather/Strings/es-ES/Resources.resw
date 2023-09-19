@@ -126,15 +126,18 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Algunas correcciones de interfaz
-- Traducciones actualizadas
+    <value>1.2.2:
+- Some UI fixes (insight cards now adapt to the window size)
+- Fixed startup infinite hang
+- Some exception fixes
+- Updated translations
 
 1.2.0:
-- ¡Ya disponible el soporte de LiveTiles (solo para Windows 10)!
-- El código del arranque de la aplicación ha sido optimizado
-- Se redujeron los tamaños de las imágenes.
-- Dependencias actualizadas</value>
+- LiveTile support for Windows 10 is now available!
+- The UI is now localizable (check out the settings section)
+- Optimized app startup code
+- Reduced image sizes
+- Updated dependencies</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
