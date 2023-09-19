@@ -126,16 +126,18 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Sửa vài giao diện
-- Cập nhật các phiên dịch
+    <value>1.2.2:
+- Some UI fixes (insight cards now adapt to the window size)
+- Fixed startup infinite hang
+- Some exception fixes
+- Updated translations
 
 1.2.0:
-- Hỗ trợ LiveTile cho Windows 10!
-- Giao diện được sắp xếp thành từng nhóm (xem trong phần cài đặt)
-- Tối ưu code khởi động app
-- Giảm kích thước hình ảnh
-- Cập nhật các phụ thuộc</value>
+- LiveTile support for Windows 10 is now available!
+- The UI is now localizable (check out the settings section)
+- Optimized app startup code
+- Reduced image sizes
+- Updated dependencies</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
