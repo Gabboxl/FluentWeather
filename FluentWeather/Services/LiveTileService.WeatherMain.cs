@@ -17,7 +17,7 @@ namespace FluentWeather.Services
 
             var response = await new ApiUtils().GetFullData(lastPlaceId);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response is {StatusCode: System.Net.HttpStatusCode.OK}) //null check and status code check
             {
 
                 var jsonResponse = await response.Content.ReadAsStringAsync();
