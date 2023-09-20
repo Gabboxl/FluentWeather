@@ -167,13 +167,13 @@
     <value>Sensación</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>En ejecución</value>
+    <value>Ejercicio</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Conducción</value>
+    <value>Conducir</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Piel seca</value>
+    <value>Humedad</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
     <value>Hidratación necesaria</value>
