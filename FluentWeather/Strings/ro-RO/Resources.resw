@@ -126,14 +126,16 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Unele ajustări pentru UI
+    <value>1.2.2:
+- Unele remedieri ale interfeței (cardurile de perspectivă se adaptează acum la dimensiunea ferestrei)
+- S-a rezolvat problema pornirii infinite
+- Câteva erori reparate
 - Traduceri actualizate
 
 1.2.0:
 - Suportul LiveTile pentru Windows 10 este acum disponibil!
 - Interfața este acum localizabilă (verificați secțiunea de setări)
-- Codul de pornire optim pentru aplicații
+- Codul de pornire al aplicației optimizat
 - Reducerea dimensiunilor imaginii
 - Dependențe actualizate</value>
     <comment>What's new prompt message body</comment>
