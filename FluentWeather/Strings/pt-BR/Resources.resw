@@ -266,7 +266,7 @@
     <value>Traduzir este aplicativo</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Atualizado em</value>
+    <value>Atualizado em </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>Bloco dinâmico do tempo</value>
