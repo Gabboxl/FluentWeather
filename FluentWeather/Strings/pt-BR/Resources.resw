@@ -176,7 +176,7 @@
     <value>Pele seca</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Necessidade de irrigação</value>
+    <value>Requer água</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vento</value>
@@ -233,7 +233,7 @@
     <value>Pôr da Lua</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Fases da lua</value>
+    <value>Fase da lua</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Unidades</value>
