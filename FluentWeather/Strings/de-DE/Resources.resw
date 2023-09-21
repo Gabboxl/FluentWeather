@@ -127,7 +127,7 @@
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
     <value>1.2.2:
-- Einige UI-Korrekturen (Einblickskarten passen sich jetzt an die Fenstergröße an)
+- Einige UI-Korrekturen (Wetterkarten passen sich jetzt an die Fenstergröße an)
 - Dauerhaftes Aufhängen der App beim Starten behoben
 - Einige Fehler wurden behoben
 - Aktualisierte Übersetzungen
@@ -137,7 +137,7 @@
 - Die Oberfläche ist nun lokalisierbar (siehe Sektion in den Einstellungen)
 - Optimierter App-Startcode
 - Reduzierte Bildgrößen
-- Aktualisierte Bibliotheks-Abhängigkeiten</value>
+- Aktualisierte Abhängigkeiten</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
