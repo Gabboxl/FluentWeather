@@ -126,16 +126,18 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Algumas correções na interface do usuário (UI)
-- Atualização das traduções
+    <value>1.2.2:
+- Algumas correções na interface do usuário (agora os cartões de insight se adaptam ao tamanho da janela)
+- Corrigido o travamento infinito na inicialização
+- Algumas correções de exceções
+- Traduções atualizadas
 
 1.2.0:
-- Suporte a LiveTile para Windows 10 agora está disponível!
-- A interface do usuário (UI) agora é localizável (verifique a seção de configurações)
+- O suporte ao LiveTile para o Windows 10 agora está disponível!
+- A interface do usuário agora é localizável (verifique a seção de configurações)
 - Código de inicialização do aplicativo otimizado
 - Tamanhos de imagem reduzidos
-- Atualização das dependências</value>
+- Dependências atualizadas</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
@@ -174,7 +176,7 @@
     <value>Pele seca</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Necessidade de regação</value>
+    <value>Requer água</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vento</value>
@@ -231,7 +233,7 @@
     <value>Pôr da Lua</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Fases da lua</value>
+    <value>Fase da lua</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Unidades</value>
@@ -264,7 +266,7 @@
     <value>Traduzir este aplicativo</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Atualizado em</value>
+    <value>Atualizado em </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>Bloco dinâmico do tempo</value>

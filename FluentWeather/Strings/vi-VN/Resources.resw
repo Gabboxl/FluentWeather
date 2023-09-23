@@ -126,8 +126,10 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- Sửa vài giao diện
+    <value>1.2.2:
+- Sửa vài giao diện (các thẻ hoạt động dưới thời tiết sẽ thay đổi theo kích thước cửa sổ)
+- Sửa lỗi treo vĩnh viễn ở phần khởi động
+- Sửa vài lỗi ngoại lệ
 - Cập nhật các phiên dịch
 
 1.2.0:

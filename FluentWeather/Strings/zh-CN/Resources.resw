@@ -126,15 +126,17 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.1:
-- 修复了一些用户界面
-- 更新翻译
+    <value>1.2.2
+- 一些 UI 修复（信息卡片可以主动适应窗口大小了）
+- 解决了启动时无限卡住的问题
+- 一些额外修复
+- 更新了应用翻译
 
-1.2.0:
-- 现在支持 Windows 10 动态磁贴 ！
-- 界面现在可以本地化 (查看设置部分)
-- 优化应用启动代码
-- 缩减图像大小
+1.2.0
+- 现已支持 Windows 10 的动态磁贴！
+- 本地化的 UI（请查看应用设置）
+- 优化了应用启动相关代码
+- 精简图像体积
 - 更新依赖</value>
     <comment>What's new prompt message body</comment>
   </data>
