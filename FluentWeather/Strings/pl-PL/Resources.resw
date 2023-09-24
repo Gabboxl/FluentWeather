@@ -161,22 +161,22 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Szukaj dla miejscowości...</value>
+    <value>Wyszukaj miejscowość...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Odczuwalne</value>
+    <value>Odczuwalna</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Uruchomione</value>
+    <value>Bieganie</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Prowadzenie</value>
+    <value>Prowadzenie pojazdów</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
     <value>Suchość skóry</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Potrzeba podlewania</value>
+    <value>Nawodnienie</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Wiatr</value>
@@ -197,10 +197,10 @@
     <value>Indeks UV</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Dzienna prognoza</value>
+    <value>Prognoza dzienna</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Godzinowo</value>
+    <value>Co godzinę</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Informacje pogodowe</value>
@@ -218,10 +218,10 @@
     <value>Słońce</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Zachód słońca</value>
+    <value>Zachód Słońca</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Wschód słońca</value>
+    <value>Wschód Słońca</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
     <value>Księżyc</value>
