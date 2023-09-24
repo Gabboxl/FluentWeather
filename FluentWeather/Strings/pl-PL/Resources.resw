@@ -127,17 +127,17 @@
   </data>
   <data name="WhatsNew_Body.Text" xml:space="preserve">
     <value>1.2.2:
-- Some UI fixes (insight cards now adapt to the window size)
-- Fixed startup infinite hang
-- Some exception fixes
-- Updated translations
+- Poprawki interfejsu użytkownika (obszar informacji pogodowych dopasowuje się do rozmiaru okna)
+- Naprawiony problem z zawieszaniem się aplikacji przy uruchomieniu
+- Poprawki niektórych wyjątków
+- Zaktualizowane tłumaczenia
 
 1.2.0:
-- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+- Wsparcie dla dynamicznego kafelka w systemie Windows 10
+- Możliwość tłumaczeń interfejsu użytkownika (sprawdź sekcję ustawień)
+- Zoptymalizowany kod uruchamiania aplikacji
+- Zmniejszony rozmiar obrazów
+- Zaktualizowane zależności</value>
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
@@ -149,7 +149,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Szukaj i wybierz swoją lokalizację poniżej:</value>
+    <value>Wybierz swoją lokalizację poniżej:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -227,19 +227,19 @@
     <value>Księżyc</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Wschód księżyca</value>
+    <value>Wschód Księżyca</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
     <value>Zachód Księżyca</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Faza księżycowa</value>
+    <value>Faza Księżyca</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Jednostka</value>
+    <value>Jednostki</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Efekty akrylowe</value>
+    <value>Przezroczystość</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Autorzy</value>
@@ -248,32 +248,32 @@
     <value>Projekt na GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Metryczny</value>
+    <value>Metryczne</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Imperialny</value>
+    <value>Imperialne</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hybrydowy</value>
+    <value>Hybrydowe</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
     <value>Projekt interfejsu użytkownika zainspirowany pracą</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>stworzone przez</value>
+    <value>stworzona przez</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>Przetłumacz aplikację</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Zaktualizowano dnia </value>
+    <value>Zaktualizowano </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>LiveTile pogody</value>
+    <value>Dynamiczny kafelek</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Najpierw musisz przypiąć FluentWeather do menu startowego.
+    <value>Przypnij aplikację FluentWeather do menu Start.
 
-Kafelki LiveTile są dostępne tylko w systemie Windows 10.</value>
+Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
   </data>
 </root>
