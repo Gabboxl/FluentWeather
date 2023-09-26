@@ -133,7 +133,7 @@
 - Traduceri actualizate
 
 1.2.0:
-- Suportul LiveTile pentru Windows 10 este acum disponibil!
+- Suport pentru dale live pentru Windows 10 este acum disponibil!
 - Interfața este acum localizabilă (verificați secțiunea de setări)
 - Codul de pornire al aplicației optimizat
 - Reducerea dimensiunilor imaginii
@@ -149,7 +149,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Caută și selectează locația de mai jos:</value>
+    <value>Căutați și selectați-vă locația de mai jos:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -157,17 +157,17 @@
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Înainte!</value>
+    <value>Du-te înainte!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Caută un loc...</value>
+    <value>Căutați un loc...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Temperatura resimțită</value>
+    <value>Se simte ca</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Rulează</value>
+    <value>Alergare</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
     <value>Șofat</value>
@@ -176,7 +176,7 @@
     <value>Piele uscată</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Hidratare</value>
+    <value>Hidratare necesară</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vânt</value>
@@ -239,10 +239,10 @@
     <value>Unități</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Efecte acrilice</value>
+    <value>Efect Acrylic</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Contribuții</value>
+    <value>Credite</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
     <value>Proiect GitHub</value>
@@ -266,14 +266,14 @@
     <value>Traduceți aplicația</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Actualizat </value>
+    <value>Actualizat pe </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>LiveTile meteo</value>
+    <value>Dale Live Meteo</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Trebuie să fixezi mai întâi FluentWeather în meniul de început.
+    <value>Mai întâi trebuie să fixați FluentWeather la meniul start
 
-Tileurile Live sunt disponibile doar pe Windows 10.</value>
+Dalele Live sunt disponibile doar pe Windows 10.</value>
   </data>
 </root>
