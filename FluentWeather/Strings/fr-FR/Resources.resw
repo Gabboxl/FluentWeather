@@ -149,22 +149,22 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Recherchez et sélectionnez votre position ci-dessous:</value>
+    <value>Recherchez et sélectionnez votre position ci-dessous :</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Bienvenue sur FluentWeather!</value>
+    <value>Bienvenue sur FluentWeather !</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Continuer!</value>
+    <value>Continuer !</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
     <value>Rechercher un lieu...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Se sent comme</value>
+    <value>Ressenti</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
     <value>Courir</value>
