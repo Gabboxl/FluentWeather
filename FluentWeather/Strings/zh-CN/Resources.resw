@@ -161,7 +161,7 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>搜索地点...</value>
+    <value>搜索地点.......</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>体感温度</value>
