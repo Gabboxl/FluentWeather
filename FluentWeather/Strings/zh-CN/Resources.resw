@@ -242,7 +242,7 @@
     <value>亚克力效果</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>致谢</value>
+    <value>鸣谢</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
     <value>GitHub项目</value>
