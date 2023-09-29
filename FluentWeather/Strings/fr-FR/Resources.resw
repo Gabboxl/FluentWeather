@@ -197,10 +197,10 @@
     <value>Indice UV</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Prévisions pour la journée</value>
+    <value>Prévisions quotidiennes</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Horaire</value>
+    <value>Prévisions horaires</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Aperçus météorologiques</value>
@@ -233,7 +233,7 @@
     <value>Coucher de la lune</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Phases lunaires</value>
+    <value>Phase lunaire</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Unités</value>
