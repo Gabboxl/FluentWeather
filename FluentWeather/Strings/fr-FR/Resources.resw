@@ -167,16 +167,16 @@
     <value>Ressenti</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Courir</value>
+    <value>Course</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Voiture</value>
+    <value>Conduite</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Peau Sèche</value>
+    <value>Sécheresse cutanée</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Besoin d'arrosage</value>
+    <value>Besoin en eau</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vent</value>
@@ -266,7 +266,7 @@
     <value>Traduire l'application</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Modifié le </value>
+    <value>Mis à jour le </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>Météo LiveTile</value>
