@@ -141,7 +141,7 @@
     <comment>What's new prompt message body</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>此版本的新功能</value>
+    <value>此版本中的改进</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -149,7 +149,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>搜索并选择下面的位置：</value>
+    <value>搜索并在下方选择你的位置：</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -185,7 +185,7 @@
     <value>气压</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>湿度</value>
+    <value>空气湿度</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
     <value>能见度</value>
@@ -266,13 +266,13 @@
     <value>翻译此应用</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>更新于</value>
+    <value>最后更新于 </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>天气动态磁贴</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>您需要首先将 FluentWeather 固定到开始菜单。
+    <value>您需要先将 FluentWeather 固定到开始菜单。
 动态磁贴功能仅支持 Windows 10。</value>
   </data>
 </root>
