@@ -12,6 +12,7 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
+    xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -755,7 +756,7 @@
                         </RelativePanel>
 
 
-                        <GridView SelectionMode="None"
+                        <controls1:WrapPanel
                                   Grid.Row="1">
                             <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
                             <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
@@ -767,7 +768,7 @@
                             <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
 
                             <controls:InsightControl x:Name="DryskinInsight"></controls:InsightControl>
-                        </GridView>
+                        </controls1:WrapPanel>
 
                     </Grid>
 
@@ -792,7 +793,7 @@
                         </RelativePanel>
 
 
-                        <GridView SelectionMode="None"
+                        <controls1:WrapPanel
                             Grid.Row="1">
                             <Grid
                                 Margin="4"
@@ -865,6 +866,7 @@
 
 
                             <Grid
+                                VerticalAlignment="Stretch"
                                 Margin="4"
                                 CornerRadius="6"
                                 Padding="0"
@@ -969,8 +971,7 @@
                                 Padding="0"
                                 BorderThickness="2"
                                 BorderBrush="{ThemeResource MyAcrylicBrush}"
-                                Background="{ThemeResource MyAcrylicBrush}"
-                                Width="293">
+                                Background="{ThemeResource MyAcrylicBrush}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
@@ -1106,7 +1107,7 @@
 
                             </Grid>
 
-                        </GridView>
+                        </controls1:WrapPanel>
 
                     </Grid>
 
