@@ -344,7 +344,7 @@
             <!-- animate the content of the grid when making it visible -->
             <Grid.ChildrenTransitions>
                 <TransitionCollection>
-                    <EntranceThemeTransition />
+                    <EntranceThemeTransition FromVerticalOffset="250" IsStaggeringEnabled="True"/>
                 </TransitionCollection>
             </Grid.ChildrenTransitions>
 
