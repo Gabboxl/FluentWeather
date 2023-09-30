@@ -711,10 +711,11 @@
 
                                                 <!-- horizontal line -->
                                                 <Rectangle x:Name="Rectangle2"
-                                                           Fill="#7FFFFFFF"
+                                                           Fill="#7FAFAFAF"
                                                            Height="1"
+                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
                                                            RelativePanel.Above="HourText"
-                                                           Width="100"
+                                                           Width="90"
                                                            Margin="0,8,0,0" />
 
                                                 <TextBlock x:Name="HourText"
