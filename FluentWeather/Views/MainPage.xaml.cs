@@ -648,12 +648,6 @@ namespace FluentWeather.Views
             Task.Run(LoadApiData);
         }
 
-        private void NextPageButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            //navigate to next page
-            Frame.Navigate(typeof(BlankPage1));
-        }
-
         private async void UnitsSegmented_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var segmented = (Segmented) sender;
@@ -684,12 +678,6 @@ namespace FluentWeather.Views
 
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("effectsEnabled", acrylicToggle.IsOn);
-
-            //bool currentAcrylic = MainPageViewModel.UseFallback;
-
-            //this also works instead of the viewmodel system
-            //var acrylicBrush = (AcrylicBrush)Resources["MyAcrylicBrush"];
-            //acrylicBrush.AlwaysUseFallback = !currentAcrylic;
 
             await AcrylicEffectsService.SetThemeAsync(acrylicToggle.IsOn);
         }
