@@ -16,7 +16,7 @@ namespace FluentWeather.Adapters
             get { return CurrentObject.temperature[ItemIndex] + "°"; }
         }
 
-        public SvgImageSource svgImageIcon
+        public SvgImageSource SvgImageIcon
         {
             get
             {
@@ -37,7 +37,7 @@ namespace FluentWeather.Adapters
             get { return CurrentObject.precipChance[ItemIndex] + "%"; }
         }
 
-        public SvgImageSource svgPrecipIcon
+        public SvgImageSource SvgPrecipIcon
         {
             get
             {

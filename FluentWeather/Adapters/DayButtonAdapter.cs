@@ -24,7 +24,7 @@ namespace FluentWeather.Adapters
             }
         }
 
-        public SvgImageSource svgImageIcon
+        public SvgImageSource SvgImageIcon
         {
             get
             {
@@ -69,7 +69,7 @@ namespace FluentWeather.Adapters
             }
         }
 
-        public SvgImageSource svgPrecipIcon
+        public SvgImageSource SvgPrecipIcon
         {
             get
             {

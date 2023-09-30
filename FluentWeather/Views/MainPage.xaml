@@ -554,7 +554,7 @@
                                                            Stretch="Uniform"
                                                            RelativePanel.AlignTopWithPanel="True"
                                                            RelativePanel.AlignLeftWithPanel="True"
-                                                           Source="{x:Bind svgImageIcon}">
+                                                           Source="{x:Bind SvgImageIcon}">
                                                     </Image>
 
                                                     <TextBlock Text="{x:Bind ShortDayName }"
@@ -574,7 +574,7 @@
                                                            RelativePanel.AlignBottomWithPanel="True"
                                                            RelativePanel.LeftOf="precipChanceText"
                                                            Margin="0,0,4,0"
-                                                           Source="{x:Bind svgPrecipIcon}">
+                                                           Source="{x:Bind SvgPrecipIcon}">
 
                                                     </Image>
 
@@ -664,13 +664,6 @@
                                         <Grid Width="100" Height="200" Margin="0">
                                             <RelativePanel>
 
-                                                <!-- <Rectangle x:Name="Rectangle1"
-                                                Fill="#00FFFFFF"
-                                                       Height="1"
-                                                       RelativePanel.AlignTopWithPanel="True"
-                                                       Width="100"
-                                                       Margin="0,8,0,0"/> -->
-
                                                 <Image x:Name="wetIcon"
                                                        Margin="0,8,0,0"
                                                        Width="40"
@@ -678,7 +671,7 @@
                                                        Stretch="Uniform"
                                                        RelativePanel.AlignTopWithPanel="True"
                                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                       Source="{x:Bind svgImageIcon}">
+                                                       Source="{x:Bind SvgImageIcon}">
                                                 </Image>
 
                                                 <TextBlock x:Name="TemperatureText"
@@ -707,7 +700,7 @@
                                                        RelativePanel.Above="Rectangle2"
                                                        RelativePanel.LeftOf="precipChanceText"
                                                        Margin="0,0,4,0"
-                                                       Source="{x:Bind svgPrecipIcon}" />
+                                                       Source="{x:Bind SvgPrecipIcon}" />
 
                                                 <!-- precip chance text -->
                                                 <TextBlock x:Name="precipChanceText"
