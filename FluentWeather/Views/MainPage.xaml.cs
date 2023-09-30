@@ -45,14 +45,9 @@ namespace FluentWeather.Views
 
         private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
-        private static readonly HttpClient sharedClient3 = new()
+        private static readonly HttpClient SharedClient = new()
         {
-            BaseAddress = new Uri("https://api.weather.com/v3/"),
-        };
-
-        private static readonly HttpClient sharedClient2 = new()
-        {
-            BaseAddress = new Uri("https://api.weather.com/v2/"),
+            BaseAddress = new Uri("https://api.weather.com/"),
         };
 
         public bool IsWindows10
@@ -75,7 +70,6 @@ namespace FluentWeather.Views
         }
 
 
-        //segemented settings units selectedindex
         public int SettingsUnitsSelectedIndex
         {
             get
@@ -176,7 +170,7 @@ namespace FluentWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-                var response = await sharedClient3.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
+                var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text + "&language=" +
                                                             _systemLanguage +
                                                             "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
@@ -229,8 +223,8 @@ namespace FluentWeather.Views
 
             if (lastPlaceId != null)
             {
-                var response = await sharedClient2.GetAsync(
-                    "aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
+                var response = await SharedClient.GetAsync(
+                    "v2/aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
                     + lastPlaceId
                     + "&units=" + await VariousUtils.GetUnitsCode()
                     + "&language=" +
