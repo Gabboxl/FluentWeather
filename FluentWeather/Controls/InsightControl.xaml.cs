@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Windows.Foundation;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -12,6 +13,8 @@ using FluentWeather.Models;
 using Windows.UI.Xaml.Media.Imaging;
 using FluentWeather.Core.Helpers;
 using FluentWeather.Services;
+using Path = Windows.UI.Xaml.Shapes.Path;
+using Windows.UI.Xaml.Markup;
 
 namespace FluentWeather.Controls
 {
@@ -43,63 +46,14 @@ namespace FluentWeather.Controls
             currentInstance.LevelRectangle.Fill = currentInstance.GetLevelColor(newValue.Value, newValue.Levels);
 
 
-            var newIcon = new SvgImageSource
-            {
-                UriSource = new Uri("ms-appx:///Assets/insighticons/" + newValue.IconName + ".svg")
-            };
+            string iconPath =  (string) Application.Current.Resources[newValue.IconName + "Path"];
 
-            var test1 = ChangeSvgColor("Assets/insighticons/" + newValue.IconName + ".svg", "#FFFFFF");
+            currentInstance.InsightIconPath.Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), iconPath);
 
-            var test2 = await CreateSvgImageSource(test1);
+            //currentInstance.InsightIconPath.Fill = (SolidColorBrush) Application.Current.Resources["SystemFillColorCriticalBrush"];
 
-            currentInstance.InsightIcon.Source = test2;
-        }
+            currentInstance.InsightIconPath.MaxWidth = 24;
 
-        public static string ChangeSvgColor(string svgFilePath, string newColor)
-        {
-            string svgContent;
-
-            // Open the file with UTF8 encoding and use the StreamReader constructor that automatically skips the BOM
-            using (var reader = new StreamReader(svgFilePath, new UTF8Encoding(true)))
-            {
-                svgContent = reader.ReadToEnd();
-            }
-
-            XDocument svgXml = XDocument.Parse(svgContent);
-            XNamespace ns = "http://www.w3.org/2000/svg";
-
-            foreach (XElement path in svgXml.Descendants(ns + "path"))
-            {
-                XAttribute fillAttribute = path.Attribute("fill");
-                if (fillAttribute != null)
-                {
-                    fillAttribute.Value = newColor;
-                }
-            }
-
-            return svgXml.ToString();
-        }
-
-        private static int lol = 0;
-
-        private static async Task<SvgImageSource> CreateSvgImageSource(string svgXml)
-        {
-            // Create a temporary file. Delete it if it already exists.
-            StorageFolder tempFolder = ApplicationData.Current.TemporaryFolder;
-
-            lol++;
-
-            StorageFile tempFile =
-                await tempFolder.CreateFileAsync("temp" + lol + ".svg", CreationCollisionOption.ReplaceExisting);
-
-            // Write the SVG XML code to the temporary file.
-            await FileIO.WriteTextAsync(tempFile, svgXml);
-
-
-            // Create a new SvgImageSource from the temporary file.
-            var svgImageSource = new SvgImageSource(new Uri(tempFile.Path));
-
-            return svgImageSource;
         }
 
         Brush GetLevelColor(int level, Dictionary<int, InsightLevel> levels)
@@ -125,8 +79,6 @@ namespace FluentWeather.Controls
                     return (SolidColorBrush) Application.Current.Resources["SystemFillColorAttentionBackgroundBrush"];
             }
 
-
-            //return brush;
         }
 
 

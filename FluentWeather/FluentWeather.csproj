@@ -312,11 +312,9 @@
     <Content Include="Assets\bgs\7.jpg" />
     <Content Include="Assets\bgs\8.jpg" />
     <Content Include="Assets\bgs\9.jpg" />
-    <Content Include="Assets\insighticons\driving.svg" />
-    <Content Include="Assets\insighticons\dry.svg" />
-    <Content Include="Assets\insighticons\pollen.svg" />
-    <Content Include="Assets\insighticons\running.svg" />
-    <Content Include="Assets\insighticons\watering.svg" />
+    <Page Include="Assets\insighticons\Insighticons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />

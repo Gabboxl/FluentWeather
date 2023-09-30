@@ -11,6 +11,7 @@
             <x:Double x:Key="ContentDialogMaxWidth">2000</x:Double>
             <ResourceDictionary.MergedDictionaries>
 
+                <ResourceDictionary Source="Assets/insighticons/Insighticons.xaml" />
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="Styles/Button.xaml" />
                 <ResourceDictionary Source="Styles/AutoSuggestBox.xaml" />

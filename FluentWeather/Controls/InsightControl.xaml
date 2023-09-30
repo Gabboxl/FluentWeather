@@ -43,20 +43,22 @@
         <RelativePanel Grid.Column="1"
                        Margin="8">
 
-            <Image x:Name="InsightIcon"
+            <Path x:Name="InsightIconPath"
                    Margin="0,0,0,0"
                    Width="24"
+                   Height="24"
+                   Fill="#FFFFFF"
                    Stretch="Uniform"
                    RelativePanel.AlignTopWithPanel="True"
                    RelativePanel.AlignLeftWithPanel="True">
-            </Image>
+            </Path>
 
             <!-- textblock with BodyTextBlockStyle -->
             <TextBlock x:Name="TitleText" Text="titlechip"
                        Style="{StaticResource BodyTextBlockStyle}"
                        Margin="0,6,0,0"
                        Opacity="0.6"
-                       RelativePanel.Below="InsightIcon" />
+                       RelativePanel.Below="InsightIconPath" />
 
             <TextBlock x:Name="ValueText" Text="valuechip"
                        Style="{StaticResource BodyStrongTextBlockStyle}"
