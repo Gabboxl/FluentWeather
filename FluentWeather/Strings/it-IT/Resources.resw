@@ -200,7 +200,7 @@
     <value>Previsioni giornaliere</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hourly</value>
+    <value>Ogni ora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Approfondimenti meteo</value>
