@@ -110,7 +110,7 @@ namespace FluentWeather.Services
             builder.Content.Visual.LockDetailedStatus2 = " " + mainPhrase;
 
             //current precipitation chance
-            builder.Content.Visual.LockDetailedStatus3 = " " + "Next hours:" + " " +  forecastNarrative;
+            builder.Content.Visual.LockDetailedStatus3 = " " + "NextHours".GetLocalized() +  forecastNarrative;
 
 
             // Then create the tile notification
