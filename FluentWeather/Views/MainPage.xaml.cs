@@ -364,9 +364,6 @@ namespace FluentWeather.Views
             var newIconUri = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
                                      ".svg");
 
-            //imagesource
-            //var imageSource = new SvgImageSource(asd);
-
             //get svgimagesource object from image source
             var svgImageSource = (SvgImageSource) MainIcon.Source;
             svgImageSource.UriSource = newIconUri;
@@ -432,24 +429,6 @@ namespace FluentWeather.Views
 
                 i++;
             }
-
-
-            /*var element = repeaterDays;
-            var compositor = ElementCompositionPreview.GetElementVisual(element).Compositor;
-            var animation = compositor.CreateScopedBatch(Windows.UI.Composition.CompositionBatchTypes.Animation);
-            animation.Completed += (s, e) => { animation.Dispose(); };
-            var slideAnimation = compositor.CreateScalarKeyFrameAnimation();
-            slideAnimation.InsertKeyFrame(0f, 1000.0f);
-            slideAnimation.InsertKeyFrame(1.0f, 0.0f);
-            slideAnimation.Duration = TimeSpan.FromMilliseconds(600);
-
-            //var animationGroup = compositor.CreateAnimationGroup();
-            //animationGroup.Add(slideAnimation);
-
-            var elementVisual = ElementCompositionPreview.GetElementVisual(element);
-
-
-            elementVisual.StartAnimation("Offset.x", slideAnimation);*/
 
 
             RepeaterDays.ItemsSource = dayButtonAdapters;
