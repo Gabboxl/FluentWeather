@@ -35,10 +35,7 @@ namespace FluentWeather
             return serviceCollection.BuildServiceProvider();
         }
 
-        /// <summary>
-        /// Inizializza l'oggetto Application singleton. Si tratta della prima riga del codice creato
-        /// creato e, come tale, corrisponde all'equivalente logico di main() o WinMain().
-        /// </summary>
+
         public App()
         {
             this.InitializeComponent();
@@ -74,11 +71,7 @@ namespace FluentWeather
             this.AppViewModel = AppViewModelHolder.GetViewModel();
         }
 
-        /// <summary>
-        /// Richiamato quando l'applicazione viene avviata normalmente dall'utente finale. All'avvio dell'applicazione
-        /// verranno usati altri punti di ingresso per aprire un file specifico.
-        /// </summary>
-        /// <param name="e">Dettagli sulla richiesta e sul processo di avvio.</param>
+
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
@@ -93,13 +86,7 @@ namespace FluentWeather
             throw new System.Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        /// <summary>
-        /// Richiamato quando l'esecuzione dell'applicazione viene sospesa. Lo stato dell'applicazione viene salvato
-        /// senza che sia noto se l'applicazione verrà terminata o ripresa con il contenuto
-        /// della memoria ancora integro.
-        /// </summary>
-        /// <param name="sender">Origine della richiesta di sospensione.</param>
-        /// <param name="e">Dettagli relativi alla richiesta di sospensione.</param>
+
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
