@@ -377,8 +377,7 @@ namespace FluentWeather.Views
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
 
-            UpdatedOnText.Text =
-                Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/UpdatedOnText").ValueAsString + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
+            UpdatedOnText.Text = "UpdatedOnText".GetLocalized() + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
 
             //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty) and remove duplicate names
@@ -399,8 +398,7 @@ namespace FluentWeather.Views
             CurrentTempText.Text = rootV3Response.v3wxobservationscurrent.temperature + "°" +
                                    MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
-            FeelsLikeText.Text =
-                Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/FeelsLikeText").ValueAsString + " " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
+            FeelsLikeText.Text = "FeelsLikeText".GetLocalized() + " " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
                 MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
             WindChipControl.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " " +
@@ -514,7 +512,7 @@ namespace FluentWeather.Views
             //insights controls
             RunningInsight.Insight = new Insight()
             {
-                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/RunningInsightTitle").ValueAsString,
+                Title = "RunningInsightTitle".GetLocalized(),
                 Value =
                     _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
                 Description =
@@ -526,7 +524,7 @@ namespace FluentWeather.Views
 
             DrivingInsight.Insight = new Insight()
             {
-                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/DrivingInsightTitle").ValueAsString,
+                Title = "DrivingInsightTitle".GetLocalized(),
                 Value =
                     _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[
                         indexOfDayInsights],
@@ -544,7 +542,7 @@ namespace FluentWeather.Views
 
             DryskinInsight.Insight = new Insight()
             {
-                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/DrySkinInsightTitle").ValueAsString,
+                Title = "DrySkinInsightTitle".GetLocalized(),
                 Value = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
                 Description =
                     _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
@@ -554,7 +552,7 @@ namespace FluentWeather.Views
 
             WateringInsight.Insight = new Insight()
             {
-                Title = Windows.ApplicationModel.Resources.Core.ResourceManager.Current.MainResourceMap.GetValue("Resources/WateringNeedInsightTitle").ValueAsString,
+                Title = "WateringNeedInsightTitle".GetLocalized(),
                 Value =
                     _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[
                         indexOfDayInsights],
