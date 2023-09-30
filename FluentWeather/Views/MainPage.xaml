@@ -359,6 +359,8 @@
                     </StackPanel>
                 </Button> -->
 
+            <RefreshContainer x:Name="rc" RefreshRequested="RefContainer_RefreshRequested" Grid.Row="1">
+
 
             <ScrollViewer Grid.Row="1"
                           x:Name="MainScroll"
@@ -1114,6 +1116,7 @@
 
                 </Grid>
             </ScrollViewer>
+            </RefreshContainer>
 
 
             <Button Name="SettingsButton"

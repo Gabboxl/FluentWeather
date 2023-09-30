@@ -695,5 +695,10 @@ namespace FluentWeather.Views
 
             await AcrylicEffectsService.SetThemeAsync(acrylicToggle.IsOn);
         }
+
+        private void RefContainer_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
+        {
+            Task.Run(LoadApiData);
+        }
     }
 }
