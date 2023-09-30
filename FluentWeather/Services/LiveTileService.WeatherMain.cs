@@ -56,6 +56,22 @@ namespace FluentWeather.Services
             string mainPhrase = apiDataResponse.v3wxobservationscurrent.cloudCoverPhrase;
 
 
+            //current precipitation chance
+            var precipChance = apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[0];
+
+            if (precipChance == null)
+            {
+                precipChance = apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[1];
+            }
+
+
+            var forecastNarrative = apiDataResponse.v3wxforecastdaily10day.narrative[0];
+
+            if (forecastNarrative == null)
+            {
+                forecastNarrative = apiDataResponse.v3wxforecastdaily10day.narrative[1];
+            }
+
             var builder = new TileContentBuilder();
 
 
@@ -86,6 +102,15 @@ namespace FluentWeather.Services
                 .AddAdaptiveTileVisualChild(LargeTileContent(imageIconPath, currentTemp), TileSize.Large)
                 .AddText(mainPhrase, TileSize.Large, hintStyle: AdaptiveTextStyle.SubtitleSubtle,
                     hintAlign: AdaptiveTextAlign.Center);
+
+            //builder.SetBranding(TileBranding.None);
+
+            // Set the lock screen data to be displayed
+            builder.Content.Visual.LockDetailedStatus1 = cityName + " - " + currentTemp; //the space at the start prevents the text from being shown, as when the text has a Capital letter is it not shown (it is a bug probably)
+            builder.Content.Visual.LockDetailedStatus2 = " " + mainPhrase;
+
+            //current precipitation chance
+            builder.Content.Visual.LockDetailedStatus3 = " " + "Next hours:" + " " +  forecastNarrative;
 
 
             // Then create the tile notification
