@@ -200,7 +200,7 @@
     <value>Previsioni giornaliere</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hourly</value>
+    <value>Ogni ora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Approfondimenti meteo</value>
@@ -275,5 +275,8 @@
     <value>Devi prima aggiungere FluentWeather al menu Start.
 
 Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
+  </data>
+  <data name="NextHours" xml:space="preserve">
+    <value> Next hours: </value>
   </data>
 </root>
