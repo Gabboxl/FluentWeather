@@ -57,20 +57,10 @@ namespace FluentWeather.Services
 
 
             //current precipitation chance
-            var precipChance = apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[0];
-
-            if (precipChance == null)
-            {
-                precipChance = apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[1];
-            }
+            var precipChance = apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[0] ?? apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[1];
 
 
-            var forecastNarrative = apiDataResponse.v3wxforecastdaily10day.narrative[0];
-
-            if (forecastNarrative == null)
-            {
-                forecastNarrative = apiDataResponse.v3wxforecastdaily10day.narrative[1];
-            }
+            var forecastNarrative = apiDataResponse.v3wxforecastdaily10day.narrative[0] ?? apiDataResponse.v3wxforecastdaily10day.narrative[1];
 
             var builder = new TileContentBuilder();
 
@@ -110,7 +100,7 @@ namespace FluentWeather.Services
             builder.Content.Visual.LockDetailedStatus2 = " " + mainPhrase;
 
             //current precipitation chance
-            builder.Content.Visual.LockDetailedStatus3 = " " + "NextHours".GetLocalized() +  forecastNarrative;
+            builder.Content.Visual.LockDetailedStatus3 = " " + "NextHours".GetLocalized() + " " +  forecastNarrative;
 
 
             // Then create the tile notification
