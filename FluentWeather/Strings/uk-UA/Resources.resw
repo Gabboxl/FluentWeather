@@ -125,21 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.2:
-- Поліпшення UI (картки аналізу тепер адаптуються до розміру вікна)
-- Виправлено нескінченне зависання при запуску
-- Деякі виправлення винятків
-- Оновлені переклади
-
-1.2.0:
-- Підтримка живих тайлів для Windows 10 вже тут!
-- Інтерфейс користувача тепер можна локалізувати (перегляньте розділ налаштувань)
-- Оптимізований код запуску програми
-- Зменшені розміри зображення
-- Оновлені залежності</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Що нового в цій версії</value>
     <comment>What's new prompt message title</comment>
