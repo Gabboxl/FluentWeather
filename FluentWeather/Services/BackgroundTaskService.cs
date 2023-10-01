@@ -16,8 +16,7 @@ namespace FluentWeather.Services
     {
         public static IEnumerable<BackgroundTask> BackgroundTasks => BackgroundTaskInstances.Value;
 
-        private static readonly Lazy<IEnumerable<BackgroundTask>> BackgroundTaskInstances =
-            new Lazy<IEnumerable<BackgroundTask>>(() => CreateInstances());
+        private static readonly Lazy<IEnumerable<BackgroundTask>> BackgroundTaskInstances = new(() => CreateInstances());
 
         public async Task RegisterBackgroundTasksAsync()
         {
