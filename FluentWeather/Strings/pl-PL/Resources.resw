@@ -125,21 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.2:
-- Poprawki interfejsu użytkownika (obszar informacji pogodowych dopasowuje się do rozmiaru okna)
-- Naprawiony problem z zawieszaniem się aplikacji przy uruchomieniu
-- Poprawki niektórych wyjątków
-- Zaktualizowane tłumaczenia
-
-1.2.0:
-- Wsparcie dla dynamicznego kafelka w systemie Windows 10
-- Możliwość tłumaczeń interfejsu użytkownika (sprawdź sekcję ustawień)
-- Zoptymalizowany kod uruchamiania aplikacji
-- Zmniejszony rozmiar obrazów
-- Zaktualizowane zależności</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Co nowego w tej wersji</value>
     <comment>What's new prompt message title</comment>
