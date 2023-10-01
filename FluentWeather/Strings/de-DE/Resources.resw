@@ -276,4 +276,7 @@
 
 Live Kacheln sind nur auf Windows 10 verfügbar.</value>
   </data>
+  <data name="NextHours" xml:space="preserve">
+    <value> Next hours: </value>
+  </data>
 </root>
