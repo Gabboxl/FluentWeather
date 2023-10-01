@@ -23,7 +23,7 @@
     </ContentDialog.TitleTemplate>
     <ScrollViewer>
         <StackPanel>
-            <TextBlock x:Uid="WhatsNew_Body" TextWrapping="WrapWholeWords" />
+            <TextBlock x:Name="WhatsNewTextBlock" TextWrapping="WrapWholeWords" />
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>

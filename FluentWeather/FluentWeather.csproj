@@ -178,7 +178,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\en-us\Resources.resw" />
+    <PRIResource Include="Strings\en-us\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
@@ -305,6 +307,7 @@
     <Content Include="Assets\bgs\7.jpg" />
     <Content Include="Assets\bgs\8.jpg" />
     <Content Include="Assets\bgs\9.jpg" />
+    <PRIResource Include="Strings\en-us\Untranslatable.resw" />
     <Page Include="Assets\insighticons\Insighticons.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
