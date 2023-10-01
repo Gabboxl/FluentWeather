@@ -261,6 +261,6 @@
 动态磁贴功能仅支持 Windows 10。</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value> 接下来一个小时： </value>
+    <value>Next hours:</value>
   </data>
 </root>
