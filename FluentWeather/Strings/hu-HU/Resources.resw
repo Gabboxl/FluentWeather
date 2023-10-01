@@ -125,21 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.2:
-- Pár UI javítás (a betekintési kártyák mostantól alkalmazkodnak az ablakmérethez).
-- Javítottuk az indítás végtelen lógását
-- Néhány kivétel javítása
-- Frissített fordítások
-
-1.2.0:
-- LiveTile támogatás a Windows 10 számára mostantól elérhető!
-- A felhasználói felület mostantól lokalizálható (nézd meg a beállítások szekciót).
-- Optimalizált alkalmazásindítási kód
-- Csökkentett képméretek
-- Frissített szükségletek</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Újdonságok ebben a verzióban</value>
     <comment>What's new prompt message title</comment>
