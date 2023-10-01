@@ -41,6 +41,9 @@ namespace FluentWeather.BackgroundTasks
                 // More details at https://docs.microsoft.com/windows/uwp/launch-resume/create-and-register-an-inproc-background-task
                 builder.SetTrigger(new TimeTrigger(15, false));
                 //builder.AddCondition(new SystemCondition(SystemConditionType.UserPresent));
+                builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+                builder.IsNetworkRequested = true;
+
 
                 builder.Register();
 
