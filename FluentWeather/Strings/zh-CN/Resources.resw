@@ -275,4 +275,7 @@
     <value>您需要先将 FluentWeather 固定到开始菜单。
 动态磁贴功能仅支持 Windows 10。</value>
   </data>
+  <data name="NextHours" xml:space="preserve">
+    <value> Next hours: </value>
+  </data>
 </root>
