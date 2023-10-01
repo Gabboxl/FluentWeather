@@ -125,13 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>- Некоторые исправления в пользовательском интерфейсе (элементы теперь адаптируются к размеру окна)
-- Исправлено бесконечное зависание при запуске
-- Исправлены некоторые исключения
-- Обновлены переводы</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Что нового в этой версии</value>
     <comment>What's new prompt message title</comment>

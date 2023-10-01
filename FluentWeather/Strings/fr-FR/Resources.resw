@@ -125,21 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.2:
-- Quelques correctifs de l'interface utilisateur (les cartes Insight s'adaptent désormais à la taille de la fenêtre)
-- Correction du blocage infini au démarrage
-- Quelques corrections d'exceptions
-- Traductions mises à jour
-
-1.2.0:
-- La prise en charge de LiveTile pour Windows 10 est désormais disponible !
-- L'interface utilisateur est désormais localisable (consultez la section paramètres)
-- Code de démarrage de l'application optimisé
-- Tailles d'image réduites
-- Dépendances mises à jour</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Quoi de neuf dans cette version</value>
     <comment>What's new prompt message title</comment>

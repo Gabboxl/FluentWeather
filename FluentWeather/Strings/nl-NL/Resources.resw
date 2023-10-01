@@ -125,21 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.2:
-- Enkele UI-fixes (inzichtkaarten passen zich nu aan de venstergrootte aan)
-- Oneindig hangen bij opstarten verholpen
-- Uitzonderingen opgelost
-- Vertalingen bijgewerkt
-
-1.2.0:
-- LiveTile ondersteuning voor Windows 10 is nu beschikbaar!
-- De UI is nu lokaliseerbaar (bekijk de instellingensectie)
-- Opstartcode van app geoptimaliseerd
-- Afbeeldingsformaten verkleind
-- Afhankelijkheden bijgewerkt</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Nieuw in deze versie</value>
     <comment>What's new prompt message title</comment>

@@ -125,21 +125,6 @@
     <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
-  <data name="WhatsNew_Body.Text" xml:space="preserve">
-    <value>1.2.2:
-- Sửa vài giao diện (các thẻ hoạt động dưới thời tiết sẽ thay đổi theo kích thước cửa sổ)
-- Sửa lỗi treo vĩnh viễn ở phần khởi động
-- Sửa vài lỗi ngoại lệ
-- Cập nhật các phiên dịch
-
-1.2.0:
-- Hỗ trợ LiveTile cho Windows 10!
-- Giao diện được sắp xếp thành từng nhóm (xem trong phần cài đặt)
-- Tối ưu code khởi động app
-- Giảm kích thước hình ảnh
-- Cập nhật các phụ thuộc</value>
-    <comment>What's new prompt message body</comment>
-  </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
     <value>Cập nhật mới trong phiên bản này</value>
     <comment>What's new prompt message title</comment>
