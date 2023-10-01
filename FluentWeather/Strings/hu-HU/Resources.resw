@@ -262,6 +262,6 @@
 Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value> Next hours: </value>
+    <value> Következő órákban: </value>
   </data>
 </root>
