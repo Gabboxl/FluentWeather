@@ -262,6 +262,6 @@
 Live Tiles chỉ có trên Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Next hours:</value>
+    <value>Các giờ tiếp theo:</value>
   </data>
 </root>
