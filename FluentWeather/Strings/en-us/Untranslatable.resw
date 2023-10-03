@@ -118,17 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WhatsNew_Body" xml:space="preserve">
-    <value>1.2.2:
-- Some UI fixes (insight cards now adapt to the window size)
-- Fixed startup infinite hang
-- Some exception fixes
-- Updated translations
-
-1.2.0:
-- LiveTile support for Windows 10 is now available!
-- The UI is now localizable (check out the settings section)
-- Optimized app startup code
-- Reduced image sizes
-- Updated dependencies</value>
+    <value>1.3.0:
+- Added lockscreen weather data support! (Enable it in Windows Settings -&gt; Personalization -&gt; Lock screen -&gt; Select FluentWeather to show detailed data)
+- Added scroll-to-refresh support for touchpad and touch devices!
+- UI fixes and optimizations
+- Optimized UI refresh code
+- Updated translations</value>
   </data>
 </root>
