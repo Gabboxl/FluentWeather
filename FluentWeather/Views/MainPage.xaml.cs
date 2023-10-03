@@ -50,10 +50,6 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/"),
         };
 
-        public bool IsWindows10
-        {
-            get {return !VariousUtils.IsWindows11();}
-        }
 
         private readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
@@ -238,11 +234,8 @@ namespace FluentWeather.Views
 
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
-                if (LiveTileService.MainLiveTileEnabled)
-                {
-                    //update main LiveTile
-                    Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
-                }
+                //update main LiveTile
+                LiveTileService.UpdateWeatherMainTile(_lastApiData);
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(

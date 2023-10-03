@@ -30,7 +30,7 @@ namespace FluentWeather.BackgroundTasks
             var taskRegistration =
                 BackgroundTaskRegistration.AllTasks.FirstOrDefault(t => t.Value.Name == taskName).Value;
 
-            if (taskRegistration == null && !VariousUtils.IsWindows11())
+            if (taskRegistration == null)
             {
                 var builder = new BackgroundTaskBuilder()
                 {
@@ -48,7 +48,7 @@ namespace FluentWeather.BackgroundTasks
                 builder.Register();
 
                 //update the tile for the first time
-                Singleton<LiveTileService>.Instance.UpdateWeatherFull();
+                Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
             }
         }
 
@@ -81,7 +81,7 @@ namespace FluentWeather.BackgroundTasks
 
                 //update livetile data
 
-                Singleton<LiveTileService>.Instance.UpdateWeatherFull();
+                Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
 
                 //inform the system that the background task is completed
                 _deferral.Complete();

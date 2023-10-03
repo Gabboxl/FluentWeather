@@ -6,12 +6,14 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using FluentWeather.Models;
 using FluentWeather.Utils;
 using Newtonsoft.Json;
+using Microsoft.AppCenter.Crashes;
+using System.Net.Mail;
 
 namespace FluentWeather.Services
 {
     public partial class LiveTileService
     {
-        public async void UpdateWeatherFull()
+        public async void UpdateWeatherTileFull()
         {
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
@@ -104,8 +106,16 @@ namespace FluentWeather.Services
 
 
             // Then create the tile notification
-            var notification = new Windows.UI.Notifications.TileNotification(builder.Content.GetXml());
-            UpdateTile(notification);
+            try //try catch block to prevent the app from crashing if the tile is not pinned
+            {
+                var notification = new Windows.UI.Notifications.TileNotification(builder.Content.GetXml());
+                UpdateTile(notification);
+            }
+            catch (Exception e)
+            {
+                // report the error to Visual Studio App Center
+                Crashes.TrackError(e);
+            }
         }
 
 
