@@ -134,7 +134,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>搜索并在下方选择你的位置：</value>
+    <value>搜索并在下方选择您所在的位置：</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>搜索地点.......</value>
+    <value>搜索一个地点...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>体感温度</value>
@@ -194,7 +194,7 @@
     <value>当日总览</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>白天</value>
+    <value>日间</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
     <value>晚间</value>
@@ -230,22 +230,22 @@
     <value>鸣谢</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub项目</value>
+    <value>GitHub 项目仓库</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>公制</value>
+    <value>公制单位</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>英制</value>
+    <value>英制单位</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>混合</value>
+    <value>混用</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>UI 设计灵感来自：</value>
+    <value>UI 设计灵感来源于：</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>开发者 :</value>
+    <value>开发者:</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>翻译此应用</value>
