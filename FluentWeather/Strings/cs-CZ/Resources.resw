@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value/>
+    <value>FluentWeather</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value/>
+    <value>FluentWeather</value>
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value/>
+    <value>What's new in this version</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -134,11 +134,11 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value/>
+    <value>Search and select your location below:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value/>
+    <value>Welcome to FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
@@ -158,13 +158,13 @@
     <value>Driving</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value/>
+    <value>Dry skin</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value/>
+    <value>Watering need</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value/>
+    <value>Wind</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
     <value>Pressure</value>
@@ -179,28 +179,28 @@
     <value>Dew Point</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value/>
+    <value>UV Index</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value/>
+    <value>Daily forecast</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value/>
+    <value>Hourly</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Weather Insights</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value/>
+    <value>Day Summary</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
     <value>Day</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value/>
+    <value>Night</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value/>
+    <value>Sun</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
     <value>Sunset</value>
@@ -209,7 +209,7 @@
     <value>Sunrise</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value/>
+    <value>Moon</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
     <value>Moonrise</value>
@@ -218,7 +218,7 @@
     <value>Moonset</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value/>
+    <value>Lunar phase</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Units</value>
@@ -233,7 +233,7 @@
     <value>GitHub project</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value/>
+    <value>Metric</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
     <value>Imperial</value>
@@ -251,10 +251,10 @@
     <value>Translate the app</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value/>
+    <value>Updated on </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value/>
+    <value>Weather LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
     <value>You have to pin FluentWeather to the start menu first.
@@ -262,6 +262,6 @@
 Live Tiles are available natively on Windows 10 only.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value/>
+    <value>Next hours:</value>
   </data>
 </root>
