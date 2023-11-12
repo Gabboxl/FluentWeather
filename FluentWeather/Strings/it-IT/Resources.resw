@@ -161,7 +161,7 @@
     <value>Pelle secca</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>Necessità di innaffiamento</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vento</value>
@@ -251,7 +251,7 @@
     <value>Traduci l'app</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>Aggiornato il </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>LiveTile meteo</value>

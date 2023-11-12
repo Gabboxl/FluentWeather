@@ -134,7 +134,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Aşağıda konumunuzu arayın ve seçin:</value>
+    <value>Aşağıdan konumunuzu arayın ve seçin:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">

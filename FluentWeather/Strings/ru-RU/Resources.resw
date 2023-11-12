@@ -191,13 +191,13 @@
     <value>Влияние погоды на</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Итог дня</value>
+    <value>Сегодня</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>День</value>
+    <value>Днём</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Ночь</value>
+    <value>Ночью</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
     <value>Солнце</value>
