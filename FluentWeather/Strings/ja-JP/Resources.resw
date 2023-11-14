@@ -134,7 +134,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>ここから検索して場所を選択します:</value>
+    <value>ここから検索して地域を選択します:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>場所を検索する...</value>
+    <value>地域を検索する...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>体感温度:</value>
@@ -251,7 +251,7 @@
     <value>アプリを翻訳する</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>更新日時: </value>
+    <value>更新: </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>Weather ライブ タイル</value>
