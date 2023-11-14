@@ -164,7 +164,7 @@
     <value>水分補給の必要性</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>突風</value>
+    <value>風</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
     <value>気圧</value>
