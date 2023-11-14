@@ -188,10 +188,10 @@
     <value>1 時間ごと</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>天気に関する洞察</value>
+    <value>気象に関するインサイト</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>1 日の気象情報</value>
+    <value>1 日の概要</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
     <value>昼</value>
@@ -200,7 +200,7 @@
     <value>夜</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>太陽</value>
+    <value>日</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
     <value>日の入り</value>
@@ -262,6 +262,6 @@
 ライブ タイルは Windows 10 でのみ利用できます。</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>次の時間:</value>
+    <value>次の時間帯:</value>
   </data>
 </root>
