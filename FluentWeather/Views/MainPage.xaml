@@ -619,15 +619,6 @@
                                 FontSize="20"
                                 Margin="0,0,0,16" />
 
-                            <!--<labs:Segmented SelectedIndex="0" RelativePanel.RightOf="HourlyTitleText"
-                                            Margin="16,0,0,0"
-                                            >
-                                <labs:SegmentedItem Content="Detailed" />
-                                <labs:SegmentedItem Content="Summary (coming soon)" IsEnabled="False" />
-                                
-                                ~1~ <labs:SegmentedItem Content="Item 3" Icon="{ui:SymbolIcon Symbol=Home}" /> @1@
-                            </labs:Segmented>-->
-
                         </RelativePanel>
 
 
@@ -779,20 +770,7 @@
                           Margin="0,12,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-
-                        <RelativePanel Grid.Row="0">
-                            <!--<TextBlock
-                                x:Name="SuggestionsText"
-                                Grid.Row="0"
-                                Text="Weather Insights"
-                                Style="{StaticResource BodyTextBlockStyle}"
-                                FontSize="20"
-                                Margin="0,0,0,16" />-->
-
-
-                        </RelativePanel>
 
 
                         <controls1:WrapPanel
@@ -1070,7 +1048,6 @@
                                                    Grid.Column="1"
                                                    Margin="8">
 
-                                        <!-- vertical line on left -->
                                         <Rectangle
                                             x:Name="LunarphaseLine"
                                             Fill="{ThemeResource MyAcrylicBrushLine}"
@@ -1146,7 +1123,6 @@
                             <MenuFlyoutItem.Template>
                                 <ControlTemplate x:Name="FlyoutItemSettingsTemp">
                                     <StackPanel VerticalAlignment="Center" Margin="16">
-                                        <!-- title control -->
                                         <TextBlock x:Uid="UnitsSettingsTitle"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
