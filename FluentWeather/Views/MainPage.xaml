@@ -56,7 +56,6 @@
 
         <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
 
-
         <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
                BasedOn="{StaticResource DefaultListViewItemStyle}">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -180,7 +179,6 @@
         <ParallaxView
             x:Name="parallaxView"
             Grid.RowSpan="10"
-
             Source="{x:Bind MainScroll}" VerticalShift="50">
             <Grid x:Name="ParallaxContainer">
                 <Image x:Name="Image1" Stretch="UniformToFill" Opacity="1">
@@ -232,7 +230,6 @@
 
                 <RelativePanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
 
-                    <!-- progress ring -->
                     <muxc:ProgressRing x:Name="DataProgressRing"
                                        IsTabStop="True"
                                        Width="22"
@@ -296,41 +293,7 @@
                 </Grid>
             </Grid>
 
-
         </Grid>
-
-
-        <!--     <muxc:NavigationView Grid.Row="1"
-                             IsTitleBarAutoPaddingEnabled="False"
-                             IsBackButtonVisible="Collapsed"
-                             IsBackEnabled="{x:Bind NavigationViewViewModel.IsBackEnabled, Mode=OneWay}"
-                             SelectedItem="{x:Bind NavigationViewViewModel.Selected, Mode=OneWay}"
-                             x:Name="navigationView"
-                             PaneDisplayMode="Left"
-                             IsPaneToggleButtonVisible="False">
-            <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Dashboard" helpers:NavHelper.NavigateTo="views:DashWet">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xe80f;" FontFamily="{StaticResource FluentIcons}" />
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-
-                <muxc:NavigationViewItem Content="Agenda" helpers:NavHelper.NavigateTo="views:DashWet">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xe787;" FontFamily="{StaticResource FluentIcons}" />
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-
-                <muxc:NavigationViewItem Content="Bacheca" helpers:NavHelper.NavigateTo="views:DashWet">
-                    <muxc:NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xe718;" FontFamily="{StaticResource FluentIcons}" />
-                    </muxc:NavigationViewItem.Icon>
-                </muxc:NavigationViewItem>
-            </muxc:NavigationView.MenuItems>
-
-            <Frame x:Name="contentFrame" IsTabStop="True" />
-
-        </muxc:NavigationView> -->
 
 
         <Grid Grid.Row="1" x:Name="MainInnerContentGrid"
@@ -349,21 +312,10 @@
             </Grid.ChildrenTransitions>
 
 
-            <!--
-                <Button Name="NextPageButton"
-                        Click="NextPageButton_OnClick"
-                        RelativePanel.RightOf="ReloadButton"
-                        Margin="8,0,0,0">
-                    <StackPanel>
-                        <FontIcon Glyph="&#xE76C;" FontFamily="{StaticResource FluentIcons}" />
-                    </StackPanel>
-                </Button> -->
+            <RefreshContainer x:Name="RefreshContainer" RefreshRequested="RefContainer_RefreshRequested" Grid.Row="1">
 
-            <RefreshContainer x:Name="rc" RefreshRequested="RefContainer_RefreshRequested" Grid.Row="1">
-
-
-            <ScrollViewer Grid.Row="1"
-                          x:Name="MainScroll"
+            <ScrollViewer
+                x:Name="MainScroll"
                           HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
