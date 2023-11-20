@@ -118,150 +118,150 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>FluentWeather</value>
+    <value>TempoFluente</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>FluentWeather</value>
+    <value>TempoFluente</value>
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>Novidades nesta versão</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Pesquise e selecione a sua localização abaixo:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Bem-vindo ao TempoFluente!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Go ahead!</value>
+    <value>Vamos lá!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Procurar um lugar…</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Feels like</value>
+    <value>Parece que</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Running</value>
+    <value>Correndo</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Driving</value>
+    <value>Condução</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>Pele seca</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>Necessidade de rega</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Wind</value>
+    <value>Vento</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Pressão atmosférica</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Humidity</value>
+    <value>Humidade</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibility</value>
+    <value>Visibilidade</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>Ponto de orvalho</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>UV Index</value>
+    <value>Índice Ultravioleta</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Daily forecast</value>
+    <value>Previsão diária</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hourly</value>
+    <value>Por hora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>Perceções meteorológicas</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Day Summary</value>
+    <value>Resumo do dia</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>Dia</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Noite</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Sol</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Pôr do sol</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Nascer do sol</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Lua</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Nascer da lua</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Pôr da lua</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Fase lunar</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Units</value>
+    <value>Unidades</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>Efeitos acrílicos</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Credits</value>
+    <value>Créditos</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>Projeto no GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Metric</value>
+    <value>Métrico</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
     <value>Imperial</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Híbrido</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>UI design inspired by the work of</value>
+    <value>Desenho da IU inspirado pela obra de</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>developed by</value>
+    <value>desenvolvido por</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Translate the app</value>
+    <value>Traduza esta aplicação</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>Atualizado em </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>Tempo AzulejoVivo</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Primeiro, tem de fixar o TempoFluente na ementa Iniciar.
 
-Live Tiles are available natively on Windows 10 only.</value>
+Os Azulejos Vivos estão disponíveis apenas no Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Next hours:</value>
+    <value>Próximas horas:</value>
   </data>
 </root>
