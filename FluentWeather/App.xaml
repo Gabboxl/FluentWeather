@@ -15,8 +15,8 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="Styles/Button.xaml" />
                 <ResourceDictionary Source="Styles/AutoSuggestBox.xaml" />
-                <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.xaml" />
-                <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.Themeresources.xaml" />
+                <!--<ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.xaml" />
+                <ResourceDictionary Source="Controls/NiceNavigationView/NavigationView.Themeresources.xaml" />-->
 
             </ResourceDictionary.MergedDictionaries>
 

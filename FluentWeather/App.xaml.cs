@@ -58,9 +58,6 @@ namespace FluentWeather
                     typeof(Microsoft.AppCenter.Crashes.Crashes)
                 );
 
-                //Microsoft.AppCenter.Crashes.Crashes.SetEnabledAsync()
-
-                //Microsoft.AppCenter.Analytics.Analytics.TrackEvent("App started");
             }
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.

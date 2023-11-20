@@ -299,57 +299,49 @@
 
         </Grid>
 
-
-        <!--     <muxc:NavigationView Grid.Row="1"
-                             IsTitleBarAutoPaddingEnabled="False"
-                             IsBackButtonVisible="Collapsed"
-                             IsBackEnabled="{x:Bind NavigationViewViewModel.IsBackEnabled, Mode=OneWay}"
-                             SelectedItem="{x:Bind NavigationViewViewModel.Selected, Mode=OneWay}"
-                             x:Name="navigationView"
-                             PaneDisplayMode="Left"
-                             IsPaneToggleButtonVisible="False">
+        <muxc:NavigationView
+            Grid.Row="1"
+            IsBackButtonVisible="Collapsed"
+            IsTitleBarAutoPaddingEnabled="False"
+            IsBackEnabled="True"
+            PaneDisplayMode="LeftMinimal">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Content="Dashboard" helpers:NavHelper.NavigateTo="views:DashWet">
+                <muxc:NavigationViewItem Content="Dashboard">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xe80f;" FontFamily="{StaticResource FluentIcons}" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
-                <muxc:NavigationViewItem Content="Agenda" helpers:NavHelper.NavigateTo="views:DashWet">
+                <muxc:NavigationViewItem Content="Agenda">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xe787;" FontFamily="{StaticResource FluentIcons}" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
-                <muxc:NavigationViewItem Content="Bacheca" helpers:NavHelper.NavigateTo="views:DashWet">
+                <muxc:NavigationViewItem Content="Bacheca">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xe718;" FontFamily="{StaticResource FluentIcons}" />
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
-            <Frame x:Name="contentFrame" IsTabStop="True" />
+            <Grid Grid.Row="1" x:Name="MainInnerContentGrid"
+                  Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-        </muxc:NavigationView> -->
-
-
-        <Grid Grid.Row="1" x:Name="MainInnerContentGrid"
-              Visibility="Collapsed">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- animate the content of the grid when making it visible -->
-            <Grid.ChildrenTransitions>
-                <TransitionCollection>
-                    <EntranceThemeTransition FromVerticalOffset="250" IsStaggeringEnabled="True"/>
-                </TransitionCollection>
-            </Grid.ChildrenTransitions>
+                <!-- animate the content of the grid when making it visible -->
+                <Grid.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromVerticalOffset="250" IsStaggeringEnabled="True" />
+                    </TransitionCollection>
+                </Grid.ChildrenTransitions>
 
 
-            <!--
+                <!--
                 <Button Name="NextPageButton"
                         Click="NextPageButton_OnClick"
                         RelativePanel.RightOf="ReloadButton"
@@ -359,267 +351,267 @@
                     </StackPanel>
                 </Button> -->
 
-            <RefreshContainer x:Name="rc" RefreshRequested="RefContainer_RefreshRequested" Grid.Row="1">
+                <RefreshContainer x:Name="rc" RefreshRequested="RefContainer_RefreshRequested" Grid.Row="1">
+
+                    <ScrollViewer Grid.Row="1"
+                                  x:Name="MainScroll"
+                                  HorizontalScrollMode="Disabled"
+                                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+                        <Grid Padding="40,64,0,64">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Row="0"
+                                  Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <RelativePanel
+                                    Grid.Column="0">
+                                    <!-- icon of place with text of the place -->
+                                    <FontIcon x:Name="PlaceIcon"
+                                              FontSize="24"
+                                              RelativePanel.AlignVerticalCenterWithPanel="True"
+                                              FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
+
+                                    <TextBlock x:Name="PlaceText" Text="place"
+                                               Style="{StaticResource SubtitleTextBlockStyle}"
+                                               Margin="8,0,0,0"
+                                               RelativePanel.RightOf="PlaceIcon" />
+
+                                    <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
+                                               Style="{StaticResource CaptionTextBlockStyle}"
+                                               Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
+                                               Margin="8,0,0,0"
+                                               RelativePanel.Below="PlaceText"
+                                               RelativePanel.AlignLeftWith="PlaceText" />
 
 
-            <ScrollViewer Grid.Row="1"
-                          x:Name="MainScroll"
-                          HorizontalScrollMode="Disabled"
-                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                </RelativePanel>
 
-                <Grid Padding="40,64,0,64">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                                <RelativePanel Grid.Column="1">
+                                    <Button Name="ReloadButton"
+                                            Click="ReloadButton_OnClick"
+                                            RelativePanel.AlignVerticalCenterWithPanel="True"
+                                            Margin="16,0,0,0">
+                                        <StackPanel>
+                                            <FontIcon Width="25" Glyph="&#xE72C;"
+                                                      FontFamily="{StaticResource FluentIcons}" />
+                                        </StackPanel>
+                                    </Button>
+                                </RelativePanel>
 
-                    <Grid Grid.Row="0"
-                          Margin="0,0,0,16">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <RelativePanel
-                            Grid.Column="0">
-                            <!-- icon of place with text of the place -->
-                            <FontIcon x:Name="PlaceIcon"
-                                      FontSize="24"
-                                      RelativePanel.AlignVerticalCenterWithPanel="True"
-                                      FontFamily="{StaticResource FluentIcons}" Glyph="&#xE707;" />
-
-                            <TextBlock x:Name="PlaceText" Text="place"
-                                       Style="{StaticResource SubtitleTextBlockStyle}"
-                                       Margin="8,0,0,0"
-                                       RelativePanel.RightOf="PlaceIcon" />
-
-                            <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
-                                       Style="{StaticResource CaptionTextBlockStyle}"
-                                       Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
-                                       Margin="8,0,0,0"
-                                       RelativePanel.Below="PlaceText"
-                                       RelativePanel.AlignLeftWith="PlaceText" />
+                            </Grid>
 
 
-                        </RelativePanel>
+                            <RelativePanel
+                                Grid.Row="1">
 
-                        <RelativePanel Grid.Column="1">
-                            <Button Name="ReloadButton"
-                                    Click="ReloadButton_OnClick"
-                                    RelativePanel.AlignVerticalCenterWithPanel="True"
-                                    Margin="16,0,0,0">
-                                <StackPanel>
-                                    <FontIcon Width="25" Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
-                                </StackPanel>
-                            </Button>
-                        </RelativePanel>
+                                <Image x:Name="MainIcon"
+                                       Width="75"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                       Stretch="Uniform">
+                                    <Image.Source>
+                                        <SvgImageSource />
+                                    </Image.Source>
+                                </Image>
 
-                    </Grid>
+                                <TextBlock x:Name="CurrentTempText" Text="temperature"
 
+                                           Style="{StaticResource DisplayTextBlockStyle}"
+                                           Margin="8,0,0,0"
 
-                    <RelativePanel
-                        Grid.Row="1">
+                                           RelativePanel.RightOf="MainIcon" />
 
-                        <Image x:Name="MainIcon"
-                               Width="75"
-                               RelativePanel.AlignVerticalCenterWithPanel="True"
-                               Stretch="Uniform">
-                            <Image.Source>
-                                <SvgImageSource />
-                            </Image.Source>
-                        </Image>
-
-                        <TextBlock x:Name="CurrentTempText" Text="temperature"
-
-                                   Style="{StaticResource DisplayTextBlockStyle}"
-                                   Margin="8,0,0,0"
-
-                                   RelativePanel.RightOf="MainIcon" />
-
-                        <TextBlock x:Name="MainPhraseText" Text="phrase"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   Margin="16,0,0,0"
-                                   RelativePanel.Above="FeelsLikeText"
-                                   RelativePanel.AlignLeftWith="FeelsLikeText" />
+                                <TextBlock x:Name="MainPhraseText" Text="phrase"
+                                           Style="{StaticResource SubtitleTextBlockStyle}"
+                                           Margin="16,0,0,0"
+                                           RelativePanel.Above="FeelsLikeText"
+                                           RelativePanel.AlignLeftWith="FeelsLikeText" />
 
 
-                        <TextBlock x:Name="FeelsLikeText" Text="feelslike"
+                                <TextBlock x:Name="FeelsLikeText" Text="feelslike"
 
-                                   Style="{StaticResource BodyStrongTextBlockStyle}"
-                                   Margin="16,0,0,16"
-                                   Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
-                                   RelativePanel.AlignBottomWithPanel="True"
-                                   RelativePanel.RightOf="CurrentTempText" />
-                    </RelativePanel>
-
-
-                    <StackPanel Grid.Row="2"
-                                Orientation="Horizontal"
-                                Margin="0,16,0,0">
-
-                        <controls:DetailChipControl
-                            x:Name="WindChipControl"
-                            x:Uid="WindChipControl">
-                        </controls:DetailChipControl>
+                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                           Margin="16,0,0,16"
+                                           Opacity="{ThemeResource TextControlBackgroundRestOpacity}"
+                                           RelativePanel.AlignBottomWithPanel="True"
+                                           RelativePanel.RightOf="CurrentTempText" />
+                            </RelativePanel>
 
 
-                        <!-- pressure panel -->
-                        <controls:DetailChipControl
-                            x:Name="PressureChipControl"
-                            x:Uid="PressureChipControl">
-                        </controls:DetailChipControl>
+                            <StackPanel Grid.Row="2"
+                                        Orientation="Horizontal"
+                                        Margin="0,16,0,0">
+
+                                <controls:DetailChipControl
+                                    x:Name="WindChipControl"
+                                    x:Uid="WindChipControl">
+                                </controls:DetailChipControl>
 
 
-                        <!-- humidity panel -->
-                        <controls:DetailChipControl
-                            x:Name="HumidityChipControl"
-                            x:Uid="HumidityChipControl">
-                        </controls:DetailChipControl>
+                                <!-- pressure panel -->
+                                <controls:DetailChipControl
+                                    x:Name="PressureChipControl"
+                                    x:Uid="PressureChipControl">
+                                </controls:DetailChipControl>
 
 
-                        <!-- visibility panel -->
-                        <controls:DetailChipControl
-                            x:Name="VisibilityChipControl"
-                            x:Uid="VisibilityChipControl">
-                        </controls:DetailChipControl>
+                                <!-- humidity panel -->
+                                <controls:DetailChipControl
+                                    x:Name="HumidityChipControl"
+                                    x:Uid="HumidityChipControl">
+                                </controls:DetailChipControl>
 
 
-                        <!-- dew point panel -->
-                        <controls:DetailChipControl
-                            x:Name="DewPointChipControl"
-                            x:Uid="DewPointChipControl">
-                        </controls:DetailChipControl>
+                                <!-- visibility panel -->
+                                <controls:DetailChipControl
+                                    x:Name="VisibilityChipControl"
+                                    x:Uid="VisibilityChipControl">
+                                </controls:DetailChipControl>
 
 
-                        <!-- pollen panel -->
-                        <!--<controls:DetailChipControl
+                                <!-- dew point panel -->
+                                <controls:DetailChipControl
+                                    x:Name="DewPointChipControl"
+                                    x:Uid="DewPointChipControl">
+                                </controls:DetailChipControl>
+
+
+                                <!-- pollen panel -->
+                                <!--<controls:DetailChipControl
                             x:Name="PollenPanel"
                             Title="Pollen"
                             >
                         </controls:DetailChipControl>-->
 
 
-                        <!-- uv index panel -->
-                        <controls:DetailChipControl
-                            x:Name="UVIndexChipControl"
-                            x:Uid="UVIndexChipControl">
-                        </controls:DetailChipControl>
+                                <!-- uv index panel -->
+                                <controls:DetailChipControl
+                                    x:Name="UVIndexChipControl"
+                                    x:Uid="UVIndexChipControl">
+                                </controls:DetailChipControl>
 
 
-                    </StackPanel>
+                            </StackPanel>
 
-                    <Grid Grid.Row="3"
-                          Margin="0,32,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <Grid Grid.Row="3"
+                                  Margin="0,32,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                        <TextBlock
-                            Grid.Row="0"
-                            x:Uid="DailyForecastTitleTextBlock"
-                            Style="{StaticResource SubtitleTextBlockStyle}"
+                                <TextBlock
+                                    Grid.Row="0"
+                                    x:Uid="DailyForecastTitleTextBlock"
+                                    Style="{StaticResource SubtitleTextBlockStyle}"
 
-                            Margin="0,0,0,16" />
+                                    Margin="0,0,0,16" />
 
-                        <ScrollViewer Grid.Row="1"
-                                      VerticalScrollMode="Disabled"
-                                      VerticalScrollBarVisibility="Disabled"
-                                      HorizontalScrollBarVisibility="Hidden">
+                                <ScrollViewer Grid.Row="1"
+                                              VerticalScrollMode="Disabled"
+                                              VerticalScrollBarVisibility="Disabled"
+                                              HorizontalScrollBarVisibility="Hidden">
 
-                            <muxc:ItemsRepeater
-                                x:Name="RepeaterDays">
+                                    <muxc:ItemsRepeater
+                                        x:Name="RepeaterDays">
 
-                                <muxc:ItemsRepeater.ItemTemplate>
-                                    <DataTemplate x:DataType="adapters:DayButtonAdapter">
-                                        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                                DataContext="{x:Bind}"
-                                                HorizontalContentAlignment="Stretch"
-                                                VerticalContentAlignment="Stretch"
-                                                Width="135"
-                                                Height="70"
-                                                Click="DayButtonClick">
-                                            <Button.Content>
-                                                <RelativePanel HorizontalAlignment="Stretch"
-                                                               VerticalAlignment="Stretch">
+                                        <muxc:ItemsRepeater.ItemTemplate>
+                                            <DataTemplate x:DataType="adapters:DayButtonAdapter">
+                                                <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                        DataContext="{x:Bind}"
+                                                        HorizontalContentAlignment="Stretch"
+                                                        VerticalContentAlignment="Stretch"
+                                                        Width="135"
+                                                        Height="70"
+                                                        Click="DayButtonClick">
+                                                    <Button.Content>
+                                                        <RelativePanel HorizontalAlignment="Stretch"
+                                                                       VerticalAlignment="Stretch">
 
-                                                    <Image x:Name="mainIcon"
-                                                           Width="28"
-                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                           Stretch="Uniform"
-                                                           RelativePanel.AlignTopWithPanel="True"
-                                                           RelativePanel.AlignLeftWithPanel="True"
-                                                           Source="{x:Bind SvgImageIcon}">
-                                                    </Image>
+                                                            <Image x:Name="mainIcon"
+                                                                   Width="28"
+                                                                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                                   Stretch="Uniform"
+                                                                   RelativePanel.AlignTopWithPanel="True"
+                                                                   RelativePanel.AlignLeftWithPanel="True"
+                                                                   Source="{x:Bind SvgImageIcon}">
+                                                            </Image>
 
-                                                    <TextBlock Text="{x:Bind ShortDayName }"
-                                                               RelativePanel.AlignTopWithPanel="True"
-                                                               RelativePanel.AlignRightWithPanel="True" />
+                                                            <TextBlock Text="{x:Bind ShortDayName }"
+                                                                       RelativePanel.AlignTopWithPanel="True"
+                                                                       RelativePanel.AlignRightWithPanel="True" />
 
-                                                    <TextBlock
-                                                        Text="{x:Bind Temperature }"
-                                                        RelativePanel.AlignBottomWithPanel="True"
-                                                        RelativePanel.AlignLeftWithPanel="True">
-                                                    </TextBlock>
+                                                            <TextBlock
+                                                                Text="{x:Bind Temperature }"
+                                                                RelativePanel.AlignBottomWithPanel="True"
+                                                                RelativePanel.AlignLeftWithPanel="True">
+                                                            </TextBlock>
 
-                                                    <Image x:Name="precipIcon"
-                                                           Width="16"
-                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                           Stretch="Uniform"
-                                                           RelativePanel.AlignBottomWithPanel="True"
-                                                           RelativePanel.LeftOf="precipChanceText"
-                                                           Margin="0,0,4,0"
-                                                           Source="{x:Bind SvgPrecipIcon}">
+                                                            <Image x:Name="precipIcon"
+                                                                   Width="16"
+                                                                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                                   Stretch="Uniform"
+                                                                   RelativePanel.AlignBottomWithPanel="True"
+                                                                   RelativePanel.LeftOf="precipChanceText"
+                                                                   Margin="0,0,4,0"
+                                                                   Source="{x:Bind SvgPrecipIcon}">
 
-                                                    </Image>
+                                                            </Image>
 
-                                                    <TextBlock
-                                                        x:Name="precipChanceText"
-                                                        Text="{x:Bind PrecipitationChance}"
-                                                        RelativePanel.AlignBottomWithPanel="True"
-                                                        RelativePanel.AlignRightWithPanel="True">
-                                                    </TextBlock>
-                                                </RelativePanel>
-                                            </Button.Content>
+                                                            <TextBlock
+                                                                x:Name="precipChanceText"
+                                                                Text="{x:Bind PrecipitationChance}"
+                                                                RelativePanel.AlignBottomWithPanel="True"
+                                                                RelativePanel.AlignRightWithPanel="True">
+                                                            </TextBlock>
+                                                        </RelativePanel>
+                                                    </Button.Content>
 
-                                        </Button>
-                                    </DataTemplate>
-                                </muxc:ItemsRepeater.ItemTemplate>
+                                                </Button>
+                                            </DataTemplate>
+                                        </muxc:ItemsRepeater.ItemTemplate>
 
-                                <muxc:ItemsRepeater.Layout>
-                                    <muxc:StackLayout Spacing="8"
-                                                      Orientation="Horizontal" />
-                                </muxc:ItemsRepeater.Layout>
-                            </muxc:ItemsRepeater>
+                                        <muxc:ItemsRepeater.Layout>
+                                            <muxc:StackLayout Spacing="8"
+                                                              Orientation="Horizontal" />
+                                        </muxc:ItemsRepeater.Layout>
+                                    </muxc:ItemsRepeater>
 
-                        </ScrollViewer>
-                    </Grid>
+                                </ScrollViewer>
+                            </Grid>
 
 
-                    <Grid Grid.Row="4"
-                          Margin="0,32,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <Grid Grid.Row="4"
+                                  Margin="0,32,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                        <RelativePanel Grid.Row="0">
-                            <TextBlock
-                                x:Name="HourlyTitleText"
-                                x:Uid="HourlyTitleText"
-                                Style="{StaticResource BodyTextBlockStyle}"
-                                FontSize="20"
-                                Margin="0,0,0,16" />
+                                <RelativePanel Grid.Row="0">
+                                    <TextBlock
+                                        x:Name="HourlyTitleText"
+                                        x:Uid="HourlyTitleText"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        FontSize="20"
+                                        Margin="0,0,0,16" />
 
-                            <!--<labs:Segmented SelectedIndex="0" RelativePanel.RightOf="HourlyTitleText"
+                                    <!--<labs:Segmented SelectedIndex="0" RelativePanel.RightOf="HourlyTitleText"
                                             Margin="16,0,0,0"
                                             >
                                 <labs:SegmentedItem Content="Detailed" />
@@ -628,162 +620,162 @@
                                 ~1~ <labs:SegmentedItem Content="Item 3" Icon="{ui:SymbolIcon Symbol=Home}" /> @1@
                             </labs:Segmented>-->
 
-                        </RelativePanel>
+                                </RelativePanel>
 
 
-                        <Grid
-                            Margin="0,0,32,0"
-                            Grid.Row="1"
-                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                            CornerRadius="8"
-                            Padding="12"
-                            BorderThickness="2"
-                            BorderBrush="{ThemeResource MyAcrylicBrush}"
-                            Background="{ThemeResource MyAcrylicBrush}">
+                                <Grid
+                                    Margin="0,0,32,0"
+                                    Grid.Row="1"
+                                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                    CornerRadius="8"
+                                    Padding="12"
+                                    BorderThickness="2"
+                                    BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                    Background="{ThemeResource MyAcrylicBrush}">
 
-                            <ListView x:Name="hourlyListview"
+                                    <ListView x:Name="hourlyListview"
 
-                                      Padding="0,0,0,18"
-                                      ScrollViewer.VerticalScrollMode="Disabled"
-                                      ScrollViewer.HorizontalScrollMode="Enabled"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                                      ScrollViewer.IsDeferredScrollingEnabled="False"
-                                      SelectionMode="None">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
+                                              Padding="0,0,0,18"
+                                              ScrollViewer.VerticalScrollMode="Disabled"
+                                              ScrollViewer.HorizontalScrollMode="Enabled"
+                                              ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                              ScrollViewer.IsDeferredScrollingEnabled="False"
+                                              SelectionMode="None">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
 
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="Margin" Value="0" />
-                                        <Setter Property="Padding" Value="0" />
-                                    </Style>
-                                </ListView.ItemContainerStyle>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="Margin" Value="0" />
+                                                <Setter Property="Padding" Value="0" />
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
 
-                                <ListView.ItemTemplate>
-                                    <DataTemplate x:DataType="adapters:HourDataAdapter">
-                                        <Grid Width="100" Height="200" Margin="0">
-                                            <RelativePanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="adapters:HourDataAdapter">
+                                                <Grid Width="100" Height="200" Margin="0">
+                                                    <RelativePanel>
 
-                                                <Image x:Name="wetIcon"
-                                                       Margin="0,8,0,0"
-                                                       Width="40"
-                                                       RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                       Stretch="Uniform"
-                                                       RelativePanel.AlignTopWithPanel="True"
-                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                       Source="{x:Bind SvgImageIcon}">
-                                                </Image>
+                                                        <Image x:Name="wetIcon"
+                                                               Margin="0,8,0,0"
+                                                               Width="40"
+                                                               RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                               Stretch="Uniform"
+                                                               RelativePanel.AlignTopWithPanel="True"
+                                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                               Source="{x:Bind SvgImageIcon}">
+                                                        </Image>
 
-                                                <TextBlock x:Name="TemperatureText"
-                                                           Text="{x:Bind Temperature }"
-                                                           RelativePanel.Below="wetIcon"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           TextAlignment="Center"
-                                                           Style="{StaticResource SubtitleTextBlockStyle}"
-                                                           FontSize="28">
-                                                </TextBlock>
+                                                        <TextBlock x:Name="TemperatureText"
+                                                                   Text="{x:Bind Temperature }"
+                                                                   RelativePanel.Below="wetIcon"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   TextAlignment="Center"
+                                                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                                                   FontSize="28">
+                                                        </TextBlock>
 
-                                                <!-- phrase text -->
-                                                <TextBlock Text="{x:Bind Phrase }"
-                                                           RelativePanel.Below="TemperatureText"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           TextAlignment="Center"
-                                                           Style="{StaticResource BodyTextBlockStyle}"
-                                                           FontSize="12">
-                                                </TextBlock>
+                                                        <!-- phrase text -->
+                                                        <TextBlock Text="{x:Bind Phrase }"
+                                                                   RelativePanel.Below="TemperatureText"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   TextAlignment="Center"
+                                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                                   FontSize="12">
+                                                        </TextBlock>
 
-                                                <!-- precip icon -->
-                                                <Image x:Name="precipIcon"
-                                                       Width="16"
-                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                       Stretch="Uniform"
-                                                       RelativePanel.Above="Rectangle2"
-                                                       RelativePanel.LeftOf="precipChanceText"
-                                                       Margin="0,0,4,0"
-                                                       Source="{x:Bind SvgPrecipIcon}" />
+                                                        <!-- precip icon -->
+                                                        <Image x:Name="precipIcon"
+                                                               Width="16"
+                                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                               Stretch="Uniform"
+                                                               RelativePanel.Above="Rectangle2"
+                                                               RelativePanel.LeftOf="precipChanceText"
+                                                               Margin="0,0,4,0"
+                                                               Source="{x:Bind SvgPrecipIcon}" />
 
-                                                <!-- precip chance text -->
-                                                <TextBlock x:Name="precipChanceText"
-                                                           Text="{x:Bind PrecipitationChance}"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           RelativePanel.Above="Rectangle2">
-                                                </TextBlock>
+                                                        <!-- precip chance text -->
+                                                        <TextBlock x:Name="precipChanceText"
+                                                                   Text="{x:Bind PrecipitationChance}"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   RelativePanel.Above="Rectangle2">
+                                                        </TextBlock>
 
-                                                <!-- horizontal line -->
-                                                <Rectangle x:Name="Rectangle2"
-                                                           Fill="#7FAFAFAF"
-                                                           Height="1"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           RelativePanel.Above="HourText"
-                                                           Width="90"
-                                                           Margin="0,8,0,0" />
+                                                        <!-- horizontal line -->
+                                                        <Rectangle x:Name="Rectangle2"
+                                                                   Fill="#7FAFAFAF"
+                                                                   Height="1"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   RelativePanel.Above="HourText"
+                                                                   Width="90"
+                                                                   Margin="0,8,0,0" />
 
-                                                <TextBlock x:Name="HourText"
-                                                           Text="{Binding Hour}"
-                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           RelativePanel.AlignBottomWithPanel="True" />
+                                                        <TextBlock x:Name="HourText"
+                                                                   Text="{Binding Hour}"
+                                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   RelativePanel.AlignBottomWithPanel="True" />
 
-                                            </RelativePanel>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                                    </RelativePanel>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
 
-                        </Grid>
-
-
-                    </Grid>
+                                </Grid>
 
 
-                    <Grid Grid.Row="5"
-                          Margin="0,32,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <RelativePanel Grid.Row="0">
-                            <TextBlock
-                                x:Name="WeatherInsightsTitleText"
-                                x:Uid="WeatherInsightsTitleText"
-                                Style="{StaticResource BodyTextBlockStyle}"
-                                FontSize="20"
-                                Margin="0,0,0,16" />
+                            </Grid>
 
 
-                        </RelativePanel>
+                            <Grid Grid.Row="5"
+                                  Margin="0,32,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <RelativePanel Grid.Row="0">
+                                    <TextBlock
+                                        x:Name="WeatherInsightsTitleText"
+                                        x:Uid="WeatherInsightsTitleText"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        FontSize="20"
+                                        Margin="0,0,0,16" />
 
 
-                        <controls1:WrapPanel
-                                  Grid.Row="1">
-                            <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
-                            <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
+                                </RelativePanel>
 
-                            <!--
+
+                                <controls1:WrapPanel
+                                    Grid.Row="1">
+                                    <controls:InsightControl x:Name="RunningInsight"></controls:InsightControl>
+                                    <controls:InsightControl x:Name="DrivingInsight"></controls:InsightControl>
+
+                                    <!--
                             <controls:InsightControl x:Name="PollenInsight"></controls:InsightControl>
                             -->
 
-                            <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
+                                    <controls:InsightControl x:Name="WateringInsight"></controls:InsightControl>
 
-                            <controls:InsightControl x:Name="DryskinInsight"></controls:InsightControl>
-                        </controls1:WrapPanel>
+                                    <controls:InsightControl x:Name="DryskinInsight"></controls:InsightControl>
+                                </controls1:WrapPanel>
 
-                    </Grid>
+                            </Grid>
 
 
-                    <Grid Grid.Row="6"
-                          Margin="0,12,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <Grid Grid.Row="6"
+                                  Margin="0,12,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                        <RelativePanel Grid.Row="0">
-                            <!--<TextBlock
+                                <RelativePanel Grid.Row="0">
+                                    <!--<TextBlock
                                 x:Name="SuggestionsText"
                                 Grid.Row="0"
                                 Text="Weather Insights"
@@ -792,470 +784,472 @@
                                 Margin="0,0,0,16" />-->
 
 
-                        </RelativePanel>
-
-
-                        <controls1:WrapPanel
-                            Grid.Row="1">
-                            <Grid
-                                Margin="4"
-                                CornerRadius="6"
-                                Padding="0"
-                                BorderThickness="2"
-                                BorderBrush="{ThemeResource MyAcrylicBrush}"
-                                Background="{ThemeResource MyAcrylicBrush}"
-                                Width="293">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <RelativePanel Grid.Row="0">
-
-                                    <TextBlock x:Name="DaySummaryInsightTitle" x:Uid="DaySummaryInsightTitle"
-                                               Style="{StaticResource BodyStrongTextBlockStyle}"
-                                               Margin="8,8,0,0"
-                                               FontSize="16"
-                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
-                                               RelativePanel.AlignTopWithPanel="True" />
-
-                                    <!-- horizontal line -->
-                                    <Rectangle x:Name="Rectangle2"
-                                               Fill="{ThemeResource MyAcrylicBrushLine}"
-                                               Height="1.2"
-                                               RelativePanel.Below="DaySummaryInsightTitle"
-                                               Width="288"
-                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                               Margin="0,6,0,0" />
                                 </RelativePanel>
 
-                                <RelativePanel Grid.Row="1"
-                                               Margin="8">
 
-                                    <TextBlock x:Name="DaySummaryInsightSubtitle" x:Uid="DaySummaryInsightSubtitle"
-                                               Style="{StaticResource BodyStrongTextBlockStyle}"
-                                               Margin="0,0,0,0"
-                                               Opacity="0.6"
-                                               RelativePanel.AlignTopWithPanel="True" />
+                                <controls1:WrapPanel
+                                    Grid.Row="1">
+                                    <Grid
+                                        Margin="4"
+                                        CornerRadius="6"
+                                        Padding="0"
+                                        BorderThickness="2"
+                                        BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                        Background="{ThemeResource MyAcrylicBrush}"
+                                        Width="293">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
 
-                                    <TextBlock x:Name="DaySummaryText" Text="hellox"
-                                               Style="{StaticResource BodyTextBlockStyle}"
-                                               Margin="0,6,0,0"
-                                               IsTextSelectionEnabled="True"
-                                               RelativePanel.Below="DaySummaryInsightSubtitle" />
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
 
-                                    <TextBlock x:Name="NightSummaryInsightSubtitle" x:Uid="NightSummaryInsightSubtitle"
-                                               Style="{StaticResource BodyStrongTextBlockStyle}"
-                                               Margin="0,6,0,0"
-                                               Opacity="0.6"
-                                               RelativePanel.Below="DaySummaryText" />
+                                        <RelativePanel Grid.Row="0">
 
-                                    <TextBlock x:Name="NightSummaryText" Text="hello"
-                                               Style="{StaticResource BodyTextBlockStyle}"
-                                               Margin="0,6,0,0"
-                                               IsTextSelectionEnabled="True"
-                                               RelativePanel.Below="NightSummaryInsightSubtitle" />
+                                            <TextBlock x:Name="DaySummaryInsightTitle" x:Uid="DaySummaryInsightTitle"
+                                                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                       Margin="8,8,0,0"
+                                                       FontSize="16"
+                                                       Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                                       RelativePanel.AlignTopWithPanel="True" />
+
+                                            <!-- horizontal line -->
+                                            <Rectangle x:Name="Rectangle2"
+                                                       Fill="{ThemeResource MyAcrylicBrushLine}"
+                                                       Height="1.2"
+                                                       RelativePanel.Below="DaySummaryInsightTitle"
+                                                       Width="288"
+                                                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                       Margin="0,6,0,0" />
+                                        </RelativePanel>
+
+                                        <RelativePanel Grid.Row="1"
+                                                       Margin="8">
+
+                                            <TextBlock x:Name="DaySummaryInsightSubtitle"
+                                                       x:Uid="DaySummaryInsightSubtitle"
+                                                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                       Margin="0,0,0,0"
+                                                       Opacity="0.6"
+                                                       RelativePanel.AlignTopWithPanel="True" />
+
+                                            <TextBlock x:Name="DaySummaryText" Text="hellox"
+                                                       Style="{StaticResource BodyTextBlockStyle}"
+                                                       Margin="0,6,0,0"
+                                                       IsTextSelectionEnabled="True"
+                                                       RelativePanel.Below="DaySummaryInsightSubtitle" />
+
+                                            <TextBlock x:Name="NightSummaryInsightSubtitle"
+                                                       x:Uid="NightSummaryInsightSubtitle"
+                                                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                       Margin="0,6,0,0"
+                                                       Opacity="0.6"
+                                                       RelativePanel.Below="DaySummaryText" />
+
+                                            <TextBlock x:Name="NightSummaryText" Text="hello"
+                                                       Style="{StaticResource BodyTextBlockStyle}"
+                                                       Margin="0,6,0,0"
+                                                       IsTextSelectionEnabled="True"
+                                                       RelativePanel.Below="NightSummaryInsightSubtitle" />
 
 
-                                </RelativePanel>
+                                        </RelativePanel>
 
+
+                                    </Grid>
+
+
+                                    <Grid
+                                        VerticalAlignment="Stretch"
+                                        Margin="4"
+                                        CornerRadius="6"
+                                        Padding="0"
+                                        BorderThickness="2"
+                                        BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                        Background="{ThemeResource MyAcrylicBrush}"
+                                        Width="294">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <RelativePanel Grid.Row="0">
+
+                                            <TextBlock x:Name="SunInsightTitle" x:Uid="SunInsightTitle"
+                                                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                       Margin="8,8,0,0"
+                                                       FontSize="16"
+                                                       Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                                       RelativePanel.AlignTopWithPanel="True" />
+
+                                            <Rectangle
+                                                Fill="{ThemeResource MyAcrylicBrushLine}"
+                                                Height="1.2"
+                                                RelativePanel.Below="SunInsightTitle"
+                                                Width="288"
+                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                Margin="0,6,0,0" />
+                                        </RelativePanel>
+
+                                        <Grid Grid.Row="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+
+                                            <RelativePanel Grid.Row="0"
+                                                           Margin="8">
+
+                                                <Image x:Name="SunriseIcon"
+                                                       Margin="0,8,0,0"
+                                                       Width="40"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       Source="/Assets/varicons/SunriseNew.svg">
+                                                </Image>
+
+                                                <TextBlock x:Name="SunriseSubtitle" x:Uid="SunriseSubtitle"
+                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                           Margin="6,0,0,0"
+                                                           Opacity="0.6"
+                                                           RelativePanel.RightOf="SunriseIcon" />
+
+                                                <TextBlock x:Name="SunriseTimeText" Text="risetime"
+                                                           Style="{StaticResource BodyTextBlockStyle}"
+                                                           Margin="6,0,0,0"
+                                                           RelativePanel.AlignLeftWith="SunriseSubtitle"
+                                                           RelativePanel.Below="SunriseSubtitle" />
+
+
+                                            </RelativePanel>
+
+                                            <RelativePanel Grid.Row="1"
+                                                           Margin="8">
+
+                                                <Image x:Name="SunsetIcon"
+                                                       Margin="0,8,0,0"
+                                                       Width="40"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       Source="/Assets/varicons/SunsetNew.svg">
+                                                </Image>
+
+                                                <TextBlock x:Name="SunsetSubtitle" x:Uid="SunsetSubtitle"
+                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                           Margin="6,6,0,0"
+                                                           Opacity="0.6"
+                                                           RelativePanel.RightOf="SunsetIcon" />
+
+                                                <TextBlock x:Name="SunsetTimeText" Text="settime"
+                                                           Style="{StaticResource BodyTextBlockStyle}"
+                                                           Margin="6,0,0,0"
+                                                           RelativePanel.AlignLeftWith="SunsetSubtitle"
+                                                           RelativePanel.Below="SunsetSubtitle" />
+
+                                            </RelativePanel>
+
+                                        </Grid>
+
+
+                                    </Grid>
+
+
+                                    <Grid
+                                        Margin="4"
+                                        CornerRadius="6"
+                                        Padding="0"
+                                        BorderThickness="2"
+                                        BorderBrush="{ThemeResource MyAcrylicBrush}"
+                                        Background="{ThemeResource MyAcrylicBrush}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <RelativePanel Grid.Row="0">
+
+                                            <TextBlock x:Name="MoonInsightTitle" x:Uid="MoonInsightTitle"
+                                                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                       Margin="8,8,0,0"
+                                                       FontSize="16"
+                                                       Foreground="{ThemeResource MyAcrylicBrushTitleText}"
+                                                       RelativePanel.AlignTopWithPanel="True" />
+
+                                            <Rectangle
+                                                Fill="{ThemeResource MyAcrylicBrushLine}"
+                                                Height="1.2"
+                                                RelativePanel.Below="MoonInsightTitle"
+                                                Width="288"
+                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                Margin="0,6,0,0" />
+                                        </RelativePanel>
+
+                                        <Grid Grid.Row="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+
+                                            <RelativePanel Grid.Row="0"
+                                                           Grid.Column="0"
+                                                           Margin="8">
+
+                                                <Image x:Name="MoonriseIcon"
+                                                       Margin="0,8,0,0"
+                                                       Width="40"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       Source="/Assets/varicons/Moonrise.svg">
+                                                </Image>
+
+                                                <TextBlock x:Name="MoonriseSubtitle" x:Uid="MoonriseSubtitle"
+                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                           Margin="6,6,0,0"
+                                                           Opacity="0.6"
+                                                           RelativePanel.RightOf="MoonriseIcon" />
+
+                                                <TextBlock x:Name="MoonriseTimeText" Text="risetime"
+                                                           Style="{StaticResource BodyTextBlockStyle}"
+                                                           Margin="6,2,0,0"
+                                                           RelativePanel.AlignLeftWith="MoonriseSubtitle"
+                                                           RelativePanel.Below="MoonriseSubtitle" />
+
+
+                                            </RelativePanel>
+
+                                            <RelativePanel Grid.Row="1"
+                                                           Grid.Column="0"
+                                                           Margin="8">
+
+                                                <Image x:Name="MoonsetIcon"
+                                                       Margin="0,8,0,0"
+                                                       Width="40"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.AlignTopWithPanel="True"
+                                                       Source="/Assets/varicons/Moonset.svg">
+                                                </Image>
+
+                                                <TextBlock x:Name="MoonsetSubtitle" x:Uid="MoonsetSubtitle"
+                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                           Margin="6,6,0,0"
+                                                           Opacity="0.6"
+                                                           RelativePanel.RightOf="MoonsetIcon" />
+
+                                                <TextBlock x:Name="MoonsetTimeText" Text="settime"
+                                                           Style="{StaticResource BodyTextBlockStyle}"
+                                                           Margin="6,2,0,0"
+                                                           RelativePanel.AlignLeftWith="MoonsetSubtitle"
+                                                           RelativePanel.Below="MoonsetSubtitle" />
+
+                                            </RelativePanel>
+
+                                            <RelativePanel Grid.Row="0"
+                                                           Grid.RowSpan="2"
+                                                           Grid.Column="1"
+                                                           Margin="8">
+
+                                                <!-- vertical line on left -->
+                                                <Rectangle
+                                                    x:Name="LunarphaseLine"
+                                                    Fill="{ThemeResource MyAcrylicBrushLine}"
+                                                    Height="100"
+                                                    Width="1.2"
+                                                    RelativePanel.AlignLeftWithPanel="True"
+                                                    RelativePanel.AlignTopWithPanel="True"
+                                                    Margin="0,8,0,0" />
+
+                                                <Image x:Name="LunarphaseIcon"
+                                                       Margin="6,8,0,0"
+                                                       Width="40"
+                                                       Stretch="Uniform"
+                                                       RelativePanel.RightOf="LunarphaseLine"
+                                                       RelativePanel.AlignTopWith="LunarphaseLine">
+                                                </Image>
+
+                                                <TextBlock x:Name="LunarphaseSubtitle" x:Uid="LunarphaseSubtitle"
+                                                           Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                           Margin="8,6,0,0"
+                                                           Opacity="0.6"
+                                                           RelativePanel.AlignTopWithPanel="True"
+                                                           RelativePanel.RightOf="LunarphaseIcon" />
+
+                                                <TextBlock x:Name="LunarphaseText" Text="phase"
+                                                           Style="{StaticResource BodyTextBlockStyle}"
+                                                           Margin="8,2,0,0"
+                                                           RelativePanel.AlignLeftWith="LunarphaseSubtitle"
+                                                           RelativePanel.Below="LunarphaseSubtitle" />
+
+
+                                            </RelativePanel>
+
+                                        </Grid>
+
+
+                                    </Grid>
+
+                                </controls1:WrapPanel>
 
                             </Grid>
 
 
-                            <Grid
-                                VerticalAlignment="Stretch"
-                                Margin="4"
-                                CornerRadius="6"
-                                Padding="0"
-                                BorderThickness="2"
-                                BorderBrush="{ThemeResource MyAcrylicBrush}"
-                                Background="{ThemeResource MyAcrylicBrush}"
-                                Width="294">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <RelativePanel Grid.Row="0">
-
-                                    <TextBlock x:Name="SunInsightTitle" x:Uid="SunInsightTitle"
-                                               Style="{StaticResource BodyStrongTextBlockStyle}"
-                                               Margin="8,8,0,0"
-                                               FontSize="16"
-                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
-                                               RelativePanel.AlignTopWithPanel="True" />
-
-                                    <Rectangle
-                                        Fill="{ThemeResource MyAcrylicBrushLine}"
-                                        Height="1.2"
-                                        RelativePanel.Below="SunInsightTitle"
-                                        Width="288"
-                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                        Margin="0,6,0,0" />
-                                </RelativePanel>
-
-                                <Grid Grid.Row="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-
-
-                                    <RelativePanel Grid.Row="0"
-                                                   Margin="8">
-
-                                        <Image x:Name="SunriseIcon"
-                                               Margin="0,8,0,0"
-                                               Width="40"
-                                               Stretch="Uniform"
-                                               RelativePanel.AlignTopWithPanel="True"
-                                               Source="/Assets/varicons/SunriseNew.svg">
-                                        </Image>
-
-                                        <TextBlock x:Name="SunriseSubtitle" x:Uid="SunriseSubtitle"
-                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                   Margin="6,0,0,0"
-                                                   Opacity="0.6"
-                                                   RelativePanel.RightOf="SunriseIcon" />
-
-                                        <TextBlock x:Name="SunriseTimeText" Text="risetime"
-                                                   Style="{StaticResource BodyTextBlockStyle}"
-                                                   Margin="6,0,0,0"
-                                                   RelativePanel.AlignLeftWith="SunriseSubtitle"
-                                                   RelativePanel.Below="SunriseSubtitle" />
-
-
-                                    </RelativePanel>
-
-                                    <RelativePanel Grid.Row="1"
-                                                   Margin="8">
-
-                                        <Image x:Name="SunsetIcon"
-                                               Margin="0,8,0,0"
-                                               Width="40"
-                                               Stretch="Uniform"
-                                               RelativePanel.AlignTopWithPanel="True"
-                                               Source="/Assets/varicons/SunsetNew.svg">
-                                        </Image>
-
-                                        <TextBlock x:Name="SunsetSubtitle" x:Uid="SunsetSubtitle"
-                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                   Margin="6,6,0,0"
-                                                   Opacity="0.6"
-                                                   RelativePanel.RightOf="SunsetIcon" />
-
-                                        <TextBlock x:Name="SunsetTimeText" Text="settime"
-                                                   Style="{StaticResource BodyTextBlockStyle}"
-                                                   Margin="6,0,0,0"
-                                                   RelativePanel.AlignLeftWith="SunsetSubtitle"
-                                                   RelativePanel.Below="SunsetSubtitle" />
-
-                                    </RelativePanel>
-
-                                </Grid>
-
-
-                            </Grid>
-
-
-                            <Grid
-                                Margin="4"
-                                CornerRadius="6"
-                                Padding="0"
-                                BorderThickness="2"
-                                BorderBrush="{ThemeResource MyAcrylicBrush}"
-                                Background="{ThemeResource MyAcrylicBrush}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <RelativePanel Grid.Row="0">
-
-                                    <TextBlock x:Name="MoonInsightTitle" x:Uid="MoonInsightTitle"
-                                               Style="{StaticResource BodyStrongTextBlockStyle}"
-                                               Margin="8,8,0,0"
-                                               FontSize="16"
-                                               Foreground="{ThemeResource MyAcrylicBrushTitleText}"
-                                               RelativePanel.AlignTopWithPanel="True" />
-
-                                    <Rectangle
-                                        Fill="{ThemeResource MyAcrylicBrushLine}"
-                                        Height="1.2"
-                                        RelativePanel.Below="MoonInsightTitle"
-                                        Width="288"
-                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                        Margin="0,6,0,0" />
-                                </RelativePanel>
-
-                                <Grid Grid.Row="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-
-
-                                    <RelativePanel Grid.Row="0"
-                                                   Grid.Column="0"
-                                                   Margin="8">
-
-                                        <Image x:Name="MoonriseIcon"
-                                               Margin="0,8,0,0"
-                                               Width="40"
-                                               Stretch="Uniform"
-                                               RelativePanel.AlignTopWithPanel="True"
-                                               Source="/Assets/varicons/Moonrise.svg">
-                                        </Image>
-
-                                        <TextBlock x:Name="MoonriseSubtitle" x:Uid="MoonriseSubtitle"
-                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                   Margin="6,6,0,0"
-                                                   Opacity="0.6"
-                                                   RelativePanel.RightOf="MoonriseIcon" />
-
-                                        <TextBlock x:Name="MoonriseTimeText" Text="risetime"
-                                                   Style="{StaticResource BodyTextBlockStyle}"
-                                                   Margin="6,2,0,0"
-                                                   RelativePanel.AlignLeftWith="MoonriseSubtitle"
-                                                   RelativePanel.Below="MoonriseSubtitle" />
-
-
-                                    </RelativePanel>
-
-                                    <RelativePanel Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   Margin="8">
-
-                                        <Image x:Name="MoonsetIcon"
-                                               Margin="0,8,0,0"
-                                               Width="40"
-                                               Stretch="Uniform"
-                                               RelativePanel.AlignTopWithPanel="True"
-                                               Source="/Assets/varicons/Moonset.svg">
-                                        </Image>
-
-                                        <TextBlock x:Name="MoonsetSubtitle" x:Uid="MoonsetSubtitle"
-                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                   Margin="6,6,0,0"
-                                                   Opacity="0.6"
-                                                   RelativePanel.RightOf="MoonsetIcon" />
-
-                                        <TextBlock x:Name="MoonsetTimeText" Text="settime"
-                                                   Style="{StaticResource BodyTextBlockStyle}"
-                                                   Margin="6,2,0,0"
-                                                   RelativePanel.AlignLeftWith="MoonsetSubtitle"
-                                                   RelativePanel.Below="MoonsetSubtitle" />
-
-                                    </RelativePanel>
-
-                                    <RelativePanel Grid.Row="0"
-                                                   Grid.RowSpan="2"
-                                                   Grid.Column="1"
-                                                   Margin="8">
-
-                                        <!-- vertical line on left -->
-                                        <Rectangle
-                                            x:Name="LunarphaseLine"
-                                            Fill="{ThemeResource MyAcrylicBrushLine}"
-                                            Height="100"
-                                            Width="1.2"
-                                            RelativePanel.AlignLeftWithPanel="True"
-                                            RelativePanel.AlignTopWithPanel="True"
-                                            Margin="0,8,0,0" />
-
-                                        <Image x:Name="LunarphaseIcon"
-                                               Margin="6,8,0,0"
-                                               Width="40"
-                                               Stretch="Uniform"
-                                               RelativePanel.RightOf="LunarphaseLine"
-                                               RelativePanel.AlignTopWith="LunarphaseLine">
-                                        </Image>
-
-                                        <TextBlock x:Name="LunarphaseSubtitle" x:Uid="LunarphaseSubtitle"
-                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                   Margin="8,6,0,0"
-                                                   Opacity="0.6"
-                                                   RelativePanel.AlignTopWithPanel="True"
-                                                   RelativePanel.RightOf="LunarphaseIcon" />
-
-                                        <TextBlock x:Name="LunarphaseText" Text="phase"
-                                                   Style="{StaticResource BodyTextBlockStyle}"
-                                                   Margin="8,2,0,0"
-                                                   RelativePanel.AlignLeftWith="LunarphaseSubtitle"
-                                                   RelativePanel.Below="LunarphaseSubtitle" />
-
-
-                                    </RelativePanel>
-
-                                </Grid>
-
-
-                            </Grid>
-
-                        </controls1:WrapPanel>
-
-                    </Grid>
-
-
-                </Grid>
-            </ScrollViewer>
-            </RefreshContainer>
-
-
-            <Button Name="SettingsButton"
-                    HorizontalAlignment="Right"
-                    Grid.Row="1"
-                    VerticalAlignment="Bottom"
-                    Margin="0,0,24,24"
-                    Width="48"
-                    Height="48"
-                    Background="{ThemeResource MyAcrylicBrushButton}">
-
-                <StackPanel>
-                    <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
-                        <muxc:AnimatedIcon.Source>
-                            <animatedVisuals:AnimatedSettingsVisualSource />
-                        </muxc:AnimatedIcon.Source>
-                        <muxc:AnimatedIcon.FallbackIconSource>
-                            <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
-                        </muxc:AnimatedIcon.FallbackIconSource>
-                    </muxc:AnimatedIcon>
-                </StackPanel>
-
-                <Button.Flyout>
-                    <MenuFlyout x:Name="SettingsFlyout">
-
-                        <MenuFlyoutItem>
-                            <MenuFlyoutItem.Template>
-                                <ControlTemplate x:Name="FlyoutItemSettingsTemp">
-                                    <StackPanel VerticalAlignment="Center" Margin="16">
-                                        <!-- title control -->
-                                        <TextBlock x:Uid="UnitsSettingsTitle"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <labs:Segmented
-                                            SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
-                                            Margin="0,8,0,0"
-                                            x:Name="UnitsSegmented"
-                                            SelectionChanged="UnitsSegmented_OnSelectionChanged"
-                                            d:DataContext="{d:DesignInstance views:MainPage }">
-                                            <labs:SegmentedItem x:Uid="MetricUnitsItem" />
-                                            <labs:SegmentedItem x:Uid="ImperialUnitsItem" />
-                                            <labs:SegmentedItem x:Uid="HybridUnitsItem" />
-
-                                        </labs:Segmented>
-
-
-                                        <!-- toggle control to enable/disable acrylic effect -->
-                                        <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
-                                                   Margin="0,16,0,0"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <ToggleSwitch x:Name="AcrylicToggle"
-                                                      Margin="8,8,0,0"
-                                                      d:DataContext="{d:DesignInstance views:MainPage }"
-                                                      IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
-                                                      Toggled="AcrylicToggle_OnToggled" />
-
-
-                                        <TextBlock x:Uid="CreditsSettingsTitle"
-                                                   Margin="0,16,0,0"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <StackPanel Margin="8,0,0,0">
-
-                                            <RichTextBlock
-                                                Margin="0,16,0,0">
-                                                <Paragraph>
-                                                    <Run x:Uid="InspiredByRun"></Run>
-                                                    <Hyperlink
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        NavigateUri="https://twitter.com/zeealeid">
-                                                        @zeealeid
-                                                    </Hyperlink>
-                                                </Paragraph>
-                                            </RichTextBlock>
-
-                                            <RichTextBlock
-                                                Margin="0,24,0,0">
-                                                <Paragraph>
-                                                    <Run FontStyle="Normal" FontWeight="Bold">FluentWeather</Run>
-                                                    <Run
-                                                        d:DataContext="{d:DesignInstance views:MainPage }"
-                                                        Foreground="#A2FFFFFF" Text="{Binding AppVersionText}">
-                                                    </Run>
-                                                    <Run x:Uid="DevelopedByRun"></Run>
-                                                    <Hyperlink
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        NavigateUri="https://github.com/Gabboxl">
-                                                        Gabboxl
-                                                    </Hyperlink>
-                                                </Paragraph>
-                                            </RichTextBlock>
+                        </Grid>
+                    </ScrollViewer>
+                </RefreshContainer>
+
+
+                <Button Name="SettingsButton"
+                        HorizontalAlignment="Right"
+                        Grid.Row="1"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,24,24"
+                        Width="48"
+                        Height="48"
+                        Background="{ThemeResource MyAcrylicBrushButton}">
+
+                    <StackPanel>
+                        <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
+                            <muxc:AnimatedIcon.Source>
+                                <animatedVisuals:AnimatedSettingsVisualSource />
+                            </muxc:AnimatedIcon.Source>
+                            <muxc:AnimatedIcon.FallbackIconSource>
+                                <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
+                            </muxc:AnimatedIcon.FallbackIconSource>
+                        </muxc:AnimatedIcon>
+                    </StackPanel>
+
+                    <Button.Flyout>
+                        <MenuFlyout x:Name="SettingsFlyout">
+
+                            <MenuFlyoutItem>
+                                <MenuFlyoutItem.Template>
+                                    <ControlTemplate x:Name="FlyoutItemSettingsTemp">
+                                        <StackPanel VerticalAlignment="Center" Margin="16">
+                                            <!-- title control -->
+                                            <TextBlock x:Uid="UnitsSettingsTitle"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                            <labs:Segmented
+                                                SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
+                                                Margin="0,8,0,0"
+                                                x:Name="UnitsSegmented"
+                                                SelectionChanged="UnitsSegmented_OnSelectionChanged"
+                                                d:DataContext="{d:DesignInstance views:MainPage }">
+                                                <labs:SegmentedItem x:Uid="MetricUnitsItem" />
+                                                <labs:SegmentedItem x:Uid="ImperialUnitsItem" />
+                                                <labs:SegmentedItem x:Uid="HybridUnitsItem" />
+
+                                            </labs:Segmented>
+
+
+                                            <!-- toggle control to enable/disable acrylic effect -->
+                                            <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
+                                                       Margin="0,16,0,0"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                            <ToggleSwitch x:Name="AcrylicToggle"
+                                                          Margin="8,8,0,0"
+                                                          d:DataContext="{d:DesignInstance views:MainPage }"
+                                                          IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
+                                                          Toggled="AcrylicToggle_OnToggled" />
+
+
+                                            <TextBlock x:Uid="CreditsSettingsTitle"
+                                                       Margin="0,16,0,0"
+                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                            <StackPanel Margin="8,0,0,0">
+
+                                                <RichTextBlock
+                                                    Margin="0,16,0,0">
+                                                    <Paragraph>
+                                                        <Run x:Uid="InspiredByRun"></Run>
+                                                        <Hyperlink
+                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                            NavigateUri="https://twitter.com/zeealeid">
+                                                            @zeealeid
+                                                        </Hyperlink>
+                                                    </Paragraph>
+                                                </RichTextBlock>
+
+                                                <RichTextBlock
+                                                    Margin="0,24,0,0">
+                                                    <Paragraph>
+                                                        <Run FontStyle="Normal" FontWeight="Bold">FluentWeather</Run>
+                                                        <Run
+                                                            d:DataContext="{d:DesignInstance views:MainPage }"
+                                                            Foreground="#A2FFFFFF" Text="{Binding AppVersionText}">
+                                                        </Run>
+                                                        <Run x:Uid="DevelopedByRun"></Run>
+                                                        <Hyperlink
+                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                            NavigateUri="https://github.com/Gabboxl">
+                                                            Gabboxl
+                                                        </Hyperlink>
+                                                    </Paragraph>
+                                                </RichTextBlock>
+
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        Margin="0,12,0,0"
+                                                        HorizontalAlignment="Center">
+
+                                                <HyperlinkButton NavigateUri="http://github.com/Gabboxl/FluentWeather">
+                                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                                        <Grid Width="18" Height="18">
+                                                            <Path
+                                                                Data="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
+                                                                Stretch="Uniform"
+                                                                Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                                        </Grid>
+
+                                                        <TextBlock x:Uid="GithubProjectButton" />
+                                                    </StackPanel>
+                                                </HyperlinkButton>
+
+
+                                                <HyperlinkButton x:Name="hyperlinkTranslate"
+                                                                 RelativePanel.RightOf="hyperlinkVote"
+                                                                 NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
+
+                                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                                        <Grid Width="18" Height="18">
+                                                            <Path
+                                                                Data="M233,628C199.333,619 168.333,604.583 140,584.75C111.667,564.917 87.0833,541.5 66.25,514.5C45.4167,487.5 29.1667,457.667 17.5,425C5.83333,392.333 0,358.667 0,324C0,294.333 3.75,265.667 11.25,238C18.75,210.333 29.3333,184.5 43,160.5C56.6667,136.5 73.1667,114.667 92.5,95C111.833,75.3334 133.333,58.4167 157,44.25C180.667,30.0834 206.25,19.1667 233.75,11.5C261.25,3.83337 290,0 320,0C364.333,0 405.917,8.33337 444.75,25C483.583,41.6667 517.5,64.5 546.5,93.5C575.5,122.5 598.333,156.417 615,195.25C631.667,234.083 640,275.667 640,320L576,320C576,309.333 575.333,298.667 574,288C572.667,277.333 570.667,266.667 568,256L445.5,256C446.167,266.667 446.75,277.333 447.25,288C447.75,298.667 448,309.333 448,320C448,341.667 447.083,362.833 445.25,383.5C443.417,404.167 441.167,425.167 438.5,446.5L438.5,448L266.5,448C268.167,457.667 270.083,467.083 272.25,476.25C274.417,485.417 276.833,494.667 279.5,504L279,504.5C271.333,525.167 263.667,545.75 256,566.25C248.333,586.75 240.667,607.333 233,628ZM266.5,192L373.5,192C372.167,185 370,174.917 367,161.75C364,148.583 360.25,135.25 355.75,121.75C351.25,108.25 346,96.0001 340,85C334,74.0001 327.5,67.0001 320.5,64L319.5,64C312.5,67.0001 306,74.0001 300,85C294,96.0001 288.75,108.25 284.25,121.75C279.75,135.25 276,148.583 273,161.75C270,174.917 267.833,185 266.5,192ZM98,192L201.5,192C207.5,153 217.667,115.5 232,79.5C203.667,89.8334 178,104.667 155,124C132,143.333 113,166 98,192ZM542,192C527,166 508,143.333 485,124C462,104.667 436.333,89.8334 408,79.5C422.333,115.5 432.5,153 438.5,192ZM72,256C69.3333,266.667 67.3333,277.333 66,288C64.6667,298.667 64,309.333 64,320C64,330.667 64.6667,341.333 66,352C67.3333,362.667 69.3333,373.333 72,384L194.5,384C193.833,373.333 193.25,362.667 192.75,352C192.25,341.333 192,330.667 192,320C192,309.333 192.25,298.667 192.75,288C193.25,277.333 193.833,266.667 194.5,256ZM381.5,256L258.5,256C257.833,266.667 257.25,277.333 256.75,288C256.25,298.667 256,309.333 256,320C256,330.667 256.25,341.333 256.75,352C257.25,362.667 257.833,373.333 258.5,384L381.5,384C382.167,373.333 382.75,362.667 383.25,352C383.75,341.333 384,330.667 384,320C384,309.333 383.75,298.667 383.25,288C382.75,277.333 382.167,266.667 381.5,256ZM1024,416L1024,512C1024,520.667 1020.83,528.167 1014.5,534.5C1008.17,540.833 1000.67,544 992,544C983.333,544 975.833,540.833 969.5,534.5C963.167,528.167 960,520.667 960,512L960,448L576,448L576,512C576,520.667 572.833,528.167 566.5,534.5C560.167,540.833 552.667,544 544,544C535.333,544 527.833,540.833 521.5,534.5C515.167,528.167 512,520.667 512,512L512,416C512,407.333 515.167,399.833 521.5,393.5C527.833,387.167 535.333,384 544,384L736,384C736,381.333 735.917,378.583 735.75,375.75C735.583,372.917 735.5,370 735.5,367C735.5,361.333 735.833,355.75 736.5,350.25C737.167,344.75 738.583,339.75 740.75,335.25C742.917,330.75 746.167,327.083 750.5,324.25C754.833,321.417 760.667,320 768,320C775.333,320 781.083,321.417 785.25,324.25C789.417,327.083 792.583,330.75 794.75,335.25C796.917,339.75 798.333,344.75 799,350.25C799.667,355.75 800,361.333 800,367L800,384L992,384C1000.67,384 1008.17,387.167 1014.5,393.5C1020.83,399.833 1024,407.333 1024,416ZM98.5,448C113.5,474 132.5,496.583 155.5,515.75C178.5,534.917 204,549.833 232,560.5C217.667,524.5 207.5,487 201.5,448ZM1024,672C1024,680.667 1020.83,688.167 1014.5,694.5C1008.17,700.833 1000.67,704 992,704L832,704L832,832C832,841 830.333,849.333 827,857C823.667,864.667 819.083,871.417 813.25,877.25C807.417,883.083 800.667,887.667 793,891C785.333,894.333 777,896 768,896L736,896C727.333,896 719.833,892.833 713.5,886.5C707.167,880.167 704,872.667 704,864C704,856.667 705.417,850.917 708.25,846.75C711.083,842.583 714.75,839.417 719.25,837.25C723.75,835.083 728.75,833.667 734.25,833C739.75,832.333 745.333,832 751,832L768,832L768,704L608,704C599.333,704 591.833,700.833 585.5,694.5C579.167,688.167 576,680.667 576,672C576,663.333 579.167,655.833 585.5,649.5C591.833,643.167 599.333,640 608,640L768,640C768,635.667 769.417,630.5 772.25,624.5C775.083,618.5 778.5,612.5 782.5,606.5C786.5,600.5 790.5,594.833 794.5,589.5C798.5,584.167 801.667,579.667 804,576L672,576C663.333,576 655.833,572.833 649.5,566.5C643.167,560.167 640,552.667 640,544C640,535.333 643.167,527.833 649.5,521.5C655.833,515.167 663.333,512 672,512L864,512C872.667,512 880.167,515.167 886.5,521.5C892.833,527.833 896,535.333 896,544C896,550.333 894.167,556.167 890.5,561.5L838.5,640L992,640C1000.67,640 1008.17,643.167 1014.5,649.5C1020.83,655.833 1024,663.333 1024,672ZM560,928C560,937 556.917,944.583 550.75,950.75C544.583,956.917 537,960 528,960C521.333,960 515.25,958.083 509.75,954.25C504.25,950.417 500.333,945.333 498,939L458,832L310,832L270,939C267.667,945.333 263.75,950.417 258.25,954.25C252.75,958.083 246.667,960 240,960C231.333,960 223.833,956.833 217.5,950.5C211.167,944.167 208,936.667 208,928C208,923.333 208.667,919.5 210,916.5L258,789.5C274.333,746.5 290.417,703.667 306.25,661C322.083,618.333 338,575.5 354,532.5C356.333,526.167 360.333,521.5 366,518.5C371.667,515.5 377.667,514 384,514C390.667,514 396.667,515.5 402,518.5C407.333,521.5 411.333,526.167 414,532.5C430,575.5 445.833,618.333 461.5,661C477.167,703.667 493.333,746.5 510,789.5L558,916.5C559.333,919.5 560,923.333 560,928ZM384,635L334,768L434,768Z"
+                                                                Stretch="Uniform"
+                                                                Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                                        </Grid>
+
+                                                        <TextBlock x:Uid="TranslateAppText" />
+                                                    </StackPanel>
+                                                </HyperlinkButton>
+
+
+                                            </StackPanel>
+
 
                                         </StackPanel>
+                                    </ControlTemplate>
+                                </MenuFlyoutItem.Template>
+                            </MenuFlyoutItem>
 
-                                        <StackPanel Orientation="Horizontal"
-                                                    Margin="0,12,0,0"
-                                                    HorizontalAlignment="Center">
-
-                                            <HyperlinkButton NavigateUri="http://github.com/Gabboxl/FluentWeather">
-                                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                                    <Grid Width="18" Height="18">
-                                                        <Path
-                                                            Data="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
-                                                            Stretch="Uniform"
-                                                            Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
-                                                    </Grid>
-
-                                                    <TextBlock x:Uid="GithubProjectButton" />
-                                                </StackPanel>
-                                            </HyperlinkButton>
-
-
-                                            <HyperlinkButton x:Name="hyperlinkTranslate"
-                                                             RelativePanel.RightOf="hyperlinkVote"
-                                                             NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
-
-                                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                                    <Grid Width="18" Height="18">
-                                                        <Path
-                                                            Data="M233,628C199.333,619 168.333,604.583 140,584.75C111.667,564.917 87.0833,541.5 66.25,514.5C45.4167,487.5 29.1667,457.667 17.5,425C5.83333,392.333 0,358.667 0,324C0,294.333 3.75,265.667 11.25,238C18.75,210.333 29.3333,184.5 43,160.5C56.6667,136.5 73.1667,114.667 92.5,95C111.833,75.3334 133.333,58.4167 157,44.25C180.667,30.0834 206.25,19.1667 233.75,11.5C261.25,3.83337 290,0 320,0C364.333,0 405.917,8.33337 444.75,25C483.583,41.6667 517.5,64.5 546.5,93.5C575.5,122.5 598.333,156.417 615,195.25C631.667,234.083 640,275.667 640,320L576,320C576,309.333 575.333,298.667 574,288C572.667,277.333 570.667,266.667 568,256L445.5,256C446.167,266.667 446.75,277.333 447.25,288C447.75,298.667 448,309.333 448,320C448,341.667 447.083,362.833 445.25,383.5C443.417,404.167 441.167,425.167 438.5,446.5L438.5,448L266.5,448C268.167,457.667 270.083,467.083 272.25,476.25C274.417,485.417 276.833,494.667 279.5,504L279,504.5C271.333,525.167 263.667,545.75 256,566.25C248.333,586.75 240.667,607.333 233,628ZM266.5,192L373.5,192C372.167,185 370,174.917 367,161.75C364,148.583 360.25,135.25 355.75,121.75C351.25,108.25 346,96.0001 340,85C334,74.0001 327.5,67.0001 320.5,64L319.5,64C312.5,67.0001 306,74.0001 300,85C294,96.0001 288.75,108.25 284.25,121.75C279.75,135.25 276,148.583 273,161.75C270,174.917 267.833,185 266.5,192ZM98,192L201.5,192C207.5,153 217.667,115.5 232,79.5C203.667,89.8334 178,104.667 155,124C132,143.333 113,166 98,192ZM542,192C527,166 508,143.333 485,124C462,104.667 436.333,89.8334 408,79.5C422.333,115.5 432.5,153 438.5,192ZM72,256C69.3333,266.667 67.3333,277.333 66,288C64.6667,298.667 64,309.333 64,320C64,330.667 64.6667,341.333 66,352C67.3333,362.667 69.3333,373.333 72,384L194.5,384C193.833,373.333 193.25,362.667 192.75,352C192.25,341.333 192,330.667 192,320C192,309.333 192.25,298.667 192.75,288C193.25,277.333 193.833,266.667 194.5,256ZM381.5,256L258.5,256C257.833,266.667 257.25,277.333 256.75,288C256.25,298.667 256,309.333 256,320C256,330.667 256.25,341.333 256.75,352C257.25,362.667 257.833,373.333 258.5,384L381.5,384C382.167,373.333 382.75,362.667 383.25,352C383.75,341.333 384,330.667 384,320C384,309.333 383.75,298.667 383.25,288C382.75,277.333 382.167,266.667 381.5,256ZM1024,416L1024,512C1024,520.667 1020.83,528.167 1014.5,534.5C1008.17,540.833 1000.67,544 992,544C983.333,544 975.833,540.833 969.5,534.5C963.167,528.167 960,520.667 960,512L960,448L576,448L576,512C576,520.667 572.833,528.167 566.5,534.5C560.167,540.833 552.667,544 544,544C535.333,544 527.833,540.833 521.5,534.5C515.167,528.167 512,520.667 512,512L512,416C512,407.333 515.167,399.833 521.5,393.5C527.833,387.167 535.333,384 544,384L736,384C736,381.333 735.917,378.583 735.75,375.75C735.583,372.917 735.5,370 735.5,367C735.5,361.333 735.833,355.75 736.5,350.25C737.167,344.75 738.583,339.75 740.75,335.25C742.917,330.75 746.167,327.083 750.5,324.25C754.833,321.417 760.667,320 768,320C775.333,320 781.083,321.417 785.25,324.25C789.417,327.083 792.583,330.75 794.75,335.25C796.917,339.75 798.333,344.75 799,350.25C799.667,355.75 800,361.333 800,367L800,384L992,384C1000.67,384 1008.17,387.167 1014.5,393.5C1020.83,399.833 1024,407.333 1024,416ZM98.5,448C113.5,474 132.5,496.583 155.5,515.75C178.5,534.917 204,549.833 232,560.5C217.667,524.5 207.5,487 201.5,448ZM1024,672C1024,680.667 1020.83,688.167 1014.5,694.5C1008.17,700.833 1000.67,704 992,704L832,704L832,832C832,841 830.333,849.333 827,857C823.667,864.667 819.083,871.417 813.25,877.25C807.417,883.083 800.667,887.667 793,891C785.333,894.333 777,896 768,896L736,896C727.333,896 719.833,892.833 713.5,886.5C707.167,880.167 704,872.667 704,864C704,856.667 705.417,850.917 708.25,846.75C711.083,842.583 714.75,839.417 719.25,837.25C723.75,835.083 728.75,833.667 734.25,833C739.75,832.333 745.333,832 751,832L768,832L768,704L608,704C599.333,704 591.833,700.833 585.5,694.5C579.167,688.167 576,680.667 576,672C576,663.333 579.167,655.833 585.5,649.5C591.833,643.167 599.333,640 608,640L768,640C768,635.667 769.417,630.5 772.25,624.5C775.083,618.5 778.5,612.5 782.5,606.5C786.5,600.5 790.5,594.833 794.5,589.5C798.5,584.167 801.667,579.667 804,576L672,576C663.333,576 655.833,572.833 649.5,566.5C643.167,560.167 640,552.667 640,544C640,535.333 643.167,527.833 649.5,521.5C655.833,515.167 663.333,512 672,512L864,512C872.667,512 880.167,515.167 886.5,521.5C892.833,527.833 896,535.333 896,544C896,550.333 894.167,556.167 890.5,561.5L838.5,640L992,640C1000.67,640 1008.17,643.167 1014.5,649.5C1020.83,655.833 1024,663.333 1024,672ZM560,928C560,937 556.917,944.583 550.75,950.75C544.583,956.917 537,960 528,960C521.333,960 515.25,958.083 509.75,954.25C504.25,950.417 500.333,945.333 498,939L458,832L310,832L270,939C267.667,945.333 263.75,950.417 258.25,954.25C252.75,958.083 246.667,960 240,960C231.333,960 223.833,956.833 217.5,950.5C211.167,944.167 208,936.667 208,928C208,923.333 208.667,919.5 210,916.5L258,789.5C274.333,746.5 290.417,703.667 306.25,661C322.083,618.333 338,575.5 354,532.5C356.333,526.167 360.333,521.5 366,518.5C371.667,515.5 377.667,514 384,514C390.667,514 396.667,515.5 402,518.5C407.333,521.5 411.333,526.167 414,532.5C430,575.5 445.833,618.333 461.5,661C477.167,703.667 493.333,746.5 510,789.5L558,916.5C559.333,919.5 560,923.333 560,928ZM384,635L334,768L434,768Z"
-                                                            Stretch="Uniform"
-                                                            Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
-                                                    </Grid>
-
-                                                    <TextBlock x:Uid="TranslateAppText" />
-                                                </StackPanel>
-                                            </HyperlinkButton>
-
-
-                                        </StackPanel>
-
-
-                                    </StackPanel>
-                                </ControlTemplate>
-                            </MenuFlyoutItem.Template>
-                        </MenuFlyoutItem>
-
-                        <!--<MenuFlyoutSeparator />
+                            <!--<MenuFlyoutSeparator />
 
 
                         <MenuFlyoutItem Text="Esci"
@@ -1269,13 +1263,15 @@
                                 ~1~ or e966 @1@
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>-->
-                    </MenuFlyout>
-                </Button.Flyout>
-            </Button>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
 
 
-        </Grid>
+            </Grid>
 
+
+        </muxc:NavigationView>
 
     </Grid>
 
