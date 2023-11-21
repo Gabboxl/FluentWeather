@@ -39,7 +39,7 @@ namespace FluentWeather.Views
 
         public AcrylicEffectsService AcrylicEffectsService { get; }  = Singleton<AcrylicEffectsService>.Instance;
 
-        public LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
+        private LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
 
         private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
 
@@ -115,8 +115,7 @@ namespace FluentWeather.Views
                 new EntranceThemeTransition()
             };
 
-
-            this.InitializeComponent();
+            InitializeComponent();
 
             this.DataContext = this; //DataContext = ViewModel;
             Initialize();
@@ -203,10 +202,8 @@ namespace FluentWeather.Views
                         Debug.WriteLine(location.address);
                     }
 
-
                     List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
                     // the select statement above is the same as the foreach below
-
 
                     sender.ItemsSource = finalitems;
                 }
@@ -258,8 +255,7 @@ namespace FluentWeather.Views
 
                 //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    async () =>
+                    CoreDispatcherPriority.Normal, () =>
                     {
                         UpdateUi(_lastApiData);
                         MainInnerContentGrid.Visibility = Visibility.Visible;
@@ -269,8 +265,7 @@ namespace FluentWeather.Views
 
 
             await CoreApplication.MainView.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal,
-                async () => { MainPageViewModel.IsLoadingData = false; }
+                CoreDispatcherPriority.Normal, () => { MainPageViewModel.IsLoadingData = false; }
             );
         }
 
@@ -449,7 +444,7 @@ namespace FluentWeather.Views
             EmulateDayButtonClick(0);
         }
 
-        private async void LoadHourlyData(DateTimeOffset dayToLoad)
+        private void LoadHourlyData(DateTimeOffset dayToLoad)
         {
             List<HourDataAdapter> hourlyDataAdapters = new();
 
@@ -491,7 +486,7 @@ namespace FluentWeather.Views
         }
 
 
-        private async void LoadInsightsData(DateTimeOffset dayToLoad)
+        private void LoadInsightsData(DateTimeOffset dayToLoad)
         {
             /*var indexOfDay =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
