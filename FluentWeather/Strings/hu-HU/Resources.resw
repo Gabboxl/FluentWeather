@@ -264,4 +264,7 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
   <data name="NextHours" xml:space="preserve">
     <value>Következő órákban:</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>Hours format</value>
+  </data>
 </root>
