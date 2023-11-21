@@ -468,7 +468,7 @@ namespace FluentWeather.Views
                 }
             }
 
-            hourlyListview.ItemsSource = hourlyDataAdapters;
+            HourlyListview.ItemsSource = hourlyDataAdapters;
         }
 
 

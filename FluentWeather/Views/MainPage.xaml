@@ -571,7 +571,7 @@
                                 BorderBrush="{ThemeResource MyAcrylicBrush}"
                                 Background="{ThemeResource MyAcrylicBrush}">
 
-                                <ListView x:Name="hourlyListview"
+                                <ListView x:Name="HourlyListview"
 
                                           Padding="0,0,0,18"
                                           ScrollViewer.VerticalScrollMode="Disabled"
@@ -1192,6 +1192,5 @@
 
 
     </Grid>
-
 
 </Page>
