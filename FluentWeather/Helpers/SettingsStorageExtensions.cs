@@ -46,7 +46,7 @@ namespace FluentWeather.Helpers
             settings.SaveString(key, await Json.StringifyAsync(value));
         }
 
-        public static void SaveString(this ApplicationDataContainer settings, string key, string value)
+        private static void SaveString(this ApplicationDataContainer settings, string key, string value)
         {
             settings.Values[key] = value;
         }
