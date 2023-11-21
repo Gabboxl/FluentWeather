@@ -631,22 +631,25 @@
                                                                    FontSize="12">
                                                         </TextBlock>
 
-                                                        <!-- precip icon -->
-                                                        <Image x:Name="precipIcon"
-                                                               Width="16"
-                                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                               Stretch="Uniform"
-                                                               RelativePanel.Above="Rectangle2"
-                                                               RelativePanel.LeftOf="precipChanceText"
-                                                               Margin="0,0,4,0"
-                                                               Source="{x:Bind SvgPrecipIcon}" />
+                                                        <StackPanel Orientation="Horizontal"
+                                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                    RelativePanel.Above="Rectangle2">
 
-                                                        <!-- precip chance text -->
-                                                        <TextBlock x:Name="precipChanceText"
-                                                                   Text="{x:Bind PrecipitationChance}"
-                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                                   RelativePanel.Above="Rectangle2">
-                                                        </TextBlock>
+                                                            <!-- precip icon -->
+                                                            <Image x:Name="precipIcon"
+                                                                   VerticalAlignment="Center"
+                                                                   Width="16"
+                                                                   Stretch="Uniform"
+                                                                   Margin="0,0,4,0"
+                                                                   Source="{x:Bind SvgPrecipIcon}" />
+
+                                                            <!-- precip chance text -->
+                                                            <TextBlock x:Name="precipChanceText"
+                                                                       VerticalAlignment="Center"
+                                                                       Text="{x:Bind PrecipitationChance}">
+                                                            </TextBlock>
+                                                        </StackPanel>
+
 
                                                         <!-- horizontal line -->
                                                         <Rectangle x:Name="Rectangle2"
