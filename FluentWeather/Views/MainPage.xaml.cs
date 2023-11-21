@@ -33,11 +33,9 @@ namespace FluentWeather.Views
 {
     public sealed partial class MainPage : Page
     {
-        public MainPageViewModel MainPageViewModel { get; } =
-            new MainPageViewModel();
+        public MainPageViewModel MainPageViewModel { get; } = new();
 
-        public NavigationViewViewModel NavigationViewViewModel { get; } =
-            new NavigationViewViewModel();
+        public NavigationViewViewModel NavigationViewViewModel { get; } = new();
 
         public AcrylicEffectsService AcrylicEffectsService { get; }  = Singleton<AcrylicEffectsService>.Instance;
 
@@ -287,7 +285,7 @@ namespace FluentWeather.Views
 
         private void CrossfadeToImage(Uri newImageUri)
         {
-            BitmapImage newImage = new BitmapImage(newImageUri);
+            BitmapImage newImage = new(newImageUri);
 
             if (_isImage1Active)
             {
@@ -332,7 +330,7 @@ namespace FluentWeather.Views
 
         private Storyboard CreateCrossfadeStoryboard(Image fadeInImage, Image fadeOutImage)
         {
-            DoubleAnimation fadeInAnimation = new DoubleAnimation
+            DoubleAnimation fadeInAnimation = new()
             {
                 From = 0,
                 To = 1,
@@ -342,7 +340,7 @@ namespace FluentWeather.Views
             Storyboard.SetTarget(fadeInAnimation, fadeInImage);
             Storyboard.SetTargetProperty(fadeInAnimation, "Opacity");
 
-            DoubleAnimation fadeOutAnimation = new DoubleAnimation
+            DoubleAnimation fadeOutAnimation = new()
             {
                 From = 1,
                 To = 0,
@@ -352,7 +350,7 @@ namespace FluentWeather.Views
             Storyboard.SetTarget(fadeOutAnimation, fadeOutImage);
             Storyboard.SetTargetProperty(fadeOutAnimation, "Opacity");
 
-            Storyboard storyboard = new Storyboard();
+            Storyboard storyboard = new();
             storyboard.Children.Add(fadeInAnimation);
             storyboard.Children.Add(fadeOutAnimation);
 
@@ -433,7 +431,7 @@ namespace FluentWeather.Views
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
 
-            List<DayButtonAdapter> dayButtonAdapters = new List<DayButtonAdapter>();
+            List<DayButtonAdapter> dayButtonAdapters = new();
 
             int i = 0;
 
@@ -453,7 +451,7 @@ namespace FluentWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
-            List<HourDataAdapter> hourlyDataAdapters = new List<HourDataAdapter>();
+            List<HourDataAdapter> hourlyDataAdapters = new();
 
             int i = 0;
 
@@ -503,7 +501,7 @@ namespace FluentWeather.Views
                     x.Date == dayToLoad.Date);
 
             //insights controls
-            RunningInsight.Insight = new Insight()
+            RunningInsight.Insight = new Insight
             {
                 Title = "RunningInsightTitle".GetLocalized(),
                 Value =
@@ -515,7 +513,7 @@ namespace FluentWeather.Views
                 IconName = "running"
             };
 
-            DrivingInsight.Insight = new Insight()
+            DrivingInsight.Insight = new Insight
             {
                 Title = "DrivingInsightTitle".GetLocalized(),
                 Value =
@@ -533,7 +531,7 @@ namespace FluentWeather.Views
                 Description = rootV3Response.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[0],
                 Levels = InsightLevels.RunningLevels};*/
 
-            DryskinInsight.Insight = new Insight()
+            DryskinInsight.Insight = new Insight
             {
                 Title = "DrySkinInsightTitle".GetLocalized(),
                 Value = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
@@ -543,7 +541,7 @@ namespace FluentWeather.Views
                 IconName = "dry"
             };
 
-            WateringInsight.Insight = new Insight()
+            WateringInsight.Insight = new Insight
             {
                 Title = "WateringNeedInsightTitle".GetLocalized(),
                 Value =
