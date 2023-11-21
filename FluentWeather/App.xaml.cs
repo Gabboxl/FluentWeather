@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 using FluentWeather.Services;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
@@ -57,10 +53,6 @@ namespace FluentWeather
                     typeof(Microsoft.AppCenter.Analytics.Analytics),
                     typeof(Microsoft.AppCenter.Crashes.Crashes)
                 );
-
-                //Microsoft.AppCenter.Crashes.Crashes.SetEnabledAsync()
-
-                //Microsoft.AppCenter.Analytics.Analytics.TrackEvent("App started");
             }
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
@@ -74,18 +66,11 @@ namespace FluentWeather
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-
             if (e.PrelaunchActivated == false)
             {
                 await ActivationService.ActivateAsync(e);
             }
         }
-
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-        {
-            throw new System.Exception("Failed to load Page " + e.SourcePageType.FullName);
-        }
-
 
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
@@ -106,18 +91,11 @@ namespace FluentWeather
         {
             //http://blog.wpdev.fr/inspecting-unhandled-exceptions-youve-got-only-one-chance/
             Exception exceptionThatDoesntGoAway = e.Exception;
-
-            //create a list of ErrorAttachmentLog
-            var attachments = new List<ErrorAttachmentLog>();
-
-
-            //Trace.WriteLine("SIDE2: " + exceptionThatDoesntGoAway.StackTrace);
-
+            
             e.Handled = true;
 
-            Crashes.TrackError(exceptionThatDoesntGoAway, attachments: attachments.ToArray());
+            Crashes.TrackError(exceptionThatDoesntGoAway);
 
-            //visualizzare un dialog con si è verificato un errore
         }
 
         private ActivationService CreateActivationService()
