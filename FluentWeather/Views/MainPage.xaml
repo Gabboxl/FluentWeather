@@ -595,69 +595,76 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate x:DataType="adapters:HourDataAdapter">
                                             <Grid Width="100" Height="200" Margin="0">
-                                                <RelativePanel>
+                                                <Button VerticalAlignment="Stretch"
+                                                        HorizontalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Stretch"
+                                                        VerticalContentAlignment="Stretch"
+                                                        Background="Transparent"
+                                                        BorderBrush="Transparent">
+                                                    <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-                                                    <Image x:Name="wetIcon"
-                                                           Margin="0,8,0,0"
-                                                           Width="40"
-                                                           RelativePanel.AlignVerticalCenterWithPanel="True"
-                                                           Stretch="Uniform"
-                                                           RelativePanel.AlignTopWithPanel="True"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           Source="{x:Bind SvgImageIcon}">
-                                                    </Image>
-
-                                                    <TextBlock x:Name="TemperatureText"
-                                                               Text="{x:Bind Temperature }"
-                                                               RelativePanel.Below="wetIcon"
+                                                        <Image x:Name="wetIcon"
+                                                               Margin="0,8,0,0"
+                                                               Width="40"
+                                                               RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                               Stretch="Uniform"
+                                                               RelativePanel.AlignTopWithPanel="True"
                                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                               TextAlignment="Center"
-                                                               Style="{StaticResource SubtitleTextBlockStyle}"
-                                                               FontSize="28">
-                                                    </TextBlock>
+                                                               Source="{x:Bind SvgImageIcon}">
+                                                        </Image>
 
-                                                    <!-- phrase text -->
-                                                    <TextBlock Text="{x:Bind Phrase }"
-                                                               RelativePanel.Below="TemperatureText"
+                                                        <TextBlock x:Name="TemperatureText"
+                                                                   Text="{x:Bind Temperature }"
+                                                                   RelativePanel.Below="wetIcon"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   TextAlignment="Center"
+                                                                   Style="{StaticResource SubtitleTextBlockStyle}"
+                                                                   FontSize="28">
+                                                        </TextBlock>
+
+                                                        <!-- phrase text -->
+                                                        <TextBlock Text="{x:Bind Phrase }"
+                                                                   RelativePanel.Below="TemperatureText"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   TextAlignment="Center"
+                                                                   Style="{StaticResource BodyTextBlockStyle}"
+                                                                   FontSize="12">
+                                                        </TextBlock>
+
+                                                        <!-- precip icon -->
+                                                        <Image x:Name="precipIcon"
+                                                               Width="16"
                                                                RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                               TextAlignment="Center"
-                                                               Style="{StaticResource BodyTextBlockStyle}"
-                                                               FontSize="12">
-                                                    </TextBlock>
+                                                               Stretch="Uniform"
+                                                               RelativePanel.Above="Rectangle2"
+                                                               RelativePanel.LeftOf="precipChanceText"
+                                                               Margin="0,0,4,0"
+                                                               Source="{x:Bind SvgPrecipIcon}" />
 
-                                                    <!-- precip icon -->
-                                                    <Image x:Name="precipIcon"
-                                                           Width="16"
-                                                           RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                           Stretch="Uniform"
-                                                           RelativePanel.Above="Rectangle2"
-                                                           RelativePanel.LeftOf="precipChanceText"
-                                                           Margin="0,0,4,0"
-                                                           Source="{x:Bind SvgPrecipIcon}" />
+                                                        <!-- precip chance text -->
+                                                        <TextBlock x:Name="precipChanceText"
+                                                                   Text="{x:Bind PrecipitationChance}"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   RelativePanel.Above="Rectangle2">
+                                                        </TextBlock>
 
-                                                    <!-- precip chance text -->
-                                                    <TextBlock x:Name="precipChanceText"
-                                                               Text="{x:Bind PrecipitationChance}"
-                                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                               RelativePanel.Above="Rectangle2">
-                                                    </TextBlock>
+                                                        <!-- horizontal line -->
+                                                        <Rectangle x:Name="Rectangle2"
+                                                                   Fill="#7FAFAFAF"
+                                                                   Height="1"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   RelativePanel.Above="HourText"
+                                                                   Width="90"
+                                                                   Margin="0,8,0,0" />
 
-                                                    <!-- horizontal line -->
-                                                    <Rectangle x:Name="Rectangle2"
-                                                               Fill="#7FAFAFAF"
-                                                               Height="1"
-                                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                               RelativePanel.Above="HourText"
-                                                               Width="90"
-                                                               Margin="0,8,0,0" />
+                                                        <TextBlock x:Name="HourText"
+                                                                   Text="{Binding Hour}"
+                                                                   Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                                                   RelativePanel.AlignBottomWithPanel="True" />
 
-                                                    <TextBlock x:Name="HourText"
-                                                               Text="{Binding Hour}"
-                                                               Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                               RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                               RelativePanel.AlignBottomWithPanel="True" />
-
-                                                </RelativePanel>
+                                                    </RelativePanel>
+                                                </Button>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
