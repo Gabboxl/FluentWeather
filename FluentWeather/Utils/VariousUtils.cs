@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using FluentWeather.Helpers;
 using FluentWeather.Models;
+using System.Linq;
 
 namespace FluentWeather.Utils
 {
@@ -52,6 +53,13 @@ namespace FluentWeather.Utils
                 (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
 
             return unitsCode;
+        }
+
+        public static async Task<string> GetTimeBasedOnUserSettings(DateTime time)
+        {
+            bool is12HourFormat = await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat").ConfigureAwait(false);
+
+            return time.ToString(is12HourFormat ? "hh:mm tt" : "HH:mm", CultureInfo.InvariantCulture);
         }
     }
 }

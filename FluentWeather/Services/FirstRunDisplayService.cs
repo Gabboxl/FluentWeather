@@ -5,6 +5,8 @@ using Windows.Storage;
 using Windows.UI.Core;
 using FluentWeather.Dialogs;
 using FluentWeather.Helpers;
+using System.Linq;
+using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace FluentWeather.Services
 {
@@ -14,18 +16,26 @@ namespace FluentWeather.Services
 
         internal static async Task ShowIfAppropriateAsync()
         {
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal, async () =>
-                {
-                    string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+            if (SystemInformation.Instance.IsFirstRun)
+            {
+                //set is24HourFormat settings based on system settings (values can be "24HourClock" or "12HourClock")
+                string systemClockType = Windows.System.UserProfile.GlobalizationPreferences.Clocks.FirstOrDefault();
 
-                    if (lastPlaceId == null && !shown)
+                await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat",
+                    systemClockType == "12HourClock");
+
+
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal, async () =>
                     {
-                        shown = true;
-                        var dialog2 = new FirstRunDialog();
-                        await dialog2.ShowAsync();
-                    }
-                });
+                        if (!shown)
+                        {
+                            shown = true;
+                            var dialog2 = new FirstRunDialog();
+                            await dialog2.ShowAsync();
+                        }
+                    });
+            }
         }
     }
 }

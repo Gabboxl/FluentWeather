@@ -1,7 +1,9 @@
 ﻿using FluentWeather.Models;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
+using FluentWeather.Utils;
 
 namespace FluentWeather.Adapters
 {
@@ -52,8 +54,10 @@ namespace FluentWeather.Adapters
         {
             get
             {
-                //hour HH:mm
-                return CurrentObject.validTimeLocal[ItemIndex].ToString("HH:mm", CultureInfo.InvariantCulture);
+                //using task.run to avoid deadlock
+                var result = Task.Run(() => VariousUtils.GetTimeBasedOnUserSettings(CurrentObject.validTimeLocal[ItemIndex].DateTime));
+                return result.Result;
+                
             }
         }
 

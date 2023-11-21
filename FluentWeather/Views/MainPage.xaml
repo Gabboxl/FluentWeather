@@ -1076,6 +1076,21 @@
 
                                         </labs:Segmented>
 
+                                        <!-- 12/24 hour format segmented -->
+                                        <TextBlock x:Uid="TimeFormatSettingsTitle"
+                                                   Margin="0,16,0,0"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                        <labs:Segmented
+                                            SelectedIndex="{Binding SettingsTimeFormatSelectedIndex}"
+                                            Margin="0,8,0,0"
+                                            x:Name="TimeFormatSegmented"
+                                            SelectionChanged="TimeFormatSegmented_OnSelectionChanged"
+                                            d:DataContext="{d:DesignInstance views:MainPage }">
+                                            <labs:SegmentedItem Content="24 hours" />
+                                            <labs:SegmentedItem Content="12 hours" />
+                                        </labs:Segmented>
+
 
                                         <!-- toggle control to enable/disable acrylic effect -->
                                         <TextBlock x:Uid="AcrylicEffectsSettingsTitle"

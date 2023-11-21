@@ -87,6 +87,27 @@ namespace FluentWeather.Views
             }
         }
 
+        public int SettingsTimeFormatSelectedIndex
+        {
+            get
+            {
+                bool is12HourFormat = false;
+
+                //run in background to avoid a deadlock/ui freeze
+                Task.Run(async () =>
+                {
+                    is12HourFormat = await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat");
+                }).Wait();
+
+                if (is12HourFormat)
+                {
+                    return 1;
+                }
+
+                return 0;
+            }
+        }
+
 
         public MainPage()
         {
@@ -657,6 +678,16 @@ namespace FluentWeather.Views
         private void RefContainer_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
         {
             Task.Run(LoadApiData);
+        }
+
+        private async void TimeFormatSegmented_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var segmented = (Segmented) sender;
+
+            //save selected index to local settings
+            await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat", segmented.SelectedIndex == 1);
+
+            await Task.Run(LoadApiData);
         }
     }
 }
