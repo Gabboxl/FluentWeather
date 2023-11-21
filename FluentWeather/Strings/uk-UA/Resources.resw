@@ -264,4 +264,7 @@
   <data name="NextHours" xml:space="preserve">
     <value>Наступні години:</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>Hours format</value>
+  </data>
 </root>
