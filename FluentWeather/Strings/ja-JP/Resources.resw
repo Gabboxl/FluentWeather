@@ -264,4 +264,7 @@
   <data name="NextHours" xml:space="preserve">
     <value>次の時間帯:</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>時間の形式</value>
+  </data>
 </root>
