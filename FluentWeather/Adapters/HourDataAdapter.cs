@@ -85,6 +85,11 @@ namespace FluentWeather.Adapters
             get { return CurrentObject.precipChance[ItemIndex] + "%"; }
         }
 
+        public string Pressure
+        {
+            get { return CurrentObject.pressureMeanSeaLevel[ItemIndex] + " " + MeasureUnitUtils.GetPressureUnits(currentUnits); }
+        }
+
         public SvgImageSource SvgPrecipIcon
         {
             get

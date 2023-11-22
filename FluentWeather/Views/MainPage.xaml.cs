@@ -37,7 +37,7 @@ namespace FluentWeather.Views
 
         public NavigationViewViewModel NavigationViewViewModel { get; } = new();
 
-        public AcrylicEffectsService AcrylicEffectsService { get; }  = Singleton<AcrylicEffectsService>.Instance;
+        public AcrylicEffectsService AcrylicEffectsService { get; } = Singleton<AcrylicEffectsService>.Instance;
 
         private LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
 
@@ -147,7 +147,6 @@ namespace FluentWeather.Views
             //NavigationService.Navigate(typeof(Views.DashWet));
 
             AppVersionText = GetVersionDescription();
-
         }
 
         private string GetVersionDescription()
@@ -184,9 +183,10 @@ namespace FluentWeather.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-                var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text + "&language=" +
-                                                            _systemLanguage +
-                                                            "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
+                var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text +
+                                                           "&language=" +
+                                                           _systemLanguage +
+                                                           "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
                 //response.EnsureSuccessStatusCode();
@@ -353,10 +353,6 @@ namespace FluentWeather.Views
         }
 
 
-        /// <summary>
-        /// update ui based on the api response
-        /// </summary>
-        /// <param name="rootV3Response"></param>
         private async void UpdateUi(RootV3Response rootV3Response)
         {
             var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
@@ -376,13 +372,11 @@ namespace FluentWeather.Views
             svgImageSource.UriSource = newIconUri;
             MainIcon.Source = svgImageSource;
 
-
             //update chips
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
-
-            UpdatedOnText.Text = "UpdatedOnText".GetLocalized() + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
-
+            UpdatedOnText.Text = "UpdatedOnText".GetLocalized() + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " +
+                                 TimeZoneInfo.Local.Id;
 
             //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty) and remove duplicate names
             string placeName = string.Join(", ",
@@ -402,26 +396,27 @@ namespace FluentWeather.Views
             CurrentTempText.Text = rootV3Response.v3wxobservationscurrent.temperature + "°" +
                                    MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
-            FeelsLikeText.Text = "FeelsLikeText".GetLocalized() + " " + rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
-                MeasureUnitUtils.GetTemperatureUnits(currentUnits);
+            FeelsLikeText.Text = "FeelsLikeText".GetLocalized() + " " +
+                                 rootV3Response.v3wxobservationscurrent.temperatureFeelsLike + "°" +
+                                 MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
             WindChipControl.Value = rootV3Response.v3wxobservationscurrent.windSpeed + " " +
-                              MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
-                              rootV3Response.v3wxobservationscurrent.windDirectionCardinal;
+                                    MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
+                                    rootV3Response.v3wxobservationscurrent.windDirectionCardinal;
 
             HumidityChipControl.Value = rootV3Response.v3wxobservationscurrent.relativeHumidity + "%";
 
             PressureChipControl.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " +
-                                  MeasureUnitUtils.GetPressureUnits(currentUnits);
+                                        MeasureUnitUtils.GetPressureUnits(currentUnits);
 
             VisibilityChipControl.Value = rootV3Response.v3wxobservationscurrent.visibility + " " +
-                                    MeasureUnitUtils.GetVisibilityUnits(currentUnits);
+                                          MeasureUnitUtils.GetVisibilityUnits(currentUnits);
 
             DewPointChipControl.Value = rootV3Response.v3wxobservationscurrent.temperatureDewPoint + "°" +
-                                  MeasureUnitUtils.GetTemperatureUnits(currentUnits);
+                                        MeasureUnitUtils.GetTemperatureUnits(currentUnits);
 
             UVIndexChipControl.Value = rootV3Response.v3wxobservationscurrent.uvIndex + " (" +
-                                 rootV3Response.v3wxobservationscurrent.uvDescription + ")";
+                                       rootV3Response.v3wxobservationscurrent.uvDescription + ")";
 
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
@@ -458,7 +453,10 @@ namespace FluentWeather.Views
             //subtract daytoload to firstdate to get the index of the first day to load
             int daysDiff = dayToLoad.Date.Subtract(firstDate.Date).Days;
 
-            if (daysDiff == -1 || (daysDiff == 0 && _lastApiData.v3wxforecasthourly10day.validTimeLocal[0].Hour > 7)) //this means that we are still in a tonight/today state and we add hours only until 7AM
+            if (daysDiff == -1 ||
+                (daysDiff == 0 &&
+                 _lastApiData.v3wxforecasthourly10day.validTimeLocal[0].Hour >
+                 7)) //this means that we are still in a tonight/today state and we add hours only until 7AM
             {
                 int h = 0;
 
@@ -468,7 +466,6 @@ namespace FluentWeather.Views
 
                     h++;
                 }
-
             }
             else
             {
@@ -477,7 +474,8 @@ namespace FluentWeather.Views
                     //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
                     if (date.Date == firstDate.Date.AddDays(daysDiff))
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i, currentUnits));
+                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i,
+                            currentUnits));
                     }
 
                     i++;

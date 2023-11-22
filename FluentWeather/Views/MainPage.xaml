@@ -311,11 +311,12 @@
 
 
             <RefreshContainer x:Name="RefreshContainer" RefreshRequested="RefContainer_RefreshRequested" Grid.Row="1">
-
                 <ScrollViewer
                     x:Name="MainScroll"
+                    VerticalScrollMode="Enabled"
                     HorizontalScrollMode="Disabled"
-                    VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Disabled">
 
                     <Grid Padding="40,64,0,64">
                         <Grid.RowDefinitions>
@@ -607,6 +608,11 @@
                                                                             <controls1:UniformGrid Columns="3">
 
                                                                                 <controls:DetailChipControl
+                                                                                    Value="{Binding TemperatureFeelsLike}"
+                                                                                    Title="Feels like">
+                                                                                </controls:DetailChipControl>
+
+                                                                                <controls:DetailChipControl
                                                                                     Value="{Binding WindSpeed}"
                                                                                     x:Uid="WindChipControl">
                                                                                 </controls:DetailChipControl>
@@ -621,19 +627,14 @@
                                                                                     Title="Rain amount">
                                                                                 </controls:DetailChipControl>
 
-                                                                                <!--<controls:DetailChipControl
-                                                                                    Value="{x:Bin}"
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding Pressure}"
                                                                                     x:Uid="PressureChipControl">
-                                                                                </controls:DetailChipControl>-->
+                                                                                </controls:DetailChipControl>
 
                                                                                 <controls:DetailChipControl
                                                                                     Value="{Binding Humidity}"
                                                                                     x:Uid="HumidityChipControl">
-                                                                                </controls:DetailChipControl>
-
-                                                                                <controls:DetailChipControl
-                                                                                    Value="{Binding TemperatureFeelsLike}"
-                                                                                    Title="Feelslike">
                                                                                 </controls:DetailChipControl>
 
                                                                                 <controls:DetailChipControl
