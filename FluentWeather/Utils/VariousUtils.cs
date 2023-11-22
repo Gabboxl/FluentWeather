@@ -61,5 +61,20 @@ namespace FluentWeather.Utils
 
             return time.ToString(is12HourFormat ? "hh:mm tt" : "HH:mm", CultureInfo.InvariantCulture);
         }
+
+        public static string GetPrecipIconChance(int? precipChance)
+        {
+            string iconName = precipChance switch
+            {
+                < 15 or null => "blur0", 
+                < 36 => "blur1", 
+                < 50 => "blur2", 
+                < 70 => "blur3", 
+                < 85 => "blur4", 
+                < 100 => "blur5",
+            };
+
+            return iconName;
+        }
     }
 }

@@ -94,10 +94,13 @@ namespace FluentWeather.Adapters
         {
             get
             {
+                //different icon name for different precipitation ranges
+
+
                 return new SvgImageSource
                 {
                     //todo: to use different drop icon based on precip quantity
-                    UriSource = new Uri("ms-appx:///Assets/varicons/" + "blur" + ".svg")
+                    UriSource = new Uri("ms-appx:///Assets/varicons/" + VariousUtils.GetPrecipIconChance(CurrentObject.precipChance[ItemIndex]) + ".svg")
                 };
             }
         }

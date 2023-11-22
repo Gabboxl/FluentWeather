@@ -48,7 +48,7 @@ namespace FluentWeather.Adapters
             }
         }
 
-        public string PrecipitationChance
+        private int? PrecipChancePercentage
         {
             get
             {
@@ -60,12 +60,18 @@ namespace FluentWeather.Adapters
                     //return "--";
 
                     //return this evening's precip chance
-                    return CurrentObject.daypart[0].precipChance[ItemIndex * 2 + 1] + "%";
+                    return CurrentObject.daypart[0].precipChance[ItemIndex * 2 + 1];
                 }
-                else
-                {
-                    return precipChance + "%";
-                }
+
+                return precipChance;
+            }
+        }
+
+        public string PrecipitationChance
+        {
+            get
+            {
+                return PrecipChancePercentage + "%";
             }
         }
 
@@ -75,7 +81,7 @@ namespace FluentWeather.Adapters
             {
                 return new SvgImageSource
                 {
-                    UriSource = new Uri("ms-appx:///Assets/varicons/" + "blur" + ".svg")
+                    UriSource = new Uri("ms-appx:///Assets/varicons/" + VariousUtils.GetPrecipIconChance(PrecipChancePercentage) + ".svg")
                 };
             }
         }

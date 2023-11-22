@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -380,7 +380,12 @@
     <Content Include="Assets\StoreLogo.scale-150.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
-    <Content Include="Assets\varicons\blur.svg" />
+    <Content Include="Assets\varicons\blur0.svg" />
+    <Content Include="Assets\varicons\blur1.svg" />
+    <Content Include="Assets\varicons\blur2.svg" />
+    <Content Include="Assets\varicons\blur3.svg" />
+    <Content Include="Assets\varicons\blur4.svg" />
+    <Content Include="Assets\varicons\blur5.svg" />
     <Content Include="Assets\varicons\F.svg" />
     <Content Include="Assets\varicons\FQ.svg" />
     <Content Include="Assets\varicons\Moonrise.svg" />
