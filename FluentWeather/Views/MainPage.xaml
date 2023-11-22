@@ -357,7 +357,6 @@
                                            RelativePanel.Below="PlaceText"
                                            RelativePanel.AlignLeftWith="PlaceText" />
 
-
                             </RelativePanel>
 
                             <RelativePanel Grid.Column="1">
@@ -387,10 +386,8 @@
                             </Image>
 
                             <TextBlock x:Name="CurrentTempText" Text="temperature"
-
                                        Style="{StaticResource DisplayTextBlockStyle}"
                                        Margin="8,0,0,0"
-
                                        RelativePanel.RightOf="MainIcon" />
 
                             <TextBlock x:Name="MainPhraseText" Text="phrase"
@@ -439,19 +436,10 @@
                                 x:Uid="DewPointChipControl">
                             </controls:DetailChipControl>
 
-
-                            <!-- pollen panel -->
-                            <!--<controls:DetailChipControl
-                            x:Name="PollenPanel"
-                            Title="Pollen"
-                            >
-                        </controls:DetailChipControl>-->
-
                             <controls:DetailChipControl
                                 x:Name="UVIndexChipControl"
                                 x:Uid="UVIndexChipControl">
                             </controls:DetailChipControl>
-
 
                         </StackPanel>
 
@@ -601,6 +589,69 @@
                                                         VerticalContentAlignment="Stretch"
                                                         Background="Transparent"
                                                         BorderBrush="Transparent">
+
+                                                    <!-- detailed hourly data flyout -->
+                                                    <Button.Flyout>
+                                                        <MenuFlyout x:Name="HourlyDataFlyout">
+
+                                                            <MenuFlyoutItem>
+                                                                <MenuFlyoutItem.Template>
+                                                                    <ControlTemplate x:Name="FlyoutItemHourlyDataTemp">
+                                                                        <StackPanel VerticalAlignment="Center" Margin="16">
+
+                                                                            <TextBlock x:Name="HourlyDataTitleText"
+                                                                                       Text="{Binding Hour}"
+                                                                                       Style="{StaticResource SubtitleTextBlockStyle}"
+                                                                                       Margin="0,0,0,16" />
+
+                                                                            <controls1:UniformGrid Columns="3">
+
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding WindSpeed}"
+                                                                                    x:Uid="WindChipControl">
+                                                                                </controls:DetailChipControl>
+
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding CloudCover}"
+                                                                                    Title="Cloud cover">
+                                                                                </controls:DetailChipControl>
+
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding RainAmount}"
+                                                                                    Title="Rain amount">
+                                                                                </controls:DetailChipControl>
+
+                                                                                <!--<controls:DetailChipControl
+                                                                                    Value="{x:Bin}"
+                                                                                    x:Uid="PressureChipControl">
+                                                                                </controls:DetailChipControl>-->
+
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding Humidity}"
+                                                                                    x:Uid="HumidityChipControl">
+                                                                                </controls:DetailChipControl>
+
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding TemperatureFeelsLike}"
+                                                                                    Title="Feelslike">
+                                                                                </controls:DetailChipControl>
+
+                                                                                <controls:DetailChipControl
+                                                                                    Value="{Binding UvIndex}"
+                                                                                    x:Uid="UVIndexChipControl">
+                                                                                </controls:DetailChipControl>
+
+                                                                            </controls1:UniformGrid>
+
+                                                                        </StackPanel>
+                                                                    </ControlTemplate>
+                                                                </MenuFlyoutItem.Template>
+                                                            </MenuFlyoutItem>
+    
+                                                        </MenuFlyout>
+                                                    </Button.Flyout>
+
+
                                                     <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                                                         <Image x:Name="wetIcon"
@@ -667,6 +718,7 @@
                                                                    RelativePanel.AlignBottomWithPanel="True" />
 
                                                     </RelativePanel>
+
                                                 </Button>
                                             </Grid>
                                         </DataTemplate>

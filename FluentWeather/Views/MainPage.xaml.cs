@@ -444,9 +444,11 @@ namespace FluentWeather.Views
             EmulateDayButtonClick(0);
         }
 
-        private void LoadHourlyData(DateTimeOffset dayToLoad)
+        private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
             List<HourDataAdapter> hourlyDataAdapters = new();
+
+            WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
             int i = 0;
 
@@ -462,7 +464,7 @@ namespace FluentWeather.Views
 
                 while (_lastApiData.v3wxforecasthourly10day.validTimeLocal[h].Hour != 7)
                 {
-                    hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, h));
+                    hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, h, currentUnits));
 
                     h++;
                 }
@@ -475,7 +477,7 @@ namespace FluentWeather.Views
                     //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
                     if (date.Date == firstDate.Date.AddDays(daysDiff))
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i));
+                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i, currentUnits));
                     }
 
                     i++;
