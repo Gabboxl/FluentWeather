@@ -9,10 +9,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "ft",
                 WetUnits.m => "m",
-                WetUnits.s => "m",
+                WetUnits.e => "ft",
                 WetUnits.h => "ft",
+                WetUnits.s => "m",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -21,10 +21,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "F",
                 WetUnits.m => "C",
-                WetUnits.s => "C",
+                WetUnits.e => "F",
                 WetUnits.h => "C",
+                WetUnits.s => "C",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -33,10 +33,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "hg",
                 WetUnits.m => "mb/hPa",
-                WetUnits.s => "mb",
+                WetUnits.e => "hg",
                 WetUnits.h => "mb",
+                WetUnits.s => "mb",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -45,10 +45,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "in",
                 WetUnits.m => "mm", //TODO: beware that in case of snow this is cm (centimeters), instead of mm (millimeters)
-                WetUnits.s => "mm", //TODO: beware that in case of snow this is cm (centimeters), instead of mm (millimeters)
+                WetUnits.e => "in",
                 WetUnits.h => "mm", //SAME THING for hybrid
+                WetUnits.s => "mm", //TODO: beware that in case of snow this is cm (centimeters), instead of mm (millimeters)
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -57,10 +57,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "mi",
                 WetUnits.m => "km",
-                WetUnits.s => "m",
+                WetUnits.e => "mi",
                 WetUnits.h => "mi",
+                WetUnits.s => "m",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -69,10 +69,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "mi",
                 WetUnits.m => "km",
-                WetUnits.s => "km",
+                WetUnits.e => "mi",
                 WetUnits.h => "km",
+                WetUnits.s => "km",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -81,10 +81,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "mph",
                 WetUnits.m => "km/h",
-                WetUnits.s => "m/s",
+                WetUnits.e => "mph",
                 WetUnits.h => "mph",
+                WetUnits.s => "m/s",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
@@ -93,10 +93,10 @@ namespace FluentWeather.Utils
         {
             return wetUnits switch
             {
-                WetUnits.e => "ft",
                 WetUnits.m => "mtr", //???
-                WetUnits.s => "mtr", //??
+                WetUnits.e => "ft",
                 WetUnits.h => "ft",
+                WetUnits.s => "mtr", //??
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
