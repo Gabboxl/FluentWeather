@@ -41,14 +41,26 @@ namespace FluentWeather.Utils
             };
         }
 
-        public static string GetPrecipitationUnits(WetUnits wetUnits)
+        public static string GetLiquidPrecipitationUnits(WetUnits wetUnits)
         {
             return wetUnits switch
             {
-                WetUnits.m => "mm", //TODO: beware that in case of snow this is cm (centimeters), instead of mm (millimeters)
+                WetUnits.m => "mm",
                 WetUnits.e => "in",
-                WetUnits.h => "mm", //SAME THING for hybrid
-                WetUnits.s => "mm", //TODO: beware that in case of snow this is cm (centimeters), instead of mm (millimeters)
+                WetUnits.h => "mm",
+                WetUnits.s => "mm",
+                _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
+            };
+        }
+
+        public static string GetSnowPrecipitationUnits(WetUnits wetUnits)
+        {
+            return wetUnits switch
+            {
+                WetUnits.m => "cm",
+                WetUnits.e => "in",
+                WetUnits.h => "cm",
+                WetUnits.s => "cm",
                 _ => throw new ArgumentOutOfRangeException(nameof(wetUnits), wetUnits, null)
             };
         }
