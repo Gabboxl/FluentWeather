@@ -801,14 +801,14 @@
                                                    Foreground="{ThemeResource MyAcrylicBrushTitleText}"
                                                    RelativePanel.AlignTopWithPanel="True" />
 
-                                        <!-- horizontal line -->
                                         <Rectangle x:Name="Rectangle2"
                                                    Fill="{ThemeResource MyAcrylicBrushLine}"
                                                    Height="1.2"
                                                    RelativePanel.Below="DaySummaryInsightTitle"
-                                                   Width="288"
+                                                   RelativePanel.AlignRightWithPanel="True"
+                                                   RelativePanel.AlignLeftWithPanel="True"
                                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                                   Margin="0,6,0,0" />
+                                                   Margin="16,6,16,0" />
                                     </RelativePanel>
 
                                     <RelativePanel Grid.Row="1"
@@ -877,9 +877,10 @@
                                             Fill="{ThemeResource MyAcrylicBrushLine}"
                                             Height="1.2"
                                             RelativePanel.Below="SunInsightTitle"
-                                            Width="288"
+                                            RelativePanel.AlignRightWithPanel="True"
+                                            RelativePanel.AlignLeftWithPanel="True"
                                             RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                            Margin="0,6,0,0" />
+                                            Margin="16,6,16,0" />
                                     </RelativePanel>
 
                                     <Grid Grid.Row="1">
@@ -975,9 +976,10 @@
                                             Fill="{ThemeResource MyAcrylicBrushLine}"
                                             Height="1.2"
                                             RelativePanel.Below="MoonInsightTitle"
-                                            Width="288"
+                                            RelativePanel.AlignRightWithPanel="True"
+                                            RelativePanel.AlignLeftWithPanel="True"
                                             RelativePanel.AlignHorizontalCenterWithPanel="True"
-                                            Margin="0,6,0,0" />
+                                            Margin="16,6,16,0" />
                                     </RelativePanel>
 
                                     <Grid Grid.Row="1">
