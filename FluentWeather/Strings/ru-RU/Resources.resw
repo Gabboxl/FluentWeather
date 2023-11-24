@@ -265,6 +265,6 @@
     <value>Следующие часы:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Формат времени</value>
   </data>
 </root>
