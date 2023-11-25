@@ -265,7 +265,7 @@
     <value>次の時間帯:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>時間の形式</value>
+    <value>Time format</value>
   </data>
   <data name="CloudCoverControl.Title" xml:space="preserve">
     <value>Cloud cover</value>
