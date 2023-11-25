@@ -598,7 +598,7 @@
 
                                                             <MenuFlyoutItem>
                                                                 <MenuFlyoutItem.Template>
-                                                                    <ControlTemplate x:Name="FlyoutItemHourlyDataTemp">
+                                                                    <ControlTemplate x:Name="FlyoutItemHourlyDataTemp" TargetType="MenuFlyoutItem">
                                                                         <StackPanel VerticalAlignment="Center" Margin="16">
 
                                                                             <TextBlock x:Name="HourlyDataTitleText"
