@@ -4,7 +4,7 @@ namespace FluentWeather.Helpers
 {
     internal static class ResourceExtensions
     {
-        private static ResourceLoader _defaultResLoader = new ResourceLoader();
+        private static ResourceLoader _defaultResLoader = new();
 
         public static string GetLocalized(this string resourceKey, bool isNotTranslatable = false, string resourceFileName = null)
         {

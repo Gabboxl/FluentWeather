@@ -13,6 +13,7 @@
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:helpers="using:FluentWeather.Helpers"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
@@ -609,7 +610,7 @@
 
                                                                                 <controls:DetailChipControl
                                                                                     Value="{Binding TemperatureFeelsLike}"
-                                                                                    Title="Feels like">
+                                                                                    Title="{x:Bind helpers:ResourceExtensions.GetLocalized('FeelsLikeText', x:False, x:Null)}">
                                                                                 </controls:DetailChipControl>
 
                                                                                 <controls:DetailChipControl
@@ -619,12 +620,12 @@
 
                                                                                 <controls:DetailChipControl
                                                                                     Value="{Binding CloudCover}"
-                                                                                    Title="Cloud cover">
+                                                                                    x:Uid="CloudCoverControl">
                                                                                 </controls:DetailChipControl>
 
                                                                                 <controls:DetailChipControl
                                                                                     Value="{Binding RainAmount}"
-                                                                                    Title="Rain amount">
+                                                                                    x:Uid="RainAmountChipControl">
                                                                                 </controls:DetailChipControl>
 
                                                                                 <controls:DetailChipControl
@@ -697,7 +698,7 @@
 
                                                             <!-- precip chance text -->
                                                             <TextBlock x:Name="precipChanceText"
-                                                                       VerticalAlignment="Center"
+                                                                       
                                                                        Text="{x:Bind PrecipitationChance}">
                                                             </TextBlock>
                                                         </StackPanel>
