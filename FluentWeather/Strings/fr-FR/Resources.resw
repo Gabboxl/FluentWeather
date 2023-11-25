@@ -267,4 +267,10 @@ Les tuiles Live sont disponibles nativement sur Windows 10 seulement.</value>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Hours format</value>
   </data>
+  <data name="CloudCoverControl.Title" xml:space="preserve">
+    <value>Cloud cover</value>
+  </data>
+  <data name="RainAmountChipControl.Title" xml:space="preserve">
+    <value>Rain amount</value>
+  </data>
 </root>
