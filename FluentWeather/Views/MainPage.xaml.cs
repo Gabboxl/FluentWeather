@@ -486,7 +486,7 @@ namespace FluentWeather.Views
         }
 
 
-        private void LoadInsightsData(DateTimeOffset dayToLoad)
+        private async void LoadInsightsData(DateTimeOffset dayToLoad)
         {
             /*var indexOfDay =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
@@ -563,17 +563,17 @@ namespace FluentWeather.Views
 
             //sunset and sunrise
             var sunriseTime = _lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
-            SunriseTimeText.Text = sunriseTime == null ? "--" : sunriseTime.Value.ToString("h:mm tt");
+            SunriseTimeText.Text = sunriseTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(sunriseTime.Value.DateTime);
 
             var sunsetTime = _lastApiData.v3wxforecastdaily10day.sunsetTimeLocal[indexOfDayDailyData];
-            SunsetTimeText.Text = sunsetTime == null ? "--" : sunsetTime.Value.ToString("h:mm tt");
+            SunsetTimeText.Text = sunsetTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(sunsetTime.Value.DateTime);
 
             //moonrise and moonset
             var moonriseTime = _lastApiData.v3wxforecastdaily10day.moonriseTimeLocal[indexOfDayDailyData];
-            MoonriseTimeText.Text = moonriseTime == null ? "--" : moonriseTime.Value.ToString("h:mm tt");
+            MoonriseTimeText.Text = moonriseTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(moonriseTime.Value.DateTime);
 
             var moonsetTime = _lastApiData.v3wxforecastdaily10day.moonsetTimeLocal[indexOfDayDailyData];
-            MoonsetTimeText.Text = moonsetTime == null ? "--" : moonsetTime.Value.ToString("h:mm tt");
+            MoonsetTimeText.Text = moonsetTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(moonsetTime.Value.DateTime);
 
             //lunar phase
             var lunarPhase = _lastApiData.v3wxforecastdaily10day.moonPhase[indexOfDayDailyData];
