@@ -404,6 +404,8 @@ namespace FluentWeather.Views
                                     MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
                                     rootV3Response.v3wxobservationscurrent.windDirectionCardinal;
 
+            //CloudCoverChipControl.Value = rootV3Response.v3wxobservationscurrent.phrase;
+
             HumidityChipControl.Value = rootV3Response.v3wxobservationscurrent.relativeHumidity + "%";
 
             PressureChipControl.Value = rootV3Response.v3wxobservationscurrent.pressureMeanSeaLevel + " " +

@@ -234,7 +234,7 @@ namespace FluentWeather.Models
 
     public class V3WxObservationsCurrent
     {
-        public object cloudCeiling { get; set; }
+        public int? cloudCeiling { get; set; }
         public string cloudCoverPhrase { get; set; }
         public string dayOfWeek { get; set; }
         public string dayOrNight { get; set; }
