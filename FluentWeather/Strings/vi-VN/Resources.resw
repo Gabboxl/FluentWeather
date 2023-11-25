@@ -265,12 +265,12 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>Các giờ tiếp theo:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Định dạng thời gian</value>
   </data>
   <data name="CloudCoverControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Mây che phủ</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Lượng mưa</value>
   </data>
 </root>
