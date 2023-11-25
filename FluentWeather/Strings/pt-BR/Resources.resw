@@ -266,4 +266,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="NextHours" xml:space="preserve">
     <value>Próximas horas:</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>Formato de horas</value>
+  </data>
 </root>

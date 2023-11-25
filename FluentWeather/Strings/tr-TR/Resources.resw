@@ -264,4 +264,7 @@ Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
   <data name="NextHours" xml:space="preserve">
     <value>Gelecek saatlerde:</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>Hours format</value>
+  </data>
 </root>

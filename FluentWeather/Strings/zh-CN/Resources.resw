@@ -263,4 +263,7 @@
   <data name="NextHours" xml:space="preserve">
     <value>小时预报：</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>小时类型</value>
+  </data>
 </root>

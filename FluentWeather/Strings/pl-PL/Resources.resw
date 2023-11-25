@@ -264,4 +264,7 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
   <data name="NextHours" xml:space="preserve">
     <value>Następne godziny:</value>
   </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>Hours format</value>
+  </data>
 </root>
