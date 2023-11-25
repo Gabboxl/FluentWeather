@@ -265,12 +265,12 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
     <value>Nächste Stunden:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Zeitformat</value>
   </data>
   <data name="CloudCoverControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Bewölkung</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Regenmenge</value>
   </data>
 </root>
