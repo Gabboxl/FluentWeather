@@ -265,7 +265,7 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
     <value>Nächste Stunden:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Stundenformat</value>
+    <value>Time format</value>
   </data>
   <data name="CloudCoverControl.Title" xml:space="preserve">
     <value>Cloud cover</value>
