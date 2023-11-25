@@ -267,8 +267,8 @@
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Формат времени</value>
   </data>
-  <data name="CloudCoverControl.Title" xml:space="preserve">
-    <value>Облачный покров</value>
+  <data name="CloudCoverChipControl.Title" xml:space="preserve">
+    <value>Cloud cover</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Величина осадков</value>
