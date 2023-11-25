@@ -265,7 +265,7 @@
     <value>Наступні години:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Time format</value>
   </data>
   <data name="CloudCoverControl.Title" xml:space="preserve">
     <value>Cloud cover</value>
