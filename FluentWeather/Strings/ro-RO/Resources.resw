@@ -265,6 +265,6 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
     <value>Următoarele ore:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Time format</value>
   </data>
 </root>

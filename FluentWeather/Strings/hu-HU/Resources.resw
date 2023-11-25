@@ -265,6 +265,6 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
     <value>Következő órákban:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Time format</value>
   </data>
 </root>

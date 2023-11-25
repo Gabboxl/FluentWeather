@@ -265,6 +265,6 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
     <value>Ore successive:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Time format</value>
   </data>
 </root>

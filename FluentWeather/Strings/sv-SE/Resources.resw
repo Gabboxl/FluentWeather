@@ -265,6 +265,6 @@ Live Tiles är endast tillgängliga på Windows 10.</value>
     <value>Nästa timmar:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Time format</value>
   </data>
 </root>

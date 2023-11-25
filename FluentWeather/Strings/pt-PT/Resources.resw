@@ -265,6 +265,6 @@ Os Azulejos Vivos estão disponíveis apenas no Windows 10.</value>
     <value>Próximas horas:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Hours format</value>
+    <value>Time format</value>
   </data>
 </root>
