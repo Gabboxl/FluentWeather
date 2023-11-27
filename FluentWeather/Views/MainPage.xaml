@@ -606,10 +606,22 @@
                                                                     <ControlTemplate x:Name="FlyoutItemHourlyDataTemp" TargetType="MenuFlyoutItem">
                                                                         <StackPanel VerticalAlignment="Center" Margin="16">
 
-                                                                            <TextBlock x:Name="HourlyDataTitleText"
-                                                                                       Text="{Binding Hour}"
-                                                                                       Style="{StaticResource SubtitleTextBlockStyle}"
-                                                                                       Margin="0,0,0,16" />
+                                                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                                                                                <TextBlock x:Name="HourlyDataTitleText"
+                                                                                    VerticalAlignment="Center"
+                                                                                    Text="{Binding Hour}"
+                                                                                    Style="{StaticResource SubtitleTextBlockStyle}"
+                                                                                     />
+
+                                                                                <TextBlock
+                                                                                    VerticalAlignment="Center"
+                                                                                    Text=" - Detailed data"
+                                                                                    Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                                                    FontSize="18"
+                                                                                />
+                                                                            </StackPanel>
+                                                                            
 
                                                                             <controls1:UniformGrid Columns="3">
 
