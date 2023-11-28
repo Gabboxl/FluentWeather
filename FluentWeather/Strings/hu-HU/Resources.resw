@@ -273,4 +273,7 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Rain amount</value>
   </data>
+  <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
+    <value>Detailed data</value>
+  </data>
 </root>
