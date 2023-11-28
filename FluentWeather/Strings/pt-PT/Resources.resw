@@ -273,4 +273,7 @@ Os Azulejos Vivos estão disponíveis apenas no Windows 10.</value>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Rain amount</value>
   </data>
+  <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
+    <value>Detailed data</value>
+  </data>
 </root>

@@ -273,4 +273,7 @@ Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Yağmur Oranı</value>
   </data>
+  <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
+    <value>Detailed data</value>
+  </data>
 </root>

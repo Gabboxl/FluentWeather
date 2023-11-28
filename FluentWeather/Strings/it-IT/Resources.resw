@@ -273,4 +273,7 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Precipitazioni</value>
   </data>
+  <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
+    <value>Dati dettagliati</value>
+  </data>
 </root>
