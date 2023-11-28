@@ -265,12 +265,12 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
     <value>Ore successive:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Formato orario</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Nuvolosità</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Precipitazioni</value>
   </data>
 </root>
