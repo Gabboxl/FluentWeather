@@ -267,4 +267,10 @@ Live Tiles är endast tillgängliga på Windows 10.</value>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Time format</value>
   </data>
+  <data name="CloudCoverChipControl.Title" xml:space="preserve">
+    <value>Cloud cover</value>
+  </data>
+  <data name="RainAmountChipControl.Title" xml:space="preserve">
+    <value>Rain amount</value>
+  </data>
 </root>
