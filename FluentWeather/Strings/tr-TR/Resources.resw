@@ -265,6 +265,12 @@ Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
     <value>Gelecek saatlerde:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Zaman Formatı</value>
+  </data>
+  <data name="CloudCoverChipControl.Title" xml:space="preserve">
+    <value>Bulut Durumu</value>
+  </data>
+  <data name="RainAmountChipControl.Title" xml:space="preserve">
+    <value>Yağmur Oranı</value>
   </data>
 </root>
