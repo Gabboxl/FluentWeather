@@ -613,9 +613,19 @@
                                                                                     Style="{StaticResource SubtitleTextBlockStyle}"
                                                                                      />
 
+                                                                                <!-- only "-" characher textblock -->
+                                                                                <TextBlock
+                                                                                    Margin="4,0,2,0"
+                                                                                    VerticalAlignment="Center"
+                                                                                    Text="-"
+                                                                                    Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                                                    Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                                                    FontSize="18"></TextBlock>
+                                                                                
+
                                                                                 <TextBlock
                                                                                     VerticalAlignment="Center"
-                                                                                    Text=" - Detailed data"
+                                                                                    x:Uid="HourlyDetailedDataTitle"
                                                                                     Foreground="{ThemeResource TextFillColorTertiaryBrush}"
                                                                                     Style="{StaticResource BodyStrongTextBlockStyle}"
                                                                                     FontSize="18"
