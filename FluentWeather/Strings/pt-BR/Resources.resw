@@ -267,6 +267,12 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
     <value>Próximas horas:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Formato de horas</value>
+    <value>Time format</value>
+  </data>
+  <data name="CloudCoverChipControl.Title" xml:space="preserve">
+    <value>Cloud cover</value>
+  </data>
+  <data name="RainAmountChipControl.Title" xml:space="preserve">
+    <value>Rain amount</value>
   </data>
 </root>
