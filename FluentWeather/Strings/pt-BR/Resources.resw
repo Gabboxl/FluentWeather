@@ -276,6 +276,6 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
     <value>Rain amount</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Dados detalhados</value>
   </data>
 </root>
