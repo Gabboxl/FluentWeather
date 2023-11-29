@@ -274,6 +274,6 @@
     <value>Величина осадков</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Почасовые данные</value>
   </data>
 </root>
