@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>FluentWeather</value>
+    <value/>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
@@ -130,11 +130,11 @@
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>موافق</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>arabe</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -142,7 +142,7 @@
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Go ahead!</value>
+    <value>استمر!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
