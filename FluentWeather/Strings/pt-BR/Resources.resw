@@ -270,7 +270,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
     <value>Formato de hora</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Nebulosidade</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Quantidade de chuva</value>
