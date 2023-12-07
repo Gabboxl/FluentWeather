@@ -315,6 +315,7 @@
     <Page Include="Assets\insighticons\Insighticons.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Content Include="Assets\fluentweatherbanner.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
