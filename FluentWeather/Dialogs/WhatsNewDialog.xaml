@@ -10,20 +10,41 @@
     mc:Ignorable="d">
     <ContentDialog.TitleTemplate>
         <DataTemplate x:DataType="x:String">
-            <StackPanel Orientation="Horizontal">
-                <Image
-                    Width="40"
-                    Height="40"
-                    Source="ms-appx:///Assets/StoreLogo.png" />
-                <TextBlock
-                    VerticalAlignment="Center"
-                    Text="{x:Bind}" />
-            </StackPanel>
+            <RelativePanel Width="720">
+
+                <TextBlock x:Name="AppName" Margin="0,-4,0,0"
+                           VerticalAlignment="Center" FontSize="26"
+                           FontWeight="SemiBold" RelativePanel.AlignLeftWithPanel="True"
+                           Text="{x:Bind}" />
+
+                <Rectangle Width="712" Height="1"
+                           Margin="0,4,0,4" Fill="#5B5B5B"
+                           RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="AppName" />
+
+            </RelativePanel>
         </DataTemplate>
     </ContentDialog.TitleTemplate>
     <ScrollViewer>
         <StackPanel>
-            <TextBlock x:Name="WhatsNewTextBlock" TextWrapping="WrapWholeWords" />
+            <Image Width="770" Height="350"
+                   Margin="-24,-50,0,-70" Source="/Assets/fluentweatherbanner.png"
+                   Stretch="Uniform" />
+            
+            <TextBlock x:Name="WhatsNewTextBlock" TextWrapping="WrapWholeWords"
+                       Margin="0,8,0,0"  FontWeight="SemiBold" FontSize="14"/>
+            
+            <HyperlinkButton Margin="0,12,0,0" NavigateUri="http://github.com/Gabboxl/FluentWeather/releases/latest">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Grid Width="18" Height="18">
+                        <Path Data="{StaticResource GithubIconPath}"
+                              Stretch="Uniform"
+                              Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                    </Grid>
+
+                    <TextBlock x:Uid="ViewAllChanges" />
+                </StackPanel>
+            </HyperlinkButton>
+
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>

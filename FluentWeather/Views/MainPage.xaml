@@ -341,7 +341,8 @@
                             </Grid.ColumnDefinitions>
 
                             <RelativePanel
-                                Grid.Column="0">
+                                Grid.Column="0"
+                                Margin="4,0,0,0">
                                 <FontIcon x:Name="PlaceIcon"
                                           FontSize="24"
                                           RelativePanel.AlignVerticalCenterWithPanel="True"
@@ -1201,7 +1202,7 @@
                                                    Margin="0,16,0,0"
                                                    Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                        <StackPanel Margin="8,0,0,0">
+                                        <StackPanel>
 
                                             <RichTextBlock
                                                 Margin="0,16,0,0">
@@ -1215,27 +1216,35 @@
                                                 </Paragraph>
                                             </RichTextBlock>
 
-                                            <RichTextBlock
-                                                Margin="0,24,0,0">
-                                                <Paragraph>
-                                                    <Run FontStyle="Normal" FontWeight="Bold">FluentWeather</Run>
-                                                    <Run
-                                                        d:DataContext="{d:DesignInstance views:MainPage }"
-                                                        Foreground="#A2FFFFFF" Text="{Binding AppVersionText}">
-                                                    </Run>
-                                                    <Run x:Uid="DevelopedByRun"></Run>
-                                                    <Hyperlink
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        NavigateUri="https://github.com/Gabboxl">
-                                                        Gabboxl
-                                                    </Hyperlink>
-                                                </Paragraph>
-                                            </RichTextBlock>
+                                            <RelativePanel Margin="0,16,0,0">
+                                                
+                                                <TextBlock x:Name="AppText" Text="FluentWeather" FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True"/>
 
+                                                <Button Style="{ThemeResource TextButtonStyle}" x:Name="ChangelogButton"
+                                                        Click="VersionText_Click" Margin="-6,2,0,0"
+                                                        RelativePanel.AlignVerticalCenterWith="AppText"
+                                                        RelativePanel.RightOf="AppText">
+                                                    <Button.Content>
+                                                        <TextBlock Text="{Binding AppVersionText}"/>
+                                                    </Button.Content>
+                                                </Button>
+                                            
+                                                <RichTextBlock RelativePanel.RightOf="ChangelogButton"
+                                                               Margin="-8,0,0,0">
+                                                    <Paragraph>
+                                                        <Run x:Uid="DevelopedByRun"></Run>
+                                                        <Hyperlink
+                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                            NavigateUri="https://github.com/Gabboxl">
+                                                            Gabboxl
+                                                        </Hyperlink>
+                                                    </Paragraph>
+                                                </RichTextBlock>
+                                            </RelativePanel>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal"
-                                                    Margin="0,12,0,0"
+                                                    Margin="0,6,0,0"
                                                     HorizontalAlignment="Center">
 
                                             <HyperlinkButton NavigateUri="http://github.com/Gabboxl/FluentWeather">

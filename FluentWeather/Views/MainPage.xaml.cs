@@ -27,6 +27,7 @@ using CommunityToolkit.Labs.WinUI;
 using FluentWeather.Helpers;
 using FluentWeather.Services;
 using FluentWeather.Utils;
+using FluentWeather.Dialogs;
 using FluentWeather.Core.Helpers;
 
 namespace FluentWeather.Views
@@ -106,6 +107,11 @@ namespace FluentWeather.Views
             }
         }
 
+        private async void VersionText_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new WhatsNewDialog();
+            await dialog.ShowAsync();
+        }
 
         public MainPage()
         {
