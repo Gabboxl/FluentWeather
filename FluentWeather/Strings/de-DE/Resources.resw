@@ -277,6 +277,6 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
     <value>Detaillierte Daten</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Alle Änderungen anzeigen</value>
   </data>
 </root>
