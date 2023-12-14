@@ -276,4 +276,7 @@ Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Detaylı Veriler</value>
   </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
 </root>
