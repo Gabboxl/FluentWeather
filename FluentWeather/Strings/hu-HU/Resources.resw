@@ -276,4 +276,7 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Részletes adatok</value>
   </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
 </root>
