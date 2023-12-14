@@ -276,4 +276,7 @@ Live Tiles are available natively on Windows 10 only.</value>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Detailed data</value>
   </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
 </root>
