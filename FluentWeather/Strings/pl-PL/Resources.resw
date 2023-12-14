@@ -265,15 +265,15 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
     <value>Następne godziny:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Format czasu</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Zachmurzenie</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Opady</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Szczegółowe dane</value>
   </data>
 </root>

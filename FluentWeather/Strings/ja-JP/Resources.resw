@@ -274,6 +274,6 @@
     <value>降水量</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>詳しいデータ</value>
   </data>
 </root>

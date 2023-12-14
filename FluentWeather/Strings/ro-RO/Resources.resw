@@ -265,15 +265,15 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
     <value>Următoarele ore:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Format oră</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Plafon de nori</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Cantitate ploaie</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Informații detaliate</value>
   </data>
 </root>

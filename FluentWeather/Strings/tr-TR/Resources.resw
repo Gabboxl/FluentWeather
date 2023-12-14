@@ -158,13 +158,13 @@
     <value>Sürüş</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Kuru cilt</value>
+    <value>Cilt Kuruluğu</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Sulama ihtiyacı</value>
+    <value>Su İhtiyacı</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Rüzgar</value>
+    <value>Rüzgâr</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
     <value>Basınç</value>
@@ -274,6 +274,6 @@ Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
     <value>Yağmur Oranı</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Detaylı Veriler</value>
   </data>
 </root>
