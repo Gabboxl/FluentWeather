@@ -278,4 +278,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Dados detalhados</value>
   </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
 </root>
