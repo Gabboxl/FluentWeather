@@ -276,4 +276,7 @@ Les tuiles Live sont disponibles nativement sur Windows 10 seulement.</value>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Données détaillées</value>
   </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
 </root>
