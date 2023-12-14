@@ -276,4 +276,7 @@
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Детальні дані</value>
   </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
 </root>
