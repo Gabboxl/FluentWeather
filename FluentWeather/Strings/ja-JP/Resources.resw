@@ -277,6 +277,6 @@
     <value>詳しいデータ</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>すべての変更を表示する</value>
   </data>
 </root>
