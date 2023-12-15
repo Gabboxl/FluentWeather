@@ -277,6 +277,6 @@
     <value>Почасовые данные</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Посмотреть все изменения</value>
   </data>
 </root>
