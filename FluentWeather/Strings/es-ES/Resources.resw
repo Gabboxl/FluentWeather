@@ -265,18 +265,18 @@ LiveTiles solo están disponibles nativamente en Windows 10.</value>
     <value>Próximas horas:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Formato de hora</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Nubosidad</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Cantidad de lluvia</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Datos detallados</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Ver todos los cambios</value>
   </data>
 </root>
