@@ -274,6 +274,9 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
     <value>Regenmenge</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detailed data</value>
+    <value>Detaillierte Daten</value>
+  </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>Alle Änderungen anzeigen</value>
   </data>
 </root>
