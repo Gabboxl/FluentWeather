@@ -277,6 +277,6 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>Dữ liệu chi tiết,</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Xem tất cả thay đổi</value>
   </data>
 </root>
