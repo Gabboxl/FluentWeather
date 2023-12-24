@@ -279,4 +279,10 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Alle Änderungen anzeigen</value>
   </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
 </root>
