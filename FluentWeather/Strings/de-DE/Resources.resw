@@ -280,9 +280,9 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
     <value>Alle Änderungen anzeigen</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 Stunden</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 Stunden</value>
   </data>
 </root>
