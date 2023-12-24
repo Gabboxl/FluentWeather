@@ -1181,8 +1181,8 @@
                                             x:Name="TimeFormatSegmented"
                                             SelectionChanged="TimeFormatSegmented_OnSelectionChanged"
                                             d:DataContext="{d:DesignInstance views:MainPage }">
-                                            <labs:SegmentedItem Content="24 hours" />
-                                            <labs:SegmentedItem Content="12 hours" />
+                                            <labs:SegmentedItem x:Uid="Segmented24hours" />
+                                            <labs:SegmentedItem x:Uid="Segmented12hours" />
                                         </labs:Segmented>
 
 
