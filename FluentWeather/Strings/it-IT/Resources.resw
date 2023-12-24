@@ -277,6 +277,12 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
     <value>Dati dettagliati</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Visualizza tutti i cambiamenti</value>
+  </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
   </data>
 </root>
