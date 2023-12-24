@@ -280,9 +280,9 @@
     <value>すべての変更を表示する</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 時間制</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 時間制</value>
   </data>
 </root>
