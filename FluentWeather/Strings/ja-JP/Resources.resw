@@ -279,4 +279,10 @@
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>すべての変更を表示する</value>
   </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
 </root>
