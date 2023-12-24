@@ -11,8 +11,5 @@ namespace FluentWeather.ViewModels
             get { return _isLoadingData; }
             set { SetProperty(ref _isLoadingData, value); }
         }
-
-
-        public MainPageViewModel() { }
     }
 }
