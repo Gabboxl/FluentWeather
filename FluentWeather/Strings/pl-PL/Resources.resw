@@ -277,6 +277,12 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
     <value>Szczegółowe dane</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Zobacz wszystkie zmiany</value>
+  </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
   </data>
 </root>

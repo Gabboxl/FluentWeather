@@ -138,11 +138,11 @@
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Bun venit în FluentWeather!</value>
+    <value>Bun venit la FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Du-te înainte!</value>
+    <value>Mergeți înainte!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
@@ -277,6 +277,12 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
     <value>Informații detaliate</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Vedeți toate modificările</value>
+  </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
   </data>
 </root>

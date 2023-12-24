@@ -279,4 +279,10 @@ Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Tüm değişiklikleri göster</value>
   </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 Saat</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 Saat</value>
+  </data>
 </root>

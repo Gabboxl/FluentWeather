@@ -281,4 +281,10 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Visualizar todas as alterações</value>
   </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 horas</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 horas</value>
+  </data>
 </root>

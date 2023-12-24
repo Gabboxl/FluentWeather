@@ -277,6 +277,12 @@
     <value>Детальні дані</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Переглянути всі зміни</value>
+  </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
   </data>
 </root>

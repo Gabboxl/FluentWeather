@@ -279,4 +279,10 @@ Live Tiles chỉ có trên Windows 10.</value>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Xem tất cả thay đổi</value>
   </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 tiếng</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 tiếng</value>
+  </data>
 </root>
