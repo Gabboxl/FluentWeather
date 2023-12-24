@@ -280,9 +280,9 @@ LiveTiles solo están disponibles nativamente en Windows 10.</value>
     <value>Ver todos los cambios</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 horas</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 horas</value>
   </data>
 </root>
