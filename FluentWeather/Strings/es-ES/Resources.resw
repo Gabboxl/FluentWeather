@@ -279,4 +279,10 @@ LiveTiles solo están disponibles nativamente en Windows 10.</value>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Ver todos los cambios</value>
   </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
 </root>
