@@ -71,7 +71,7 @@ namespace FluentWeather.Utils
                 < 50 => "blur2", 
                 < 70 => "blur3", 
                 < 85 => "blur4", 
-                < 100 => "blur5",
+                <= 100 => "blur5",
             };
 
             return iconName;
