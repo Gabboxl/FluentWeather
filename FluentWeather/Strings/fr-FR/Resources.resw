@@ -280,9 +280,9 @@ Les tuiles Live sont disponibles nativement sur Windows 10 seulement.</value>
     <value>Voir tous les changements</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 heures</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 heures</value>
   </data>
 </root>

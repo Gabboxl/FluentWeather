@@ -280,9 +280,9 @@ Live Tiles zijn alleen beschikbaar op Windows 10.</value>
     <value>Alle wijzigingen weergeven</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 uur</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 uur</value>
   </data>
 </root>
