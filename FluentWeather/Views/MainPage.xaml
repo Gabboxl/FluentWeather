@@ -4,12 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:media2="using:Microsoft.UI.Xaml.Media"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="using:FluentWeather.Views"
     xmlns:controls="using:FluentWeather.Controls"
     xmlns:models="using:FluentWeather.Models"
     xmlns:adapters="using:FluentWeather.Adapters"
-    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:labs="using:CommunityToolkit.WinUI.Controls"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
     xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -19,7 +20,7 @@
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
 
     <Page.Resources>
-        <AcrylicBrush x:Key="MyAcrylicBrush"
+        <media2:AcrylicBrush x:Key="MyAcrylicBrush"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0"
@@ -28,7 +29,7 @@
                       d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
                       AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
-        <AcrylicBrush x:Key="MyAcrylicBrushLine"
+        <media2:AcrylicBrush x:Key="MyAcrylicBrushLine"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0"
@@ -37,7 +38,7 @@
                       d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
                       AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
-        <AcrylicBrush x:Key="MyAcrylicBrushTitleText"
+        <media2:AcrylicBrush x:Key="MyAcrylicBrushTitleText"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0.7"
@@ -46,7 +47,7 @@
                       d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
                       AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
-        <AcrylicBrush x:Key="MyAcrylicBrushButton"
+        <media2:AcrylicBrush x:Key="MyAcrylicBrushButton"
                       BackgroundSource="Backdrop"
                       TintColor="#222CFCFC"
                       TintOpacity="0.7"

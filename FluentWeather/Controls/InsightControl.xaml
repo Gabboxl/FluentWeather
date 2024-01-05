@@ -5,12 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:FluentWeather.Controls"
+    xmlns:media2="using:Microsoft.UI.Xaml.Media"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <UserControl.Resources>
-        <AcrylicBrush x:Key="MyAcrylicBrushBack"
+        <media2:AcrylicBrush x:Key="MyAcrylicBrushBack"
                       BackgroundSource="Backdrop"
                       TintColor="#FCFCFC"
                       TintOpacity="0"

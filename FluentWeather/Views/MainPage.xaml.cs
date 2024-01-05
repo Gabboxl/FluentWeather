@@ -23,12 +23,12 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Automation.Provider;
 using Windows.UI.Xaml.Input;
-using CommunityToolkit.Labs.WinUI;
 using FluentWeather.Helpers;
 using FluentWeather.Services;
 using FluentWeather.Utils;
 using FluentWeather.Dialogs;
 using FluentWeather.Core.Helpers;
+using CommunityToolkit.WinUI.Controls;
 
 namespace FluentWeather.Views
 {
@@ -139,7 +139,7 @@ namespace FluentWeather.Views
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            AppTitleTextBlock.Text = "" + AppInfo.Current.DisplayInfo.DisplayName;
+            AppTitleTextBlock.Text = "" + Windows.ApplicationModel.Package.Current.DisplayName;
             Window.Current.SetTitleBar(TitleBarGrid);
 
             //remove the solid-colored backgrounds behind the caption controls and system back button
