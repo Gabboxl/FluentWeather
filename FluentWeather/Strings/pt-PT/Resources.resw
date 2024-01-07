@@ -265,10 +265,10 @@ Os Azulejos Vivos estão disponíveis apenas no Windows 10.</value>
     <value>Próximas horas:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>Formato da hora</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Cobertura de nuvens</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
     <value>Rain amount</value>
