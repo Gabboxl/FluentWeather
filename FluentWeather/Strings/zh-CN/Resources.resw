@@ -158,7 +158,7 @@
     <value>驾车</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>干性皮肤</value>
+    <value>皮肤干燥</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
     <value>需水量</value>
@@ -185,7 +185,7 @@
     <value>每日预报</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>24小时预报</value>
+    <value>小时预报</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>天气信息</value>
