@@ -627,7 +627,7 @@ namespace FluentWeather.Views
         }
 
 
-        private void ReloadButton_OnClick(object sender, RoutedEventArgs e)
+        private void RefreshButton_OnClick(object sender, RoutedEventArgs e)
         {
             Task.Run(LoadApiData);
         }

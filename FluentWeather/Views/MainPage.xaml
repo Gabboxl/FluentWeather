@@ -227,18 +227,29 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="160"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <RelativePanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
 
                     <muxc:ProgressRing x:Name="DataProgressRing"
                                        IsTabStop="True"
                                        Width="22"
                                        Height="22"
                                        IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
-                                       Margin="8,0,0,0" />
-                </RelativePanel>
+                                       Margin="0,0,0,0" />
+                </Grid>
 
+            </Grid>
+
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="260" />
+                </Grid.ColumnDefinitions>
+
+                <AppBarButton x:Name="RefreshButton" Grid.Column="1" Icon="Refresh" IsCompact="False" Click="RefreshButton_OnClick" Width="52" x:Uid="RefreshButton"></AppBarButton>
             </Grid>
 
 
@@ -361,17 +372,6 @@
                                            RelativePanel.Below="PlaceText"
                                            RelativePanel.AlignLeftWith="PlaceText" />
 
-                            </RelativePanel>
-
-                            <RelativePanel Grid.Column="1">
-                                <Button Name="ReloadButton"
-                                        Click="ReloadButton_OnClick"
-                                        RelativePanel.AlignVerticalCenterWithPanel="True"
-                                        Margin="16,0,0,0">
-                                    <StackPanel>
-                                        <FontIcon Width="25" Glyph="&#xE72C;" FontFamily="{StaticResource FluentIcons}" />
-                                    </StackPanel>
-                                </Button>
                             </RelativePanel>
 
                         </Grid>
