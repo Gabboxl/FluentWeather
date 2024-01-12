@@ -42,7 +42,7 @@ namespace FluentWeather.Views
 
         private LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
 
-        private readonly AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
+        private readonly AppViewModel _appViewModel = AppViewModelHolder.GetViewModel();
 
         private static readonly HttpClient SharedClient = new()
         {
@@ -77,12 +77,7 @@ namespace FluentWeather.Views
                     settingsData = await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
                 }).Wait();
 
-                if (settingsData == default)
-                {
-                    return 0;
-                }
-
-                return settingsData;
+                return settingsData == default ? 0 : settingsData;
             }
         }
 
@@ -98,12 +93,7 @@ namespace FluentWeather.Views
                     is12HourFormat = await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat");
                 }).Wait();
 
-                if (is12HourFormat)
-                {
-                    return 1;
-                }
-
-                return 0;
+                return is12HourFormat ? 1 : 0;
             }
         }
 
@@ -128,7 +118,7 @@ namespace FluentWeather.Views
 
             InitializeStoryboards();
 
-            AppViewModel.UpdateUIAction += () => { Task.Run(LoadApiData); };
+            _appViewModel.UpdateUIAction += () => { Task.Run(LoadApiData); };
 
             Task.Run(LoadApiData);
         }

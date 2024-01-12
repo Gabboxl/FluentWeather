@@ -11,7 +11,7 @@ namespace FluentWeather
 {
     public sealed partial class App : Application
     {
-        private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
+        private AppViewModel _appViewModel = AppViewModelHolder.GetViewModel();
 
         private Lazy<ActivationService> _activationService;
 
@@ -60,7 +60,7 @@ namespace FluentWeather
 
 
             //set the global view model which we can use anytime for things
-            this.AppViewModel = AppViewModelHolder.GetViewModel();
+            this._appViewModel = AppViewModelHolder.GetViewModel();
         }
 
 
