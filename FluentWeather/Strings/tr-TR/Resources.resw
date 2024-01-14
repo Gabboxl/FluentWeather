@@ -158,10 +158,10 @@
     <value>Sürüş</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Cilt Kuruluğu</value>
+    <value>Cilt kuruluğu</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Su İhtiyacı</value>
+    <value>Su ihtiyacı</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Rüzgâr</value>
