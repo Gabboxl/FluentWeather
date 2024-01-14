@@ -280,9 +280,9 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
     <value>Vedeți toate modificările</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 de ore</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 ore</value>
   </data>
 </root>
