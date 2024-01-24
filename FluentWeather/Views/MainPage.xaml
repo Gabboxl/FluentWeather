@@ -231,13 +231,173 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="AppbarSettingsButton" Width="52">
+                        <StackPanel>
+                            <muxc:AnimatedIcon Width="20" x:Name='AnimatedIcon'>
+                                <muxc:AnimatedIcon.Source>
+                                    <animatedVisuals:AnimatedSettingsVisualSource />
+                                </muxc:AnimatedIcon.Source>
+                                <muxc:AnimatedIcon.FallbackIconSource>
+                                    <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
+                                </muxc:AnimatedIcon.FallbackIconSource>
+                            </muxc:AnimatedIcon>
+                        </StackPanel>
 
-                    <muxc:ProgressRing x:Name="DataProgressRing"
-                                       IsTabStop="True"
-                                       Width="22"
-                                       Height="22"
-                                       IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
-                                       Margin="0,0,0,0" />
+                        <Button.Flyout>
+                            <MenuFlyout x:Name="SettingsFlyout">
+
+                                <MenuFlyoutItem>
+                                    <MenuFlyoutItem.Template>
+                                        <ControlTemplate x:Name="FlyoutItemSettingsTemp">
+                                            <StackPanel VerticalAlignment="Center" Margin="16">
+                                                <TextBlock x:Uid="UnitsSettingsTitle"
+                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <labs:Segmented
+                                                    SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
+                                                    Margin="0,8,0,0"
+                                                    x:Name="UnitsSegmented"
+                                                    SelectionChanged="UnitsSegmented_OnSelectionChanged"
+                                                    d:DataContext="{d:DesignInstance views:MainPage }">
+                                                    <labs:SegmentedItem x:Uid="MetricUnitsItem" />
+                                                    <labs:SegmentedItem x:Uid="ImperialUnitsItem" />
+                                                    <labs:SegmentedItem x:Uid="HybridUnitsItem" />
+
+                                                </labs:Segmented>
+
+                                                <!-- 12/24 hour format segmented -->
+                                                <TextBlock x:Uid="TimeFormatSettingsTitle"
+                                                   Margin="0,16,0,0"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <labs:Segmented
+                                                    SelectedIndex="{Binding SettingsTimeFormatSelectedIndex}"
+                                                    Margin="0,8,0,0"
+                                                    x:Name="TimeFormatSegmented"
+                                                    SelectionChanged="TimeFormatSegmented_OnSelectionChanged"
+                                                    d:DataContext="{d:DesignInstance views:MainPage }">
+                                                    <labs:SegmentedItem x:Uid="Segmented24hours" />
+                                                    <labs:SegmentedItem x:Uid="Segmented12hours" />
+                                                </labs:Segmented>
+
+
+                                                <!-- toggle control to enable/disable acrylic effect -->
+                                                <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
+                                                   Margin="0,16,0,0"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <ToggleSwitch x:Name="AcrylicToggle"
+                                                  Margin="8,8,0,0"
+                                                  d:DataContext="{d:DesignInstance views:MainPage }"
+                                                  IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
+                                                  Toggled="AcrylicToggle_OnToggled" />
+
+
+                                                <TextBlock x:Uid="CreditsSettingsTitle"
+                                                   Margin="0,16,0,0"
+                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <StackPanel>
+
+                                                    <RichTextBlock
+                                                        Margin="0,16,0,0">
+                                                        <Paragraph>
+                                                            <Run x:Uid="InspiredByRun"></Run>
+                                                            <Hyperlink
+                                                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                                NavigateUri="https://twitter.com/zeealeid">
+                                                                @zeealeid
+                                                            </Hyperlink>
+                                                        </Paragraph>
+                                                    </RichTextBlock>
+
+                                                    <RelativePanel Margin="0,16,0,0">
+
+                                                        <TextBlock x:Name="AppText" Text="FluentWeather" FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True"/>
+
+                                                        <Button Style="{ThemeResource TextButtonStyle}" x:Name="ChangelogButton"
+                                                            Click="VersionText_Click" Margin="-6,2,0,0"
+                                                            RelativePanel.AlignVerticalCenterWith="AppText"
+                                                            RelativePanel.RightOf="AppText">
+                                                            <Button.Content>
+                                                                <TextBlock Text="{Binding AppVersionText}"/>
+                                                            </Button.Content>
+                                                        </Button>
+
+                                                        <RichTextBlock RelativePanel.RightOf="ChangelogButton"
+                                                            Margin="-8,0,0,0">
+                                                            <Paragraph>
+                                                                <Run x:Uid="DevelopedByRun"></Run>
+                                                                <Hyperlink
+                                                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                                    NavigateUri="https://github.com/Gabboxl">
+                                                                    Gabboxl
+                                                                </Hyperlink>
+                                                            </Paragraph>
+                                                        </RichTextBlock>
+                                                    </RelativePanel>
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal"
+                                                    Margin="0,6,0,0"
+                                                    HorizontalAlignment="Center">
+
+                                                    <HyperlinkButton NavigateUri="http://github.com/Gabboxl/FluentWeather">
+                                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                                            <Grid Width="18" Height="18">
+                                                                <Path
+                                                                Data="{StaticResource GithubIconPath}"
+                                                                Stretch="Uniform"
+                                                                Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                                            </Grid>
+
+                                                            <TextBlock x:Uid="GithubProjectButton" />
+                                                        </StackPanel>
+                                                    </HyperlinkButton>
+
+
+                                                    <HyperlinkButton x:Name="hyperlinkTranslate"
+                                                         RelativePanel.RightOf="hyperlinkVote"
+                                                         NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
+
+                                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                                            <Grid Width="18" Height="18">
+                                                                <Path
+                                                                    Data="{StaticResource TranslateIconPath}"
+                                                                    Stretch="Uniform"
+                                                                    Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                                            </Grid>
+
+                                                            <TextBlock x:Uid="TranslateAppText" />
+                                                        </StackPanel>
+                                                    </HyperlinkButton>
+
+
+                                                </StackPanel>
+
+
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </MenuFlyoutItem.Template>
+                                </MenuFlyoutItem>
+
+                                <!--<MenuFlyoutSeparator />
+
+
+                                    <MenuFlyoutItem Text="Esci"
+                                                    x:Name="LogoutButton2"
+                                                    Height="32"
+                                                    RenderTransformOrigin="2.13,0.797" HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Top">
+
+                                        <MenuFlyoutItem.Icon>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf3b1;" />
+                                            ~1~ or e966 @1@
+                                        </MenuFlyoutItem.Icon>
+                                    </MenuFlyoutItem>-->
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
                 </Grid>
 
             </Grid>
@@ -248,6 +408,14 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="260" />
                 </Grid.ColumnDefinitions>
+
+                <muxc:ProgressRing x:Name="DataProgressRing"
+                   Grid.Column="1"
+                   IsTabStop="True"
+                   Width="22"
+                   Height="22"
+                   IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
+                   Margin="12,0,0,0" />
 
                 <AppBarButton x:Name="RefreshButton" Grid.Column="1" Icon="Refresh" IsCompact="False" Click="RefreshButton_OnClick" Width="52" x:Uid="RefreshButton"></AppBarButton>
             </Grid>
@@ -623,7 +791,7 @@
                                                                                     Foreground="{ThemeResource TextFillColorTertiaryBrush}"
                                                                                     Style="{StaticResource BodyStrongTextBlockStyle}"
                                                                                     FontSize="18"></TextBlock>
-                                                                                
+
 
                                                                                 <TextBlock
                                                                                     VerticalAlignment="Center"
@@ -633,7 +801,7 @@
                                                                                     FontSize="18"
                                                                                 />
                                                                             </StackPanel>
-                                                                            
+
 
                                                                             <controls1:UniformGrid Columns="3">
 
@@ -678,7 +846,7 @@
                                                                     </ControlTemplate>
                                                                 </MenuFlyoutItem.Template>
                                                             </MenuFlyoutItem>
-    
+
                                                         </MenuFlyout>
                                                     </Button.Flyout>
 
@@ -1128,186 +1296,7 @@
                 </ScrollViewer>
             </RefreshContainer>
 
-
-            <Button Name="SettingsButton"
-                    HorizontalAlignment="Right"
-                    Grid.Row="1"
-                    VerticalAlignment="Bottom"
-                    Margin="0,0,24,24"
-                    Width="48"
-                    Height="48"
-                    Background="{ThemeResource MyAcrylicBrushButton}">
-
-                <StackPanel>
-                    <muxc:AnimatedIcon Width="25" x:Name='AnimatedIcon'>
-                        <muxc:AnimatedIcon.Source>
-                            <animatedVisuals:AnimatedSettingsVisualSource />
-                        </muxc:AnimatedIcon.Source>
-                        <muxc:AnimatedIcon.FallbackIconSource>
-                            <muxc:FontIconSource FontFamily="{StaticResource FluentIcons}" Glyph="&#xE713;" />
-                        </muxc:AnimatedIcon.FallbackIconSource>
-                    </muxc:AnimatedIcon>
-                </StackPanel>
-
-                <Button.Flyout>
-                    <MenuFlyout x:Name="SettingsFlyout">
-
-                        <MenuFlyoutItem>
-                            <MenuFlyoutItem.Template>
-                                <ControlTemplate x:Name="FlyoutItemSettingsTemp">
-                                    <StackPanel VerticalAlignment="Center" Margin="16">
-                                        <TextBlock x:Uid="UnitsSettingsTitle"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <labs:Segmented
-                                            SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
-                                            Margin="0,8,0,0"
-                                            x:Name="UnitsSegmented"
-                                            SelectionChanged="UnitsSegmented_OnSelectionChanged"
-                                            d:DataContext="{d:DesignInstance views:MainPage }">
-                                            <labs:SegmentedItem x:Uid="MetricUnitsItem" />
-                                            <labs:SegmentedItem x:Uid="ImperialUnitsItem" />
-                                            <labs:SegmentedItem x:Uid="HybridUnitsItem" />
-
-                                        </labs:Segmented>
-
-                                        <!-- 12/24 hour format segmented -->
-                                        <TextBlock x:Uid="TimeFormatSettingsTitle"
-                                                   Margin="0,16,0,0"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <labs:Segmented
-                                            SelectedIndex="{Binding SettingsTimeFormatSelectedIndex}"
-                                            Margin="0,8,0,0"
-                                            x:Name="TimeFormatSegmented"
-                                            SelectionChanged="TimeFormatSegmented_OnSelectionChanged"
-                                            d:DataContext="{d:DesignInstance views:MainPage }">
-                                            <labs:SegmentedItem x:Uid="Segmented24hours" />
-                                            <labs:SegmentedItem x:Uid="Segmented12hours" />
-                                        </labs:Segmented>
-
-
-                                        <!-- toggle control to enable/disable acrylic effect -->
-                                        <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
-                                                   Margin="0,16,0,0"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <ToggleSwitch x:Name="AcrylicToggle"
-                                                      Margin="8,8,0,0"
-                                                      d:DataContext="{d:DesignInstance views:MainPage }"
-                                                      IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
-                                                      Toggled="AcrylicToggle_OnToggled" />
-
-
-                                        <TextBlock x:Uid="CreditsSettingsTitle"
-                                                   Margin="0,16,0,0"
-                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                                        <StackPanel>
-
-                                            <RichTextBlock
-                                                Margin="0,16,0,0">
-                                                <Paragraph>
-                                                    <Run x:Uid="InspiredByRun"></Run>
-                                                    <Hyperlink
-                                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                        NavigateUri="https://twitter.com/zeealeid">
-                                                        @zeealeid
-                                                    </Hyperlink>
-                                                </Paragraph>
-                                            </RichTextBlock>
-
-                                            <RelativePanel Margin="0,16,0,0">
-                                                
-                                                <TextBlock x:Name="AppText" Text="FluentWeather" FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True"/>
-
-                                                <Button Style="{ThemeResource TextButtonStyle}" x:Name="ChangelogButton"
-                                                        Click="VersionText_Click" Margin="-6,2,0,0"
-                                                        RelativePanel.AlignVerticalCenterWith="AppText"
-                                                        RelativePanel.RightOf="AppText">
-                                                    <Button.Content>
-                                                        <TextBlock Text="{Binding AppVersionText}"/>
-                                                    </Button.Content>
-                                                </Button>
-                                            
-                                                <RichTextBlock RelativePanel.RightOf="ChangelogButton"
-                                                               Margin="-8,0,0,0">
-                                                    <Paragraph>
-                                                        <Run x:Uid="DevelopedByRun"></Run>
-                                                        <Hyperlink
-                                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                            NavigateUri="https://github.com/Gabboxl">
-                                                            Gabboxl
-                                                        </Hyperlink>
-                                                    </Paragraph>
-                                                </RichTextBlock>
-                                            </RelativePanel>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal"
-                                                    Margin="0,6,0,0"
-                                                    HorizontalAlignment="Center">
-
-                                            <HyperlinkButton NavigateUri="http://github.com/Gabboxl/FluentWeather">
-                                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                                    <Grid Width="18" Height="18">
-                                                        <Path
-                                                            Data="{StaticResource GithubIconPath}"
-                                                            Stretch="Uniform"
-                                                            Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
-                                                    </Grid>
-
-                                                    <TextBlock x:Uid="GithubProjectButton" />
-                                                </StackPanel>
-                                            </HyperlinkButton>
-
-
-                                            <HyperlinkButton x:Name="hyperlinkTranslate"
-                                                             RelativePanel.RightOf="hyperlinkVote"
-                                                             NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
-
-                                                <StackPanel Orientation="Horizontal" Spacing="10">
-                                                    <Grid Width="18" Height="18">
-                                                        <Path
-                                                            Data="{StaticResource TranslateIconPath}"
-                                                            Stretch="Uniform"
-                                                            Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
-                                                    </Grid>
-
-                                                    <TextBlock x:Uid="TranslateAppText" />
-                                                </StackPanel>
-                                            </HyperlinkButton>
-
-
-                                        </StackPanel>
-
-
-                                    </StackPanel>
-                                </ControlTemplate>
-                            </MenuFlyoutItem.Template>
-                        </MenuFlyoutItem>
-
-                        <!--<MenuFlyoutSeparator />
-
-
-                        <MenuFlyoutItem Text="Esci"
-                                        x:Name="LogoutButton2"
-                                        Height="32"
-                                        RenderTransformOrigin="2.13,0.797" HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Top">
-
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf3b1;" />
-                                ~1~ or e966 @1@
-                            </MenuFlyoutItem.Icon>
-                        </MenuFlyoutItem>-->
-                    </MenuFlyout>
-                </Button.Flyout>
-            </Button>
-
-
         </Grid>
-
 
     </Grid>
 
