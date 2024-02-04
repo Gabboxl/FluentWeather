@@ -277,12 +277,12 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
     <value>Részletes adatok</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Összes változtatás megtekintése</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 óra</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 óra</value>
   </data>
 </root>
