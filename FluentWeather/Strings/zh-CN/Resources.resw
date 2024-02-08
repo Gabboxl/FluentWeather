@@ -170,7 +170,7 @@
     <value>气压</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>空气湿度</value>
+    <value>湿度</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
     <value>能见度</value>
@@ -185,7 +185,7 @@
     <value>每日预报</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>24小时预报</value>
+    <value>每小时预报</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>天气信息</value>
@@ -245,7 +245,7 @@
     <value>UI 设计灵感来源于：</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>开发者:</value>
+    <value>开发者 :</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>翻译此应用</value>
@@ -279,9 +279,9 @@
     <value>查看所有更改</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 小时</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 小时</value>
   </data>
 </root>

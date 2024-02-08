@@ -158,10 +158,10 @@
     <value>Sürüş</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Cilt Kuruluğu</value>
+    <value>Cilt kuruluğu</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Su İhtiyacı</value>
+    <value>Su ihtiyacı</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Rüzgâr</value>
@@ -206,40 +206,40 @@
     <value>Gün Batımı</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Gün Doğumu</value>
+    <value>Gün doğumu</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
     <value>Ay</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Ayın Doğuşu</value>
+    <value>Ayın doğuşu</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Ay Batımı</value>
+    <value>Ayın batışı</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Ay Evresi</value>
+    <value>Ay evresi</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Birimler</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Akrilik efektler</value>
+    <value>Acrylic efektler</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Hazırlayanlar</value>
+    <value>Emeği geçenler</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub Projesi</value>
+    <value>GitHub projesi</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
     <value>Metrik</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Imperyal</value>
+    <value>Emperyal</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hibrid</value>
+    <value>Hibrit</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
     <value>Esinlenilen kullanıcı arayüzü tasarımı</value>
@@ -248,41 +248,41 @@
     <value>geliştiren</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Uygulamayı Çevir</value>
+    <value>Uygulamayı çevir</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
     <value>Güncellenme tarihi </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Canlı Hava Durumu</value>
+    <value>Hava Durumu Canlı Kutucuğu</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
     <value>İlk önce FluentWeather'ı başlat menüsüne sabitlemeniz gerekmektedir.
 
-Canlı Hava Durumu yalnızca Windows 10'da kullanılabilir.</value>
+Canlı Kutucuklar orijinal haliyle yalnızca Windows 10'da mevcuttur.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>Gelecek saatlerde:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Zaman Formatı</value>
+    <value>Zaman biçimi</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Bulut Durumu</value>
+    <value>Bulut durumu</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Yağmur Oranı</value>
+    <value>Yağmur miktarı</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Detaylı Veriler</value>
+    <value>Ayrıntılı veriler</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Tüm değişiklikleri göster</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 Saat</value>
+    <value>24 saat</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 Saat</value>
+    <value>12 saat</value>
   </data>
 </root>
