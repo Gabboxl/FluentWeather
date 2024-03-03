@@ -245,7 +245,7 @@
     <value>UI 设计灵感来源于：</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>开发者 :</value>
+    <value>开发者:</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>翻译此应用</value>

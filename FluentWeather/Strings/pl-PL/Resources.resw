@@ -280,9 +280,9 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
     <value>Zobacz wszystkie zmiany</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24-godzinny</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12-godzinny</value>
   </data>
 </root>

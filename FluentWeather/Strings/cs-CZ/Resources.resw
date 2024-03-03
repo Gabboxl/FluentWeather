@@ -185,7 +185,7 @@
     <value>Denní předpověď</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hodinově</value>
+    <value>Hodinová předpověď</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Informace o počasí</value>

@@ -126,7 +126,7 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>Novità di questa versione</value>
+    <value>What's new in this version</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -134,155 +134,155 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Cerca e seleziona la tua posizione qui sotto:</value>
+    <value>Search and select your location below:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Benvenuto in FluentWeather!</value>
+    <value>Welcome to FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Iniziamo!</value>
+    <value>Go ahead!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Trova un luogo...</value>
+    <value>Search a place...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Percepita</value>
+    <value>Feels like</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Corsa</value>
+    <value>Running</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Guida</value>
+    <value>Driving</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Pelle secca</value>
+    <value>Dry skin</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Necessità di innaffiamento</value>
+    <value>Watering need</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Vento</value>
+    <value>Wind</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressione</value>
+    <value>Pressure</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Umidità</value>
+    <value>Humidity</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibilità</value>
+    <value>Visibility</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Punto di rugiada</value>
+    <value>Dew Point</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>Indice UV</value>
+    <value>UV Index</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Previsioni giornaliere</value>
+    <value>Daily forecast</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Ogni ora</value>
+    <value>Hourly</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Approfondimenti meteo</value>
+    <value>Weather Insights</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Riepilogo giornata</value>
+    <value>Day Summary</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Giorno</value>
+    <value>Day</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Notte</value>
+    <value>Night</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sole</value>
+    <value>Sun</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Tramonto</value>
+    <value>Sunset</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Alba</value>
+    <value>Sunrise</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Luna</value>
+    <value>Moon</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Alba lunare</value>
+    <value>Moonrise</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Tramonto lunare</value>
+    <value>Moonset</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Fase lunare</value>
+    <value>Lunar phase</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Unità</value>
+    <value>Units</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Effetti acrilici</value>
+    <value>Acrylic effects</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Riconoscimenti</value>
+    <value>Credits</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>Progetto GitHub</value>
+    <value>GitHub project</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Metrico</value>
+    <value>Metric</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Imperiale</value>
+    <value>Imperial</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Ibrido</value>
+    <value>Hybrid</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>Design dell'UI ispirato dal lavoro di</value>
+    <value>UI design inspired by the work of</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>sviluppata da</value>
+    <value>developed by</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Traduci l'app</value>
+    <value>Translate the app</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Aggiornato il </value>
+    <value>Updated on </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>LiveTile meteo</value>
+    <value>Weather LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Devi prima aggiungere FluentWeather al menu Start.
+    <value>You have to pin FluentWeather to the start menu first.
 
-Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
+Live Tiles are available natively on Windows 10 only.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Ore successive:</value>
+    <value>Next hours:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Formato orario</value>
+    <value>Time format</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Nuvolosità</value>
+    <value>Cloud cover</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Precipitazioni</value>
+    <value>Rain amount</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Dettaglio dati</value>
+    <value>Detailed data</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>Visualizza tutti i cambiamenti</value>
+    <value>View all changes</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 ore</value>
+    <value>24 hours</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 ore</value>
+    <value>12 hours</value>
   </data>
 </root>
