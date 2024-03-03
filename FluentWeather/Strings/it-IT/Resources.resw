@@ -274,15 +274,15 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
     <value>Precipitazioni</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Dati dettagliati</value>
+    <value>Dettaglio dati</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Visualizza tutti i cambiamenti</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 ore</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 ore</value>
   </data>
 </root>
