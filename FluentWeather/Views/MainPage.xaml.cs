@@ -223,7 +223,10 @@ namespace FluentWeather.Views
         private async Task LoadApiData()
         {
             await CoreApplication.MainView.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal, () => { MainPageViewModel.IsLoadingData = true; }
+                CoreDispatcherPriority.Normal, () => {
+                    RefreshButton.Visibility = Visibility.Collapsed;
+                    MainPageViewModel.IsLoadingData = true;
+                }
             );
 
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
@@ -261,7 +264,10 @@ namespace FluentWeather.Views
 
 
             await CoreApplication.MainView.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal, () => { MainPageViewModel.IsLoadingData = false; }
+                CoreDispatcherPriority.Normal, () => {
+                    RefreshButton.Visibility = Visibility.Visible;
+                    MainPageViewModel.IsLoadingData = false;
+                }
             );
         }
 
