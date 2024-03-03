@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using Windows.Foundation;
-using Windows.Storage;
+﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using FluentWeather.Models;
-using Windows.UI.Xaml.Media.Imaging;
 using FluentWeather.Core.Helpers;
 using FluentWeather.Services;
-using Path = Windows.UI.Xaml.Shapes.Path;
 using Windows.UI.Xaml.Markup;
 
 namespace FluentWeather.Controls

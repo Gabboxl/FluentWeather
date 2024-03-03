@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using FluentWeather.Helpers;
 using FluentWeather.Models;
-using System.Linq;
 
 namespace FluentWeather.Utils
 {

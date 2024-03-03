@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
-using Windows.Storage;
 using Windows.UI.StartScreen;
-using Microsoft.Toolkit.Uwp.Notifications;
 using FluentWeather.Core.Helpers;
-using FluentWeather.Helpers;
-using FluentWeather.Models;
 using FluentWeather.Services;
-using Newtonsoft.Json;
-using FluentWeather.Utils;
 
 namespace FluentWeather.BackgroundTasks
 {

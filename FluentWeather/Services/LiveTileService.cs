@@ -11,7 +11,6 @@ using Windows.ApplicationModel.Activation;
 using Windows.Storage;
 using Windows.UI.Notifications;
 using Windows.UI.StartScreen;
-using FluentWeather.BackgroundTasks;
 
 namespace FluentWeather.Services
 {

@@ -7,7 +7,6 @@ using FluentWeather.Models;
 using FluentWeather.Utils;
 using Newtonsoft.Json;
 using Microsoft.AppCenter.Crashes;
-using System.Net.Mail;
 
 namespace FluentWeather.Services
 {
