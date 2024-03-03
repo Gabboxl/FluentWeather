@@ -227,7 +227,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="160"></ColumnDefinition>
+                    <ColumnDefinition Width="190"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -406,7 +406,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="260" />
+                    <ColumnDefinition Width="270" />
                 </Grid.ColumnDefinitions>
 
                 <muxc:ProgressRing x:Name="DataProgressRing"
@@ -426,7 +426,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="LeftMarginColumn" Width="190" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="240" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1" MaxWidth="500">
