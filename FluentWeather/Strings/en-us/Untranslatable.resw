@@ -118,7 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WhatsNew_Body" xml:space="preserve">
-    <value>1.4.0:
+    <value>1.4.2:
+- Moved Reload and Settings buttons to the appbar.
+- Simplified code
+- Updated dependencies
+- Updated translations
+
+1.4.1:
+- Fixed a crash
+- Simplified code
+- Updated dependencies
+- Updated translations
+
+1.4.0:
 - Added detailed hourly weather data! (Just click on an hour!)
 - Added support for 24 and 12 time formats! (You can change it in the app's settings)
 - Added new gradual precipitation chance icons
