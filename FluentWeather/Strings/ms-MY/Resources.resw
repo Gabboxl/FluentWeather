@@ -224,22 +224,22 @@
     <value>Unit</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>Kesan akrilik</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Credits</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>Projek GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Metric</value>
+    <value>Metrik</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
     <value>Imperial</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Hibrid</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
     <value>UI design inspired by the work of</value>
