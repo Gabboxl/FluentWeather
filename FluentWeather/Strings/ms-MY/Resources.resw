@@ -134,11 +134,11 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Cari dan pilih lokasi anda di bawah:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Selamat datang ke FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
@@ -146,7 +146,7 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Cari tempat...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>Feels like</value>
