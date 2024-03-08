@@ -194,13 +194,13 @@
     <value>Ringkasan Hari</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>Siang</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Malam</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Matahari</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
     <value>Sunset</value>
@@ -209,7 +209,7 @@
     <value>Sunrise</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Bulan</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
     <value>Moonrise</value>
@@ -221,7 +221,7 @@
     <value>Lunar phase</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Units</value>
+    <value>Unit</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
     <value>Acrylic effects</value>
