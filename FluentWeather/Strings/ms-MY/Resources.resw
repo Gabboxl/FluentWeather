@@ -203,19 +203,19 @@
     <value>Matahari</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Matahari terbenam</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Matahari terbit</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
     <value>Bulan</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Bulan terbit</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Bulan terbenam</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
     <value>Lunar phase</value>
