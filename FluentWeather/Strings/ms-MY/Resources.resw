@@ -130,7 +130,7 @@
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>Okey</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
@@ -188,7 +188,7 @@
     <value>Setiap jam</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>Cerapan Cuaca</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Ringkasan Hari</value>
@@ -218,7 +218,7 @@
     <value>Bulan terbenam</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Fasa rembulan</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Unit</value>
@@ -254,15 +254,15 @@
     <value>Dikemas kini pada </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>Jubin Langsung Cuaca</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Anda perlu menyemat FluentWeather pada menu mula dahulu.
 
-Live Tiles are available natively on Windows 10 only.</value>
+Jubin Langsung tersedia secara asli pada Windows 10 sahaja.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Next hours:</value>
+    <value>Jam seterusnya:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Format masa</value>
