@@ -179,7 +179,7 @@
     <value>Точка роси</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>Індекс UV</value>
+    <value>УФ-індекс</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
     <value>Щоденний прогноз</value>
