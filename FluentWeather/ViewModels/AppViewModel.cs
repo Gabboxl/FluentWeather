@@ -12,7 +12,7 @@ namespace FluentWeather.ViewModels
         public event Action UpdateUIAction;
 
         //https://stackoverflow.com/a/4378380/9008381
-        public void UpdateUI()
+        public async void UpdateUi()
         {
             UpdateUIAction?.Invoke();
         }

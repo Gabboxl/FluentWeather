@@ -29,6 +29,7 @@ using FluentWeather.Utils;
 using FluentWeather.Dialogs;
 using FluentWeather.Core.Helpers;
 using CommunityToolkit.WinUI.Controls;
+using Windows.System;
 
 namespace FluentWeather.Views
 {
@@ -115,15 +116,9 @@ namespace FluentWeather.Views
 
             this.DataContext = this; //DataContext = ViewModel;
             Initialize();
-
-            InitializeStoryboards();
-
-            _appViewModel.UpdateUIAction += () => { Task.Run(LoadApiData); };
-
-            Task.Run(LoadApiData);
         }
 
-        private async void Initialize()
+        private void Initialize()
         {
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -143,6 +138,13 @@ namespace FluentWeather.Views
             //NavigationService.Navigate(typeof(Views.DashWet));
 
             AppVersionText = GetVersionDescription();
+
+            InitializeStoryboards();
+
+            _appViewModel.UpdateUIAction += async () => { await Task.Run(LoadApiData); };
+            this.KeyDown += MainPage_KeyDown;
+
+            _appViewModel.UpdateUi();
         }
 
         private string GetVersionDescription()
@@ -215,8 +217,7 @@ namespace FluentWeather.Views
             //save location to settings
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
 
-
-            await Task.Run(LoadApiData);
+            _appViewModel.UpdateUi();
         }
 
 
@@ -635,7 +636,7 @@ namespace FluentWeather.Views
 
         private void RefreshButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Task.Run(LoadApiData);
+            _appViewModel.UpdateUi();
         }
 
         private async void UnitsSegmented_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -645,7 +646,7 @@ namespace FluentWeather.Views
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("selectedUnits", segmented.SelectedIndex);
 
-            await Task.Run(LoadApiData);
+            _appViewModel.UpdateUi();
         }
 
         private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -674,7 +675,7 @@ namespace FluentWeather.Views
 
         private void RefContainer_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
         {
-            Task.Run(LoadApiData);
+            _appViewModel.UpdateUi();
         }
 
         private async void TimeFormatSegmented_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -684,7 +685,20 @@ namespace FluentWeather.Views
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat", segmented.SelectedIndex == 1);
 
-            await Task.Run(LoadApiData);
+            _appViewModel.UpdateUi();
+        }
+
+        
+        private async void MainPage_KeyDown(object sender, KeyRoutedEventArgs args)
+        {
+            switch (args.Key)
+            {
+                case VirtualKey.F5:
+
+                    _appViewModel.UpdateUi();
+
+                    break;
+            }
         }
     }
 }

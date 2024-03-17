@@ -55,7 +55,7 @@ namespace FluentWeather.Dialogs
             }
             else
             {
-                AppViewModel.UpdateUI();
+                AppViewModel.UpdateUi();
             }
         }
 
