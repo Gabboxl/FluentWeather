@@ -34,7 +34,7 @@ namespace FluentWeather
 
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             //this.Suspending += OnSuspending;
             Container = ConfigureDependencyInjection();
 
@@ -60,7 +60,7 @@ namespace FluentWeather
 
 
             //set the global view model which we can use anytime for things
-            this._appViewModel = AppViewModelHolder.GetViewModel();
+            _appViewModel = AppViewModelHolder.GetViewModel();
         }
 
 

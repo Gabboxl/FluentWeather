@@ -27,14 +27,13 @@ namespace FluentWeather.Dialogs
             // TODO: Update the contents of this dialog with any important information you want to show when the app is used for the first time.
             RequestedTheme = ((FrameworkElement) Window.Current.Content).RequestedTheme;
 
-            this.Closing += DialogClosingEvent;
-
+            Closing += DialogClosingEvent;
 
             //make the primary button colored
-            this.DefaultButton = ContentDialogButton.Primary;
+            DefaultButton = ContentDialogButton.Primary;
 
             //disable primary button until user selects a location
-            this.IsPrimaryButtonEnabled = false;
+            IsPrimaryButtonEnabled = false;
 
             //FullSizeDesired = true;
 
@@ -99,7 +98,7 @@ namespace FluentWeather.Dialogs
             //save location to settings
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
 
-            this.IsPrimaryButtonEnabled = true;
+            IsPrimaryButtonEnabled = true;
 
             //set the focus back to the dialog, to prevent the focus to go behind the dialog
             //this.Focus(FocusState.Unfocused);

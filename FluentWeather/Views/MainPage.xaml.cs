@@ -106,14 +106,14 @@ namespace FluentWeather.Views
         public MainPage()
         {
             //use the EntranceNavigationTransition when showing the page at startup (pageload)
-            this.Transitions = new TransitionCollection
+            Transitions = new TransitionCollection
             {
                 new EntranceThemeTransition()
             };
 
             InitializeComponent();
 
-            this.DataContext = this; //DataContext = ViewModel;
+            DataContext = this; //DataContext = ViewModel;
             Initialize();
         }
 
@@ -141,7 +141,7 @@ namespace FluentWeather.Views
             InitializeStoryboards();
 
             _appViewModel.UpdateUIAction += async () => { await Task.Run(LoadApiData); };
-            this.KeyDown += MainPage_KeyDown;
+            KeyDown += MainPage_KeyDown;
 
             _appViewModel.UpdateUi();
         }

@@ -51,8 +51,6 @@ namespace FluentWeather.Controls
         {
             var finalLevel = InsightLevel.None;
 
-            SolidColorBrush brush = new SolidColorBrush();
-
             if (levels.ContainsKey(level))
             {
                 finalLevel = levels[level];
@@ -75,7 +73,7 @@ namespace FluentWeather.Controls
 
         public InsightControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

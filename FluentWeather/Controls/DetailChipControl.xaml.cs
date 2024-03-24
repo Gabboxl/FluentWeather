@@ -52,7 +52,7 @@ namespace FluentWeather.Controls
 
         public DetailChipControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }
