@@ -633,6 +633,9 @@ namespace FluentWeather.Views
         {
             var segmented = (Segmented) sender;
 
+            if (!segmented.IsLoaded)
+                return;
+
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("selectedUnits", segmented.SelectedIndex);
 
@@ -671,6 +674,9 @@ namespace FluentWeather.Views
         private async void TimeFormatSegmented_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var segmented = (Segmented) sender;
+
+            if (!segmented.IsLoaded)
+                return;
 
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat", segmented.SelectedIndex == 1);
