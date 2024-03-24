@@ -24,9 +24,9 @@ namespace FluentWeather.Controls
                 nameof(Insight),
                 typeof(Insight),
                 typeof(InsightControl),
-                new PropertyMetadata(null, new PropertyChangedCallback(OnTitleChanged)));
+                new PropertyMetadata(null, OnTitleChanged));
 
-        private static async void OnTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var currentInstance = (InsightControl) d;
 

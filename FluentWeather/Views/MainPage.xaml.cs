@@ -50,7 +50,6 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/"),
         };
 
-
         private readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
         private RootV3Response _lastApiData;
@@ -263,7 +262,6 @@ namespace FluentWeather.Views
                 );
             }
 
-
             await CoreApplication.MainView.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal, () => {
                     RefreshButton.Visibility = Visibility.Visible;
@@ -271,7 +269,6 @@ namespace FluentWeather.Views
                 }
             );
         }
-
 
         /// <summary>
         /// storyboards code
@@ -317,7 +314,6 @@ namespace FluentWeather.Views
             };
         }
 
-
         private void InitializeStoryboards()
         {
             _storyboard1 = CreateCrossfadeStoryboard(Image1, Image2);
@@ -354,7 +350,6 @@ namespace FluentWeather.Views
 
             return storyboard;
         }
-
 
         private async void UpdateUi(RootV3Response rootV3Response)
         {
@@ -437,7 +432,6 @@ namespace FluentWeather.Views
                 i++;
             }
 
-
             RepeaterDays.ItemsSource = dayButtonAdapters;
 
             //select first day button
@@ -451,7 +445,6 @@ namespace FluentWeather.Views
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
             int i = 0;
-
 
             var firstDate = _lastApiData.v3wxforecasthourly10day.validTimeLocal[0];
 
@@ -489,7 +482,6 @@ namespace FluentWeather.Views
 
             HourlyListview.ItemsSource = hourlyDataAdapters;
         }
-
 
         private async void LoadInsightsData(DateTimeOffset dayToLoad)
         {
@@ -591,7 +583,6 @@ namespace FluentWeather.Views
             LunarphaseIcon.Source = svgImageSource;
         }
 
-
         private void DayButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
@@ -632,7 +623,6 @@ namespace FluentWeather.Views
             var ip = ap.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
             ip?.Invoke();
         }
-
 
         private void RefreshButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -688,8 +678,7 @@ namespace FluentWeather.Views
             _appViewModel.UpdateUi();
         }
 
-        
-        private async void MainPage_KeyDown(object sender, KeyRoutedEventArgs args)
+        private void MainPage_KeyDown(object sender, KeyRoutedEventArgs args)
         {
             switch (args.Key)
             {
