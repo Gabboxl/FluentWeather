@@ -126,11 +126,11 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>此版本有什麼新內容</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>好的</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>歡迎使用 FluentWeather！</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
@@ -248,10 +248,10 @@
     <value>developed by</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Translate the app</value>
+    <value>翻譯此應用程式</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>更新於 </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>Weather LiveTile</value>
@@ -262,10 +262,10 @@
 Live Tiles are available natively on Windows 10 only.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Next hours:</value>
+    <value>未來幾小時：</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>Time format</value>
+    <value>時間格式</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
     <value>Cloud cover</value>
