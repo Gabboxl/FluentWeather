@@ -126,7 +126,7 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>Uutta tässä versiossa</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -134,11 +134,11 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Etsi ja valitse sijaintisi alla:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Tervetuloa FluentWeatheriin!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
@@ -146,123 +146,123 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Etsi paikka...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Feels like</value>
+    <value>Tuntuu kuin</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Running</value>
+    <value>Juokseminen</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Driving</value>
+    <value>Ajaminen</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>Kuiva iho</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>Kasteluntarve</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Wind</value>
+    <value>Tuuli</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Ilmanpaine</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Humidity</value>
+    <value>Kosteus</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibility</value>
+    <value>Näkyvyys</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>Kastepiste</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>UV Index</value>
+    <value>UV-indeksi</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Daily forecast</value>
+    <value>Päivittäinen ennuste</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hourly</value>
+    <value>Tunneittain</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>Sää näkemykset</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Day Summary</value>
+    <value>Päivän yhteenveto</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>Päivä</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Yö</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Aurinko</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Auringonlasku</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Auringonnousu</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Kuu</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Kuunnousu</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Kuunlasku</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Kuun vaihe</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
-    <value>Units</value>
+    <value>Yksiköt</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>Akryyliefektit</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
-    <value>Credits</value>
+    <value>Tekijät</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>GitHub-projekti</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Metric</value>
+    <value>Metrinen</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Imperial</value>
+    <value>Imperiaalinen</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Hybridi</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
     <value>UI design inspired by the work of</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>developed by</value>
+    <value>kehittänyt</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>Translate the app</value>
+    <value>Käännä tämä sovellus</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>Päivitetty </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>Sää LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Sinun täytyy kiinnittää FluentWeather aloitusvalikkoon ensin.
 
-Live Tiles are available natively on Windows 10 only.</value>
+Live Tileja on saatavilla vain Windows 10:ssä.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Next hours:</value>
+    <value>Seuraavat tunnit:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Time format</value>
