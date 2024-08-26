@@ -152,7 +152,7 @@
     <value>Sensação térmica</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Correndo</value>
+    <value>Executando</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
     <value>Dirigindo</value>
@@ -188,7 +188,7 @@
     <value>De hora em hora</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Informações Sobre o Clima</value>
+    <value>Informações sobre o Clima</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Resumo do Dia</value>
@@ -206,7 +206,7 @@
     <value>Pôr do sol</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Amanhecer</value>
+    <value>Nascer do sol</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
     <value>Lua</value>
@@ -224,7 +224,7 @@
     <value>Unidades</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Efeitos acríticos</value>
+    <value>Efeitos de acrílico</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Créditos</value>
@@ -233,7 +233,7 @@
     <value>Projeto do GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Métrico</value>
+    <value>Métrica</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
     <value>Imperial</value>
