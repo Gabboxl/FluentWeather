@@ -123,7 +123,7 @@ namespace FluentWeather.Views
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            AppTitleTextBlock.Text = "" + Windows.ApplicationModel.Package.Current.DisplayName;
+            AppTitleTextBlock.Text = "" + Package.Current.DisplayName;
             Window.Current.SetTitleBar(TitleBarGrid);
 
             //remove the solid-colored backgrounds behind the caption controls and system back button
@@ -291,8 +291,7 @@ namespace FluentWeather.Views
                 Image1.Source = newImage;
             }
 
-            //remeber that the imageopened event is fired only when the image is shown in some way :( so we need to set the image soiurce before
-
+            //remeber that the imageopened event is fired only when the image is shown in some way :( so we need to set the image source before
 
             //this ensures the animation is played only when the image is loaded
             newImage.ImageOpened += (sender, args) =>

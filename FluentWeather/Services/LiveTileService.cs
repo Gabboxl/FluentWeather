@@ -147,9 +147,9 @@ namespace FluentWeather.Services
         }
 
 
-        public async Task SaveSettingsAsync(bool newValue, string SettingsKey)
+        public async Task SaveSettingsAsync(bool newValue, string settingsKey)
         {
-            await ApplicationData.Current.LocalSettings.SaveAsync(SettingsKey, newValue);
+            await ApplicationData.Current.LocalSettings.SaveAsync(settingsKey, newValue);
         }
 
 
