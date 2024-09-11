@@ -242,7 +242,7 @@
     <value>Гибридная</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>Дизайн пользовательского интерфейса, основанный на работе</value>
+    <value>Дизайн пользовательского интерфейса вдохновлён работой</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
     <value>разработано</value>

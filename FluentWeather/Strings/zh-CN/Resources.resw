@@ -264,7 +264,7 @@
     <value>小时预报：</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
-    <value>时间类型</value>
+    <value>时间格式</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
     <value>云层厚度</value>
