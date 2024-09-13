@@ -2,14 +2,12 @@
 
 namespace FluentWeather.ViewModels
 {
-    public class MainPageViewModel : ObservableObject
+    public partial class MainPageViewModel : ObservableObject
     {
+        [ObservableProperty]
         private bool _isLoadingData;
 
-        public bool IsLoadingData
-        {
-            get { return _isLoadingData; }
-            set { SetProperty(ref _isLoadingData, value); }
-        }
+        [ObservableProperty]
+        public string _appVersionText;
     }
 }

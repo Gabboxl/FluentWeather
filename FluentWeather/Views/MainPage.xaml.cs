@@ -57,15 +57,6 @@ namespace FluentWeather.Views
 
         private Button _lastSelectedDayButton;
 
-        private string _appVersionText;
-
-        public string AppVersionText
-        {
-            get { return _appVersionText; }
-            set { Set(ref _appVersionText, value); }
-        }
-
-
         public int SettingsUnitsSelectedIndex
         {
             get
@@ -137,7 +128,7 @@ namespace FluentWeather.Views
             //pagina di default
             //NavigationService.Navigate(typeof(Views.DashWet));
 
-            AppVersionText = GetVersionDescription();
+            MainPageViewModel.AppVersionText = GetVersionDescription();
 
             InitializeStoryboards();
 
@@ -157,23 +148,6 @@ namespace FluentWeather.Views
 
             return $"v{version.Major}.{version.Minor}.{version.Build}";
         }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void Set<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (Equals(storage, value))
-            {
-                return;
-            }
-
-            storage = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private void OnPropertyChanged(string propertyName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
         internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -197,15 +171,7 @@ namespace FluentWeather.Views
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
-
-                    //foreach (var location in myDeserializedClass.location)
-                    //{
-                    //    Debug.WriteLine(location.address);
-                    //}
-
                     List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
-                    // the select statement above is the same as the foreach below
-
                     sender.ItemsSource = finalitems;
                 }
             }

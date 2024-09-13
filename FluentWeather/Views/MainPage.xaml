@@ -320,7 +320,9 @@
                                                             RelativePanel.AlignVerticalCenterWith="AppText"
                                                             RelativePanel.RightOf="AppText">
                                                             <Button.Content>
-                                                                <TextBlock Text="{Binding AppVersionText}"/>
+                                                                <TextBlock
+                                                                    d:DataContext="{d:DesignInstance views:MainPage }"
+                                                                    Text="{Binding MainPageViewModel.AppVersionText}"/>
                                                             </Button.Content>
                                                         </Button>
 

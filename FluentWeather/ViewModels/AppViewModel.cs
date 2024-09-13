@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace FluentWeather.ViewModels
 {
-    public class AppViewModel : ObservableObject
+    public partial class AppViewModel : ObservableObject
     {
         //delegate to request ui update
         //public delegate void RequestUiUpdateDelegate();
@@ -16,5 +16,6 @@ namespace FluentWeather.ViewModels
         {
             UpdateUIAction?.Invoke();
         }
+
     }
 }
