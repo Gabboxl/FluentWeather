@@ -285,4 +285,7 @@ Ubin Langsung hanya tersedia di Windows 10.</value>
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 jam</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
 </root>
