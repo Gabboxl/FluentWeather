@@ -285,4 +285,7 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 óra</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
 </root>
