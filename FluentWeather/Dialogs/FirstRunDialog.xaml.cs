@@ -1,9 +1,7 @@
 ﻿using FluentWeather.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,13 +13,7 @@ namespace FluentWeather.Dialogs
 {
     public sealed partial class FirstRunDialog : ContentDialog
     {
-        private static HttpClient sharedClient = new()
-        {
-            BaseAddress = new Uri("https://api.weather.com/v3/"),
-        };
-
         private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
-
 
         public FirstRunDialog()
         {
