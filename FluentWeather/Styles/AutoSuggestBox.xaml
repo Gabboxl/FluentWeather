@@ -438,6 +438,26 @@
                                     <ListView.ItemContainerTransitions>
                                         <contract7NotPresent:TransitionCollection />
                                     </ListView.ItemContainerTransitions>
+                                    <ListView.Header>
+                                        <Grid x:Name="AutoSuggestBoxFooterRoot" Visibility="Visible">
+                                            <!--<Rectangle Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                                                       Fill="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"></Rectangle>-->
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <local:ProgressRing x:Name="DataProgressRing"
+                                                                    Grid.Column="1"
+                                                                    IsTabStop="True"
+                                                                    Width="22"
+                                                                    Height="22"
+                                                                    IsActive="True"
+                                                                    Margin="12,0,0,0" />
+                                                <TextBlock Padding="16,16,16,12" 
+                                                           FontFamily="Segoe UI Variable Small"
+                                                           FontSize="12"
+                                                           Foreground="{ThemeResource TextFillColorTertiary}">Searching...</TextBlock>
+                                            </StackPanel>
+
+                                        </Grid>
+                                    </ListView.Header>
                                 </ListView>
                             </Border>
                         </Popup>

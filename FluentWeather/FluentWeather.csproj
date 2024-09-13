@@ -185,6 +185,7 @@
     <Compile Include="Adapters\DayButtonAdapter.cs" />
     <Compile Include="BackgroundTasks\BackgroundTask.cs" />
     <Compile Include="BackgroundTasks\LiveTileBackgroundTask.cs" />
+    <Compile Include="Controls\BetterAutoSuggestBox.cs" />
     <Compile Include="Controls\InsightControl.xaml.cs">
       <DependentUpon>InsightControl.xaml</DependentUpon>
     </Compile>
@@ -201,6 +202,7 @@
     <Compile Include="Helpers\EnumToBooleanConverter.cs" />
     <Compile Include="Helpers\NavHelper.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
+    <Compile Include="Helpers\VisualTreeSearchHelper.cs" />
     <Compile Include="Models\IconsDictionary.cs" />
     <Compile Include="Models\Insight.cs" />
     <Compile Include="Models\WetModels.cs" />

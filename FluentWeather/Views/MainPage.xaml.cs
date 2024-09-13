@@ -30,6 +30,7 @@ using FluentWeather.Dialogs;
 using FluentWeather.Core.Helpers;
 using CommunityToolkit.WinUI.Controls;
 using Windows.System;
+using FluentWeather.Controls;
 
 namespace FluentWeather.Views
 {
@@ -175,6 +176,8 @@ namespace FluentWeather.Views
 
         private async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
+            sender.ShowHideLoadingHeader(true);
+
             // Since selecting an item will also change the text,
             // only listen to changes caused by user entering text.
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
@@ -205,6 +208,8 @@ namespace FluentWeather.Views
                     sender.ItemsSource = finalitems;
                 }
             }
+
+            sender.ShowHideLoadingHeader(false);
         }
 
         private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender,
