@@ -51,7 +51,7 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/"),
         };
 
-        private readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+        private static readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
         private RootV3Response _lastApiData;
 
@@ -144,6 +144,8 @@ namespace FluentWeather.Views
             _appViewModel.UpdateUIAction += async () => { await Task.Run(LoadApiData); };
             KeyDown += MainPage_KeyDown;
 
+            AutoSuggestBoxMain.TextChanged += AutoSuggestBox_TextChanged;
+
             _appViewModel.UpdateUi();
         }
 
@@ -174,7 +176,7 @@ namespace FluentWeather.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
-        private async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             sender.ShowHideLoadingHeader(true);
 
@@ -194,13 +196,12 @@ namespace FluentWeather.Views
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-
                     var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
 
-                    foreach (var location in myDeserializedClass.location)
-                    {
-                        Debug.WriteLine(location.address);
-                    }
+                    //foreach (var location in myDeserializedClass.location)
+                    //{
+                    //    Debug.WriteLine(location.address);
+                    //}
 
                     List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
                     // the select statement above is the same as the foreach below

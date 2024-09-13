@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluentWeather.Helpers;
 using FluentWeather.ViewModels;
+using FluentWeather.Views;
 
 namespace FluentWeather.Dialogs
 {
@@ -58,36 +59,9 @@ namespace FluentWeather.Dialogs
             }
         }
 
-
-        private async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            // Since selecting an item will also change the text,
-            // only listen to changes caused by user entering text.
-            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
-                && !string.IsNullOrEmpty(sender.Text))
-            {
-                var language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-
-                var response = await sharedClient.GetAsync("location/searchflat?query=" + sender.Text + "&language=" +
-                                                           language +
-                                                           "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return;
-                }
-                else
-                {
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-
-                    var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
-
-
-                    List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
-
-                    sender.ItemsSource = finalitems;
-                }
-            }
+            MainPage.AutoSuggestBox_TextChanged(sender, args);
         }
 
         private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender,
@@ -104,11 +78,9 @@ namespace FluentWeather.Dialogs
             //this.Focus(FocusState.Unfocused);
         }
 
-
         private void AutoSuggestBoxMain_OnGotFocus(object sender, RoutedEventArgs e)
         {
             AutoSuggestBox autoSuggestBox = (AutoSuggestBox) sender;
-
             autoSuggestBox.IsSuggestionListOpen = true;
         }
     }

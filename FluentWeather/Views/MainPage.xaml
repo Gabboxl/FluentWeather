@@ -446,7 +446,6 @@
                         UpdateTextOnSelect="False"
 
                         TextMemberPath="address"
-                        TextChanged="AutoSuggestBox_TextChanged"
                         SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                         ItemContainerStyle="{StaticResource ControlFullStretchStyle}"
                         AutomationProperties.Name="Basic AutoSuggestBox">
