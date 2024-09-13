@@ -286,6 +286,6 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
     <value>12 ore</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Ricerca in corso...</value>
   </data>
 </root>
