@@ -286,6 +286,6 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
     <value>12 ore</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Căutare...</value>
   </data>
 </root>
