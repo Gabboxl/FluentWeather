@@ -286,6 +286,6 @@ Live Tiles zijn alleen beschikbaar op Windows 10.</value>
     <value>12 uur</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Zoeken...</value>
   </data>
 </root>
