@@ -288,6 +288,6 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
     <value>12 horas</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Procurando...</value>
   </data>
 </root>
