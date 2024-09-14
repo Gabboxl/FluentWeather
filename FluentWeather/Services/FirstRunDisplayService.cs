@@ -12,7 +12,7 @@ namespace FluentWeather.Services
 {
     public static class FirstRunDisplayService
     {
-        private static bool shown = false;
+        private static bool _shown = false;
 
         internal static async Task ShowIfAppropriateAsync()
         {
@@ -28,9 +28,9 @@ namespace FluentWeather.Services
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal, async () =>
                     {
-                        if (!shown)
+                        if (!_shown)
                         {
-                            shown = true;
+                            _shown = true;
                             var dialog2 = new FirstRunDialog();
                             await dialog2.ShowAsync();
                         }

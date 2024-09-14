@@ -1,8 +1,6 @@
 ﻿using System;
 using FluentWeather.ViewModels;
-using System.ComponentModel;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
@@ -12,7 +10,6 @@ using Windows.UI.Xaml.Controls;
 using FluentWeather.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Animation;
@@ -98,10 +95,7 @@ namespace FluentWeather.Views
         public MainPage()
         {
             //use the EntranceNavigationTransition when showing the page at startup (pageload)
-            Transitions = new TransitionCollection
-            {
-                new EntranceThemeTransition()
-            };
+            Transitions = [new EntranceThemeTransition()];
 
             InitializeComponent();
 
@@ -386,14 +380,13 @@ namespace FluentWeather.Views
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
 
-            List<DayButtonAdapter> dayButtonAdapters = new();
+            List<DayButtonAdapter> dayButtonAdapters = [];
 
             int i = 0;
 
             foreach (var day in rootV3Response.v3wxforecastdaily10day.dayOfWeek)
             {
                 dayButtonAdapters.Add(new DayButtonAdapter(rootV3Response.v3wxforecastdaily10day, i));
-
                 i++;
             }
 
@@ -405,7 +398,7 @@ namespace FluentWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
-            List<HourDataAdapter> hourlyDataAdapters = new();
+            List<HourDataAdapter> hourlyDataAdapters = [];
 
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
