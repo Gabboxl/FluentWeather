@@ -286,6 +286,6 @@
     <value>12 часов</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Поиск...</value>
   </data>
 </root>
