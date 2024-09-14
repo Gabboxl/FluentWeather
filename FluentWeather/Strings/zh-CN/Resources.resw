@@ -285,6 +285,6 @@
     <value>12 小时</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>搜索中......</value>
   </data>
 </root>
