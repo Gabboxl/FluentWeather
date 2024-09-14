@@ -286,6 +286,6 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
     <value>12 Stunden</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Suche läuft...</value>
   </data>
 </root>
