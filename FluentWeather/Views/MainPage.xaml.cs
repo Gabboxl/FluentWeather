@@ -132,7 +132,7 @@ namespace FluentWeather.Views
 
             InitializeStoryboards();
 
-            _appViewModel.UpdateUIAction += async () => { await Task.Run(LoadApiData); };
+            _appViewModel.UpdateUiAction += async () => { await Task.Run(LoadApiData); };
             KeyDown += MainPage_KeyDown;
 
             AutoSuggestBoxMain.TextChanged += AutoSuggestBox_TextChanged;
@@ -184,10 +184,8 @@ namespace FluentWeather.Views
         {
             var selectedPlaceId = ((SearchedLocation) args.SelectedItem).placeId;
 
-
             //save location to settings
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
-
             _appViewModel.UpdateUi();
         }
 
@@ -215,10 +213,7 @@ namespace FluentWeather.Views
                 //&locationType=city (x solo citta)
 
                 response.EnsureSuccessStatusCode();
-
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-
-
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
                 //update main LiveTile
@@ -289,7 +284,6 @@ namespace FluentWeather.Views
         {
             _storyboard1 = CreateCrossfadeStoryboard(Image1, Image2);
             _storyboard2 = CreateCrossfadeStoryboard(Image2, Image1);
-
             _isImage1Active = true;
         }
 
@@ -616,7 +610,6 @@ namespace FluentWeather.Views
         private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             // Only keeps the suggestions list open if no suggestion was chosen.
-
             sender.IsSuggestionListOpen = true;
         }
 

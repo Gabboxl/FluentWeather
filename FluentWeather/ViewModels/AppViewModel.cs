@@ -9,12 +9,12 @@ namespace FluentWeather.ViewModels
         //public delegate void RequestUiUpdateDelegate();
         //public event RequestUiUpdateDelegate RequestUiUpdate;
 
-        public event Action UpdateUIAction;
+        public event Action UpdateUiAction;
 
         //https://stackoverflow.com/a/4378380/9008381
         public void UpdateUi()
         {
-            UpdateUIAction?.Invoke();
+            UpdateUiAction?.Invoke();
         }
 
     }

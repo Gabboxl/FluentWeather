@@ -8,6 +8,6 @@ namespace FluentWeather.ViewModels
         private bool _isLoadingData;
 
         [ObservableProperty]
-        public string _appVersionText;
+        private string _appVersionText;
     }
 }
