@@ -285,4 +285,7 @@ Jubin Langsung tersedia secara asli pada Windows 10 sahaja.</value>
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 jam</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
 </root>

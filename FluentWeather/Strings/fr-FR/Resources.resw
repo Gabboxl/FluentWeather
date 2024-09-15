@@ -285,4 +285,7 @@ Les tuiles Live sont disponibles nativement sur Windows 10 seulement.</value>
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 heures</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Recherche en cours...</value>
+  </data>
 </root>

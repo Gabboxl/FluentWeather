@@ -285,4 +285,7 @@ Les «LiveTiles» només estan disponibles de manera nadiua al Windows 10.</valu
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 hores</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
 </root>

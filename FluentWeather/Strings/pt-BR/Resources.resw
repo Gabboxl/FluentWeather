@@ -287,4 +287,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 horas</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Procurando...</value>
+  </data>
 </root>

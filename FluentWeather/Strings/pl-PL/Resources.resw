@@ -285,4 +285,7 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12-godzinny</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
 </root>

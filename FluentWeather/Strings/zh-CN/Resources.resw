@@ -284,4 +284,7 @@
   <data name="Segmented12hours.Content" xml:space="preserve">
     <value>12 小时</value>
   </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>搜索中......</value>
+  </data>
 </root>
