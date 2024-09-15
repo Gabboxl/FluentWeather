@@ -12,7 +12,7 @@ namespace FluentWeather.Services
 {
     public static class FirstRunDisplayService
     {
-        private static bool _shown = false;
+        private static bool _shown;
 
         internal static async Task ShowIfAppropriateAsync()
         {
@@ -24,16 +24,15 @@ namespace FluentWeather.Services
                 await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat",
                     systemClockType == "12HourClock");
 
-
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal, async () =>
                     {
-                        if (!_shown)
-                        {
-                            _shown = true;
-                            var dialog2 = new FirstRunDialog();
-                            await dialog2.ShowAsync();
-                        }
+                        if (_shown)
+                            return;
+
+                        _shown = true;
+                        var dialog2 = new FirstRunDialog();
+                        await dialog2.ShowAsync();
                     });
             }
         }
