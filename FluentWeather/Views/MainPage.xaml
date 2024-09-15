@@ -292,6 +292,16 @@
                                                   IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
                                                   Toggled="AcrylicToggle_OnToggled" />
 
+                                                <TextBlock x:Uid="BackgroundImageSettingsTitle"
+                                                           Margin="0,16,0,0"
+                                                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                <ToggleSwitch x:Name="BackgroundImageToggle"
+                                                              Margin="8,8,0,0"
+                                                              d:DataContext="{d:DesignInstance views:MainPage }"
+                                                              IsOn="{Binding BackgroundImageToggleStatus}"
+                                                              Toggled="BackgroundImageToggle_OnToggled" />
+
 
                                                 <TextBlock x:Uid="CreditsSettingsTitle"
                                                    Margin="0,16,0,0"

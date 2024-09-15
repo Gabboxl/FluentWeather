@@ -86,6 +86,15 @@ namespace FluentWeather.Views
             }
         }
 
+        public bool BackgroundImageToggleStatus
+        {
+            get
+            {
+                //run in background to avoid a deadlock/ui freeze
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled")).Result;
+            }
+        }
+
         private async void VersionText_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new WhatsNewDialog();
@@ -143,7 +152,6 @@ namespace FluentWeather.Views
             return $"v{version.Major}.{version.Minor}.{version.Build}";
         }
 
-
         internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             sender.ShowHideLoadingHeader(true);
@@ -182,7 +190,6 @@ namespace FluentWeather.Views
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
             _appViewModel.UpdateUi();
         }
-
 
         private async Task LoadApiData()
         {
@@ -235,13 +242,12 @@ namespace FluentWeather.Views
         /// storyboards code
         /// </summary>
         private Storyboard _storyboard1;
-
         private Storyboard _storyboard2;
         private bool _isImage1Active;
 
         private void CrossfadeToImage(Uri newImageUri)
         {
-            BitmapImage newImage = new(newImageUri);
+            BitmapImage newImage = newImageUri == null ? new() : new(newImageUri);
 
             if (_isImage1Active)
             {
@@ -252,10 +258,19 @@ namespace FluentWeather.Views
                 Image1.Source = newImage;
             }
 
-            //remeber that the imageopened event is fired only when the image is shown in some way :( so we need to set the image source before
+            if (newImageUri == null)
+                ResetStartStoryboard();
+            else
+            {
+                //remeber that the imageopened event is fired only when the image is shown in some way :( so we need to set the image source before
 
-            //this ensures the animation is played only when the image is loaded
-            newImage.ImageOpened += (sender, args) =>
+                //this ensures the animation is played only when the image is loaded
+                newImage.ImageOpened += (sender, args) => { ResetStartStoryboard(); };
+            }
+
+            return;
+
+            void ResetStartStoryboard()
             {
                 if (_isImage1Active)
                 {
@@ -271,7 +286,7 @@ namespace FluentWeather.Views
                 }
 
                 _isImage1Active = !_isImage1Active;
-            };
+            }
         }
 
         private void InitializeStoryboards()
@@ -312,14 +327,7 @@ namespace FluentWeather.Views
 
         private async void UpdateUi(RootV3Response rootV3Response)
         {
-            var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
-                                      IconsDictionary.IconCodeToBackgroundImageNameDictionary[
-                                          rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
-
-            CrossfadeToImage(newImageUri);
-
-
-            //imagesource class creation for weather icon
+            CrossfadeToImageApiData(rootV3Response);
 
             var newIconUri = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
                                      ".svg");
@@ -344,7 +352,6 @@ namespace FluentWeather.Views
                     rootV3Response.v3locationpoint.LocationV3.adminDistrict,
                     rootV3Response.v3locationpoint.LocationV3.country
                 }.Where(s => !string.IsNullOrEmpty(s)).Distinct());
-
 
             PlaceText.Text = placeName;
 
@@ -377,7 +384,6 @@ namespace FluentWeather.Views
             UVIndexChipControl.Value = rootV3Response.v3wxobservationscurrent.uvIndex + " (" +
                                        rootV3Response.v3wxobservationscurrent.uvDescription + ")";
 
-
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
 
             List<DayButtonAdapter> dayButtonAdapters = [];
@@ -394,6 +400,20 @@ namespace FluentWeather.Views
 
             //select first day button
             EmulateDayButtonClick(0);
+        }
+
+        private void CrossfadeToImageApiData(RootV3Response rootV3Response = null)
+        {
+            if (!BackgroundImageToggleStatus)
+                return;
+
+            rootV3Response ??= _lastApiData;
+
+            var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
+                                      IconsDictionary.IconCodeToBackgroundImageNameDictionary[
+                                          rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
+
+            CrossfadeToImage(newImageUri);
         }
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
@@ -651,6 +671,17 @@ namespace FluentWeather.Views
 
                     break;
             }
+        }
+
+        private async void BackgroundImageToggle_OnToggled(object sender, RoutedEventArgs e)
+        {
+            var backgroundImageToggle = (ToggleSwitch)sender;
+            await ApplicationData.Current.LocalSettings.SaveAsync("backgroundImageEnabled", backgroundImageToggle.IsOn);
+
+            if (backgroundImageToggle.IsOn)
+                CrossfadeToImageApiData();
+            else
+                CrossfadeToImage(null);
         }
     }
 }
