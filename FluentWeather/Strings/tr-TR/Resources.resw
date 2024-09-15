@@ -288,4 +288,7 @@ Canlı Kutucuklar orijinal haliyle yalnızca Windows 10'da mevcuttur.</value>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
     <value>Searching...</value>
   </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Background image</value>
+  </data>
 </root>
