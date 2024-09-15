@@ -288,4 +288,7 @@ Live Tiles zijn alleen beschikbaar op Windows 10.</value>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
     <value>Zoeken...</value>
   </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Background image</value>
+  </data>
 </root>
