@@ -290,4 +290,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
     <value>Procurando...</value>
   </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Background image</value>
+  </data>
 </root>
