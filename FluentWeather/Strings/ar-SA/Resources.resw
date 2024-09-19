@@ -224,13 +224,13 @@
     <value>الوحدات</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>تأثيرات الأكريليك</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>المساهمون في العمل</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>مشروع GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
     <value>قياسي</value>
@@ -254,12 +254,12 @@
     <value>تم التحديث بتاريخ </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>الطقس LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>يتعين عليك تثبيت FluentWeather في قائمة البدء أولاً. 
 
-Live Tiles are available natively on Windows 10 only.</value>
+تتوفر Live Tiles على نظام التشغيل Windows 10 فقط.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>الساعات المقبلة:</value>
@@ -286,9 +286,9 @@ Live Tiles are available natively on Windows 10 only.</value>
     <value>12 ساعة</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>جاري البحث...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>صورة الخلفية</value>
   </data>
 </root>
