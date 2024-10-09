@@ -286,6 +286,9 @@
     <value>12 時間制</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>検索中...</value>
+  </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>背景画像</value>
   </data>
 </root>

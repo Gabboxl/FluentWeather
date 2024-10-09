@@ -149,7 +149,7 @@
     <value>ابحث عن موقع...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>المحسوسة</value>
+    <value>الحرارة المحسوسة</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
     <value>الجري</value>
@@ -158,13 +158,13 @@
     <value>القيادة</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>جفاف البشرة</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>الحاجة إلى الري</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>الرياح</value>
+    <value>سرعة الرياح</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
     <value>الضغط</value>
@@ -176,7 +176,7 @@
     <value>الرؤية</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>نقطة الندى</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
     <value>مؤشر الأشعة فوق البنفسجية</value>
@@ -188,7 +188,7 @@
     <value>كل ساعة</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Weather Insights</value>
+    <value>معلومات إضافية عن الطقس</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>ملخص اليوم</value>
@@ -212,25 +212,25 @@
     <value>القمر</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>شروق القمر</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>غروب القمر</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>المرحلة القمرية</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>الوحدات</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Acrylic effects</value>
+    <value>تأثيرات الأكريليك</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>المساهمون في العمل</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub project</value>
+    <value>مشروع GitHub</value>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
     <value>قياسي</value>
@@ -254,12 +254,12 @@
     <value>تم التحديث بتاريخ </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>الطقس LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>يتعين عليك تثبيت FluentWeather في قائمة البدء أولاً. 
 
-Live Tiles are available natively on Windows 10 only.</value>
+تتوفر Live Tiles على نظام التشغيل Windows 10 فقط.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>الساعات المقبلة:</value>
@@ -286,6 +286,9 @@ Live Tiles are available natively on Windows 10 only.</value>
     <value>12 ساعة</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>جاري البحث...</value>
+  </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>صورة الخلفية</value>
   </data>
 </root>

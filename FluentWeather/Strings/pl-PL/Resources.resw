@@ -286,6 +286,9 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
     <value>12-godzinny</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Wyszukiwanie...</value>
+  </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Obraz tła</value>
   </data>
 </root>

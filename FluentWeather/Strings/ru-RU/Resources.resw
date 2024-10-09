@@ -288,4 +288,7 @@
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
     <value>Поиск...</value>
   </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Фоновое изображение</value>
+  </data>
 </root>
