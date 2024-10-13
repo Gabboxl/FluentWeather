@@ -287,7 +287,7 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>12 tiếng</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value/>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Hình nền</value>
