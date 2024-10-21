@@ -288,4 +288,7 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
     <value>Ricerca in corso...</value>
   </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Immagine di sfondo</value>
+  </data>
 </root>
