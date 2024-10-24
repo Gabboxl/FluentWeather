@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>FluentWeather</value>
+    <value>FluentWeather
+a</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
@@ -286,6 +287,9 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>12 tiếng</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value/>
+  </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Hình nền</value>
   </data>
 </root>

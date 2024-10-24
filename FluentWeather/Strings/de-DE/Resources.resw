@@ -288,4 +288,7 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
     <value>Suche läuft...</value>
   </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Hintergrundbild</value>
+  </data>
 </root>
