@@ -293,4 +293,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Imagem de fundo</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
+  </data>
 </root>
