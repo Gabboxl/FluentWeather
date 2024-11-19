@@ -291,4 +291,7 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Imagine de fundal</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
+  </data>
 </root>
