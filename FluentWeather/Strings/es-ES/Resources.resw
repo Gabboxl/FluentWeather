@@ -291,4 +291,7 @@ LiveTiles solo están disponibles nativamente en Windows 10.</value>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Imagen de fondo</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
+  </data>
 </root>
