@@ -56,7 +56,7 @@ namespace FluentWeather.Helpers
             settings.Values.Remove(key);
         }
 
-        public static async Task<T> ReadAsync<T>(this ApplicationDataContainer settings, string key)
+        public static async Task<T> ReadAsync<T>(this ApplicationDataContainer settings, string key, T defaultValue = default)
         {
             object obj = null;
 
@@ -65,7 +65,7 @@ namespace FluentWeather.Helpers
                 return await Json.ToObjectAsync<T>((string)obj);
             }
 
-            return default;
+            return defaultValue;
         }
 
         public static async Task<StorageFile> SaveFileAsync(this StorageFolder folder, byte[] content, string fileName, CreationCollisionOption options = CreationCollisionOption.ReplaceExisting)

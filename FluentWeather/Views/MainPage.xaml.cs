@@ -87,7 +87,7 @@ namespace FluentWeather.Views
             get
             {
                 //run in background to avoid a deadlock/ui freeze
-                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled")).Result;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled", true)).Result;
             }
         }
 
