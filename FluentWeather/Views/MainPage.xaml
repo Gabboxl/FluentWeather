@@ -21,40 +21,40 @@
 
     <Page.Resources>
         <media2:AcrylicBrush x:Key="MyAcrylicBrush"
-                      BackgroundSource="Backdrop"
-                      TintColor="#FCFCFC"
-                      TintOpacity="0"
-                      TintLuminosityOpacity="0"
-                      FallbackColor="#1DFFFFFF"
-                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             BackgroundSource="Backdrop"
+                             TintColor="#FCFCFC"
+                             TintOpacity="0"
+                             TintLuminosityOpacity="0"
+                             FallbackColor="#1DFFFFFF"
+                             d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
         <media2:AcrylicBrush x:Key="MyAcrylicBrushLine"
-                      BackgroundSource="Backdrop"
-                      TintColor="#FCFCFC"
-                      TintOpacity="0"
-                      TintLuminosityOpacity="0.1"
-                      FallbackColor="#1DFFFFFF"
-                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             BackgroundSource="Backdrop"
+                             TintColor="#FCFCFC"
+                             TintOpacity="0"
+                             TintLuminosityOpacity="0.1"
+                             FallbackColor="#1DFFFFFF"
+                             d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
         <media2:AcrylicBrush x:Key="MyAcrylicBrushTitleText"
-                      BackgroundSource="Backdrop"
-                      TintColor="#FCFCFC"
-                      TintOpacity="0.7"
-                      TintLuminosityOpacity="0.8"
-                      FallbackColor="#DDFCFCFC"
-                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             BackgroundSource="Backdrop"
+                             TintColor="#FCFCFC"
+                             TintOpacity="0.7"
+                             TintLuminosityOpacity="0.8"
+                             FallbackColor="#DDFCFCFC"
+                             d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
         <media2:AcrylicBrush x:Key="MyAcrylicBrushButton"
-                      BackgroundSource="Backdrop"
-                      TintColor="#222CFCFC"
-                      TintOpacity="0.7"
-                      TintLuminosityOpacity="0.8"
-                      FallbackColor="#1DFFFFFF"
-                      d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                      AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             BackgroundSource="Backdrop"
+                             TintColor="#222CFCFC"
+                             TintOpacity="0.7"
+                             TintLuminosityOpacity="0.8"
+                             FallbackColor="#1DFFFFFF"
+                             d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
+                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
 
         <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
 
@@ -249,13 +249,15 @@
                                 <MenuFlyoutItem>
                                     <MenuFlyoutItem.Template>
                                         <ControlTemplate x:Name="FlyoutItemSettingsTemp">
-                                            <ScrollViewer MaxHeight="600" VerticalScrollBarVisibility="Visible" HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled">
+                                            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                                                          HorizontalScrollMode="Disabled"
+                                                          HorizontalScrollBarVisibility="Disabled">
                                                 <StackPanel VerticalAlignment="Center" Margin="16">
                                                     <TextBlock x:Uid="UnitsSettingsTitle"
-                                           Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                                                     <labs:Segmented
-                                                        SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
+                                                        SelectedIndex="{Binding views:MainPage.SettingsUnitsSelectedIndex}"
                                                         Margin="0,8,0,0"
                                                         x:Name="UnitsSegmented"
                                                         SelectionChanged="UnitsSegmented_OnSelectionChanged"
@@ -268,8 +270,8 @@
 
                                                     <!-- 12/24 hour format segmented -->
                                                     <TextBlock x:Uid="TimeFormatSettingsTitle"
-                                                       Margin="0,16,0,0"
-                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                                                     <labs:Segmented
                                                         SelectedIndex="{Binding SettingsTimeFormatSelectedIndex}"
@@ -284,14 +286,14 @@
 
                                                     <!-- toggle control to enable/disable acrylic effect -->
                                                     <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
-                                                       Margin="0,16,0,0"
-                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                                                     <ToggleSwitch x:Name="AcrylicToggle"
-                                                      Margin="8,8,0,0"
-                                                      d:DataContext="{d:DesignInstance views:MainPage }"
-                                                      IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
-                                                      Toggled="AcrylicToggle_OnToggled" />
+                                                                  Margin="8,8,0,0"
+                                                                  d:DataContext="{d:DesignInstance views:MainPage }"
+                                                                  IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
+                                                                  Toggled="AcrylicToggle_OnToggled" />
 
                                                     <TextBlock x:Uid="BackgroundImageSettingsTitle"
                                                                Margin="0,16,0,0"
@@ -304,9 +306,29 @@
                                                                   Toggled="BackgroundImageToggle_OnToggled" />
 
 
+                                                    <TextBlock x:Uid="AutoRefreshSettingsTitle"
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                    <!-- selectable list of auto refresh intervals -->
+                                                    <ComboBox x:Name="AutoRefreshDataComboBox"
+                                                              Margin="8,8,0,0"
+                                                              d:DataContext="{d:DesignInstance views:MainPage }"
+                                                              SelectedValuePath="Tag"
+                                                              SelectedValue="{Binding AutoRefreshPeriodSelectedValue}"
+                                                              SelectionChanged="AutoRefreshComboBox_OnSelectionChanged">
+                                                        <ComboBoxItem Content="Off" Tag="0" />
+                                                        <ComboBoxItem Content="5 min" Tag="5" />
+                                                        <ComboBoxItem Content="10 min" Tag="10" />
+                                                        <ComboBoxItem Content="15 min" Tag="15" />
+                                                        <ComboBoxItem Content="30 min" Tag="30" />
+                                                        <ComboBoxItem Content="1 hour" Tag="60" />
+                                                    </ComboBox>
+
+
                                                     <TextBlock x:Uid="CreditsSettingsTitle"
-                                                       Margin="0,16,0,0"
-                                                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
 
                                                     <StackPanel>
 
@@ -324,21 +346,24 @@
 
                                                         <RelativePanel Margin="0,16,0,0">
 
-                                                            <TextBlock x:Name="AppText" Text="FluentWeather" FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True"/>
+                                                            <TextBlock x:Name="AppText" Text="FluentWeather"
+                                                                       FontWeight="Bold"
+                                                                       RelativePanel.AlignLeftWithPanel="True" />
 
-                                                            <Button Style="{ThemeResource TextButtonStyle}" x:Name="ChangelogButton"
-                                                                Click="VersionText_Click" Margin="-6,2,0,0"
-                                                                RelativePanel.AlignVerticalCenterWith="AppText"
-                                                                RelativePanel.RightOf="AppText">
+                                                            <Button Style="{ThemeResource TextButtonStyle}"
+                                                                    x:Name="ChangelogButton"
+                                                                    Click="VersionText_Click" Margin="-6,2,0,0"
+                                                                    RelativePanel.AlignVerticalCenterWith="AppText"
+                                                                    RelativePanel.RightOf="AppText">
                                                                 <Button.Content>
                                                                     <TextBlock
                                                                         d:DataContext="{d:DesignInstance views:MainPage }"
-                                                                        Text="{Binding MainPageViewModel.AppVersionText}"/>
+                                                                        Text="{Binding MainPageViewModel.AppVersionText}" />
                                                                 </Button.Content>
                                                             </Button>
 
                                                             <RichTextBlock RelativePanel.RightOf="ChangelogButton"
-                                                                Margin="-8,0,0,0">
+                                                                           Margin="-8,0,0,0">
                                                                 <Paragraph>
                                                                     <Run x:Uid="DevelopedByRun"></Run>
                                                                     <Hyperlink
@@ -352,16 +377,17 @@
                                                     </StackPanel>
 
                                                     <StackPanel Orientation="Horizontal"
-                                                        Margin="0,6,0,0"
-                                                        HorizontalAlignment="Center">
+                                                                Margin="0,6,0,0"
+                                                                HorizontalAlignment="Center">
 
-                                                        <HyperlinkButton NavigateUri="http://github.com/Gabboxl/FluentWeather">
+                                                        <HyperlinkButton
+                                                            NavigateUri="http://github.com/Gabboxl/FluentWeather">
                                                             <StackPanel Orientation="Horizontal" Spacing="10">
                                                                 <Grid Width="18" Height="18">
                                                                     <Path
-                                                                    Data="{StaticResource GithubIconPath}"
-                                                                    Stretch="Uniform"
-                                                                    Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                                                        Data="{StaticResource GithubIconPath}"
+                                                                        Stretch="Uniform"
+                                                                        Fill="{ThemeResource AccentTextFillColorPrimaryBrush}" />
                                                                 </Grid>
 
                                                                 <TextBlock x:Uid="GithubProjectButton" />
@@ -370,8 +396,8 @@
 
 
                                                         <HyperlinkButton x:Name="hyperlinkTranslate"
-                                                             RelativePanel.RightOf="hyperlinkVote"
-                                                             NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
+                                                                         RelativePanel.RightOf="hyperlinkVote"
+                                                                         NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
 
                                                             <StackPanel Orientation="Horizontal" Spacing="10">
                                                                 <Grid Width="18" Height="18">
@@ -422,14 +448,16 @@
                 </Grid.ColumnDefinitions>
 
                 <muxc:ProgressRing x:Name="DataProgressRing"
-                   Grid.Column="1"
-                   IsTabStop="True"
-                   Width="22"
-                   Height="22"
-                   IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
-                   Margin="12,0,0,0" />
+                                   Grid.Column="1"
+                                   IsTabStop="True"
+                                   Width="22"
+                                   Height="22"
+                                   IsActive="{x:Bind MainPageViewModel.IsLoadingData , Mode=OneWay}"
+                                   Margin="12,0,0,0" />
 
-                <AppBarButton x:Name="RefreshButton" Grid.Column="1" Icon="Refresh" IsCompact="False" Click="RefreshButton_OnClick" Width="52" x:Uid="RefreshButton"></AppBarButton>
+                <AppBarButton x:Name="RefreshButton" Grid.Column="1" Icon="Refresh" IsCompact="False"
+                              Click="RefreshButton_OnClick" Width="52" x:Uid="RefreshButton">
+                </AppBarButton>
             </Grid>
 
 
@@ -784,15 +812,17 @@
 
                                                             <MenuFlyoutItem>
                                                                 <MenuFlyoutItem.Template>
-                                                                    <ControlTemplate x:Name="FlyoutItemHourlyDataTemp" TargetType="MenuFlyoutItem">
-                                                                        <StackPanel VerticalAlignment="Center" Margin="16">
+                                                                    <ControlTemplate x:Name="FlyoutItemHourlyDataTemp"
+                                                                        TargetType="MenuFlyoutItem">
+                                                                        <StackPanel VerticalAlignment="Center"
+                                                                            Margin="16">
 
-                                                                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                                                                            <StackPanel Orientation="Horizontal"
+                                                                                Margin="0,0,0,16">
                                                                                 <TextBlock x:Name="HourlyDataTitleText"
                                                                                     VerticalAlignment="Center"
                                                                                     Text="{Binding Hour}"
-                                                                                    Style="{StaticResource SubtitleTextBlockStyle}"
-                                                                                     />
+                                                                                    Style="{StaticResource SubtitleTextBlockStyle}" />
 
                                                                                 <!-- only "-" characher textblock -->
                                                                                 <TextBlock
@@ -801,7 +831,8 @@
                                                                                     Text="-"
                                                                                     Foreground="{ThemeResource TextFillColorTertiaryBrush}"
                                                                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                                                    FontSize="18"></TextBlock>
+                                                                                    FontSize="18">
+                                                                                </TextBlock>
 
 
                                                                                 <TextBlock
@@ -809,8 +840,7 @@
                                                                                     x:Uid="HourlyDetailedDataTitle"
                                                                                     Foreground="{ThemeResource TextFillColorTertiaryBrush}"
                                                                                     Style="{StaticResource BodyStrongTextBlockStyle}"
-                                                                                    FontSize="18"
-                                                                                />
+                                                                                    FontSize="18" />
                                                                             </StackPanel>
 
 
@@ -862,7 +892,8 @@
                                                     </Button.Flyout>
 
 
-                                                    <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                                    <RelativePanel VerticalAlignment="Stretch"
+                                                                   HorizontalAlignment="Stretch">
 
                                                         <Image x:Name="wetIcon"
                                                                Margin="0,8,0,0"
@@ -906,7 +937,7 @@
 
                                                             <!-- precip chance text -->
                                                             <TextBlock x:Name="precipChanceText"
-                                                                       
+
                                                                        Text="{x:Bind PrecipitationChance}">
                                                             </TextBlock>
                                                         </StackPanel>

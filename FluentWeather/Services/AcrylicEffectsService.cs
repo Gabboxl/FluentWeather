@@ -16,7 +16,7 @@ namespace FluentWeather.Services
         private bool _effectsEnabled = true;
 
         [ObservableProperty]
-        private bool _useFallback = false;
+        private bool _useFallback;
 
         public async Task InitializeAsync()
         {

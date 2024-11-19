@@ -27,6 +27,7 @@ using FluentWeather.Dialogs;
 using FluentWeather.Core.Helpers;
 using CommunityToolkit.WinUI.Controls;
 using Windows.System;
+using CommunityToolkit.Common;
 using FluentWeather.Controls;
 
 namespace FluentWeather.Views
@@ -48,13 +49,15 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/"),
         };
 
-        private static readonly string _systemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+        private static readonly string SystemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
         private RootV3Response _lastApiData;
 
         private Button _lastSelectedDayButton;
 
-        public int SettingsUnitsSelectedIndex
+        private readonly DispatcherTimer _refreshTimer = new();
+
+        public static int SettingsUnitsSelectedIndex
         {
             get
             {
@@ -74,15 +77,8 @@ namespace FluentWeather.Views
         {
             get
             {
-                bool is12HourFormat = false;
-
                 //run in background to avoid a deadlock/ui freeze
-                Task.Run(async () =>
-                {
-                    is12HourFormat = await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat");
-                }).Wait();
-
-                return is12HourFormat ? 1 : 0;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat")).Result ? 1 : 0;
             }
         }
 
@@ -92,6 +88,15 @@ namespace FluentWeather.Views
             {
                 //run in background to avoid a deadlock/ui freeze
                 return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled")).Result;
+            }
+        }
+
+        public int AutoRefreshPeriodSelectedValue
+        {
+            get
+            {
+                //run in background to avoid a deadlock/ui freeze
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("autoRefreshDataMinutes")).Result;
             }
         }
 
@@ -118,7 +123,7 @@ namespace FluentWeather.Views
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
-            AppTitleTextBlock.Text = "" + Package.Current.DisplayName;
+            AppTitleTextBlock.Text = Package.Current.DisplayName;
             Window.Current.SetTitleBar(TitleBarGrid);
 
             //remove the solid-colored backgrounds behind the caption controls and system back button
@@ -141,6 +146,13 @@ namespace FluentWeather.Views
             AutoSuggestBoxMain.TextChanged += AutoSuggestBox_TextChanged;
 
             _appViewModel.UpdateUi();
+            // Initialize the refresh timer
+            _refreshTimer.Tick += RefreshTimerTick;
+        }
+
+        private async void RefreshTimerTick(object sender, object e)
+        {
+            await LoadApiData();
         }
 
         private string GetVersionDescription()
@@ -163,7 +175,7 @@ namespace FluentWeather.Views
             {
                 var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text +
                                                            "&language=" +
-                                                           _systemLanguage +
+                                                           SystemLanguage +
                                                            "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                 //&locationType=city (x solo citta)
 
@@ -173,7 +185,7 @@ namespace FluentWeather.Views
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
-                    List<SearchedLocation> finalitems = myDeserializedClass.location.Select(x => x).ToList();
+                    var finalitems = myDeserializedClass.location.Select(x => x).ToList();
                     sender.ItemsSource = finalitems;
                 }
             }
@@ -202,7 +214,6 @@ namespace FluentWeather.Views
 
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-
             if (lastPlaceId != null)
             {
                 var response = await SharedClient.GetAsync(
@@ -210,17 +221,15 @@ namespace FluentWeather.Views
                     + lastPlaceId
                     + "&units=" + await VariousUtils.GetUnitsCode()
                     + "&language=" +
-                    _systemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+                    SystemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
                 //&locationType=city (x solo citta)
 
                 response.EnsureSuccessStatusCode();
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
-                //update main LiveTile
                 LiveTileService.UpdateWeatherMainTile(_lastApiData);
 
-                //we execute the code in the UI thread
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal, () =>
                     {
@@ -250,13 +259,9 @@ namespace FluentWeather.Views
             BitmapImage newImage = newImageUri == null ? new() : new(newImageUri);
 
             if (_isImage1Active)
-            {
                 Image2.Source = newImage;
-            }
             else
-            {
                 Image1.Source = newImage;
-            }
 
             if (newImageUri == null)
                 ResetStartStoryboard();
@@ -470,7 +475,6 @@ namespace FluentWeather.Views
                 _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x =>
                     x.Date == dayToLoad.Date);
 
-            //insights controls
             RunningInsight.Insight = new Insight
             {
                 Title = "RunningInsightTitle".GetLocalized(),
@@ -524,7 +528,6 @@ namespace FluentWeather.Views
                 IconName = "watering"
             };
 
-
             var indexOfDayDailyData =
                 _lastApiData.v3wxforecastdaily10day.validTimeLocal.FindIndex(x =>
                     x.Date == dayToLoad.Date);
@@ -575,7 +578,6 @@ namespace FluentWeather.Views
             LoadInsightsData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
         }
 
-
         private void SetDayButtonClickedStyle(Button button)
         {
             // Reset the style of the previously selected button
@@ -616,7 +618,6 @@ namespace FluentWeather.Views
 
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("selectedUnits", segmented.SelectedIndex);
-
             _appViewModel.UpdateUi();
         }
 
@@ -629,7 +630,6 @@ namespace FluentWeather.Views
         private void AutoSuggestBoxMain_OnKeyUp(object sender, KeyRoutedEventArgs e)
         {
             AutoSuggestBox sender2 = (AutoSuggestBox) sender;
-
             sender2.IsSuggestionListOpen = true;
         }
 
@@ -639,7 +639,6 @@ namespace FluentWeather.Views
 
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("effectsEnabled", acrylicToggle.IsOn);
-
             await AcrylicEffectsService.SetThemeAsync(acrylicToggle.IsOn);
         }
 
@@ -657,7 +656,6 @@ namespace FluentWeather.Views
 
             //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat", segmented.SelectedIndex == 1);
-
             _appViewModel.UpdateUi();
         }
 
@@ -666,9 +664,7 @@ namespace FluentWeather.Views
             switch (args.Key)
             {
                 case VirtualKey.F5:
-
                     _appViewModel.UpdateUi();
-
                     break;
             }
         }
@@ -682,6 +678,25 @@ namespace FluentWeather.Views
                 CrossfadeToImageApiData();
             else
                 CrossfadeToImage(null);
+        }
+
+        private async void AutoRefreshComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var autoRefreshComboBox = (ComboBox)sender;
+            var selectedItem = (ComboBoxItem)autoRefreshComboBox.SelectedItem;
+            if (selectedItem?.Tag != null)
+            {
+                var minutes = Convert.ToDouble(selectedItem.Tag);
+                if (minutes > 0)
+                {
+                    _refreshTimer.Interval = TimeSpan.FromSeconds(minutes);
+                    _refreshTimer.Start();
+                }
+                else
+                    _refreshTimer.Stop();
+
+                await ApplicationData.Current.LocalSettings.SaveAsync("autoRefreshDataMinutes", minutes);
+            }
         }
     }
 }
