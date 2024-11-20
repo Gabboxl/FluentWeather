@@ -60,15 +60,7 @@ namespace FluentWeather.Views
         {
             get
             {
-                int settingsData = default;
-
-                //run in background to avoid a deadlock/ui freeze
-                Task.Run(async () =>
-                {
-                    settingsData = await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
-                }).Wait();
-
-                return settingsData;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits")).Result;
             }
         }
 
