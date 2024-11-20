@@ -291,4 +291,7 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Hintergrundbild</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Automatisch aktualisieren</value>
+  </data>
 </root>

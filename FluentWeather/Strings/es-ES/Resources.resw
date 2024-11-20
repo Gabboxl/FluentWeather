@@ -286,6 +286,12 @@ LiveTiles solo están disponibles nativamente en Windows 10.</value>
     <value>12 horas</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Buscando...</value>
+  </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Imagen de fondo</value>
+  </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
   </data>
 </root>

@@ -291,4 +291,7 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Immagine di sfondo</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
+  </data>
 </root>

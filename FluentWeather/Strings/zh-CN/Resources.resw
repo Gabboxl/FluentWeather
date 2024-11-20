@@ -290,4 +290,7 @@
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>背景图</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
+  </data>
 </root>

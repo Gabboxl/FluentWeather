@@ -291,4 +291,7 @@
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Фоновое изображение</value>
   </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Авто обновление</value>
+  </data>
 </root>
