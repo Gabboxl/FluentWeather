@@ -292,6 +292,6 @@
     <value>Фоновое изображение</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Автообновление</value>
   </data>
 </root>
