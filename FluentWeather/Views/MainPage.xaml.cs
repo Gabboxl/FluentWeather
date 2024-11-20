@@ -64,7 +64,7 @@ namespace FluentWeather.Views
             }
         }
 
-        public int SettingsTimeFormatSelectedIndex
+        public static int SettingsTimeFormatSelectedIndex
         {
             get
             {
@@ -73,7 +73,7 @@ namespace FluentWeather.Views
             }
         }
 
-        public bool BackgroundImageToggleStatus
+        public static bool BackgroundImageToggleStatus
         {
             get
             {
@@ -82,7 +82,7 @@ namespace FluentWeather.Views
             }
         }
 
-        public int AutoRefreshPeriodSelectedValue
+        public static int AutoRefreshPeriodSelectedValue
         {
             get
             {
@@ -146,7 +146,7 @@ namespace FluentWeather.Views
             await LoadApiData();
         }
 
-        private string GetVersionDescription()
+        private static string GetVersionDescription()
         {
             var package = Package.Current;
             var packageId = package.Id;
