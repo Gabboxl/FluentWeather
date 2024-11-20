@@ -27,7 +27,6 @@ using FluentWeather.Dialogs;
 using FluentWeather.Core.Helpers;
 using CommunityToolkit.WinUI.Controls;
 using Windows.System;
-using CommunityToolkit.Common;
 using FluentWeather.Controls;
 
 namespace FluentWeather.Views
@@ -69,7 +68,7 @@ namespace FluentWeather.Views
                     settingsData = await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
                 }).Wait();
 
-                return settingsData == default ? 0 : settingsData;
+                return settingsData;
             }
         }
 
