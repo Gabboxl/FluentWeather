@@ -16,7 +16,7 @@ namespace FluentWeather.Services
         {
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-            var response = await new ApiUtils().GetFullData(lastPlaceId);
+            var response = await ApiUtils.GetFullData(lastPlaceId);
 
             if (response is {StatusCode: System.Net.HttpStatusCode.OK}) //null check and status code check
             {

@@ -204,18 +204,10 @@ namespace FluentWeather.Views
             );
 
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+            var response = await ApiUtils.GetFullData(lastPlaceId);
 
-            if (lastPlaceId != null)
+            if (response != null)
             {
-                var response = await SharedClient.GetAsync(
-                    "v2/aggcommon/v3-wx-observations-current;v3-wx-forecast-hourly-10day;v3-wx-forecast-daily-10day;v3-location-point;v2idxDrySkinDaypart10;v2idxWateringDaypart10;v2idxPollenDaypart10;v2idxRunDaypart10;v2idxDriveDaypart10?format=json&placeid="
-                    + lastPlaceId
-                    + "&units=" + await VariousUtils.GetUnitsCode()
-                    + "&language=" +
-                    SystemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
-                //&locationType=city (x solo citta)
-
-                response.EnsureSuccessStatusCode();
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
