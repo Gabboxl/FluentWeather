@@ -204,22 +204,30 @@ namespace FluentWeather.Views
             );
 
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
-            var response = await ApiUtils.GetFullData(lastPlaceId);
-
-            if (response != null)
+            try
             {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                var response = await ApiUtils.GetFullData(lastPlaceId);
 
-                LiveTileService.UpdateWeatherMainTile(_lastApiData);
+                if (response != null)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
-                await CoreApplication.MainView.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal, () =>
-                    {
-                        UpdateUi(_lastApiData);
-                        MainInnerContentGrid.Visibility = Visibility.Visible;
-                    }
-                );
+                    LiveTileService.UpdateWeatherMainTile(_lastApiData);
+
+                    await CoreApplication.MainView.Dispatcher.RunAsync(
+                        CoreDispatcherPriority.Normal, () =>
+                        {
+                            UpdateUi(_lastApiData);
+                            MainInnerContentGrid.Visibility = Visibility.Visible;
+                        }
+                    );
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
             await CoreApplication.MainView.Dispatcher.RunAsync(

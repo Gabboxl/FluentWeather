@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
 using Windows.Storage;
 using FluentWeather.Helpers;
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -15,18 +16,21 @@ namespace FluentWeather.Services
         public async void UpdateWeatherTileFull()
         {
             string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
-
-            var response = await ApiUtils.GetFullData(lastPlaceId);
-
-            if (response is {StatusCode: System.Net.HttpStatusCode.OK}) //null check and status code check
+            try
             {
+                var response = await ApiUtils.GetFullData(lastPlaceId);
 
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-
-                var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
-
-                UpdateWeatherMainTile(newApiData);
-
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                    UpdateWeatherMainTile(newApiData);
+                }
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
         }
 
@@ -56,10 +60,8 @@ namespace FluentWeather.Services
 
             string mainPhrase = apiDataResponse.v3wxobservationscurrent.cloudCoverPhrase;
 
-
             //current precipitation chance
             var precipChance = apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[0] ?? apiDataResponse.v3wxforecastdaily10day.daypart[0].precipChance[1];
-
 
             var forecastNarrative = apiDataResponse.v3wxforecastdaily10day.narrative[0] ?? apiDataResponse.v3wxforecastdaily10day.narrative[1];
 
@@ -103,7 +105,6 @@ namespace FluentWeather.Services
             //current precipitation chance
             builder.Content.Visual.LockDetailedStatus3 = " " + "NextHours".GetLocalized() + " " +  forecastNarrative;
 
-
             // Then create the tile notification
             try //try catch block to prevent the app from crashing if the tile is not pinned
             {
@@ -117,19 +118,18 @@ namespace FluentWeather.Services
             }
         }
 
-
         private ITileBindingContentAdaptiveChild MediumTileContent(string iconPath, string currentTemp)
         {
-            return new AdaptiveGroup()
+            return new AdaptiveGroup
             {
                 Children =
                 {
-                    new AdaptiveSubgroup()
+                    new AdaptiveSubgroup
                     {
                         HintWeight = 1,
                         Children =
                         {
-                            new AdaptiveImage()
+                            new AdaptiveImage
                             {
                                 Source = iconPath,
                                 HintRemoveMargin = true,
@@ -137,7 +137,7 @@ namespace FluentWeather.Services
                                     .Center //Images can be set to align left, center, or right using the hint-align attribute.
                                 //---> This will also cause images to display at their native resolution instead of stretching to fill width.
                             },
-                            new AdaptiveText()
+                            new AdaptiveText
                             {
                                 Text = currentTemp,
                                 HintAlign = AdaptiveTextAlign.Center,
@@ -148,22 +148,21 @@ namespace FluentWeather.Services
                 }
             };
         }
-
 
         private ITileBindingContentAdaptiveChild WideTileContent(string iconPath, string currentTemp)
         {
-            return new AdaptiveGroup()
+            return new AdaptiveGroup
             {
                 Children =
                 {
-                    new AdaptiveSubgroup() {HintWeight = 1},
+                    new AdaptiveSubgroup {HintWeight = 1},
 
-                    new AdaptiveSubgroup()
+                    new AdaptiveSubgroup
                     {
                         HintWeight = 2,
                         Children =
                         {
-                            new AdaptiveImage()
+                            new AdaptiveImage
                             {
                                 Source = iconPath,
                                 HintRemoveMargin = true,
@@ -172,13 +171,13 @@ namespace FluentWeather.Services
                         }
                     },
 
-                    new AdaptiveSubgroup()
+                    new AdaptiveSubgroup
                     {
                         HintWeight = 2,
                         HintTextStacking = AdaptiveSubgroupTextStacking.Center,
                         Children =
                         {
-                            new AdaptiveText()
+                            new AdaptiveText
                             {
                                 Text = currentTemp,
                                 HintAlign = AdaptiveTextAlign.Center,
@@ -187,27 +186,26 @@ namespace FluentWeather.Services
                         }
                     },
 
-                    new AdaptiveSubgroup() {HintWeight = 1},
+                    new AdaptiveSubgroup {HintWeight = 1},
                 }
             };
         }
 
-
         private ITileBindingContentAdaptiveChild LargeTileContent(string iconPath, string currentTemp)
         {
-            return new AdaptiveGroup()
+            return new AdaptiveGroup
             {
                 Children =
                 {
-                    new AdaptiveSubgroup() {HintWeight = 1},
+                    new AdaptiveSubgroup {HintWeight = 1},
 
-                    new AdaptiveSubgroup()
+                    new AdaptiveSubgroup
                     {
                         HintTextStacking = AdaptiveSubgroupTextStacking.Center,
                         HintWeight = 2,
                         Children =
                         {
-                            new AdaptiveImage()
+                            new AdaptiveImage
                             {
                                 Source = iconPath,
                                 HintRemoveMargin = true,
@@ -216,13 +214,13 @@ namespace FluentWeather.Services
                         }
                     },
 
-                    new AdaptiveSubgroup()
+                    new AdaptiveSubgroup
                     {
                         HintWeight = 2,
                         HintTextStacking = AdaptiveSubgroupTextStacking.Center,
                         Children =
                         {
-                            new AdaptiveText()
+                            new AdaptiveText
                             {
                                 Text = currentTemp,
                                 HintAlign = AdaptiveTextAlign.Center,
@@ -231,7 +229,7 @@ namespace FluentWeather.Services
                         }
                     },
 
-                    new AdaptiveSubgroup() {HintWeight = 1},
+                    new AdaptiveSubgroup {HintWeight = 1},
                 }
             };
         }
