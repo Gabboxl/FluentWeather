@@ -293,6 +293,6 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>Hình nền</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Tự động làm mới</value>
   </data>
 </root>
