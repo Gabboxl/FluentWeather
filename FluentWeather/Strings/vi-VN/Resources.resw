@@ -295,4 +295,7 @@ Live Tiles chỉ có trên Windows 10.</value>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Tự động làm mới</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Network error, please check your internet connection.</value>
+  </data>
 </root>
