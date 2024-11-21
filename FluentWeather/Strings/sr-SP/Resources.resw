@@ -294,4 +294,7 @@ Live Tiles are available natively on Windows 10 only.</value>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Auto refresh</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Network error, please check your internet connection.</value>
+  </data>
 </root>
