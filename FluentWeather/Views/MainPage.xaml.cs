@@ -157,31 +157,39 @@ namespace FluentWeather.Views
 
         internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            sender.ShowHideLoadingHeader(true);
+            sender.ShowHideCustomHeader(true);
+            sender.ShowHideCustomHeader(false, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError); //TODO: remove this line and clear all messages automatically in BetterAutosuggestBox.cs
 
             // Since selecting an item will also change the text,
             // only listen to changes caused by user entering text.
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput
                 && !string.IsNullOrEmpty(sender.Text))
             {
-                var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text +
-                                                           "&language=" +
-                                                           SystemLanguage +
-                                                           "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
-                //&locationType=city (x solo citta)
-
-                //response.EnsureSuccessStatusCode();
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
-                    var finalitems = myDeserializedClass.location.Select(x => x).ToList();
-                    sender.ItemsSource = finalitems;
+                    var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text +
+                                                               "&language=" +
+                                                               SystemLanguage +
+                                                               "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
+                    //&locationType=city (x solo citta)
+
+                    //response.EnsureSuccessStatusCode();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonResponse = await response.Content.ReadAsStringAsync();
+                        var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
+                        var finalitems = myDeserializedClass.location.Select(x => x).ToList();
+                        sender.ItemsSource = finalitems;
+                    }
+                }
+                catch (HttpRequestException e)
+                {
+                    sender.ShowHideCustomHeader(true, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
                 }
             }
 
-            sender.ShowHideLoadingHeader(false);
+            sender.ShowHideCustomHeader(false);
         }
 
         private async void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender,
@@ -226,8 +234,28 @@ namespace FluentWeather.Views
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine(e);
-                throw;
+                CoreApplication.MainView.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    async void () =>
+                    {
+                        ContentDialog noWifiDialog = new()
+                        {
+                            Title = "No internet connection",
+                            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                            Content = "To continue, you need to connect to the internet.",
+                            CloseButtonText = "OK"
+                        };
+                        try
+                        {
+                            await noWifiDialog.ShowAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            ;
+                        }
+                    }
+                );
+
             }
 
             await CoreApplication.MainView.Dispatcher.RunAsync(

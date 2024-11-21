@@ -438,26 +438,37 @@
                                     <ListView.ItemContainerTransitions>
                                         <contract7NotPresent:TransitionCollection />
                                     </ListView.ItemContainerTransitions>
-                                    <ListView.Header>
-                                        <Grid x:Name="AutoSuggestBoxFooterRoot" Visibility="Visible">
-                                            <!--<Rectangle Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-                                                       Fill="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"></Rectangle>-->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <local:ProgressRing x:Name="DataProgressRing"
-                                                                    Grid.Column="1"
-                                                                    IsTabStop="True"
-                                                                    Width="22"
-                                                                    Height="22"
-                                                                    IsActive="True"
-                                                                    Margin="12,0,0,0" />
-                                                <TextBlock Padding="16,16,16,12" 
-                                                           FontFamily="Segoe UI Variable Small"
-                                                           FontSize="12"
-                                                           x:Uid="AutoSuggestBoxSearchHeader"
-                                                           Foreground="{ThemeResource TextFillColorTertiary}"></TextBlock>
-                                            </StackPanel>
+                                    <ListView.Header> <!-- view BetterAutoSuggestBox.cs to understand how each grid is activated -->
+                                        <StackPanel>
+                                            <Grid x:Name="AutoSuggestBoxHeaderRoot1" Visibility="Collapsed"> <!-- this is the first grid for the loading message -->
+                                                <!--<Rectangle Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                                                           Fill="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"></Rectangle>-->
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <local:ProgressRing x:Name="DataProgressRing"
+                                                                        IsTabStop="True"
+                                                                        Width="22"
+                                                                        Height="22"
+                                                                        IsActive="True"
+                                                                        Margin="12,0,0,0" />
+                                                    <TextBlock Padding="16,16,16,12" 
+                                                               FontFamily="Segoe UI Variable Small"
+                                                               FontSize="12"
+                                                               x:Uid="AutoSuggestBoxSearchHeader"
+                                                               Foreground="{ThemeResource TextFillColorTertiary}"></TextBlock>
+                                                </StackPanel>
 
-                                        </Grid>
+                                            </Grid>
+                                            <Grid x:Name="AutoSuggestBoxHeaderRoot2" Visibility="Collapsed"> <!-- network error message -->
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Padding="16,16,16,12" 
+                                                               FontFamily="Segoe UI Variable Small"
+                                                               FontSize="12"
+                                                               x:Uid="AutoSuggestBoxSearchErrorText"
+                                                               Foreground="{ThemeResource TextFillColorTertiary}"></TextBlock>
+                                                </StackPanel>
+
+                                            </Grid>
+                                        </StackPanel>
                                     </ListView.Header>
                                 </ListView>
                             </Border>

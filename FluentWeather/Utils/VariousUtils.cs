@@ -27,7 +27,6 @@ namespace FluentWeather.Utils
             return char.ToUpper(s[0]) + s.Substring(1);
         }
 
-
         public static string GetAbbreviatedDayName(string localDayName)
         {
             // Get the current culture's DateTimeFormatInfo
@@ -48,16 +47,12 @@ namespace FluentWeather.Utils
 
         public static async Task<WetUnits> GetUnitsCode()
         {
-            WetUnits unitsCode =
-                (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
-
-            return unitsCode;
+            return (WetUnits) await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits");
         }
 
         public static async Task<string> GetTimeBasedOnUserSettings(DateTime time)
         {
             bool is12HourFormat = await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat").ConfigureAwait(false);
-
             return time.ToString(is12HourFormat ? "hh:mm tt" : "HH:mm", CultureInfo.InvariantCulture);
         }
 

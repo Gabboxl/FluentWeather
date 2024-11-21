@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using CommunityToolkit.WinUI;
 using FluentWeather.Helpers;
-using Microsoft.Toolkit.Uwp.UI;
 
 namespace FluentWeather.Controls
 {
@@ -35,8 +32,14 @@ namespace FluentWeather.Controls
 
     public static class AutoSuggestBoxClassExtensions
     {
+        public enum AutoSuggestBoxHeaderType
+        {
+            Loading,
+            NetworkError
+        }
+
         // Extension method to double the Value property
-        public static void ShowHideLoadingHeader(this AutoSuggestBox mySealedClass, bool show)
+        public static void ShowHideCustomHeader(this AutoSuggestBox mySealedClass, bool show, AutoSuggestBoxHeaderType type = AutoSuggestBoxHeaderType.Loading)
         {
             var popups = new List<Popup>();
 
@@ -47,10 +50,43 @@ namespace FluentWeather.Controls
                 return;
             }
 
-            var grid = ((popups[0].Child as Border).Child as ListView).Header as Grid;
+            Grid element = null;
+            var stack = ((popups[0].Child as Border).Child as ListView).Header as StackPanel;
 
+            switch (type)
+            {
+                case AutoSuggestBoxHeaderType.Loading:
+                    element = stack.Children[0] as Grid;
+                    break;
+
+                case AutoSuggestBoxHeaderType.NetworkError:
+                    element = stack.Children[1] as Grid;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+
+            //    element.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+
+            //check if any of stack children is visible
+            //if so, hide it
+            
             //(grid.Children[1] as TextBlock).Text = "My custom text";
-            grid.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            element.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+
+            int visibleCount = 0;
+            foreach (var child in stack.Children)
+            {
+                if (child is Grid grid)
+                {
+                    if (grid.Visibility == Visibility.Visible)
+                    {
+                       // grid.Visibility = Visibility.Collapsed;
+                        visibleCount++;
+                    }
+                }
+            }
+            stack.Height = visibleCount > 0 ? 50 : 0;
         }
     }
 }
