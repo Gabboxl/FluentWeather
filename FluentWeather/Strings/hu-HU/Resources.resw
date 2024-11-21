@@ -294,4 +294,7 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Auto refresh</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Network error, please check your internet connection.</value>
+  </data>
 </root>
