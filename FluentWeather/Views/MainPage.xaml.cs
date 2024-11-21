@@ -210,27 +210,28 @@ namespace FluentWeather.Views
                     MainPageViewModel.IsLoadingData = true;
                 }
             );
-
-            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+            
             try
             {
+                string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+                if (lastPlaceId == null)
+                 return;
+
                 var response = await ApiUtils.GetFullData(lastPlaceId);
 
-                if (response != null)
-                {
-                    var jsonResponse = await response.Content.ReadAsStringAsync();
-                    _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
-                    LiveTileService.UpdateWeatherMainTile(_lastApiData);
+                LiveTileService.UpdateWeatherMainTile(_lastApiData);
 
-                    await CoreApplication.MainView.Dispatcher.RunAsync(
-                        CoreDispatcherPriority.Normal, () =>
-                        {
-                            UpdateUi(_lastApiData);
-                            MainInnerContentGrid.Visibility = Visibility.Visible;
-                        }
-                    );
-                }
+                await CoreApplication.MainView.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal, () =>
+                    {
+                        UpdateUi(_lastApiData);
+                        MainInnerContentGrid.Visibility = Visibility.Visible;
+                    }
+                );
             }
             catch (HttpRequestException e)
             {
@@ -257,13 +258,17 @@ namespace FluentWeather.Views
                 );
 
             }
+            finally
+            {
 
-            await CoreApplication.MainView.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal, () => {
-                    RefreshButton.Visibility = Visibility.Visible;
-                    MainPageViewModel.IsLoadingData = false;
-                }
-            );
+                await CoreApplication.MainView.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal, () =>
+                    {
+                        RefreshButton.Visibility = Visibility.Visible;
+                        MainPageViewModel.IsLoadingData = false;
+                    }
+                );
+            }
         }
 
         /// <summary>
