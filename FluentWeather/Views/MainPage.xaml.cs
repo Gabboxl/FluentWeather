@@ -215,8 +215,7 @@ namespace FluentWeather.Views
             {
                 string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
-                if (lastPlaceId == null)
-                 return;
+                if (lastPlaceId == null) return;
 
                 var response = await ApiUtils.GetFullData(lastPlaceId);
 

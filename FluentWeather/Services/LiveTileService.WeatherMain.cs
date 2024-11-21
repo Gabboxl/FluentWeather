@@ -15,9 +15,13 @@ namespace FluentWeather.Services
     {
         public async void UpdateWeatherTileFull()
         {
-            string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
             try
             {
+                string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+
+                if (lastPlaceId == null)
+                    return;
+
                 var response = await ApiUtils.GetFullData(lastPlaceId);
 
                 if (response.IsSuccessStatusCode)
