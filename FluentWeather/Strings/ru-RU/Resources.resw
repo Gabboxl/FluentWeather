@@ -295,6 +295,6 @@
     <value>Авто обновление</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Сетевая ошибка, проверьте подключение к Интернету.</value>
   </data>
 </root>
