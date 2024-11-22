@@ -295,6 +295,6 @@
     <value>自動更新</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>ネットワーク エラー: インターネット接続をご確認ください。</value>
   </data>
 </root>
