@@ -296,6 +296,6 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>Tự động làm mới</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Lỗi mạng, vui lòng kiểm tra kết nối internet.</value>
   </data>
 </root>
