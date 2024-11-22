@@ -437,6 +437,9 @@ namespace FluentWeather.Views
 
             rootV3Response ??= _lastApiData;
 
+            if (rootV3Response == null)
+                return;
+
             var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
                                       IconsDictionary.IconCodeToBackgroundImageNameDictionary[
                                           rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
