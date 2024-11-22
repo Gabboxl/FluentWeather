@@ -295,6 +295,6 @@ Les tuiles Live sont disponibles nativement sur Windows 10 seulement.</value>
     <value>Rafraîchissement automatique</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Erreur réseau. Vérifiez votre connexion Internet.</value>
   </data>
 </root>
