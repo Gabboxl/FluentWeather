@@ -295,6 +295,6 @@ LiveTiles solo están disponibles nativamente en Windows 10.</value>
     <value>Actualización automática</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Error de red, por favor comprueba tu conexión a internet.</value>
   </data>
 </root>
