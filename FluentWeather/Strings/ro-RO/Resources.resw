@@ -292,6 +292,9 @@ Dalele Live sunt disponibile doar pe Windows 10.</value>
     <value>Imagine de fundal</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Reîmprospătare automată</value>
+  </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Eroare de rețea, vă rugăm să verificați conexiunea la internet.</value>
   </data>
 </root>

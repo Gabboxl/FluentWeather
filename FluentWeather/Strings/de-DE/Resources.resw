@@ -294,4 +294,7 @@ Live Kacheln sind nur auf Windows 10 verfügbar.</value>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Automatisch aktualisieren</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Netzwerkfehler, bitte überprüfen Sie Ihre Internetverbindung.</value>
+  </data>
 </root>

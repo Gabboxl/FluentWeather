@@ -294,4 +294,7 @@
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Авто обновление</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Сетевая ошибка, проверьте подключение к Интернету.</value>
+  </data>
 </root>

@@ -294,4 +294,7 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Auto refresh</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Network error, please check your internet connection.</value>
+  </data>
 </root>

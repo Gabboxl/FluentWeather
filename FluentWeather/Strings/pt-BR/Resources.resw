@@ -296,4 +296,7 @@ Os blocos dinâmicos estão disponíveis nativamente apenas no Windows 10.
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Atualização automática</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Erro de rede. Verifique sua conexão com a internet.</value>
+  </data>
 </root>

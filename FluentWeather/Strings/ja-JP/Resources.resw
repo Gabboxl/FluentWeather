@@ -292,6 +292,9 @@
     <value>背景画像</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>自動更新</value>
+  </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>ネットワーク エラー: インターネット接続をご確認ください。</value>
   </data>
 </root>

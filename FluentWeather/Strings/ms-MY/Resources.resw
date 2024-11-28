@@ -294,4 +294,7 @@ Jubin Langsung tersedia secara asli pada Windows 10 sahaja.</value>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Auto refresh</value>
   </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Network error, please check your internet connection.</value>
+  </data>
 </root>
