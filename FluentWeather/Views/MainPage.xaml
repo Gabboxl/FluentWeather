@@ -314,15 +314,10 @@
                                                     <ComboBox x:Name="AutoRefreshDataComboBox"
                                                               Margin="8,8,0,0"
                                                               d:DataContext="{d:DesignInstance views:MainPage }"
-                                                              SelectedValuePath="Tag"
-                                                              SelectedValue="{Binding AutoRefreshPeriodSelectedValue}"
+                                                              SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex}"
+                                                              ItemsSource="{Binding AutoRefreshSteps}"
+                                                              DisplayMemberPath="Value"
                                                               SelectionChanged="AutoRefreshComboBox_OnSelectionChanged">
-                                                        <ComboBoxItem Content="Off" Tag="0" />
-                                                        <ComboBoxItem Content="5 min" Tag="5" />
-                                                        <ComboBoxItem Content="10 min" Tag="10" />
-                                                        <ComboBoxItem Content="15 min" Tag="15" />
-                                                        <ComboBoxItem Content="30 min" Tag="30" />
-                                                        <ComboBoxItem Content="1 hour" Tag="60" />
                                                     </ComboBox>
 
 

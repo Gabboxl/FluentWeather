@@ -48,7 +48,8 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/"),
         };
 
-        private static readonly string SystemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+        private static readonly string
+            SystemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
         private RootV3Response _lastApiData;
 
@@ -60,7 +61,8 @@ namespace FluentWeather.Views
         {
             get
             {
-                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits")).Result;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits"))
+                    .Result;
             }
         }
 
@@ -69,7 +71,10 @@ namespace FluentWeather.Views
             get
             {
                 //run in background to avoid a deadlock/ui freeze
-                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat")).Result ? 1 : 0;
+                return Task.Run(async () =>
+                    await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat")).Result
+                    ? 1
+                    : 0;
             }
         }
 
@@ -78,16 +83,28 @@ namespace FluentWeather.Views
             get
             {
                 //run in background to avoid a deadlock/ui freeze
-                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled", true)).Result;
+                return Task.Run(async () =>
+                    await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled", true)).Result;
             }
         }
 
-        public static int AutoRefreshPeriodSelectedValue
+        public static Dictionary<int, string> AutoRefreshSteps => new()
+        {
+            {0, "Off"},
+            {5, "5 min"},
+            {10, "10 min"},
+            {15, "15 min"},
+            {30, "30 min"},
+            {60, "1 hour"}
+        };
+
+        public static int AutoRefreshPeriodSelectedIndex
         {
             get
             {
                 //run in background to avoid a deadlock/ui freeze
-                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("autoRefreshDataMinutes")).Result;
+                var savedVal = Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("autoRefreshDataMinutes")).Result;
+                return AutoRefreshSteps.Keys.ToList().IndexOf(savedVal);
             }
         }
 
@@ -139,6 +156,7 @@ namespace FluentWeather.Views
             _appViewModel.UpdateUi();
             // Initialize the refresh timer
             _refreshTimer.Tick += RefreshTimerTick;
+            UpdateRefreshTimer();
         }
 
         private async void RefreshTimerTick(object sender, object e)
@@ -155,10 +173,13 @@ namespace FluentWeather.Views
             return $"v{version.Major}.{version.Minor}.{version.Build}";
         }
 
-        internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender,
+            AutoSuggestBoxTextChangedEventArgs args)
         {
             sender.ShowHideCustomHeader(true);
-            sender.ShowHideCustomHeader(false, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError); //TODO: remove this line and clear all messages automatically in BetterAutosuggestBox.cs
+            sender.ShowHideCustomHeader(false,
+                AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType
+                    .NetworkError); //TODO: remove this line and clear all messages automatically in BetterAutosuggestBox.cs
 
             // Since selecting an item will also change the text,
             // only listen to changes caused by user entering text.
@@ -185,7 +206,8 @@ namespace FluentWeather.Views
                 }
                 catch (HttpRequestException e)
                 {
-                    sender.ShowHideCustomHeader(true, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
+                    sender.ShowHideCustomHeader(true,
+                        AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
                 }
             }
 
@@ -205,12 +227,13 @@ namespace FluentWeather.Views
         private async Task LoadApiData()
         {
             await CoreApplication.MainView.Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal, () => {
+                CoreDispatcherPriority.Normal, () =>
+                {
                     RefreshButton.Visibility = Visibility.Collapsed;
                     MainPageViewModel.IsLoadingData = true;
                 }
             );
-            
+
             try
             {
                 string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
@@ -274,6 +297,7 @@ namespace FluentWeather.Views
         /// storyboards code
         /// </summary>
         private Storyboard _storyboard1;
+
         private Storyboard _storyboard2;
         private bool _isImage1Active;
 
@@ -567,17 +591,25 @@ namespace FluentWeather.Views
 
             //sunset and sunrise
             var sunriseTime = _lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
-            SunriseTimeText.Text = sunriseTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(sunriseTime.Value.DateTime);
+            SunriseTimeText.Text = sunriseTime == null
+                ? "--"
+                : await VariousUtils.GetTimeBasedOnUserSettings(sunriseTime.Value.DateTime);
 
             var sunsetTime = _lastApiData.v3wxforecastdaily10day.sunsetTimeLocal[indexOfDayDailyData];
-            SunsetTimeText.Text = sunsetTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(sunsetTime.Value.DateTime);
+            SunsetTimeText.Text = sunsetTime == null
+                ? "--"
+                : await VariousUtils.GetTimeBasedOnUserSettings(sunsetTime.Value.DateTime);
 
             //moonrise and moonset
             var moonriseTime = _lastApiData.v3wxforecastdaily10day.moonriseTimeLocal[indexOfDayDailyData];
-            MoonriseTimeText.Text = moonriseTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(moonriseTime.Value.DateTime);
+            MoonriseTimeText.Text = moonriseTime == null
+                ? "--"
+                : await VariousUtils.GetTimeBasedOnUserSettings(moonriseTime.Value.DateTime);
 
             var moonsetTime = _lastApiData.v3wxforecastdaily10day.moonsetTimeLocal[indexOfDayDailyData];
-            MoonsetTimeText.Text = moonsetTime == null ? "--" : await VariousUtils.GetTimeBasedOnUserSettings(moonsetTime.Value.DateTime);
+            MoonsetTimeText.Text = moonsetTime == null
+                ? "--"
+                : await VariousUtils.GetTimeBasedOnUserSettings(moonsetTime.Value.DateTime);
 
             //lunar phase
             var lunarPhase = _lastApiData.v3wxforecastdaily10day.moonPhase[indexOfDayDailyData];
@@ -697,7 +729,7 @@ namespace FluentWeather.Views
 
         private async void BackgroundImageToggle_OnToggled(object sender, RoutedEventArgs e)
         {
-            var backgroundImageToggle = (ToggleSwitch)sender;
+            var backgroundImageToggle = (ToggleSwitch) sender;
             await ApplicationData.Current.LocalSettings.SaveAsync("backgroundImageEnabled", backgroundImageToggle.IsOn);
 
             if (backgroundImageToggle.IsOn)
@@ -706,23 +738,29 @@ namespace FluentWeather.Views
                 CrossfadeToImage(null);
         }
 
-        private async void AutoRefreshComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AutoRefreshComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var autoRefreshComboBox = (ComboBox)sender;
-            var selectedItem = (ComboBoxItem)autoRefreshComboBox.SelectedItem;
-            if (selectedItem?.Tag != null)
+            var autoRefreshComboBox = (ComboBox) sender;
+            if (autoRefreshComboBox.SelectedItem is KeyValuePair<int, string> selectedItem)
             {
-                var minutes = Convert.ToDouble(selectedItem.Tag);
-                if (minutes > 0)
-                {
-                    _refreshTimer.Interval = TimeSpan.FromSeconds(minutes);
-                    _refreshTimer.Start();
-                }
-                else
-                    _refreshTimer.Stop();
-
-                await ApplicationData.Current.LocalSettings.SaveAsync("autoRefreshDataMinutes", minutes);
+                UpdateRefreshTimer(selectedItem.Key);
             }
+        }
+
+        private async void UpdateRefreshTimer(int minutes = -1)
+        {
+            if (minutes == -1)
+                minutes = AutoRefreshSteps.ElementAt(AutoRefreshPeriodSelectedIndex).Key;
+
+            if (minutes > 0)
+            {
+                _refreshTimer.Interval = TimeSpan.FromMinutes(minutes);
+                _refreshTimer.Start();
+            }
+            else
+                _refreshTimer.Stop();
+
+            await ApplicationData.Current.LocalSettings.SaveAsync("autoRefreshDataMinutes", minutes);
         }
     }
 }
