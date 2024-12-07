@@ -17,7 +17,7 @@ Everyone is invited to help with the translation of the app, [help us translate 
 
  ***Microsoft Store (recommended)***:
  
- <a href="https://apps.microsoft.com/store/detail/9PFD136M8457?launch=true&mode=mini" > <img src="https://get.microsoft.com/images/en-US%20dark.svg" width=20% height=20%/> </a>
+ <a href="https://apps.microsoft.com/store/detail/9PFD136M8457?launch=true&mode=mini" > <img src="https://get.microsoft.com/images/en-us%20dark.svg" width=20% height=20%/> </a>
 
 ----
 
