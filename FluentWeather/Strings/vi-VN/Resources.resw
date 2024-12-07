@@ -182,22 +182,22 @@
     <value>Chỉ số UV</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Dự báo hàng ngày</value>
+    <value>Dự báo hằng ngày</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Hàng giờ</value>
+    <value>Hằng giờ</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
-    <value>Hoạt động dưới thời tiết</value>
+    <value>Tuệ quán thời tiết</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
     <value>Tóm tắt ngày</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Buổi sáng</value>
+    <value>Ban ngày</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Buổi tối</value>
+    <value>Ban đêm</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
     <value>Mặt trời</value>
@@ -236,13 +236,13 @@
     <value>Hệ mét</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Hệ đo lường Anh</value>
+    <value>Hệ Imperial</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Cả hai</value>
+    <value>Hỗn hợp</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>Thiết kế giao diện được lấy cảm hứng từ tác phẩm của</value>
+    <value>Thiết kế UI được lấy cảm hứng từ tác phẩm của</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
     <value>được phát triển bời</value>
@@ -251,15 +251,15 @@
     <value>Dịch ứng dụng</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Thời gian cập nhật </value>
+    <value>Cập nhật vào </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>LiveTile thời tiết</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Bạn phải ghim FluentWeather ra start menu trước.
+    <value>Bạn cần phải ghim FluentWeather vào menu Bắt đầu trước.
 
-Live Tiles chỉ có trên Windows 10.</value>
+Live Tiles vốn chỉ khả dụng trên Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>Các giờ tiếp theo:</value>
@@ -274,19 +274,19 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>Lượng mưa</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
-    <value>Dữ liệu chi tiết,</value>
+    <value>Dữ liệu chi tiết</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
     <value>Xem tất cả thay đổi</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 tiếng</value>
+    <value>24 giờ</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 tiếng</value>
+    <value>12 giờ</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value/>
+    <value>Đang tìm...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Hình nền</value>
@@ -295,6 +295,6 @@ Live Tiles chỉ có trên Windows 10.</value>
     <value>Tự động làm mới</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Lỗi mạng, vui lòng kiểm tra kết nối internet.</value>
+    <value>Lỗi mạng, vui lòng kiểm tra kết nối internet của bạn.</value>
   </data>
 </root>
