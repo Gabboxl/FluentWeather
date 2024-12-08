@@ -292,9 +292,9 @@ Dynamiczne kafelki są dostępne tylko w systemie Windows 10.</value>
     <value>Obraz tła</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Automatyczne odświeżanie</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Błąd sieci. Proszę, sprawdź połączenie sieciowe.</value>
   </data>
 </root>
