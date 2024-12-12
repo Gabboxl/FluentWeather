@@ -149,7 +149,7 @@
     <value>Tìm một địa điểm...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Nhiệt độ cảm nhận</value>
+    <value>Cảm nhận như</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
     <value>Chạy bộ</value>
