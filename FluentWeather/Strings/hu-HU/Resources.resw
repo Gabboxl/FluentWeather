@@ -286,15 +286,15 @@ Az élő csempék natívan csak a Windows 10 rendszeren érhetőek el.</value>
     <value>12 óra</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Keresés...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Háttérkép</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Automatikus frissítés</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Hálózati hiba, kérjük, ellenőrizze az internetkapcsolatát.</value>
   </data>
 </root>
