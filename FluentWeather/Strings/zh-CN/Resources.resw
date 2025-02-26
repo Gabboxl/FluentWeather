@@ -276,7 +276,7 @@
     <value>详细数据</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>查看所有更改</value>
+    <value>查看全部更改</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
     <value>24 小时</value>
