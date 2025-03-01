@@ -126,7 +126,7 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>此版本中的改进</value>
+    <value>此版本中的新增改进</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -185,7 +185,7 @@
     <value>每日预报</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>每小时预报</value>
+    <value>逐小时预报</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>天气信息</value>
