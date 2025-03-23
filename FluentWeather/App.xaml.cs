@@ -3,7 +3,6 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using FluentWeather.Services;
-using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
 using FluentWeather.ViewModels;
 
@@ -48,11 +47,7 @@ namespace FluentWeather
 
             if (!isDebugMode)
             {
-                Microsoft.AppCenter.AppCenter.Start(
-                    "test",
-                    typeof(Microsoft.AppCenter.Analytics.Analytics),
-                    typeof(Microsoft.AppCenter.Crashes.Crashes)
-                );
+                //TODO: start sentry.io
             }
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
@@ -94,7 +89,7 @@ namespace FluentWeather
             
             e.Handled = true;
 
-            Crashes.TrackError(exceptionThatDoesntGoAway);
+            //TODO: track exception with sentry.io
 
         }
 

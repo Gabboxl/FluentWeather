@@ -7,7 +7,6 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using FluentWeather.Models;
 using FluentWeather.Utils;
 using Newtonsoft.Json;
-using Microsoft.AppCenter.Crashes;
 
 namespace FluentWeather.Services
 {
@@ -117,8 +116,7 @@ namespace FluentWeather.Services
             }
             catch (Exception e)
             {
-                // report the error to Visual Studio App Center
-                Crashes.TrackError(e);
+                //TODO: report the error to sentry
             }
         }
 
