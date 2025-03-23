@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
+using System.Security;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using FluentWeather.Services;
 using Microsoft.Extensions.DependencyInjection;
 using FluentWeather.ViewModels;
+using Sentry;
+using Sentry.Protocol;
 
 namespace FluentWeather
 {
@@ -33,26 +37,27 @@ namespace FluentWeather
 
         public App()
         {
-            InitializeComponent();
-            //this.Suspending += OnSuspending;
-            Container = ConfigureDependencyInjection();
+#if !DEBUG
+                SentrySdk.Init(options =>
+                {
+                    // Tells which project in Sentry to send events to:
+                    options.Dsn = "aka";
+                    // When configuring for the first time, to see what the SDK is doing:
+                    options.Debug = false;
+                    // Enable Global Mode since this is a client app.
+                    options.IsGlobalModeEnabled = true;
+                    // TODO:Any other Sentry options you need go here.
+                });
+#endif
 
             UnhandledException += OnAppUnhandledException;
 
-            bool isDebugMode = false;
-
-#if DEBUG
-            isDebugMode = true;
-#endif
-
-            if (!isDebugMode)
-            {
-                //TODO: start sentry.io
-            }
+            InitializeComponent();
+            Suspending += OnSuspending;
+            Container = ConfigureDependencyInjection();
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
             _activationService = new Lazy<ActivationService>(CreateActivationService);
-
 
             //set the global view model which we can use anytime for things
             _appViewModel = AppViewModelHolder.GetViewModel();
@@ -67,10 +72,11 @@ namespace FluentWeather
             }
         }
 
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: salvare lo stato dell'applicazione e arrestare eventuali attività eseguite in background
+            await SentrySdk.FlushAsync(TimeSpan.FromSeconds(2));
             deferral.Complete();
         }
 
@@ -79,6 +85,8 @@ namespace FluentWeather
             await ActivationService.ActivateAsync(args);
         }
 
+        [SecurityCritical]
+        [HandleProcessCorruptedStateExceptions]
         private void OnAppUnhandledException(
             object sender,
             Windows.UI.Xaml.UnhandledExceptionEventArgs e
@@ -86,11 +94,19 @@ namespace FluentWeather
         {
             //http://blog.wpdev.fr/inspecting-unhandled-exceptions-youve-got-only-one-chance/
             Exception exceptionThatDoesntGoAway = e.Exception;
-            
+
+            if (exceptionThatDoesntGoAway != null)
+            {
+                // Tell Sentry this was an unhandled exception
+                exceptionThatDoesntGoAway.Data[Mechanism.HandledKey] = false;
+                exceptionThatDoesntGoAway.Data[Mechanism.MechanismKey] = "Application.UnhandledException";
+                // Capture the exception
+                SentrySdk.CaptureException(exceptionThatDoesntGoAway);
+                // Flush the event immediately
+                SentrySdk.FlushAsync(TimeSpan.FromSeconds(2)).GetAwaiter().GetResult();
+            }
+
             e.Handled = true;
-
-            //TODO: track exception with sentry.io
-
         }
 
         private ActivationService CreateActivationService()
