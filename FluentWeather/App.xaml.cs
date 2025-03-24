@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.ExceptionServices;
 using System.Security;
 using Windows.ApplicationModel;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FluentWeather.ViewModels;
 using Sentry;
 using Sentry.Protocol;
+using System.Diagnostics;
 
 namespace FluentWeather
 {
@@ -23,32 +25,28 @@ namespace FluentWeather
             get { return _activationService.Value; }
         }
 
-
         public IServiceProvider Container { get; }
 
         private IServiceProvider ConfigureDependencyInjection()
         {
             var serviceCollection = new ServiceCollection();
-
-
             return serviceCollection.BuildServiceProvider();
         }
 
 
         public App()
         {
-#if !DEBUG
-                SentrySdk.Init(options =>
-                {
-                    // Tells which project in Sentry to send events to:
-                    options.Dsn = "aka";
-                    // When configuring for the first time, to see what the SDK is doing:
-                    options.Debug = false;
-                    // Enable Global Mode since this is a client app.
-                    options.IsGlobalModeEnabled = true;
-                    // TODO:Any other Sentry options you need go here.
-                });
-#endif
+            SentrySdk.Init(options =>
+            {
+                options.Dsn = "aka";
+                options.Debug = Package.Current.IsDevelopmentMode;
+                options.IsGlobalModeEnabled = true;
+
+                var uwpPackageVersion = Package.Current.Id.Version;
+                options.Release = $"{Package.Current.DisplayName}@{uwpPackageVersion.Major}.{uwpPackageVersion.Minor}.{uwpPackageVersion.Build}.{uwpPackageVersion.Revision}";
+                options.Environment = Package.Current.IsDevelopmentMode ? "Development" : "Production";
+                options.AutoSessionTracking = true;
+            });
 
             UnhandledException += OnAppUnhandledException;
 
@@ -62,7 +60,6 @@ namespace FluentWeather
             //set the global view model which we can use anytime for things
             _appViewModel = AppViewModelHolder.GetViewModel();
         }
-
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -119,7 +116,6 @@ namespace FluentWeather
         {
             return new Views.ShellPage();
         } */
-
 
         protected override async void OnBackgroundActivated(BackgroundActivatedEventArgs args)
         {
