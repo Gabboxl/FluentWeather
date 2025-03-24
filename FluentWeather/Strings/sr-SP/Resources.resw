@@ -123,11 +123,12 @@ Vreme</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>FluentWeather</value>
+    <value>Српски
+Време</value>
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>What's new in this version</value>
+    <value>Шта је ново у овој верзији</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -135,55 +136,55 @@ Vreme</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Search and select your location below:</value>
+    <value>Претражите и изаберите своју локацију:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Welcome to FluentWeather!</value>
+    <value>Добродошли у FluentWeather!</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Go ahead!</value>
+    <value>Иди напред!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Претражите место...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Feels like</value>
+    <value>Осећа се као</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
-    <value>Running</value>
+    <value>Трчање</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Driving</value>
+    <value>Вожња</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Dry skin</value>
+    <value>Суво</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Watering need</value>
+    <value>Потреба за заливањем</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>Wind</value>
+    <value>Ветар</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Притисак</value>
   </data>
   <data name="HumidityChipControl.Title" xml:space="preserve">
-    <value>Humidity</value>
+    <value>Влажност</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Visibility</value>
+    <value>Видљивост</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Dew Point</value>
+    <value>Роса</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
-    <value>UV Index</value>
+    <value>УВ индекс</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Daily forecast</value>
+    <value>Дневна прогноза</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
     <value>Hourly</value>
@@ -284,10 +285,10 @@ Live Tiles are available natively on Windows 10 only.</value>
     <value>24 hours</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 сати</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Претраживање...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Background image</value>
