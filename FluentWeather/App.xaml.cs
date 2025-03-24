@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Runtime.ExceptionServices;
 using System.Security;
 using Windows.ApplicationModel;
@@ -10,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using FluentWeather.ViewModels;
 using Sentry;
 using Sentry.Protocol;
-using System.Diagnostics;
 
 namespace FluentWeather
 {
@@ -32,7 +30,6 @@ namespace FluentWeather
             var serviceCollection = new ServiceCollection();
             return serviceCollection.BuildServiceProvider();
         }
-
 
         public App()
         {

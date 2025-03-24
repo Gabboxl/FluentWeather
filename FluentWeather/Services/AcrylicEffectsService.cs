@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Windows.Storage;
 using FluentWeather.Helpers;
 using CommunityToolkit.Mvvm.ComponentModel;
