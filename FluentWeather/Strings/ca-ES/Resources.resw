@@ -286,15 +286,15 @@ Les «LiveTiles» només estan disponibles de manera nadiua al Windows 10.</valu
     <value>12 hores</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>S'està cercant...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Imatge de fons</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Actualitza automàticament</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Error de xarxa, comproveu la vostra connexió a Internet.</value>
   </data>
 </root>

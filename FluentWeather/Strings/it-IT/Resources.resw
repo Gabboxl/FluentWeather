@@ -292,9 +292,9 @@ Le Live Tile sono disponibili nativamente solo su Windows 10.</value>
     <value>Immagine di sfondo</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Aggiornamento automatico</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Errore di rete, si prega di controllare la connessione internet.</value>
   </data>
 </root>

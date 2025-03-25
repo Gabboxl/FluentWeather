@@ -286,15 +286,15 @@ Os Azulejos Vivos estão disponíveis apenas no Windows 10.</value>
     <value>12 horas</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>A pesquisar...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Imagem de fundo</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Atualizar automaticamente</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Erro de rede, verifique a sua ligação à Internet.</value>
   </data>
 </root>

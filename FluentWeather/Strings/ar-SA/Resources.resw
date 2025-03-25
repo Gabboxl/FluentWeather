@@ -292,9 +292,9 @@
     <value>صورة الخلفية</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>تحديث تلقائي</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>مشكلة فى الإتصال ، برجاء التأكد من إتصال الإنترنت.</value>
   </data>
 </root>
