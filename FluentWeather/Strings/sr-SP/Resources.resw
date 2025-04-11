@@ -124,7 +124,7 @@
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>FluentWeather
-Прекрасна Windows апликација за временску прогнозу</value>
+Windows апликација за временску прогнозу</value>
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
@@ -132,7 +132,7 @@
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value/>
+    <value>Uredu</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
