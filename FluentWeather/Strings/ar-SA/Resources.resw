@@ -251,13 +251,13 @@
     <value>ساعد فى ترجمة البرنامج</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>تم التحديث بتاريخ </value>
+    <value>حُدث بتاريخ </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>الطقس LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>يتعين عليك تثبيت FluentWeather في قائمة البدء أولاً. 
+    <value>يتعين عليك تثبيت FluentWeather في قائمة ابدأ أولاً. 
 
 تتوفر Live Tiles على نظام التشغيل Windows 10 فقط.</value>
   </data>
@@ -295,6 +295,6 @@
     <value>تحديث تلقائي</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>مشكلة فى الإتصال ، برجاء التأكد من إتصال الإنترنت.</value>
+    <value>مشكلة في الشبكة، الرجاء التأكد من إتصالك بالإنترنت.</value>
   </data>
 </root>
