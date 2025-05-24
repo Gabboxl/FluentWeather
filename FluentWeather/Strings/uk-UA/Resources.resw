@@ -286,10 +286,10 @@
     <value>12 годин</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value/>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
     <value>Auto refresh</value>
