@@ -126,7 +126,7 @@
     <comment>Application description</comment>
   </data>
   <data name="WhatsNewDialog.Title" xml:space="preserve">
-    <value>Yang baru di versi ini</value>
+    <value>Apa yang baru di versi ini</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
@@ -142,7 +142,7 @@
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Lanjutkan</value>
+    <value>Lanjutkan!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
@@ -257,9 +257,9 @@
     <value>Ubin Langsung Cuaca</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Anda harus menyematkan FluentWeather ke Menu Mulai.
+    <value>Anda harus menyematkan FluentWeather ke Menu Awal.
 
-Ubin Langsung hanya tersedia di Windows 10.</value>
+Live Tiles hanya tersedia di Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>Jam-jam berikutnya:</value>
@@ -286,15 +286,15 @@ Ubin Langsung hanya tersedia di Windows 10.</value>
     <value>12 jam</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value/>
+    <value>Mencari...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Gambar Latar Belakang</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Muat ulang otomatis</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Kesalahan jaringan, mohon periksa koneksi internet Anda.</value>
   </data>
 </root>
