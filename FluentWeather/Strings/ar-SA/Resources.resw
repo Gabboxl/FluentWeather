@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value/>
+    <value>FluentWeather</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
@@ -164,7 +164,7 @@
     <value>الحاجة إلى الري</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
-    <value>سرعة الرياح</value>
+    <value>الرياح</value>
   </data>
   <data name="PressureChipControl.Title" xml:space="preserve">
     <value>الضغط</value>
@@ -251,13 +251,13 @@
     <value>ساعد فى ترجمة البرنامج</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>تم التحديث بتاريخ </value>
+    <value>حُدث بتاريخ </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>الطقس LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>يتعين عليك تثبيت FluentWeather في قائمة البدء أولاً. 
+    <value>يتعين عليك تثبيت FluentWeather في قائمة ابدأ أولاً. 
 
 تتوفر Live Tiles على نظام التشغيل Windows 10 فقط.</value>
   </data>
@@ -292,9 +292,9 @@
     <value>صورة الخلفية</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>تحديث تلقائي</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>مشكلة في الشبكة، الرجاء التأكد من إتصالك بالإنترنت.</value>
   </data>
 </root>

@@ -130,7 +130,7 @@
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>Vale</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
@@ -251,7 +251,7 @@
     <value>Traduce la app</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Actualizado el</value>
+    <value>Actualizado el </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>LiveTile del clima</value>

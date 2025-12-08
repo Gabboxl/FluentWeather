@@ -130,7 +130,7 @@
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Οκ</value>
+    <value>Εντάξει</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
@@ -236,7 +236,7 @@
     <value>Μετρικό</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Αγγλοσαξονικό (°F)</value>
+    <value>Αγγλοσαξονικό</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
     <value>Υβριδικό</value>
@@ -257,9 +257,9 @@
     <value>Καιρός LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Πρέπει πρώτα να καρφιτσώσετε το FluentWeather στο μενού εκκίνησης.
+    <value>Πρέπει πρώτα να καρφιτσώσετε FluentWeather στο μενού εκκίνησης.
 
-Τα Live Tiles διατίθενται εγγενώς στα Windows 10.</value>
+Τα δυναμικά πλακίδια είναι διαθέσιμα εγγενώς μόνο στα Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>Επόμενες ώρες:</value>
@@ -286,15 +286,15 @@
     <value>12 ώρες</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Αναζήτηση...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Εικόνα φόντου</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Αυτόματη ανανέωση</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Σφάλμα δικτύου, παρακαλούμε ελέγξτε τη σύνδεσή σας στο διαδίκτυο.</value>
   </data>
 </root>

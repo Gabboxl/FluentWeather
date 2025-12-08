@@ -286,15 +286,15 @@ Canlı Kutucuklar orijinal haliyle yalnızca Windows 10'da mevcuttur.</value>
     <value>12 saat</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Aranıyor...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Arkaplan görseli</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Otomatik yenileme</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Ağ hatası. Lütfen internet bağlantınızı kontrol edin.</value>
   </data>
 </root>

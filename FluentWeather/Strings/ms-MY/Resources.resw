@@ -286,15 +286,15 @@ Jubin Langsung tersedia secara asli pada Windows 10 sahaja.</value>
     <value>12 jam</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Mencari...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Imej latar belakang</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Auto segar semula</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Ralat rangkaian, sila periksa sambungan internet anda.</value>
   </data>
 </root>
