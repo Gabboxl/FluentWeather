@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>FluentWeather</value>
+    <comment>Application display name</comment>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>FluentWeather</value>
+    <comment>Application description</comment>
+  </data>
+  <data name="WhatsNewDialog.Title" xml:space="preserve">
+    <value>What's new in this version</value>
+    <comment>What's new prompt message title</comment>
+  </data>
+  <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Ok</value>
+    <comment>What's new prompt message primary button text</comment>
+  </data>
+  <data name="FirstRun_Body.Text" xml:space="preserve">
+    <value>Search and select your location below:</value>
+    <comment>First use prompt message body</comment>
+  </data>
+  <data name="FirstRunDialog.Title" xml:space="preserve">
+    <value>Welcome to FluentWeather!</value>
+    <comment>First use prompt message title</comment>
+  </data>
+  <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Go ahead!</value>
+    <comment>First use prompt message primary button text</comment>
+  </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Search a place...</value>
+  </data>
+  <data name="FeelsLikeText" xml:space="preserve">
+    <value>Feels like</value>
+  </data>
+  <data name="RunningInsightTitle" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="DrivingInsightTitle" xml:space="preserve">
+    <value>Driving</value>
+  </data>
+  <data name="DrySkinInsightTitle" xml:space="preserve">
+    <value>Dry skin</value>
+  </data>
+  <data name="WateringNeedInsightTitle" xml:space="preserve">
+    <value>Watering need</value>
+  </data>
+  <data name="WindChipControl.Title" xml:space="preserve">
+    <value>Wind</value>
+  </data>
+  <data name="PressureChipControl.Title" xml:space="preserve">
+    <value>Pressure</value>
+  </data>
+  <data name="HumidityChipControl.Title" xml:space="preserve">
+    <value>Humidity</value>
+  </data>
+  <data name="VisibilityChipControl.Title" xml:space="preserve">
+    <value>Visibility</value>
+  </data>
+  <data name="DewPointChipControl.Title" xml:space="preserve">
+    <value>Dew Point</value>
+  </data>
+  <data name="UVIndexChipControl.Title" xml:space="preserve">
+    <value>UV Index</value>
+  </data>
+  <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
+    <value>Daily forecast</value>
+  </data>
+  <data name="HourlyTitleText.Text" xml:space="preserve">
+    <value>Hourly</value>
+  </data>
+  <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
+    <value>Weather Insights</value>
+  </data>
+  <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
+    <value>Day Summary</value>
+  </data>
+  <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="SunInsightTitle.Text" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="SunsetSubtitle.Text" xml:space="preserve">
+    <value>Sunset</value>
+  </data>
+  <data name="SunriseSubtitle.Text" xml:space="preserve">
+    <value>Sunrise</value>
+  </data>
+  <data name="MoonInsightTitle.Text" xml:space="preserve">
+    <value>Moon</value>
+  </data>
+  <data name="MoonriseSubtitle.Text" xml:space="preserve">
+    <value>Moonrise</value>
+  </data>
+  <data name="MoonsetSubtitle.Text" xml:space="preserve">
+    <value>Moonset</value>
+  </data>
+  <data name="LunarphaseSubtitle.Text" xml:space="preserve">
+    <value>Lunar phase</value>
+  </data>
+  <data name="UnitsSettingsTitle.Text" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
+    <value>Acrylic effects</value>
+  </data>
+  <data name="CreditsSettingsTitle.Text" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="GithubProjectButton.Text" xml:space="preserve">
+    <value>GitHub project</value>
+  </data>
+  <data name="MetricUnitsItem.Content" xml:space="preserve">
+    <value>Metric</value>
+  </data>
+  <data name="ImperialUnitsItem.Content" xml:space="preserve">
+    <value>Imperial</value>
+  </data>
+  <data name="HybridUnitsItem.Content" xml:space="preserve">
+    <value>Hybrid</value>
+  </data>
+  <data name="InspiredByRun.Text" xml:space="preserve">
+    <value>UI design inspired by the work of</value>
+  </data>
+  <data name="DevelopedByRun.Text" xml:space="preserve">
+    <value>developed by</value>
+  </data>
+  <data name="TranslateAppText.Text" xml:space="preserve">
+    <value>Translate the app</value>
+  </data>
+  <data name="UpdatedOnText" xml:space="preserve">
+    <value>Updated on </value>
+  </data>
+  <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
+    <value>Weather LiveTile</value>
+  </data>
+  <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
+    <value>You have to pin FluentWeather to the start menu first.
+
+Live Tiles are available natively on Windows 10 only.</value>
+  </data>
+  <data name="NextHours" xml:space="preserve">
+    <value>Next hours:</value>
+  </data>
+  <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
+    <value>Time format</value>
+  </data>
+  <data name="CloudCoverChipControl.Title" xml:space="preserve">
+    <value>Cloud cover</value>
+  </data>
+  <data name="RainAmountChipControl.Title" xml:space="preserve">
+    <value>Rain amount</value>
+  </data>
+  <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
+    <value>Detailed data</value>
+  </data>
+  <data name="ViewAllChanges.Text" xml:space="preserve">
+    <value>View all changes</value>
+  </data>
+  <data name="Segmented24hours.Content" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Segmented12hours.Content" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
+  <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
+    <value>Background image</value>
+  </data>
+  <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
+    <value>Auto refresh</value>
+  </data>
+  <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
+    <value>Network error, please check your internet connection.</value>
+  </data>
+</root>
