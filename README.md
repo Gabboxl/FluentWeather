@@ -5,7 +5,7 @@ A beautiful & modern UWP weather app for Windows.
 
 ## Translate the app
 
-Everyone is invited to help with the translation of the app, [help us translate here!](https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251)
+Everyone is invited to help with the translation of the app, [help us translate here!](https://crwd.in/FluentWeather/c07dfb9bf12c2e9ed8566e525d6ee8172645390)
 
 ## Downloads
 
