@@ -191,34 +191,34 @@
     <value>Pregled vremena</value>
   </data>
   <data name="DaySummaryInsightTitle.Text" xml:space="preserve">
-    <value>Day Summary</value>
+    <value>Sažetak dana</value>
   </data>
   <data name="DaySummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Day</value>
+    <value>Dan</value>
   </data>
   <data name="NightSummaryInsightSubtitle.Text" xml:space="preserve">
-    <value>Night</value>
+    <value>Noć</value>
   </data>
   <data name="SunInsightTitle.Text" xml:space="preserve">
-    <value>Sun</value>
+    <value>Sunce</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>Sunset</value>
+    <value>Zalazak sunca</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>Izlazak sunca</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Moon</value>
+    <value>Mjesec</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Moonrise</value>
+    <value>Izlazak mjeseca</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
-    <value>Moonset</value>
+    <value>Zalazak mjeseca</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Lunar phase</value>
+    <value>Faza Mjeseca</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Jedinice</value>
@@ -251,33 +251,33 @@
     <value>Prevedite aplikaciju</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Updated on </value>
+    <value>Ažurirano </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Weather LiveTile</value>
+    <value>Vremenski LiveTile</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>You have to pin FluentWeather to the start menu first.
+    <value>Prvo morate prikvačiti FluentWeather na izbornik Start.
 
-Live Tiles are available natively on Windows 10 only.</value>
+LiveTiles su dostupne samo na Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Next hours:</value>
+    <value>Sljedećih sati:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Format vremena</value>
   </data>
   <data name="CloudCoverChipControl.Title" xml:space="preserve">
-    <value>Cloud cover</value>
+    <value>Oblačnost</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Rain amount</value>
+    <value>Količina kiše</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Detaljni podaci</value>
   </data>
   <data name="ViewAllChanges.Text" xml:space="preserve">
-    <value>View all changes</value>
+    <value>Prikaži sve promjene</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
     <value>24 sata</value>
@@ -286,7 +286,7 @@ Live Tiles are available natively on Windows 10 only.</value>
     <value>12 sati</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Traženje...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
     <value>Pozadinska slika</value>
@@ -295,6 +295,6 @@ Live Tiles are available natively on Windows 10 only.</value>
     <value>Automatsko osvježavanje</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Pogreška mreže, provjerite svoju internetsku vezu.</value>
   </data>
 </root>
