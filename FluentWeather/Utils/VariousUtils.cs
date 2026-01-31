@@ -64,8 +64,7 @@ namespace FluentWeather.Utils
                 < 36 => "blur1", 
                 < 50 => "blur2", 
                 < 70 => "blur3", 
-                < 85 => "blur4", 
-                <= 100 => "blur5",
+                < 85 => "blur4",
                 _ => "blur5"
             };
 

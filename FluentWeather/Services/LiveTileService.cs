@@ -19,7 +19,6 @@ namespace FluentWeather.Services
         private const string QueueEnabledKey = "LiveTileNotificationQueueEnabled";
         private const string MainLiveTileSettingsKey = "MainLiveTileEnabled";
 
-
         private bool _mainLiveTileEnabled = true;
 
         public bool MainLiveTileEnabled
@@ -34,7 +33,7 @@ namespace FluentWeather.Services
                 {
                     //use Singleton<BackgroundTaskService>.Instance.Start(); to start the background task, it takes in input IBackgroundTaskInstane
 
-                    Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
+                    BackgroundTaskService.RegisterBackgroundTasksAsync().ConfigureAwait(false);
 
                     Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
                 }
@@ -70,7 +69,7 @@ namespace FluentWeather.Services
             }
         }
 
-        public void UpdateTile(TileNotification notification)
+        private static void UpdateTile(TileNotification notification)
         {
             try
             {
@@ -82,7 +81,7 @@ namespace FluentWeather.Services
             }
         }
 
-        public void ClearTile()
+        private static void ClearTile()
         {
             try
             {
@@ -111,7 +110,7 @@ namespace FluentWeather.Services
             }
         }
 
-        private async Task<bool> IsAlreadyPinnedAsync(SecondaryTile tile)
+        private static async Task<bool> IsAlreadyPinnedAsync(SecondaryTile tile)
         {
             var secondaryTiles = await SecondaryTile.FindAllAsync();
             return secondaryTiles.Any(t => t.Arguments == tile.Arguments);
@@ -146,12 +145,10 @@ namespace FluentWeather.Services
             return false;
         }
 
-
         public async Task SaveSettingsAsync(bool newValue, string settingsKey)
         {
             await ApplicationData.Current.LocalSettings.SaveAsync(settingsKey, newValue);
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 

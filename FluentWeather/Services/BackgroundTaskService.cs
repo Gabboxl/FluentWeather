@@ -16,15 +16,14 @@ namespace FluentWeather.Services
     {
         public static IEnumerable<BackgroundTask> BackgroundTasks => BackgroundTaskInstances.Value;
 
-        private static readonly Lazy<IEnumerable<BackgroundTask>> BackgroundTaskInstances = new(() => CreateInstances());
+        private static readonly Lazy<IEnumerable<BackgroundTask>> BackgroundTaskInstances = new(CreateInstances);
 
-        public async Task RegisterBackgroundTasksAsync()
+        public static async Task RegisterBackgroundTasksAsync()
         {
             BackgroundExecutionManager.RemoveAccess();
             var result = await BackgroundExecutionManager.RequestAccessAsync();
 
-            if (result == BackgroundAccessStatus.DeniedBySystemPolicy
-                || result == BackgroundAccessStatus.DeniedByUser)
+            if (result is BackgroundAccessStatus.DeniedBySystemPolicy or BackgroundAccessStatus.DeniedByUser)
             {
                 return;
             }
@@ -38,7 +37,7 @@ namespace FluentWeather.Services
         public static BackgroundTaskRegistration GetBackgroundTasksRegistration<T>()
             where T : BackgroundTask
         {
-            if (!BackgroundTaskRegistration.AllTasks.Any(t => t.Value.Name == typeof(T).Name))
+            if (BackgroundTaskRegistration.AllTasks.All(t => t.Value.Name != typeof(T).Name))
             {
                 // This condition should not be met. If it is it means the background task was not registered correctly.
                 // Please check CreateInstances to see if the background task was properly added to the BackgroundTasks property.

@@ -65,19 +65,14 @@ namespace FluentWeather.Services
         {
             //TODO: reenable if livetile queue is needed
             //await Singleton<LiveTileService>.Instance.EnableQueueAsync().ConfigureAwait(false);
-            await Singleton<BackgroundTaskService>.Instance.RegisterBackgroundTasksAsync().ConfigureAwait(false);
-
-            //TODO: reenable if theme selection is needed
-            //await ThemeSelectorService.InitializeAsync().ConfigureAwait(false); 
+            await BackgroundTaskService.RegisterBackgroundTasksAsync().ConfigureAwait(false);
 
             await Singleton<AcrylicEffectsService>.Instance.InitializeAsync().ConfigureAwait(false);
-
             await Singleton<LiveTileService>.Instance.InitializeAsync().ConfigureAwait(false);
         }
 
         private async Task HandleActivationAsync(object activationArgs)
         {
-
             var activationhandlersList = GetActivationHandlers();
 
             //get the first activationhandler that can handle the activationargs

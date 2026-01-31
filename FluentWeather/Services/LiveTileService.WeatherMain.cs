@@ -120,7 +120,7 @@ namespace FluentWeather.Services
             }
         }
 
-        private ITileBindingContentAdaptiveChild MediumTileContent(string iconPath, string currentTemp)
+        private static ITileBindingContentAdaptiveChild MediumTileContent(string iconPath, string currentTemp)
         {
             return new AdaptiveGroup
             {
@@ -151,7 +151,7 @@ namespace FluentWeather.Services
             };
         }
 
-        private ITileBindingContentAdaptiveChild WideTileContent(string iconPath, string currentTemp)
+        private static ITileBindingContentAdaptiveChild WideTileContent(string iconPath, string currentTemp)
         {
             return new AdaptiveGroup
             {
@@ -193,7 +193,7 @@ namespace FluentWeather.Services
             };
         }
 
-        private ITileBindingContentAdaptiveChild LargeTileContent(string iconPath, string currentTemp)
+        private static ITileBindingContentAdaptiveChild LargeTileContent(string iconPath, string currentTemp)
         {
             return new AdaptiveGroup
             {
