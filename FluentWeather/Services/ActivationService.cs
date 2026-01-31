@@ -18,7 +18,7 @@ namespace FluentWeather.Services
     {
         private readonly App _app;
         private readonly Type _defaultNavItem;
-        private Lazy<UIElement> _shell;
+        private readonly Lazy<UIElement> _shell;
 
         private object _lastActivationArgs;
 
@@ -66,9 +66,7 @@ namespace FluentWeather.Services
             //TODO: reenable if livetile queue is needed
             //await Singleton<LiveTileService>.Instance.EnableQueueAsync().ConfigureAwait(false);
             await BackgroundTaskService.RegisterBackgroundTasksAsync().ConfigureAwait(false);
-
             await Singleton<AcrylicEffectsService>.Instance.InitializeAsync().ConfigureAwait(false);
-            await Singleton<LiveTileService>.Instance.InitializeAsync().ConfigureAwait(false);
         }
 
         private async Task HandleActivationAsync(object activationArgs)
@@ -97,14 +95,10 @@ namespace FluentWeather.Services
         private async Task StartupAsync()
         {
             //always set the theme to dark
-            await ThemeSelectorService.SetThemeAsync(ElementTheme.Dark);
-
-            //TODO: reenable if theme selection is needed
-            //await ThemeSelectorService.SetRequestedThemeAsync();
-
+            await ThemeSelectorService.SetThemeAsync(ElementTheme.Dark); //await ThemeSelectorService.SetRequestedThemeAsync();
             await WhatsNewDisplayService.ShowIfAppropriateAsync();
             await FirstRunDisplayService.ShowIfAppropriateAsync();
-            //Singleton<LiveTileService>.Instance.SampleUpdate();
+            Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
         }
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()
@@ -112,9 +106,6 @@ namespace FluentWeather.Services
             yield return Singleton<LiveTileService>.Instance;
             yield return Singleton<ToastNotificationsService>.Instance;
             yield return Singleton<BackgroundTaskService>.Instance;
-
-            //da rimuovere se c'è altre instanze
-            //yield break;
         }
 
         private bool IsInteractive(object args)

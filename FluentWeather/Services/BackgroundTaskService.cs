@@ -24,9 +24,7 @@ namespace FluentWeather.Services
             var result = await BackgroundExecutionManager.RequestAccessAsync();
 
             if (result is BackgroundAccessStatus.DeniedBySystemPolicy or BackgroundAccessStatus.DeniedByUser)
-            {
                 return;
-            }
 
             foreach (var task in BackgroundTasks)
             {
@@ -50,15 +48,7 @@ namespace FluentWeather.Services
         public void Start(IBackgroundTaskInstance taskInstance)
         {
             var task = BackgroundTasks.FirstOrDefault(b => b.Match(taskInstance?.Task?.Name));
-
-            if (task == null)
-            {
-                // This condition should not be met. It is it it means the background task to start was not found in the background tasks managed by this service.
-                // Please check CreateInstances to see if the background task was properly added to the BackgroundTasks property.
-                return;
-            }
-
-            task.RunAsync(taskInstance).FireAndForget();
+            task?.RunAsync(taskInstance).FireAndForget();
         }
 
         protected override async Task HandleInternalAsync(BackgroundActivatedEventArgs args)
@@ -70,9 +60,7 @@ namespace FluentWeather.Services
 
         private static IEnumerable<BackgroundTask> CreateInstances()
         {
-            var backgroundTasks = new List<BackgroundTask>();
-
-            backgroundTasks.Add(new LiveTileBackgroundTask());
+            var backgroundTasks = new List<BackgroundTask> {new LiveTileBackgroundTask()};
             return backgroundTasks;
         }
     }

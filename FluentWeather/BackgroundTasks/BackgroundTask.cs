@@ -8,9 +8,9 @@ namespace FluentWeather.BackgroundTasks
     {
         public abstract void Register();
 
-        public abstract Task RunAsyncInternal(IBackgroundTaskInstance taskInstance);
+        protected abstract Task RunAsyncInternal(IBackgroundTaskInstance taskInstance);
 
-        public abstract void OnCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason);
+        protected abstract void OnCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason);
 
         public bool Match(string name)
         {
@@ -20,13 +20,12 @@ namespace FluentWeather.BackgroundTasks
         public Task RunAsync(IBackgroundTaskInstance taskInstance)
         {
             SubscribeToEvents(taskInstance);
-
             return RunAsyncInternal(taskInstance);
         }
 
-        public void SubscribeToEvents(IBackgroundTaskInstance taskInstance)
+        private void SubscribeToEvents(IBackgroundTaskInstance taskInstance)
         {
-            taskInstance.Canceled += new BackgroundTaskCanceledEventHandler(OnCanceled);
+            taskInstance.Canceled += OnCanceled;
         }
     }
 }
