@@ -1,7 +1,5 @@
 ﻿<ContentDialog
-
     x:Class="FluentWeather.Dialogs.FirstRunDialog"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:local="using:FluentWeather.Dialogs"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

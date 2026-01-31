@@ -6,61 +6,55 @@ using FluentWeather.Utils;
 
 namespace FluentWeather.Adapters
 {
-    internal class HourDataAdapter
+    internal class HourDataAdapter(V3WxForecastHourly fcst, int itemIndex, WetUnits wetUnits)
     {
-        private readonly V3WxForecastHourly CurrentObject;
-
-        public readonly int ItemIndex;
-
-        private WetUnits currentUnits;
-
         public string Temperature
         {
-            get { return CurrentObject.temperature[ItemIndex] + "°"; }
+            get { return fcst.temperature[itemIndex] + "°"; }
         }
 
         public string TemperatureFeelsLike
         {
-            get { return CurrentObject.temperatureFeelsLike[ItemIndex] + "°" + MeasureUnitUtils.GetTemperatureUnits(currentUnits); }
+            get { return fcst.temperatureFeelsLike[itemIndex] + "°" + MeasureUnitUtils.GetTemperatureUnits(wetUnits); }
         }
 
         public string WindSpeed
         {
-            get { return CurrentObject.windSpeed[ItemIndex] + " " +
-                         MeasureUnitUtils.GetWindSpeedUnits(currentUnits) + " " +
-                         CurrentObject.windDirectionCardinal[ItemIndex] + " (" + CurrentObject.windDirection[ItemIndex] + "°)"; }
+            get { return fcst.windSpeed[itemIndex] + " " +
+                         MeasureUnitUtils.GetWindSpeedUnits(wetUnits) + " " +
+                         fcst.windDirectionCardinal[itemIndex] + " (" + fcst.windDirection[itemIndex] + "°)"; }
         }
 
         public string WindGust
         {
-            get { return CurrentObject.windGust[ItemIndex] + " " + CurrentObject.windDirection[ItemIndex]; }
+            get { return fcst.windGust[itemIndex] + " " + fcst.windDirection[itemIndex]; }
         }
 
         public string Humidity
         {
-            get { return CurrentObject.relativeHumidity[ItemIndex] + "%"; }
+            get { return fcst.relativeHumidity[itemIndex] + "%"; }
         }
 
         public int UvIndex
         {
-            get { return CurrentObject.uvIndex[ItemIndex]; }
+            get { return fcst.uvIndex[itemIndex]; }
         }
 
         public string PrecipitationType
         {
-            get { return CurrentObject.precipType[ItemIndex]; } //rain, snow, precip
+            get { return fcst.precipType[itemIndex]; } //rain, snow, precip
         }
 
         public string CloudCover
         {
-            get { return CurrentObject.cloudCover[ItemIndex] + "%"; }
+            get { return fcst.cloudCover[itemIndex] + "%"; }
         }
 
         public string RainAmount
         {
             get
             {
-                return CurrentObject.qpf[ItemIndex] + " " + MeasureUnitUtils.GetLiquidPrecipitationUnits(currentUnits);
+                return fcst.qpf[itemIndex] + " " + MeasureUnitUtils.GetLiquidPrecipitationUnits(wetUnits);
             }
         }
 
@@ -70,24 +64,24 @@ namespace FluentWeather.Adapters
             {
                 return new SvgImageSource
                 {
-                    UriSource = new Uri("ms-appx:///Assets/weticons/" + CurrentObject.iconCode[ItemIndex] + ".svg")
+                    UriSource = new Uri("ms-appx:///Assets/weticons/" + fcst.iconCode[itemIndex] + ".svg")
                 };
             }
         }
 
         public string Phrase
         {
-            get { return CurrentObject.wxPhraseLong[ItemIndex]; }
+            get { return fcst.wxPhraseLong[itemIndex]; }
         }
 
         public string PrecipitationChance
         {
-            get { return CurrentObject.precipChance[ItemIndex] + "%"; }
+            get { return fcst.precipChance[itemIndex] + "%"; }
         }
 
         public string Pressure
         {
-            get { return CurrentObject.pressureMeanSeaLevel[ItemIndex] + " " + MeasureUnitUtils.GetPressureUnits(currentUnits); }
+            get { return fcst.pressureMeanSeaLevel[itemIndex] + " " + MeasureUnitUtils.GetPressureUnits(wetUnits); }
         }
 
         public SvgImageSource SvgPrecipIcon
@@ -100,7 +94,7 @@ namespace FluentWeather.Adapters
                 return new SvgImageSource
                 {
                     //todo: to use different drop icon based on precip quantity
-                    UriSource = new Uri("ms-appx:///Assets/varicons/" + VariousUtils.GetPrecipIconChance(CurrentObject.precipChance[ItemIndex]) + ".svg")
+                    UriSource = new Uri("ms-appx:///Assets/varicons/" + VariousUtils.GetPrecipIconChance(fcst.precipChance[itemIndex]) + ".svg")
                 };
             }
         }
@@ -110,18 +104,10 @@ namespace FluentWeather.Adapters
             get
             {
                 //using task.run to avoid deadlock
-                var result = Task.Run(() => VariousUtils.GetTimeBasedOnUserSettings(CurrentObject.validTimeLocal[ItemIndex].DateTime));
+                var result = Task.Run(() => VariousUtils.GetTimeBasedOnUserSettings(fcst.validTimeLocal[itemIndex].DateTime));
                 return result.Result;
                 
             }
-        }
-
-
-        public HourDataAdapter(V3WxForecastHourly fcst, int itemIndex, WetUnits wetUnits)
-        {
-            CurrentObject = fcst;
-            ItemIndex = itemIndex;
-            currentUnits = wetUnits;
         }
     }
 }

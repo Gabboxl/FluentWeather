@@ -10,7 +10,6 @@ namespace FluentWeather.Dialogs
         {
             RequestedTheme = ((FrameworkElement) Window.Current.Content).RequestedTheme;
             InitializeComponent();
-
             WhatsNewTextBlock.Text = "WhatsNew_Body".GetLocalized(true);
         }
     }

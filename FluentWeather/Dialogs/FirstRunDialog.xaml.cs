@@ -10,7 +10,7 @@ namespace FluentWeather.Dialogs
 {
     public sealed partial class FirstRunDialog : ContentDialog
     {
-        private AppViewModel AppViewModel = AppViewModelHolder.GetViewModel();
+        private readonly AppViewModel _appViewModel = AppViewModelHolder.GetViewModel();
 
         public FirstRunDialog()
         {
@@ -27,24 +27,16 @@ namespace FluentWeather.Dialogs
             //FullSizeDesired = true;
 
             InitializeComponent();
-
-            /*MainGrid.Width = bounds.Width * scaleFactor;
-            MainGrid.Height = bounds.Height*scaleFactor;*/
         }
-
 
         //prevent dialog dismiss by escape key
         private void DialogClosingEvent(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
             // This mean user does click on Primary or Secondary button
             if (args.Result == ContentDialogResult.None)
-            {
                 args.Cancel = true;
-            }
             else
-            {
-                AppViewModel.UpdateUi();
-            }
+                _appViewModel.UpdateUi();
         }
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -56,8 +48,6 @@ namespace FluentWeather.Dialogs
             AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             var selectedPlaceId = ((SearchedLocation) args.SelectedItem).placeId;
-
-            //save location to settings
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
 
             IsPrimaryButtonEnabled = true;

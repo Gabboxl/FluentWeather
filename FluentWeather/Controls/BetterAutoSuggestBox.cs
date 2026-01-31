@@ -8,27 +8,6 @@ using FluentWeather.Helpers;
 
 namespace FluentWeather.Controls
 {
-    //lol it's not possible because AutoSuggestBox freakin is sealed
-    //internal class BetterAutoSuggestBox : AutoSuggestBox
-    //{
-
-    //    // Register the dependency property
-    //    public static readonly DependencyProperty CustomProperty =
-    //        DependencyProperty.Register(
-    //            nameof(Custom),
-    //            typeof(string),
-    //            typeof(BetterAutoSuggestBox),
-    //            new PropertyMetadata(default(string)));
-
-    //    // CLR property wrapper
-    //    public string Custom
-    //    {
-    //        get => (string)GetValue(CustomProperty);
-    //        set => SetValue(CustomProperty, value);
-    //    }
-
-    //}
-
     public static class AutoSuggestBoxClassExtensions
     {
         public enum AutoSuggestBoxHeaderType

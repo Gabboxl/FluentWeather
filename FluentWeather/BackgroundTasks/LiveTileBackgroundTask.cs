@@ -13,13 +13,13 @@ namespace FluentWeather.BackgroundTasks
     public sealed class LiveTileBackgroundTask : BackgroundTask
     {
 
-        private volatile bool _cancelRequested = false;
+        private volatile bool _cancelRequested;
         private IBackgroundTaskInstance _taskInstance;
         private BackgroundTaskDeferral _deferral;
 
         public override void Register()
         {
-            var taskName = GetType().Name;
+            const string taskName = nameof(LiveTileBackgroundTask);
             var taskRegistration =
                 BackgroundTaskRegistration.AllTasks.FirstOrDefault(t => t.Value.Name == taskName).Value;
 
