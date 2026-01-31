@@ -295,6 +295,6 @@
     <value>自動刷新</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>網絡錯誤，請檢查網絡連接。</value>
+    <value>網絡錯誤，請檢查網路連接。</value>
   </data>
 </root>

@@ -173,7 +173,7 @@
     <value>Kelembapan</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Keterlihatan</value>
+    <value>Penglihatan</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
     <value>Titik Embun</value>
@@ -224,7 +224,7 @@
     <value>Satuan</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Efek Acrylic</value>
+    <value>Efek akrilik</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Penghargaan</value>
@@ -236,7 +236,7 @@
     <value>Metrik</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Imperial AS</value>
+    <value>Imperial</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
     <value>Campuran</value>
