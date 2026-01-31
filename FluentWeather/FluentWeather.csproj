@@ -223,7 +223,6 @@
     <Compile Include="Utils\VariousUtils.cs" />
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewViewModel.cs" />
     <Compile Include="ViewModels\AppViewModelHolder.cs" />
     <Compile Include="Views\MainPage.xaml.cs">

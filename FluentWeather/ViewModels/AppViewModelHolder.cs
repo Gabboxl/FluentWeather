@@ -6,10 +6,7 @@
 
         public static AppViewModel GetViewModel()
         {
-            if (_viewModel == null)
-            {
-                _viewModel = new AppViewModel();
-            }
+            _viewModel ??= new AppViewModel();
 
             return _viewModel;
         }

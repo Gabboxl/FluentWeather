@@ -6,11 +6,11 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace FluentWeather.Adapters
 {
-    internal class DayButtonAdapter
+    internal class DayButtonAdapter(V3WxForecastDaily fcst, int itemIndex)
     {
-        public readonly V3WxForecastDaily CurrentObject;
+        public readonly V3WxForecastDaily CurrentObject = fcst;
 
-        public readonly int ItemIndex;
+        public readonly int ItemIndex = itemIndex;
 
         public string Temperature
         {
@@ -115,13 +115,6 @@ namespace FluentWeather.Adapters
                     return VariousUtils.UppercaseFirst(abbname) + " " + CurrentObject.validTimeLocal[ItemIndex].Day;
                 }
             }
-        }
-
-
-        public DayButtonAdapter(V3WxForecastDaily fcst, int itemIndex)
-        {
-            CurrentObject = fcst;
-            ItemIndex = itemIndex;
         }
     }
 }
