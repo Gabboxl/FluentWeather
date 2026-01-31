@@ -26,17 +26,8 @@ namespace FluentWeather.Services
 
         protected override async Task HandleInternalAsync(ToastNotificationActivatedEventArgs args)
         {
-            //// TODO: Handle activation from toast notification
-            //// More details at https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/send-local-toast
-            ///
-            
-
-            //check what button was pressed of the toast notification
-
             if (args.Argument == "ToastButtonActivationArguments")
             {
-                //show UWP content dialog here
-
                 ContentDialog dialog = new ContentDialog();
                 dialog.Title = "yo";
                 dialog.PrimaryButtonText = "side";
@@ -49,8 +40,6 @@ namespace FluentWeather.Services
             }
             else
             {
-                //show UWP content dialog here
-
                 ContentDialog dialog = new ContentDialog();
                 dialog.Title = "yo";
                 dialog.PrimaryButtonText = "side";
@@ -62,8 +51,6 @@ namespace FluentWeather.Services
                 var result = await dialog.ShowAsync();
             }
             
-
-
             await Task.CompletedTask;
         }
     }
