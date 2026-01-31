@@ -33,9 +33,10 @@ namespace FluentWeather
 
         public App()
         {
+#if !DEBUG
             SentrySdk.Init(options =>
             {
-                options.Dsn = "aka";
+                options.Dsn = "https://aka.com";
                 options.Debug = Package.Current.IsDevelopmentMode;
                 options.IsGlobalModeEnabled = true;
 
@@ -44,6 +45,7 @@ namespace FluentWeather
                 options.Environment = Package.Current.IsDevelopmentMode ? "Development" : "Production";
                 options.AutoSessionTracking = true;
             });
+#endif
 
             UnhandledException += OnAppUnhandledException;
 
