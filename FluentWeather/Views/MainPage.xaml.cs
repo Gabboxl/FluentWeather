@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.Networking.Connectivity;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using FluentWeather.Adapters;
@@ -153,6 +154,16 @@ namespace FluentWeather.Views
             // Initialize the refresh timer
             _refreshTimer.Tick += RefreshTimerTickEvent;
             UpdateRefreshTimerSettings();
+
+            NetworkInformation.NetworkStatusChanged += sender =>
+            {
+                var profile = NetworkInformation.GetInternetConnectionProfile();
+                var level = profile?.GetNetworkConnectivityLevel();
+                if (level == NetworkConnectivityLevel.InternetAccess)
+                {
+                    _appViewModel.UpdateUi();
+                }
+            };
         }
 
         private async void RefreshTimerTickEvent(object sender, object e)
