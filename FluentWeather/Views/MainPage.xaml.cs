@@ -225,6 +225,7 @@ namespace FluentWeather.Views
                 {
                     RefreshButton.Visibility = Visibility.Collapsed;
                     MainPageViewModel.IsLoadingData = true;
+                    VariousUtils.CloseOpenContentDialogs("WeatherDataUpdateFailedDialog");
                 }
             );
 
@@ -259,7 +260,8 @@ namespace FluentWeather.Views
                             Title = "Weather data update failed",
                             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
                             Content = "We couldn't update weather data. Verify your internet connection.\n\n" + e.InnerException?.Message,
-                            CloseButtonText = "OK"
+                            CloseButtonText = "OK",
+                            Tag = "WeatherDataUpdateFailedDialog"
                         };
                         
                         try

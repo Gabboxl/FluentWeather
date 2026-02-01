@@ -2,6 +2,9 @@
 using System.Globalization;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 using FluentWeather.Helpers;
 using FluentWeather.Models;
 
@@ -69,6 +72,21 @@ namespace FluentWeather.Utils
             };
 
             return iconName;
+        }
+
+        public static bool CloseOpenContentDialogs(string tag = "")
+        {
+            var openedpopups = VisualTreeHelper.GetOpenPopups(Window.Current);
+            foreach (var popup in openedpopups)
+            {
+                if(popup.Child is ContentDialog dialog && (dialog.Tag?.ToString() == tag || string.IsNullOrEmpty(tag)))
+                {
+                    dialog.Hide();
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
