@@ -235,7 +235,6 @@ namespace FluentWeather.Views
                 if (lastPlaceId == null) return;
 
                 var response = await ApiUtils.GetFullData(lastPlaceId);
-
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
 
@@ -257,18 +256,18 @@ namespace FluentWeather.Views
                     {
                         ContentDialog noWifiDialog = new()
                         {
-                            Title = "No internet connection",
+                            Title = "Weather data update failed",
                             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-                            Content = "To continue, you need to connect to the internet.",
+                            Content = "We couldn't update weather data. Verify your internet connection.\n\n" + e.InnerException?.Message,
                             CloseButtonText = "OK"
                         };
+                        
                         try
                         {
                             await noWifiDialog.ShowAsync();
                         }
                         catch (Exception ex)
                         {
-                            ;
                         }
                     }
                 );
@@ -276,7 +275,6 @@ namespace FluentWeather.Views
             }
             finally
             {
-
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal, () =>
                     {

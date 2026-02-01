@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using Windows.Storage;
@@ -32,8 +33,7 @@ namespace FluentWeather.Services
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine(e);
-                throw;
+                Debug.WriteLine(e);
             }
         }
 
