@@ -104,8 +104,8 @@ namespace FluentWeather.Services
         private IEnumerable<ActivationHandler> GetActivationHandlers()
         {
             yield return Singleton<LiveTileService>.Instance;
-            yield return Singleton<ToastNotificationsService>.Instance;
             yield return Singleton<BackgroundTaskService>.Instance;
+            yield return Singleton<ToastNotificationsService>.Instance;
         }
 
         private bool IsInteractive(object args)

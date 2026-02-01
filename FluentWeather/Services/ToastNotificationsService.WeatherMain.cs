@@ -6,25 +6,25 @@ namespace FluentWeather.Services
 {
     internal partial class ToastNotificationsService
     {
-        public void ShowToastNotificationSample()
+        public void ShowWeatherToastNotification()
         {
-            var content = new ToastContent()
+            var content = new ToastContent
             {
                 // More about the Launch property at https://docs.microsoft.com/dotnet/api/microsoft.toolkit.uwp.notifications.toastcontent
                 Launch = "ToastContentActivationParams",
 
-                Visual = new ToastVisual()
+                Visual = new ToastVisual
                 {
-                    BindingGeneric = new ToastBindingGeneric()
+                    BindingGeneric = new ToastBindingGeneric
                     {
                         Children =
                         {
-                            new AdaptiveText()
+                            new AdaptiveText
                             {
                                 Text = "Sample Toast Notification"
                             },
 
-                            new AdaptiveText()
+                            new AdaptiveText
                             {
                                  Text = @"Click OK to see how activation from a toast notification can be handled in the ToastNotificationService."
                             }
@@ -32,7 +32,7 @@ namespace FluentWeather.Services
                     }
                 },
 
-                Actions = new ToastActionsCustom()
+                Actions = new ToastActionsCustom
                 {
                     Buttons =
                     {
@@ -49,9 +49,7 @@ namespace FluentWeather.Services
 
             var toast = new ToastNotification(content.GetXml())
             {
-                // TODO: Set a unique identifier for this notification within the notification group. (optional)
-                // More details at https://docs.microsoft.com/uwp/api/windows.ui.notifications.toastnotification.tag
-                Tag = "ToastTag"
+                Tag = "WeatherToastTag"
             };
 
             ShowToastNotification(toast);

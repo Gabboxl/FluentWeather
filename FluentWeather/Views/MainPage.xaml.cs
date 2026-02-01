@@ -61,8 +61,7 @@ namespace FluentWeather.Views
         {
             get
             {
-                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits"))
-                    .Result;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<int>("selectedUnits")).Result;
             }
         }
 
@@ -71,10 +70,7 @@ namespace FluentWeather.Views
             get
             {
                 //run in background to avoid a deadlock/ui freeze
-                return Task.Run(async () =>
-                    await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat")).Result
-                    ? 1
-                    : 0;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("is12HourFormat")).Result ? 1 : 0;
             }
         }
 
@@ -83,8 +79,7 @@ namespace FluentWeather.Views
             get
             {
                 //run in background to avoid a deadlock/ui freeze
-                return Task.Run(async () =>
-                    await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled", true)).Result;
+                return Task.Run(async () => await ApplicationData.Current.LocalSettings.ReadAsync<bool>("backgroundImageEnabled", true)).Result;
             }
         }
 
@@ -127,7 +122,7 @@ namespace FluentWeather.Views
 
         private void Initialize()
         {
-            // Hide default title bar.
+            // Hide default title bar
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
 
@@ -154,12 +149,13 @@ namespace FluentWeather.Views
             AutoSuggestBoxMain.TextChanged += AutoSuggestBox_TextChanged;
 
             _appViewModel.UpdateUi();
+
             // Initialize the refresh timer
-            _refreshTimer.Tick += RefreshTimerTick;
-            UpdateRefreshTimer();
+            _refreshTimer.Tick += RefreshTimerTickEvent;
+            UpdateRefreshTimerSettings();
         }
 
-        private async void RefreshTimerTick(object sender, object e)
+        private async void RefreshTimerTickEvent(object sender, object e)
         {
             await LoadApiData();
         }
@@ -218,8 +214,6 @@ namespace FluentWeather.Views
             AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             var selectedPlaceId = ((SearchedLocation) args.SelectedItem).placeId;
-
-            //save location to settings
             await ApplicationData.Current.LocalSettings.SaveAsync("lastPlaceId", selectedPlaceId);
             _appViewModel.UpdateUi();
         }
@@ -293,11 +287,8 @@ namespace FluentWeather.Views
             }
         }
 
-        /// <summary>
-        /// storyboards code
-        /// </summary>
-        private Storyboard _storyboard1;
 
+        private Storyboard _storyboard1;
         private Storyboard _storyboard2;
         private bool _isImage1Active;
 
@@ -314,8 +305,7 @@ namespace FluentWeather.Views
                 ResetStartStoryboard();
             else
             {
-                //remeber that the imageopened event is fired only when the image is shown in some way :( so we need to set the image source before
-
+                //the imageopened event is fired only when the image is shown in some way :( so we need to set the image source before
                 //this ensures the animation is played only when the image is loaded
                 newImage.ImageOpened += (sender, args) => { ResetStartStoryboard(); };
             }
@@ -326,13 +316,11 @@ namespace FluentWeather.Views
             {
                 if (_isImage1Active)
                 {
-                    // Reset and start the storyboard
                     _storyboard1.Stop();
                     _storyboard2.Begin();
                 }
                 else
                 {
-                    // Reset and start the storyboard
                     _storyboard2.Stop();
                     _storyboard1.Begin();
                 }
@@ -437,11 +425,9 @@ namespace FluentWeather.Views
                                        rootV3Response.v3wxobservationscurrent.uvDescription + ")";
 
             //update days repeater itemssource with creating for every day a new DayButtonAdapter class
-
             List<DayButtonAdapter> dayButtonAdapters = [];
 
             int i = 0;
-
             foreach (var day in rootV3Response.v3wxforecastdaily10day.dayOfWeek)
             {
                 dayButtonAdapters.Add(new DayButtonAdapter(rootV3Response.v3wxforecastdaily10day, i));
@@ -486,8 +472,7 @@ namespace FluentWeather.Views
 
             if (daysDiff == -1 ||
                 (daysDiff == 0 &&
-                 _lastApiData.v3wxforecasthourly10day.validTimeLocal[0].Hour >
-                 7)) //this means that we are still in a tonight/today state and we add hours only until 7AM
+                 _lastApiData.v3wxforecasthourly10day.validTimeLocal[0].Hour > 7)) //this means that we are still in a tonight/today state and we add hours only until 7AM
             {
                 int h = 0;
 
@@ -628,10 +613,7 @@ namespace FluentWeather.Views
 
             SetDayButtonClickedStyle(button);
 
-            //get button's DayButtonAdapter object
             var dayButtonAdapter = (DayButtonAdapter) button.DataContext;
-
-            //load hourly data
             LoadHourlyData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
             LoadInsightsData(dayButtonAdapter.CurrentObject.validTimeLocal[dayButtonAdapter.ItemIndex]);
         }
@@ -655,8 +637,6 @@ namespace FluentWeather.Views
         private void EmulateDayButtonClick(int index)
         {
             var button = (Button) RepeaterDays.GetOrCreateElement(index);
-
-            //emulate click on button
             var ap = new ButtonAutomationPeer(button);
             var ip = ap.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
             ip?.Invoke();
@@ -712,7 +692,6 @@ namespace FluentWeather.Views
             if (!segmented.IsLoaded)
                 return;
 
-            //save selected index to local settings
             await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat", segmented.SelectedIndex == 1);
             _appViewModel.UpdateUi();
         }
@@ -743,11 +722,11 @@ namespace FluentWeather.Views
             var autoRefreshComboBox = (ComboBox) sender;
             if (autoRefreshComboBox.SelectedItem is KeyValuePair<int, string> selectedItem)
             {
-                UpdateRefreshTimer(selectedItem.Key);
+                UpdateRefreshTimerSettings(selectedItem.Key);
             }
         }
 
-        private async void UpdateRefreshTimer(int minutes = -1)
+        private async void UpdateRefreshTimerSettings(int minutes = -1)
         {
             if (minutes == -1)
                 minutes = AutoRefreshSteps.ElementAt(AutoRefreshPeriodSelectedIndex).Key;
