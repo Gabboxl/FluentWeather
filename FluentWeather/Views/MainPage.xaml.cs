@@ -184,9 +184,7 @@ namespace FluentWeather.Views
             AutoSuggestBoxTextChangedEventArgs args)
         {
             sender.ShowHideCustomHeader(true);
-            sender.ShowHideCustomHeader(false,
-                AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType
-                    .NetworkError); //TODO: remove this line and clear all messages automatically in BetterAutosuggestBox.cs
+            sender.ShowHideCustomHeader(false, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError); //TODO: remove this line and clear all messages automatically in BetterAutosuggestBox.cs
 
             // Since selecting an item will also change the text,
             // only listen to changes caused by user entering text.
@@ -201,8 +199,6 @@ namespace FluentWeather.Views
                                                                "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
                     //&locationType=city (x solo citta)
 
-                    //response.EnsureSuccessStatusCode();
-
                     if (response.IsSuccessStatusCode)
                     {
                         var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -213,8 +209,7 @@ namespace FluentWeather.Views
                 }
                 catch (HttpRequestException e)
                 {
-                    sender.ShowHideCustomHeader(true,
-                        AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
+                    sender.ShowHideCustomHeader(true, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
                 }
             }
 
@@ -380,8 +375,7 @@ namespace FluentWeather.Views
         {
             CrossfadeToImageApiData(rootV3Response);
 
-            var newIconUri = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode +
-                                     ".svg");
+            var newIconUri = new Uri("ms-appx:///Assets/weticons/" + rootV3Response.v3wxobservationscurrent.iconCode + ".svg");
 
             //get svgimagesource object from image source
             var svgImageSource = (SvgImageSource) MainIcon.Source;
@@ -391,8 +385,7 @@ namespace FluentWeather.Views
             //update chips
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
-            UpdatedOnText.Text = "UpdatedOnText".GetLocalized() + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " +
-                                 TimeZoneInfo.Local.Id;
+            UpdatedOnText.Text = "UpdatedOnText".GetLocalized() + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + " " + TimeZoneInfo.Local.Id;
 
             //join the variables displayName, city, adminDistrict, country together in a single string with a comma between each variable (some may be empty) and remove duplicate names
             string placeName = string.Join(", ",
@@ -462,8 +455,7 @@ namespace FluentWeather.Views
                 return;
 
             var newImageUri = new Uri("ms-appx:///Assets/bgs/" +
-                                      IconsDictionary.IconCodeToBackgroundImageNameDictionary[
-                                          rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
+                                      IconsDictionary.IconCodeToBackgroundImageNameDictionary[rootV3Response.v3wxobservationscurrent.iconCode.ToString()] + ".jpg");
 
             CrossfadeToImage(newImageUri);
         }
@@ -486,11 +478,9 @@ namespace FluentWeather.Views
                  _lastApiData.v3wxforecasthourly10day.validTimeLocal[0].Hour > 7)) //this means that we are still in a tonight/today state and we add hours only until 7AM
             {
                 int h = 0;
-
                 while (_lastApiData.v3wxforecasthourly10day.validTimeLocal[h].Hour != 7)
                 {
                     hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, h, currentUnits));
-
                     h++;
                 }
             }
@@ -501,8 +491,7 @@ namespace FluentWeather.Views
                     //the .Date property is used to compare only the date part of the datetime without the time (no hours, minutes, seconds)
                     if (date.Date == firstDate.Date.AddDays(daysDiff))
                     {
-                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i,
-                            currentUnits));
+                        hourlyDataAdapters.Add(new HourDataAdapter(_lastApiData.v3wxforecasthourly10day, i, currentUnits));
                     }
 
                     i++;
@@ -524,11 +513,8 @@ namespace FluentWeather.Views
             RunningInsight.Insight = new Insight
             {
                 Title = "RunningInsightTitle".GetLocalized(),
-                Value =
-                    _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
-                Description =
-                    _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory
-                        [indexOfDayInsights],
+                Value = _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherIndex[indexOfDayInsights],
+                Description = _lastApiData.v2idxRunDaypart10days.RunWeatherIndexDaypart.longRunWeatherCategory[indexOfDayInsights],
                 Levels = InsightLevels.RunningLevels,
                 IconName = "running"
             };
@@ -536,12 +522,8 @@ namespace FluentWeather.Views
             DrivingInsight.Insight = new Insight
             {
                 Title = "DrivingInsightTitle".GetLocalized(),
-                Value =
-                    _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[
-                        indexOfDayInsights],
-                Description =
-                    _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[
-                        indexOfDayInsights],
+                Value = _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyIndex[indexOfDayInsights],
+                Description = _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.drivingDifficultyCategory[indexOfDayInsights],
                 Levels = InsightLevels.DrivingLevels,
                 IconName = "driving"
             };
@@ -555,8 +537,7 @@ namespace FluentWeather.Views
             {
                 Title = "DrySkinInsightTitle".GetLocalized(),
                 Value = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinIndex[indexOfDayInsights],
-                Description =
-                    _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
+                Description = _lastApiData.V2IdxDrySkinDaypart10days.DrySkinIndexDaypart.drySkinCategory[indexOfDayInsights],
                 Levels = InsightLevels.DrySkinLevels,
                 IconName = "dry"
             };
@@ -564,26 +545,19 @@ namespace FluentWeather.Views
             WateringInsight.Insight = new Insight
             {
                 Title = "WateringNeedInsightTitle".GetLocalized(),
-                Value =
-                    _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[
-                        indexOfDayInsights],
-                Description =
-                    _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[
-                        indexOfDayInsights],
+                Value = _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsIndex[indexOfDayInsights],
+                Description = _lastApiData.V2IdxWateringDaypart10days.WateringNeedsIndexDaypart.wateringNeedsCategory[indexOfDayInsights],
                 Levels = InsightLevels.WateringLevels,
                 IconName = "watering"
             };
 
-            var indexOfDayDailyData =
-                _lastApiData.v3wxforecastdaily10day.validTimeLocal.FindIndex(x =>
-                    x.Date == dayToLoad.Date);
+            var indexOfDayDailyData = _lastApiData.v3wxforecastdaily10day.validTimeLocal.FindIndex(x => x.Date == dayToLoad.Date);
 
             //day summary
             var daySummaryString = _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2];
 
             DaySummaryText.Text = daySummaryString ?? "--";
-            NightSummaryText.Text =
-                _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
+            NightSummaryText.Text = _lastApiData.v3wxforecastdaily10day.daypart[0].narrative[indexOfDayDailyData * 2 + 1];
 
             //sunset and sunrise
             var sunriseTime = _lastApiData.v3wxforecastdaily10day.sunriseTimeLocal[indexOfDayDailyData];
