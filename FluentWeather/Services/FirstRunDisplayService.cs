@@ -22,8 +22,7 @@ namespace FluentWeather.Services
             //set is24HourFormat settings based on system settings (values can be "24HourClock" or "12HourClock")
             string systemClockType = Windows.System.UserProfile.GlobalizationPreferences.Clocks.FirstOrDefault();
 
-            await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat",
-                systemClockType == "12HourClock");
+            await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat", systemClockType == "12HourClock");
 
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal, async () =>

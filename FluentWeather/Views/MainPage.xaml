@@ -318,18 +318,6 @@
 
                                                     </ComboBox>
 
-                                                    <!-- selectable list of auto refresh intervals -->
-                                                    <!--<ComboBox x:Name="AutoRefreshDataComboBox"
-                                                              Margin="8,8,0,0"
-                                                              d:DataContext="{d:DesignInstance views:MainPage }"
-                                                              ItemsSource="{Binding AutoRefreshSteps}"
-                                                              DisplayMemberPath="Value"
-                                                              SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex}"
-                                                              SelectionChanged="AutoRefreshComboBox_OnSelectionChanged">
-                                                        
-                                                    </ComboBox>-->
-
-
                                                     <TextBlock x:Uid="CreditsSettingsTitle"
                                                                Margin="0,16,0,0"
                                                                Style="{ThemeResource SubtitleTextBlockStyle}" />

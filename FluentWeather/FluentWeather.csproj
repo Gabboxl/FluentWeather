@@ -27,6 +27,12 @@
     <PublishTrimmed>True</PublishTrimmed>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="BundleArtifacts\**" />
+    <EmbeddedResource Remove="BundleArtifacts\**" />
+    <None Remove="BundleArtifacts\**" />
+    <Page Remove="BundleArtifacts\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.Uwp.Controls.Primitives" Version="8.2.251219" />
     <PackageReference Include="CommunityToolkit.Uwp.Controls.Segmented" Version="8.2.251219" />
@@ -40,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FluentWeather.Core\FluentWeather.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="BundleArtifacts\**" />
   </ItemGroup>
 
 
