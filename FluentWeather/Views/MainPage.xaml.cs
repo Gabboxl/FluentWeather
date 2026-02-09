@@ -1,37 +1,39 @@
-﻿using System;
-using FluentWeather.ViewModels;
-using System.Net.Http;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Core;
-using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using FluentWeather.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.Networking.Connectivity;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Media.Imaging;
+﻿using CommunityToolkit.WinUI.Controls;
 using FluentWeather.Adapters;
-using Windows.Storage;
-using Windows.UI.Core;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Automation.Provider;
-using Windows.UI.Xaml.Input;
+using FluentWeather.Controls;
+using FluentWeather.Core.Helpers;
+using FluentWeather.Dialogs;
 using FluentWeather.Helpers;
+using FluentWeather.Models;
 using FluentWeather.Services;
 using FluentWeather.Utils;
-using FluentWeather.Dialogs;
-using FluentWeather.Core.Helpers;
-using CommunityToolkit.WinUI.Controls;
+using FluentWeather.ViewModels;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.Core;
+using Windows.Networking.Connectivity;
+using Windows.Storage;
 using Windows.System;
-using FluentWeather.Controls;
+using Windows.UI;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Automation.Peers;
+using Windows.UI.Xaml.Automation.Provider;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
+using WinRT;
 
 namespace FluentWeather.Views
 {
+    [GeneratedBindableCustomPropertyAttribute]
     public sealed partial class MainPage : Page
     {
         public MainPageViewModel MainPageViewModel { get; } = new();
@@ -49,8 +51,7 @@ namespace FluentWeather.Views
             BaseAddress = new Uri("https://api.weather.com/"),
         };
 
-        private static readonly string
-            SystemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
+        private static readonly string SystemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
         private RootV3Response _lastApiData;
 
@@ -58,7 +59,7 @@ namespace FluentWeather.Views
 
         private readonly DispatcherTimer _refreshTimer = new();
 
-        public static int SettingsUnitsSelectedIndex
+        public int SettingsUnitsSelectedIndex
         {
             get
             {
@@ -66,7 +67,7 @@ namespace FluentWeather.Views
             }
         }
 
-        public static int SettingsTimeFormatSelectedIndex
+        public int SettingsTimeFormatSelectedIndex
         {
             get
             {
@@ -75,7 +76,7 @@ namespace FluentWeather.Views
             }
         }
 
-        public static bool BackgroundImageToggleStatus
+        public bool BackgroundImageToggleStatus
         {
             get
             {
@@ -84,7 +85,9 @@ namespace FluentWeather.Views
             }
         }
 
-        public static Dictionary<int, string> AutoRefreshSteps => new()
+        public List<string> AutoRefreshStepsValues => AutoRefreshSteps.Values.ToList();
+
+        public Dictionary<int, string> AutoRefreshSteps => new()
         {
             {0, "Off"},
             {5, "5 min"},
@@ -94,7 +97,7 @@ namespace FluentWeather.Views
             {60, "1 hour"}
         };
 
-        public static int AutoRefreshPeriodSelectedIndex
+        public int AutoRefreshPeriodSelectedIndex
         {
             get
             {
@@ -708,6 +711,9 @@ namespace FluentWeather.Views
             if (autoRefreshComboBox.SelectedItem is KeyValuePair<int, string> selectedItem)
             {
                 UpdateRefreshTimerSettings(selectedItem.Key);
+            } else if (autoRefreshComboBox.SelectedItem is string value)
+            {
+                UpdateRefreshTimerSettings(AutoRefreshSteps.FirstOrDefault(x => x.Value == value).Key);
             }
         }
 

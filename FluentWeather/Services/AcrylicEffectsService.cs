@@ -1,19 +1,21 @@
-﻿using System.Threading.Tasks;
-using Windows.Storage;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using FluentWeather.Helpers;
-using CommunityToolkit.Mvvm.ComponentModel;
+using System.Threading.Tasks;
+using Windows.Storage;
+using WinRT;
 
 namespace FluentWeather.Services
 {
+    [GeneratedBindableCustomPropertyAttribute]
     public sealed partial class AcrylicEffectsService : ObservableObject
     {
         private const string SettingsKey = "effectsEnabled";
 
         [ObservableProperty]
-        private bool _effectsEnabled = true;
+        public partial bool EffectsEnabled { get; set; } = true;
 
         [ObservableProperty]
-        private bool _useFallback;
+        public partial bool UseFallback { get; set; }
 
         public async Task InitializeAsync()
         {

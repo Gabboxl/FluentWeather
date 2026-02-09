@@ -34,17 +34,22 @@ namespace FluentWeather
         public App()
         {
 #if !DEBUG
-            SentrySdk.Init(options =>
-            {
-                options.Dsn = "https://aka.com";
-                options.Debug = Package.Current.IsDevelopmentMode;
-                options.IsGlobalModeEnabled = true;
+            try {
+                SentrySdk.Init(options =>
+                {
+                    options.Dsn = "https://aka.com";
+                    options.Debug = Package.Current.IsDevelopmentMode;
+                    options.IsGlobalModeEnabled = true;
 
-                var uwpPackageVersion = Package.Current.Id.Version;
-                options.Release = $"{Package.Current.DisplayName}@{uwpPackageVersion.Major}.{uwpPackageVersion.Minor}.{uwpPackageVersion.Build}.{uwpPackageVersion.Revision}";
-                options.Environment = Package.Current.IsDevelopmentMode ? "Development" : "Production";
-                options.AutoSessionTracking = true;
-            });
+                    var uwpPackageVersion = Package.Current.Id.Version;
+                    options.Release = $"{Package.Current.DisplayName}@{uwpPackageVersion.Major}.{uwpPackageVersion.Minor}.{uwpPackageVersion.Build}.{uwpPackageVersion.Revision}";
+                    options.Environment = Package.Current.IsDevelopmentMode ? "Development" : "Production";
+                    options.AutoSessionTracking = true;
+                });
+            }catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Sentry initialization failed: {ex}");
+            }
 #endif
 
             UnhandledException += OnAppUnhandledException;

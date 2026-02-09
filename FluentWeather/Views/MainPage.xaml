@@ -10,14 +10,13 @@
     xmlns:controls="using:FluentWeather.Controls"
     xmlns:models="using:FluentWeather.Models"
     xmlns:adapters="using:FluentWeather.Adapters"
-    xmlns:labs="using:CommunityToolkit.WinUI.Controls"
     xmlns:animatedVisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
-    xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"
-    xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:controls1="using:CommunityToolkit.WinUI.Controls"
     xmlns:helpers="using:FluentWeather.Helpers"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
+    <!--xmlns:media="using:Microsoft.Toolkit.Uwp.UI.Media"-->
 
     <Page.Resources>
         <media2:AcrylicBrush x:Key="MyAcrylicBrush"
@@ -27,7 +26,7 @@
                              TintLuminosityOpacity="0"
                              FallbackColor="#1DFFFFFF"
                              d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             AlwaysUseFallback="{x:Bind AcrylicEffectsService.UseFallback, Mode=OneWay}" />
 
         <media2:AcrylicBrush x:Key="MyAcrylicBrushLine"
                              BackgroundSource="Backdrop"
@@ -36,7 +35,7 @@
                              TintLuminosityOpacity="0.1"
                              FallbackColor="#1DFFFFFF"
                              d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             AlwaysUseFallback="{x:Bind AcrylicEffectsService.UseFallback, Mode=OneWay}" />
 
         <media2:AcrylicBrush x:Key="MyAcrylicBrushTitleText"
                              BackgroundSource="Backdrop"
@@ -45,18 +44,18 @@
                              TintLuminosityOpacity="0.8"
                              FallbackColor="#DDFCFCFC"
                              d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             AlwaysUseFallback="{x:Bind AcrylicEffectsService.UseFallback, Mode=OneWay}" />
 
-        <media2:AcrylicBrush x:Key="MyAcrylicBrushButton"
+        <!--<media2:AcrylicBrush x:Key="MyAcrylicBrushButton"
                              BackgroundSource="Backdrop"
                              TintColor="#222CFCFC"
                              TintOpacity="0.7"
                              TintLuminosityOpacity="0.8"
                              FallbackColor="#1DFFFFFF"
                              d:DataContext="{d:DesignInstance Type=views:MainPage, IsDesignTimeCreatable=True}"
-                             AlwaysUseFallback="{Binding AcrylicEffectsService.UseFallback}" />
+                             AlwaysUseFallback="{x:Bind AcrylicEffectsService.UseFallback, Mode=OneWay}" />-->
 
-        <media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />
+        <!--<media:BackdropBlurBrush x:Key="TonyBrush" Amount="7" />-->
 
         <Style x:Key="ControlFullStretchStyle" TargetType="ListViewItem"
                BasedOn="{StaticResource DefaultListViewItemStyle}">
@@ -256,32 +255,32 @@
                                                     <TextBlock x:Uid="UnitsSettingsTitle"
                                                                Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                                    <labs:Segmented
+                                                    <controls1:Segmented
                                                         SelectedIndex="{Binding SettingsUnitsSelectedIndex}"
                                                         Margin="0,8,0,0"
                                                         x:Name="UnitsSegmented"
                                                         SelectionChanged="UnitsSegmented_OnSelectionChanged"
                                                         d:DataContext="{d:DesignInstance views:MainPage }">
-                                                        <labs:SegmentedItem x:Uid="MetricUnitsItem" />
-                                                        <labs:SegmentedItem x:Uid="ImperialUnitsItem" />
-                                                        <labs:SegmentedItem x:Uid="HybridUnitsItem" />
+                                                        <controls1:SegmentedItem x:Uid="MetricUnitsItem" />
+                                                        <controls1:SegmentedItem x:Uid="ImperialUnitsItem" />
+                                                        <controls1:SegmentedItem x:Uid="HybridUnitsItem" />
 
-                                                    </labs:Segmented>
+                                                    </controls1:Segmented>
 
                                                     <!-- 12/24 hour format segmented -->
                                                     <TextBlock x:Uid="TimeFormatSettingsTitle"
                                                                Margin="0,16,0,0"
                                                                Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                                    <labs:Segmented
+                                                    <controls1:Segmented
                                                         SelectedIndex="{Binding SettingsTimeFormatSelectedIndex}"
                                                         Margin="0,8,0,0"
                                                         x:Name="TimeFormatSegmented"
                                                         SelectionChanged="TimeFormatSegmented_OnSelectionChanged"
                                                         d:DataContext="{d:DesignInstance views:MainPage }">
-                                                        <labs:SegmentedItem x:Uid="Segmented24hours" />
-                                                        <labs:SegmentedItem x:Uid="Segmented12hours" />
-                                                    </labs:Segmented>
+                                                        <controls1:SegmentedItem x:Uid="Segmented24hours" />
+                                                        <controls1:SegmentedItem x:Uid="Segmented12hours" />
+                                                    </controls1:Segmented>
 
 
                                                     <!-- toggle control to enable/disable acrylic effect -->
@@ -292,7 +291,7 @@
                                                     <ToggleSwitch x:Name="AcrylicToggle"
                                                                   Margin="8,8,0,0"
                                                                   d:DataContext="{d:DesignInstance views:MainPage }"
-                                                                  IsOn="{Binding AcrylicEffectsService.EffectsEnabled}"
+                                                                  IsOn="{Binding AcrylicEffectsService.EffectsEnabled, Mode=OneWay}"
                                                                   Toggled="AcrylicToggle_OnToggled" />
 
                                                     <TextBlock x:Uid="BackgroundImageSettingsTitle"
@@ -310,15 +309,25 @@
                                                                Margin="0,16,0,0"
                                                                Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                                    <!-- selectable list of auto refresh intervals -->
                                                     <ComboBox x:Name="AutoRefreshDataComboBox"
                                                               Margin="8,8,0,0"
                                                               d:DataContext="{d:DesignInstance views:MainPage }"
-                                                              SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex}"
+                                                              ItemsSource="{Binding AutoRefreshStepsValues}"
+                                                              SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex, Mode=OneWay}"
+                                                              SelectionChanged="AutoRefreshComboBox_OnSelectionChanged">
+
+                                                    </ComboBox>
+
+                                                    <!-- selectable list of auto refresh intervals -->
+                                                    <!--<ComboBox x:Name="AutoRefreshDataComboBox"
+                                                              Margin="8,8,0,0"
+                                                              d:DataContext="{d:DesignInstance views:MainPage }"
                                                               ItemsSource="{Binding AutoRefreshSteps}"
                                                               DisplayMemberPath="Value"
+                                                              SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex}"
                                                               SelectionChanged="AutoRefreshComboBox_OnSelectionChanged">
-                                                    </ComboBox>
+                                                        
+                                                    </ComboBox>-->
 
 
                                                     <TextBlock x:Uid="CreditsSettingsTitle"
@@ -392,7 +401,7 @@
 
                                                         <HyperlinkButton x:Name="hyperlinkTranslate"
                                                                          RelativePanel.RightOf="hyperlinkVote"
-                                                                         NavigateUri="https://crowdin.com/project/FluentWeather/invite?h=65e6adb7864849923ca0d49c39a61b131814251">
+                                                                         NavigateUri="https://crwd.in/FluentWeather/c07dfb9bf12c2e9ed8566e525d6ee8172645390">
 
                                                             <StackPanel Orientation="Horizontal" Spacing="10">
                                                                 <Grid Width="18" Height="18">

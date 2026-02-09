@@ -1,12 +1,14 @@
 ﻿using FluentWeather.Models;
+using FluentWeather.Utils;
 using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
-using FluentWeather.Utils;
+using WinRT;
 
 namespace FluentWeather.Adapters
 {
-    internal class HourDataAdapter(V3WxForecastHourly fcst, int itemIndex, WetUnits wetUnits)
+    [GeneratedBindableCustomPropertyAttribute]
+    internal partial class HourDataAdapter(V3WxForecastHourly fcst, int itemIndex, WetUnits wetUnits)
     {
         public string Temperature
         {

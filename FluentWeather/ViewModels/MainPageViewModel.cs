@@ -1,13 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using WinRT;
 
 namespace FluentWeather.ViewModels
 {
+    [GeneratedBindableCustomPropertyAttribute]
     public partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private bool _isLoadingData;
+        public partial bool IsLoadingData { get; set; }
 
         [ObservableProperty]
-        private string _appVersionText;
+        public partial string AppVersionText { get; set; }
     }
 }

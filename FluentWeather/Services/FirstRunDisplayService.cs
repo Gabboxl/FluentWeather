@@ -6,7 +6,6 @@ using Windows.UI.Core;
 using FluentWeather.Dialogs;
 using FluentWeather.Helpers;
 using System.Linq;
-using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace FluentWeather.Services
 {
@@ -16,25 +15,28 @@ namespace FluentWeather.Services
 
         internal static async Task ShowIfAppropriateAsync()
         {
-            if (SystemInformation.Instance.IsFirstRun)
-            {
-                //set is24HourFormat settings based on system settings (values can be "24HourClock" or "12HourClock")
-                string systemClockType = Windows.System.UserProfile.GlobalizationPreferences.Clocks.FirstOrDefault();
+            var values = ApplicationData.Current.LocalSettings.Values;
+            if (values.ContainsKey("1stRun"))
+                return;
 
-                await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat",
-                    systemClockType == "12HourClock");
+            //set is24HourFormat settings based on system settings (values can be "24HourClock" or "12HourClock")
+            string systemClockType = Windows.System.UserProfile.GlobalizationPreferences.Clocks.FirstOrDefault();
 
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal, async () =>
-                    {
-                        if (_shown)
-                            return;
+            await ApplicationData.Current.LocalSettings.SaveAsync("is12HourFormat",
+                systemClockType == "12HourClock");
 
-                        _shown = true;
-                        var dialog2 = new FirstRunDialog();
-                        await dialog2.ShowAsync();
-                    });
-            }
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                CoreDispatcherPriority.Normal, async () =>
+                {
+                    if (_shown)
+                        return;
+
+                    _shown = true;
+                    var dialog2 = new FirstRunDialog();
+                    await dialog2.ShowAsync();
+                });
+
+            values["1stRun"] = true;
         }
     }
 }

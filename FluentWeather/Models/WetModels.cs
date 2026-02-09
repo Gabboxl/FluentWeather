@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using WinRT;
 
 namespace FluentWeather.Models
 {
@@ -21,7 +22,8 @@ namespace FluentWeather.Models
         public object locale4 { get; set; }
     }
 
-    public class SearchedLocation
+    [GeneratedBindableCustomPropertyAttribute]
+    public partial class SearchedLocation
     {
         public string address { get; set; }
         public Locale locale { get; set; }
