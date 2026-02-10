@@ -203,8 +203,8 @@ namespace FluentWeather.Views
                     if (response.IsSuccessStatusCode)
                     {
                         var jsonResponse = await response.Content.ReadAsStringAsync();
-                        var myDeserializedClass = System.Text.Json.JsonSerializer.Deserialize<SearchLocationResponse>(jsonResponse, FluentWeatherJsonContext.Default.SearchLocationResponse);
-                        var finalitems = myDeserializedClass.location.Select(x => x).ToList();
+                        var locResponse = System.Text.Json.JsonSerializer.Deserialize<SearchLocationResponse>(jsonResponse, FluentWeatherJsonContext.Default.SearchLocationResponse);
+                        var finalitems = locResponse?.location.Select(x => x).ToList();
                         sender.ItemsSource = finalitems;
                     }
                 }
@@ -259,7 +259,7 @@ namespace FluentWeather.Views
             }
             catch (HttpRequestException e)
             {
-                CoreApplication.MainView.Dispatcher.RunAsync(
+                await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
                     async void () =>
                     {
@@ -276,7 +276,7 @@ namespace FluentWeather.Views
                         {
                             await noWifiDialog.ShowAsync();
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                         }
                     }
@@ -446,7 +446,7 @@ namespace FluentWeather.Views
             EmulateDayButtonClick(0);
         }
 
-        private void CrossfadeToImageApiData(RootV3Response rootV3Response = null)
+        private void CrossfadeToImageApiData(RootV3Response? rootV3Response = null)
         {
             if (!BackgroundImageToggleStatus)
                 return;
