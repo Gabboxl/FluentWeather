@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Data;
 
 namespace FluentWeather.Converters
 {
-    public class BetterBoolToVisibilityConverter : IValueConverter
+    public partial class BetterBoolToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
