@@ -258,6 +258,7 @@
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
     <value>עליך להצמיד תחילה את FluentWeather לתפריט התחל.
+
 Live Tiles זמינים באופן טבעי ב-Windows 10 בלבד.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
