@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
-using FluentWeather.Core.Helpers;
 using FluentWeather.Services;
+using FluentWeather.Utils;
 
 namespace FluentWeather.BackgroundTasks
 {

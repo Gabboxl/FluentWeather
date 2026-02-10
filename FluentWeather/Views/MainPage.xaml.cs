@@ -1,14 +1,12 @@
 ﻿using CommunityToolkit.WinUI.Controls;
 using FluentWeather.Adapters;
 using FluentWeather.Controls;
-using FluentWeather.Core.Helpers;
 using FluentWeather.Dialogs;
 using FluentWeather.Helpers;
 using FluentWeather.Models;
 using FluentWeather.Services;
 using FluentWeather.Utils;
 using FluentWeather.ViewModels;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -205,7 +203,7 @@ namespace FluentWeather.Views
                     if (response.IsSuccessStatusCode)
                     {
                         var jsonResponse = await response.Content.ReadAsStringAsync();
-                        var myDeserializedClass = JsonConvert.DeserializeObject<SearchLocationResponse>(jsonResponse);
+                        var myDeserializedClass = System.Text.Json.JsonSerializer.Deserialize<SearchLocationResponse>(jsonResponse, FluentWeatherJsonContext.Default.SearchLocationResponse);
                         var finalitems = myDeserializedClass.location.Select(x => x).ToList();
                         sender.ItemsSource = finalitems;
                     }
@@ -244,9 +242,10 @@ namespace FluentWeather.Views
 
                 if (lastPlaceId == null) return;
 
+
                 var response = await ApiUtils.GetFullData(lastPlaceId);
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                _lastApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                _lastApiData = System.Text.Json.JsonSerializer.Deserialize<RootV3Response>(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
 
                 LiveTileService.UpdateWeatherMainTile(_lastApiData);
 

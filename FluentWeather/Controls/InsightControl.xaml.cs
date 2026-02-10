@@ -3,9 +3,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using FluentWeather.Models;
-using FluentWeather.Core.Helpers;
 using FluentWeather.Services;
 using Windows.UI.Xaml.Markup;
+using FluentWeather.Utils;
 
 namespace FluentWeather.Controls
 {

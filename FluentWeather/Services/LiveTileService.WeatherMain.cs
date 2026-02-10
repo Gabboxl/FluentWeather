@@ -1,13 +1,14 @@
-﻿using System;
+﻿using FluentWeather.Converters;
+using FluentWeather.Helpers;
+using FluentWeather.Models;
+using FluentWeather.Utils;
+using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using Windows.Storage;
-using FluentWeather.Helpers;
-using Microsoft.Toolkit.Uwp.Notifications;
-using FluentWeather.Models;
-using FluentWeather.Utils;
-using Newtonsoft.Json;
 
 namespace FluentWeather.Services
 {
@@ -27,7 +28,7 @@ namespace FluentWeather.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var newApiData = JsonConvert.DeserializeObject<RootV3Response>(jsonResponse);
+                    var newApiData = System.Text.Json.JsonSerializer.Deserialize<RootV3Response>(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
                     UpdateWeatherMainTile(newApiData);
                 }
             }

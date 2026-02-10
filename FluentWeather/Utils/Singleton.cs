@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 
-namespace FluentWeather.Core.Helpers
+namespace FluentWeather.Utils
 {
     public static class Singleton<T>
         where T : new()

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentWeather.Activation;
-using FluentWeather.Core.Helpers;
 using FluentWeather.Helpers;
 using Windows.ApplicationModel.Activation;
 using Windows.Storage;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace FluentWeather.Core.Helpers
+namespace FluentWeather.Utils
 {
     public static class TaskExtensions
     {

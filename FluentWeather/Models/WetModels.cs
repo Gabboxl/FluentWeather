@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using WinRT;
 
 namespace FluentWeather.Models
@@ -131,32 +131,36 @@ namespace FluentWeather.Models
     {
         public string id { get; set; }
 
-        [JsonProperty("v3-wx-observations-current")]
+        [JsonPropertyName("v3-wx-observations-current")]
         public V3WxObservationsCurrent v3wxobservationscurrent { get; set; }
 
-        [JsonProperty("v3-wx-forecast-daily-15day")]
+        [JsonPropertyName("v3-wx-forecast-daily-15day")]
         public V3WxForecastDaily v3wxforecastdaily15day { get; set; }
 
-        [JsonProperty("v3-wx-forecast-daily-10day")]
+        [JsonPropertyName("v3-wx-forecast-daily-10day")]
         public V3WxForecastDaily v3wxforecastdaily10day { get; set; }
 
-        [JsonProperty("v3-wx-forecast-hourly-10day")]
+        [JsonPropertyName("v3-wx-forecast-hourly-10day")]
         public V3WxForecastHourly v3wxforecasthourly10day { get; set; }
 
         public object v3alertsHeadlines { get; set; }
 
-        [JsonProperty("v3-location-point")] public V3LocationPoint v3locationpoint { get; set; }
+        [JsonPropertyName("v3-location-point")]
+        public V3LocationPoint v3locationpoint { get; set; }
 
-        [JsonProperty("v2idxDriveDaypart10")] public V2idxDriveDaypartResult v2idxDriveDaypart10days { get; set; }
+        [JsonPropertyName("v2idxDriveDaypart10")]
+        public V2idxDriveDaypartResult v2idxDriveDaypart10days { get; set; }
 
-        [JsonProperty("v2idxRunDaypart10")] public V2idxRunDaypartResult v2idxRunDaypart10days { get; set; }
+        [JsonPropertyName("v2idxRunDaypart10")]
+        public V2idxRunDaypartResult v2idxRunDaypart10days { get; set; }
 
-        [JsonProperty("v2idxPollenDaypart10")] public V2idxPollenDaypartResult v2idxPollenDaypart10days { get; set; }
+        [JsonPropertyName("v2idxPollenDaypart10")]
+        public V2idxPollenDaypartResult v2idxPollenDaypart10days { get; set; }
 
-        [JsonProperty("v2idxWateringDaypart10")]
+        [JsonPropertyName("v2idxWateringDaypart10")]
         public V2idxWateringDaypartResult V2IdxWateringDaypart10days { get; set; }
 
-        [JsonProperty("v2idxDrySkinDaypart10")]
+        [JsonPropertyName("v2idxDrySkinDaypart10")]
         public V2idxDrySkinDaypartResult V2IdxDrySkinDaypart10days { get; set; }
     }
 
@@ -197,13 +201,14 @@ namespace FluentWeather.Models
 
     public class RootStandaloneHourlyResponse
     {
-        [JsonProperty("v3-wx-forecast-hourly-10day")]
+        [JsonPropertyName("v3-wx-forecast-hourly-10day")]
         public V3WxForecastHourly v3wxforecasthourly10day { get; set; }
     }
 
     public class V3LocationPoint
     {
-        [JsonProperty("location")] public LocationV3 LocationV3 { get; set; }
+        [JsonPropertyName("location")]
+        public LocationV3 LocationV3 { get; set; }
     }
 
     public class V3WxForecastDaily
@@ -313,7 +318,7 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("drivingDifficultyIndex12hour")]
+        [JsonPropertyName("drivingDifficultyIndex12hour")]
         public DrivingDifficultyIndexDaypart drivingDifficultyIndex12hour { get; set; }
     }
 
@@ -337,7 +342,7 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("runWeatherIndex12hour")]
+        [JsonPropertyName("runWeatherIndex12hour")]
         public RunWeatherIndexDaypart RunWeatherIndexDaypart { get; set; }
     }
 
@@ -347,7 +352,7 @@ namespace FluentWeather.Models
     public class PollenForecastDaypart
     {
         public List<int> fcstValid { get; set; }
-        public List<DateTime> fcstValidLocal { get; set; }
+        public List<DateTimeOffset> fcstValidLocal { get; set; }
         public List<string> dayInd { get; set; }
         public List<int> num { get; set; }
         public List<string> daypartName { get; set; }
@@ -364,7 +369,8 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("pollenForecast12hour")] public PollenForecastDaypart PollenForecastDaypart { get; set; }
+        [JsonPropertyName("pollenForecast12hour")]
+        public PollenForecastDaypart PollenForecastDaypart { get; set; }
     }
 
 
@@ -374,14 +380,14 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("wateringNeedsIndex12hour")]
+        [JsonPropertyName("wateringNeedsIndex12hour")]
         public WateringNeedsIndexDaypart WateringNeedsIndexDaypart { get; set; }
     }
 
     public class WateringNeedsIndexDaypart
     {
         public List<int> fcstValid { get; set; }
-        public List<DateTime> fcstValidLocal { get; set; }
+        public List<DateTimeOffset> fcstValidLocal { get; set; }
         public List<string> dayInd { get; set; }
         public List<int> num { get; set; }
         public List<string> daypartName { get; set; }
@@ -395,7 +401,7 @@ namespace FluentWeather.Models
     public class DrySkinIndexDaypart
     {
         public List<int> fcstValid { get; set; }
-        public List<DateTime> fcstValidLocal { get; set; }
+        public List<DateTimeOffset> fcstValidLocal { get; set; }
         public List<string> dayInd { get; set; }
         public List<int> num { get; set; }
         public List<string> daypartName { get; set; }
@@ -407,6 +413,7 @@ namespace FluentWeather.Models
     {
         public Metadata metadata { get; set; }
 
-        [JsonProperty("drySkinIndex12hour")] public DrySkinIndexDaypart DrySkinIndexDaypart { get; set; }
+        [JsonPropertyName("drySkinIndex12hour")]
+        public DrySkinIndexDaypart DrySkinIndexDaypart { get; set; }
     }
 }

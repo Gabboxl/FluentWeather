@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-
-using FluentWeather.Core.Helpers;
-
+using System.Text.Json;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using FluentWeather.Utils;
 
 namespace FluentWeather.Helpers
 {
@@ -23,7 +22,7 @@ namespace FluentWeather.Helpers
         public static async Task SaveAsync<T>(this StorageFolder folder, string name, T content)
         {
             var file = await folder.CreateFileAsync(GetFileName(name), CreationCollisionOption.ReplaceExisting);
-            var fileContent = await Json.StringifyAsync(content);
+            var fileContent = JsonSerializer.Serialize(content, typeof(T), FluentWeatherJsonContext.Default);
 
             await FileIO.WriteTextAsync(file, fileContent);
         }
