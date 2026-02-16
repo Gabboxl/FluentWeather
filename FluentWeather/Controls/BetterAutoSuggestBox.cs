@@ -1,17 +1,11 @@
 ﻿using FluentWeather.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Xml.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Media;
 using WinRT;
-using WinRT.Interop;
 
 namespace FluentWeather.Controls
 {
