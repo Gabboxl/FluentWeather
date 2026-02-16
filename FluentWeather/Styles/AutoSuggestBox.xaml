@@ -439,7 +439,7 @@
                                         <contract7NotPresent:TransitionCollection />
                                     </ListView.ItemContainerTransitions>
                                     <ListView.Header> <!-- view BetterAutoSuggestBox.cs to understand how each grid is activated -->
-                                        <StackPanel>
+                                        <StackPanel x:Name="CustomStackPanel">
                                             <Grid x:Name="AutoSuggestBoxHeaderRoot1" Visibility="Collapsed"> <!-- this is the first grid for the loading message -->
                                                 <!--<Rectangle Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                                                            Fill="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"></Rectangle>-->
