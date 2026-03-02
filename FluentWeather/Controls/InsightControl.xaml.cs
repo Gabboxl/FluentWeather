@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using FluentWeather.Models;
+using FluentWeather.Services;
+using FluentWeather.Utils;
+using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using FluentWeather.Models;
-using FluentWeather.Services;
 using Windows.UI.Xaml.Markup;
-using FluentWeather.Utils;
+using Windows.UI.Xaml.Media;
+using WinRT;
 
 namespace FluentWeather.Controls
 {
@@ -19,31 +20,36 @@ namespace FluentWeather.Controls
             set { SetValue(InsightProperty, value); }
         }
 
-        private static readonly DependencyProperty InsightProperty =
+        public static readonly DependencyProperty InsightProperty =
             DependencyProperty.Register(
                 nameof(Insight),
                 typeof(Insight),
                 typeof(InsightControl),
-                new PropertyMetadata(null, OnTitleChanged));
+                new PropertyMetadata(null, OnInsightChanged));
 
-        private static void OnTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnInsightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var currentInstance = (InsightControl) d;
+            if (d is InsightControl currentInstance)
+            {
+                currentInstance.OnInsightChanged(e);
+            }
+        }
 
-            var newValue = (Insight) e.NewValue;
+        private void OnInsightChanged(DependencyPropertyChangedEventArgs e)
+        {
+            var newValue = e.NewValue.As<Insight>();
+            if (newValue == null) return;
 
-            currentInstance.TitleText.Text = newValue.Title;
-            currentInstance.ValueText.Text = newValue.Description + " (" + newValue.Value + ")";
-            currentInstance.LevelRectangle.Fill = currentInstance.GetLevelColor(newValue.Value, newValue.Levels);
+            TitleText.Text = newValue.Title;
+            ValueText.Text = newValue.Description + " (" + newValue.Value + ")";
+            LevelRectangle.Fill = GetLevelColor(newValue.Value, newValue.Levels);
 
 
             string iconPath =  (string) Application.Current.Resources[newValue.IconName + "Path"];
 
-            currentInstance.InsightIconPath.Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), iconPath);
+            InsightIconPath.Data = (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), iconPath);
 
-            //currentInstance.InsightIconPath.Fill = (SolidColorBrush) Application.Current.Resources["SystemFillColorCriticalBrush"];
-
-            currentInstance.InsightIconPath.MaxWidth = 24;
+            InsightIconPath.MaxWidth = 24;
 
         }
 
@@ -51,7 +57,7 @@ namespace FluentWeather.Controls
         {
             var finalLevel = InsightLevel.None;
 
-            if (levels.ContainsKey(level))
+            if (levels != null && levels.ContainsKey(level))
             {
                 finalLevel = levels[level];
             }
@@ -59,13 +65,13 @@ namespace FluentWeather.Controls
             switch (finalLevel)
             {
                 case InsightLevel.Low:
-                    return (SolidColorBrush) Application.Current.Resources["SystemFillColorCriticalBrush"];
+                    return Application.Current.Resources["SystemFillColorCriticalBrush"].As<SolidColorBrush>();
                 case InsightLevel.Medium:
-                    return (SolidColorBrush) Application.Current.Resources["SystemFillColorCautionBrush"];
+                    return Application.Current.Resources["SystemFillColorCautionBrush"].As<SolidColorBrush>();
                 case InsightLevel.High:
-                    return (SolidColorBrush) Application.Current.Resources["SystemFillColorSuccessBrush"];
+                    return Application.Current.Resources["SystemFillColorSuccessBrush"].As<SolidColorBrush>();
                 default:
-                    return (SolidColorBrush) Application.Current.Resources["SystemFillColorAttentionBackgroundBrush"];
+                    return Application.Current.Resources["SystemFillColorAttentionBackgroundBrush"].As<SolidColorBrush>();
             }
 
         }
