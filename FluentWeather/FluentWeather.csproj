@@ -48,6 +48,20 @@
     <PRIResource Remove="BundleArtifacts\**" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <!-- Disable due to some issues with CsWinRT, <Reference Include="[path to the component.dll]" /> is required for now -->
+    <!--<CsWinRTIncludes>BackgroundTasks;</CsWinRTIncludes>-->
+
+    <!-- Required for background tasks support -->
+    <CsWinRTMergeReferencedActivationFactories>true</CsWinRTMergeReferencedActivationFactories>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BackgroundTasks\BackgroundTasks.csproj" />
+    <Reference Include="..\BackgroundTasks\bin\$(Platform)\$(Configuration)\$(TargetFramework)\BackgroundTasks.dll" />
+    <!-- Register the .winmd in the APPX manifest (requires the new MSIX tooling) -->
+    <!-- Need to ensure the app entrypoint is used in the manifest (instead of the component entrypoint) -->
+    <WindowsMetadataReference Include="$(MSBuildThisFileDirectory)\..\BackgroundTasks\bin\$(Platform)\$(Configuration)\$(TargetFramework)\BackgroundTasks.winmd" Implementation="$(MSBuildProjectName).dll" />
+  </ItemGroup>
 
   <!--<ItemGroup>
     <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="10.0.2" />

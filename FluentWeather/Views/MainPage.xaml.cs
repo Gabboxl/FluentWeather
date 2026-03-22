@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
+using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
@@ -27,6 +28,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Navigation;
 using WinRT;
 
 namespace FluentWeather.Views
@@ -165,6 +167,32 @@ namespace FluentWeather.Views
                     _appViewModel.UpdateUi();
                 }
             };
+
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            const string taskName = "WetBackgroundTask";
+            const string taskEntryPoint = "BackgroundTasks.WetBackgroundTask";
+
+            var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
+            if(backgroundAccessStatus == BackgroundAccessStatus.AllowedSubjectToSystemPolicy ||
+               backgroundAccessStatus == BackgroundAccessStatus.AlwaysAllowed)
+            {
+                foreach(var task in BackgroundTaskRegistration.AllTasks)
+                {
+                    if(task.Value.Name == taskName)
+                    {
+                        task.Value.Unregister(true);
+                    }
+                }
+
+                BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder();
+                taskBuilder.Name = taskName;
+                taskBuilder.TaskEntryPoint = taskEntryPoint;
+                taskBuilder.SetTrigger(new TimeTrigger(15, false));
+                var registration = taskBuilder.Register();
+            }
         }
 
         private async void RefreshTimerTickEvent(object sender, object e)
