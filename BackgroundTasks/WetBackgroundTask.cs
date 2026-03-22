@@ -4,7 +4,7 @@ using Windows.UI.Notifications;
 
 namespace BackgroundTasks
 {
-    public sealed partial class WetBackgroundTask  : IBackgroundTask
+    public sealed partial class WetBackgroundTask : IBackgroundTask
     {
         public async void Run(IBackgroundTaskInstance taskInstance)
         {

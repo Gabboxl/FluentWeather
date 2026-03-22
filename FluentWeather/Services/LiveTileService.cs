@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentWeather.Activation;
 using FluentWeather.Helpers;
@@ -13,7 +10,7 @@ using Windows.UI.StartScreen;
 
 namespace FluentWeather.Services
 {
-    public partial class LiveTileService : ActivationHandler<LaunchActivatedEventArgs>, INotifyPropertyChanged
+    public partial class LiveTileService : ActivationHandler<LaunchActivatedEventArgs>
     {
         private const string QueueEnabledKey = "LiveTileNotificationQueueEnabled";
 
@@ -106,21 +103,6 @@ namespace FluentWeather.Services
         public async Task SaveSettingsAsync(bool newValue, string settingsKey)
         {
             await ApplicationData.Current.LocalSettings.SaveAsync(settingsKey, newValue);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
         }
     }
 }
