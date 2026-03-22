@@ -45,7 +45,10 @@ namespace FluentWeather.Services
 
         private static void Start(IBackgroundTaskInstance taskInstance)
         {
-            var task = BackgroundTasks.FirstOrDefault(b => b.Match(taskInstance?.Task?.Name));
+            if (taskInstance == null)
+                return;
+
+            var task = BackgroundTasks.FirstOrDefault(b => b.Match(taskInstance.Task.Name));
             task?.RunAsync(taskInstance).FireAndForget();
         }
 
