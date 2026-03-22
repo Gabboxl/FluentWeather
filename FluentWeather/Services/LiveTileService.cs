@@ -99,10 +99,5 @@ namespace FluentWeather.Services
             // TODO: Implement your own logic to determine if you can handle the LiveTile notification update activation
             return false;
         }
-
-        public async Task SaveSettingsAsync(bool newValue, string settingsKey)
-        {
-            await ApplicationData.Current.LocalSettings.SaveAsync(settingsKey, newValue);
-        }
     }
 }

@@ -42,8 +42,6 @@ namespace FluentWeather.Views
 
         public AcrylicEffectsService AcrylicEffectsService { get; } = Singleton<AcrylicEffectsService>.Instance;
 
-        private LiveTileService LiveTileService { get; } = Singleton<LiveTileService>.Instance;
-
         private readonly AppViewModel _appViewModel = AppViewModelHolder.GetViewModel();
 
         private static readonly HttpClient SharedClient = new()
@@ -275,7 +273,7 @@ namespace FluentWeather.Views
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 _lastApiData = System.Text.Json.JsonSerializer.Deserialize<RootV3Response>(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
 
-                LiveTileService.UpdateWeatherMainTile(_lastApiData);
+                Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
 
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal, () =>
