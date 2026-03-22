@@ -1,5 +1,4 @@
-﻿using FluentWeather.Converters;
-using FluentWeather.Helpers;
+﻿using FluentWeather.Helpers;
 using FluentWeather.Models;
 using FluentWeather.Utils;
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -7,7 +6,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Text.Json;
 using Windows.Storage;
 
 namespace FluentWeather.Services
@@ -40,11 +38,8 @@ namespace FluentWeather.Services
 
         public async void UpdateWeatherMainTile(RootV3Response apiDataResponse)
         {
-            var newIconUri = new Uri("ms-appx:///Assets/weticons/" + apiDataResponse.v3wxobservationscurrent.iconCode +
-                                     ".svg");
+            var newIconUri = new Uri("ms-appx:///Assets/weticons/" + apiDataResponse.v3wxobservationscurrent.iconCode + ".svg");
 
-
-            // These would be initialized with actual data
             string cityName = string.Join(", ",
                 new[]
                 {
@@ -53,9 +48,7 @@ namespace FluentWeather.Services
                     apiDataResponse.v3locationpoint.LocationV3.country
                 }.Where(s => !string.IsNullOrEmpty(s)).Distinct());
 
-
             string imageIconPath = "Assets/weticonspng/" + apiDataResponse.v3wxobservationscurrent.iconCode + ".png";
-
 
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
 
@@ -109,7 +102,6 @@ namespace FluentWeather.Services
             //current precipitation chance
             builder.Content.Visual.LockDetailedStatus3 = " " + "NextHours".GetLocalized() + " " +  forecastNarrative;
 
-            // Then create the tile notification
             try //try catch block to prevent the app from crashing if the tile is not pinned
             {
                 var notification = new Windows.UI.Notifications.TileNotification(builder.Content.GetXml());
