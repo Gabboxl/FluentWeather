@@ -42,14 +42,6 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\Square44x44LogoBadge.png"/>
       </uap:VisualElements>
-      <Extensions>
-        <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTasks.WetBackgroundTask">
-          <BackgroundTasks>
-            <Task Type="timer"/>
-            <Task Type="pushNotification"/>
-          </BackgroundTasks>
-        </Extension>
-      </Extensions>
     </Application>
   </Applications>
 

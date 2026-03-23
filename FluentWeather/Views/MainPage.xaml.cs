@@ -168,31 +168,6 @@ namespace FluentWeather.Views
 
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-            const string taskName = "WetBackgroundTask";
-            const string taskEntryPoint = "BackgroundTasks.WetBackgroundTask";
-
-            var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
-            if(backgroundAccessStatus == BackgroundAccessStatus.AllowedSubjectToSystemPolicy ||
-               backgroundAccessStatus == BackgroundAccessStatus.AlwaysAllowed)
-            {
-                foreach(var task in BackgroundTaskRegistration.AllTasks)
-                {
-                    if(task.Value.Name == taskName)
-                    {
-                        task.Value.Unregister(true);
-                    }
-                }
-
-                BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder();
-                taskBuilder.Name = taskName;
-                taskBuilder.TaskEntryPoint = taskEntryPoint;
-                taskBuilder.SetTrigger(new TimeTrigger(15, false));
-                var registration = taskBuilder.Register();
-            }
-        }
-
         private async void RefreshTimerTickEvent(object sender, object e)
         {
             await LoadApiData();
