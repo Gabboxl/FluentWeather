@@ -27,7 +27,7 @@ namespace FluentWeather.Helpers
             await FileIO.WriteTextAsync(file, fileContent);
         }
 
-        public static async Task<T> ReadAsync<T>(this StorageFolder folder, string name)
+        public static async Task<T?> ReadAsync<T>(this StorageFolder folder, string name)
         {
             if (!File.Exists(Path.Combine(folder.Path, GetFileName(name))))
             {
@@ -55,11 +55,9 @@ namespace FluentWeather.Helpers
             settings.Values.Remove(key);
         }
 
-        public static async Task<T> ReadAsync<T>(this ApplicationDataContainer settings, string key, T defaultValue = default)
+        public static async Task<T?> ReadAsync<T>(this ApplicationDataContainer settings, string key, T? defaultValue = default)
         {
-            object obj = null;
-
-            if (settings.Values.TryGetValue(key, out obj))
+            if (settings.Values.TryGetValue(key, out var obj))
             {
                 return await Json.ToObjectAsync<T>((string)obj);
             }
@@ -114,7 +112,7 @@ namespace FluentWeather.Helpers
                 }
             }
 
-            return null;
+            return [];
         }
 
         private static string GetFileName(string name)
