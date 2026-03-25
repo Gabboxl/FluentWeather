@@ -96,7 +96,7 @@ namespace FluentWeather.Services
             await ThemeSelectorService.SetThemeAsync(ElementTheme.Dark); //await ThemeSelectorService.SetRequestedThemeAsync();
             await WhatsNewDisplayService.ShowIfAppropriateAsync();
             await FirstRunDisplayService.ShowIfAppropriateAsync();
-            Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
+            await Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
         }
 
         private IEnumerable<ActivationHandler> GetActivationHandlers()

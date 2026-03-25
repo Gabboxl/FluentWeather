@@ -26,6 +26,8 @@ namespace FluentWeather.BackgroundTasks
                 CancelOnConditionLoss = true
             };
 
+            builder.SetTrigger(new SystemTrigger(SystemTriggerType.NetworkStateChange, false));
+            builder.SetTrigger(new SystemTrigger(SystemTriggerType.UserPresent, false));
             builder.SetTrigger(new TimeTrigger(15, false));
             builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
@@ -34,14 +36,13 @@ namespace FluentWeather.BackgroundTasks
         protected override Task RunAsyncInternal(IBackgroundTaskInstance taskInstance)
         {
             if (taskInstance == null)
-                return null;
+                return Task.CompletedTask;
 
             _deferral = taskInstance.GetDeferral();
 
             return Task.Run(async () =>
             {
-                Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
-
+                await Singleton<LiveTileService>.Instance.UpdateWeatherTileFull();
                 _deferral.Complete();
             });
         }

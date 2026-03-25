@@ -5,18 +5,18 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
+using System.Threading.Tasks;
 using Windows.Storage;
 
 namespace FluentWeather.Services
 {
     public partial class LiveTileService
     {
-        public async void UpdateWeatherTileFull()
+        public async Task UpdateWeatherTileFull()
         {
             try
             {
-                string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+                string? lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
                 if (lastPlaceId == null)
                     return;
@@ -27,10 +27,12 @@ namespace FluentWeather.Services
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var newApiData = System.Text.Json.JsonSerializer.Deserialize<RootV3Response>(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
-                    UpdateWeatherMainTile(newApiData);
+
+                    if (newApiData != null)
+                        UpdateWeatherMainTile(newApiData);
                 }
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
                 Debug.WriteLine(e);
             }
@@ -107,7 +109,7 @@ namespace FluentWeather.Services
                 var notification = new Windows.UI.Notifications.TileNotification(builder.Content.GetXml());
                 UpdateTile(notification);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //TODO: report the error to sentry
             }

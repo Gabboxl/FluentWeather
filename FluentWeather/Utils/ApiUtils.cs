@@ -10,7 +10,7 @@ namespace FluentWeather.Utils
 
         private static readonly HttpClient SharedClient = new()
         {
-            BaseAddress = new Uri("https://api.weather.com/v2/"),
+            BaseAddress = new Uri("https://api.weather.com/v2/")
         };
 
         public static async Task<HttpResponseMessage> GetFullData(string placeId)
