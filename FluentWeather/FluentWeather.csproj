@@ -19,7 +19,7 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
     <UserSecretsId>d9f79214-fb96-4b6d-a2b5-88b93d278cd0</UserSecretsId>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <LangVersion>preview</LangVersion>
