@@ -30,7 +30,7 @@ namespace FluentWeather.Services
             }
         }
 
-        public static BackgroundTaskRegistration GetBackgroundTasksRegistration<T>()
+        public static BackgroundTaskRegistration? GetBackgroundTasksRegistration<T>()
             where T : BackgroundTask
         {
             if (BackgroundTaskRegistration.AllTasks.All(t => t.Value.Name != typeof(T).Name))
