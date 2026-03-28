@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WhatsNew_Body" xml:space="preserve">
-    <value>Release 1.5.0:
-- Added F5 shortcut to refresh the data
-- Added background image toggle option
-- Improved network error handling
-- Updated dialogs theme
-- Simplified UI code + many behind-the-scenes optimizations
+    <value>Release 2.0.0:
+- FluentWeather now runs on .NET 10 (AOT)!
+It was already fast, but now it's even faster!
+- The Live Tile now updates in background.
+- Fixed "connection error" issues
+- Many stability fixes
 - Updated dependencies</value>
   </data>
 </root>
