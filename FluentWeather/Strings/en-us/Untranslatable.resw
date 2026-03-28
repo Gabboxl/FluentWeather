@@ -121,9 +121,12 @@
     <value>Release 2.0.0:
 - FluentWeather now runs on .NET 10 (AOT)!
 It was already fast, but now it's even faster!
+
 - The Live Tile now updates in background.
 - Fixed "connection error" issues
 - Many stability fixes
-- Updated dependencies</value>
+- Updated translations
+- Updated dependencies
+- Removed ARM (32 bit) support. ARM64 continues to be supported.</value>
   </data>
 </root>
