@@ -15,14 +15,14 @@
 
     <ContentDialog.TitleTemplate>
         <DataTemplate x:DataType="x:String">
-            <RelativePanel Width="720">
+            <RelativePanel Width="850">
 
                 <TextBlock x:Name="AppName" Margin="0,-4,0,0"
                            VerticalAlignment="Center" FontSize="26"
                            FontWeight="SemiBold" RelativePanel.AlignLeftWithPanel="True"
                            Text="{x:Bind}" />
 
-                <Rectangle Width="712" Height="1"
+                <Rectangle Width="850" Height="1"
                            Margin="0,4,0,4" Fill="#5B5B5B"
                            RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="AppName" />
 
@@ -31,8 +31,10 @@
     </ContentDialog.TitleTemplate>
     <ScrollViewer>
         <StackPanel>
-            <Image Width="770" Height="350"
-                   Margin="-24,-50,0,-70" Source="/Assets/fluentweatherbanner.png"
+            <Image Width="870"
+                   Height="350"
+                   Margin="-14,-36,0,-52"
+                   Source="/Assets/BannerRelease.png"
                    Stretch="Uniform" />
             
             <TextBlock x:Name="WhatsNewTextBlock" TextWrapping="WrapWholeWords"
