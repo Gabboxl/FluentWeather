@@ -17,7 +17,11 @@ namespace FluentWeather.BackgroundTasks
             var taskRegistration = BackgroundTaskRegistration.AllTasks.FirstOrDefault(t => t.Value.Name == taskName).Value;
 
             if (taskRegistration != null)
-                return;
+            {
+                //TODO: da rimuovere al prossimo aggiornamento dell'app
+                taskRegistration.Unregister(true);
+                //  return;
+            }
 
             var builder = new BackgroundTaskBuilder
             {
