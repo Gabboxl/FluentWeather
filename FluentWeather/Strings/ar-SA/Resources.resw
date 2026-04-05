@@ -203,10 +203,10 @@
     <value>الشمس</value>
   </data>
   <data name="SunsetSubtitle.Text" xml:space="preserve">
-    <value>الغروب</value>
+    <value>غروب الشمس</value>
   </data>
   <data name="SunriseSubtitle.Text" xml:space="preserve">
-    <value>الشروق</value>
+    <value>شروق الشمس</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
     <value>القمر</value>
@@ -248,10 +248,10 @@
     <value>تم تطويره من طرف</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
-    <value>ساعد فى ترجمة البرنامج</value>
+    <value>ساعد فى ترجمة التطبيق</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>حُدث بتاريخ </value>
+    <value>تم التحديث بتاريخ </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
     <value>الطقس LiveTile</value>
@@ -295,6 +295,6 @@
     <value>تحديث تلقائي</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>مشكلة في الشبكة، الرجاء التأكد من إتصالك بالإنترنت.</value>
+    <value>مشكلة فى الإتصال، يرجى التأكد من إتصال الإنترنت.</value>
   </data>
 </root>
