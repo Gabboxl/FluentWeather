@@ -262,31 +262,36 @@ namespace FluentWeather.Views
                     }
                 );
             }
-            catch (HttpRequestException e)
+            catch (Exception e)
             {
-                await CoreApplication.MainView.Dispatcher.RunAsync(
-                    CoreDispatcherPriority.Normal,
-                    async void () =>
-                    {
-                        ContentDialog noWifiDialog = new()
+                if (e is HttpRequestException or TaskCanceledException)
+                {
+                    await CoreApplication.MainView.Dispatcher.RunAsync(
+                        CoreDispatcherPriority.Normal,
+                        async void () =>
                         {
-                            Title = "Weather data update failed",
-                            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-                            Content = "We couldn't update weather data. Verify your internet connection.\n\n" + e.InnerException?.Message,
-                            CloseButtonText = "OK",
-                            Tag = "WeatherDataUpdateFailedDialog"
-                        };
+                            ContentDialog noWifiDialog = new()
+                            {
+                                Title = "Weather data update failed",
+                                Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+                                Content = "We couldn't update weather data. Verify your internet connection.\n\n" + e.InnerException?.Message,
+                                CloseButtonText = "OK",
+                                Tag = "WeatherDataUpdateFailedDialog"
+                            };
                         
-                        try
-                        {
-                            await noWifiDialog.ShowAsync();
+                            try
+                            {
+                                await noWifiDialog.ShowAsync();
+                            }
+                            catch (Exception)
+                            {
+                            }
                         }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                );
+                    );
 
+                    return;
+                }
+                throw;
             }
             finally
             {

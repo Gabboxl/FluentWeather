@@ -5,6 +5,7 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.Storage;
 
@@ -34,7 +35,12 @@ namespace FluentWeather.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                if (e is HttpRequestException or TaskCanceledException)
+                {
+                    Debug.WriteLine(e);
+                    return;
+                }
+                throw;
             }
         }
 
