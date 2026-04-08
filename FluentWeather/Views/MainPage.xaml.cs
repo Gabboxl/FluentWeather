@@ -182,8 +182,7 @@ namespace FluentWeather.Views
             return $"v{version.Major}.{version.Minor}.{version.Build}";
         }
 
-        internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender,
-            AutoSuggestBoxTextChangedEventArgs args)
+        internal static async void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             sender.ShowHideCustomHeader(true);
             sender.ShowHideCustomHeader(false, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError); //TODO: remove this line and clear all messages automatically in BetterAutosuggestBox.cs
@@ -209,9 +208,14 @@ namespace FluentWeather.Views
                         sender.ItemsSource = finalitems;
                     }
                 }
-                catch (HttpRequestException e)
+                catch (Exception e)
                 {
-                    sender.ShowHideCustomHeader(true, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
+                    if (e is HttpRequestException or TaskCanceledException)
+                    {
+                        sender.ShowHideCustomHeader(true, AutoSuggestBoxClassExtensions.AutoSuggestBoxHeaderType.NetworkError);
+                        return;
+                    }
+                    throw;
                 }
             }
 
