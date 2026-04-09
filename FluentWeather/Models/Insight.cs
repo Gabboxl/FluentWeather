@@ -12,11 +12,11 @@ namespace FluentWeather.Models
 
     public class Insight
     {
-        public string Title { get; init; }
-        public int Value { get; init; }
-        public string Description { get; init; }
-        public Dictionary<int, InsightLevel> Levels { get; init; }
-        public string IconName { get; init; }
+        public required string Title { get; init; }
+        public required int Value { get; init; }
+        public required string Description { get; init; }
+        public required Dictionary<int, InsightLevel> Levels { get; init; }
+        public required string IconName { get; init; }
     }
 
     public static class InsightLevels
