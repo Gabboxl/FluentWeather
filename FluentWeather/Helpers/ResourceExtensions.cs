@@ -6,7 +6,7 @@ namespace FluentWeather.Helpers
     {
         private static readonly ResourceLoader _defaultResLoader = new();
 
-        public static string GetLocalized(this string resourceKey, bool isNotTranslatable = false, string resourceFileName = null)
+        public static string GetLocalized(this string resourceKey, bool isNotTranslatable = false, string? resourceFileName = null)
         {
             ResourceLoader resLoader = _defaultResLoader;
 

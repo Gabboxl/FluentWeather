@@ -9,7 +9,7 @@ namespace FluentWeather.BackgroundTasks
     public sealed class AppUpdateBackgroundTask : BackgroundTask
     {
         private volatile bool _cancelRequested;
-        private BackgroundTaskDeferral _deferral;
+        private BackgroundTaskDeferral? _deferral;
 
         public override void Register()
         {

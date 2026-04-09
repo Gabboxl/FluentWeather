@@ -93,7 +93,7 @@ namespace FluentWeather.Helpers
                 return content;
             }
 
-            return null;
+            return [];
         }
 
         public static async Task<byte[]> ReadBytesAsync(this StorageFile file)
