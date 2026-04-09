@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.ExceptionServices;
 using System.Security;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;

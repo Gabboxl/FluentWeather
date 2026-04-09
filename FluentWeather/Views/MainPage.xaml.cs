@@ -13,7 +13,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
-using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
 using Windows.Networking.Connectivity;
 using Windows.Storage;
@@ -28,7 +27,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 using WinRT;
 
 namespace FluentWeather.Views

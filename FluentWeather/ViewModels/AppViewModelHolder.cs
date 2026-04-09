@@ -2,7 +2,7 @@
 {
     public static class AppViewModelHolder
     {
-        private static AppViewModel _viewModel;
+        private static AppViewModel? _viewModel;
 
         public static AppViewModel GetViewModel()
         {

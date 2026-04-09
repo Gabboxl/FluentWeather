@@ -1,14 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
-using FluentWeather.Services;
-using FluentWeather.Utils;
 
 namespace FluentWeather.BackgroundTasks
 {
     public sealed class AppUpdateBackgroundTask : BackgroundTask
     {
-        private volatile bool _cancelRequested;
         private BackgroundTaskDeferral? _deferral;
 
         public override void Register()
@@ -51,7 +48,6 @@ namespace FluentWeather.BackgroundTasks
 
         protected override void OnCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
         {
-            _cancelRequested = true;
         }
     }
 }

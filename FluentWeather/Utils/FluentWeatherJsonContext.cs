@@ -1,4 +1,3 @@
-using CommunityToolkit.Common;
 using FluentWeather.Converters;
 using FluentWeather.Models;
 using System.Text.Json.Serialization;
