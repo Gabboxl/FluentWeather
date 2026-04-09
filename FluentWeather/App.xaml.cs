@@ -84,10 +84,7 @@ namespace FluentWeather
         }
 
         [SecurityCritical]
-        private void OnAppUnhandledException(
-            object sender,
-            Windows.UI.Xaml.UnhandledExceptionEventArgs e
-        )
+        private void OnAppUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
             //http://blog.wpdev.fr/inspecting-unhandled-exceptions-youve-got-only-one-chance/
             Exception exceptionThatDoesntGoAway = e.Exception;
