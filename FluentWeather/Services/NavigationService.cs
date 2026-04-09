@@ -54,7 +54,7 @@ namespace FluentWeather.Services
 
         public static void GoForward() => Frame.GoForward();
 
-        public static bool Navigate(Type pageType, object parameter = null, NavigationTransitionInfo infoOverride = null)
+        public static bool Navigate(Type pageType, object? parameter = null, NavigationTransitionInfo? infoOverride = null)
         {
             if (pageType == null || !pageType.IsSubclassOf(typeof(Page)))
             {

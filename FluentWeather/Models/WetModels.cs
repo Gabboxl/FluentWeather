@@ -128,7 +128,7 @@ namespace FluentWeather.Models
 
     public class RootV3Response
     {
-        public string id { get; set; }
+        public required string id { get; set; }
 
         [JsonPropertyName("v3-wx-observations-current")]
         public required V3WxObservationsCurrent v3wxobservationscurrent { get; set; }

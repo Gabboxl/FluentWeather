@@ -11,17 +11,13 @@ namespace FluentWeather.Activation
         {
             // When the navigation stack isn't restored, navigate to the first page and configure
             // the new page by passing required information in the navigation parameter
-            object arguments = null;
+            object? arguments = null;
             if (args is LaunchActivatedEventArgs launchArgs)
             {
                 arguments = launchArgs.Arguments;
             }
 
             NavigationService.Navigate(navElement, arguments);
-
-            // TODO: Remove or change this sample which shows a toast notification when the app is launched.
-            // You can use this sample to create toast notifications where needed in your app.
-            //Singleton<ToastNotificationsService>.Instance.ShowToastNotificationSample();
 
             //TODO: esegui altro codice all'avvio dell'app qui
 

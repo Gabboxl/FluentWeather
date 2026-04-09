@@ -51,7 +51,7 @@ namespace FluentWeather.Views
 
         private static readonly string SystemLanguage = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
 
-        private RootV3Response _lastApiData;
+        private RootV3Response? _lastApiData;
 
         private Button _lastSelectedDayButton;
 
@@ -168,7 +168,7 @@ namespace FluentWeather.Views
 
         }
 
-        private async void RefreshTimerTickEvent(object sender, object e)
+        private async void RefreshTimerTickEvent(object? sender, object e)
         {
             await LoadApiData();
         }
@@ -243,14 +243,13 @@ namespace FluentWeather.Views
 
             try
             {
-                string lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
+                var lastPlaceId = await ApplicationData.Current.LocalSettings.ReadAsync<string>("lastPlaceId");
 
                 if (lastPlaceId == null) return;
 
-
                 var response = await ApiUtils.GetFullData(lastPlaceId);
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                _lastApiData = System.Text.Json.JsonSerializer.Deserialize<RootV3Response>(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
+                _lastApiData = System.Text.Json.JsonSerializer.Deserialize(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
 
                 Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
 

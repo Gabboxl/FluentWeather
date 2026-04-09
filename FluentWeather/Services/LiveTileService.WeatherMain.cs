@@ -72,7 +72,6 @@ namespace FluentWeather.Services
 
             var builder = new TileContentBuilder();
 
-
             // Medium Tile built using only builder method.
             builder.AddTile(TileSize.Medium)
                 .SetBackgroundImage( new Uri("ms-appx:///Assets/livetilesbgs/" + IconsDictionary.IconCodeToBackgroundImageNameDictionary[
