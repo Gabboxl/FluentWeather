@@ -84,7 +84,6 @@ namespace FluentWeather
         }
 
         [SecurityCritical]
-        [HandleProcessCorruptedStateExceptions]
         private void OnAppUnhandledException(
             object sender,
             Windows.UI.Xaml.UnhandledExceptionEventArgs e
