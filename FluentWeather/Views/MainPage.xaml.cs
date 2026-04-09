@@ -518,9 +518,7 @@ namespace FluentWeather.Views
             /*var indexOfDay =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
 
-            var indexOfDayInsights =
-                _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x =>
-                    x.Date == dayToLoad.Date);
+            var indexOfDayInsights = _lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.FindIndex(x => x.Date == dayToLoad.Date);
 
             RunningInsight.Insight = new Insight
             {
