@@ -1,9 +1,8 @@
 ﻿using System;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace FluentWeather.ViewModels
 {
-    public partial class AppViewModel : ObservableObject
+    public class AppViewModel
     {
         //delegate to request ui update
         //public delegate void RequestUiUpdateDelegate();
