@@ -27,6 +27,7 @@
     <LangVersion>latest</LangVersion>
     <PackageCertificateThumbprint>10810F925A1BECC1155E0A6F08420C5E3FB6F8DB</PackageCertificateThumbprint>
     <PublishTrimmed>True</PublishTrimmed>
+    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="BundleArtifacts\**" />
