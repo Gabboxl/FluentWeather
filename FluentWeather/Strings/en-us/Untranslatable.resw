@@ -118,7 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="WhatsNew_Body" xml:space="preserve">
-    <value>Release 2.0.0:
+    <value>Release 2.1.0:
+- Fixed many crashes and stability errors.
+- Updated dependencies
+- Updated translations
+    
+Release 2.0.0:
 - FluentWeather now runs on .NET 10 (AOT)!
 It was already fast, but now it's even faster!
 
