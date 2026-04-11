@@ -249,12 +249,14 @@ namespace FluentWeather.Views
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 _lastApiData = System.Text.Json.JsonSerializer.Deserialize(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
 
-                Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
+                if (_lastApiData != null)
+                    Singleton<LiveTileService>.Instance.UpdateWeatherMainTile(_lastApiData);
 
                 await CoreApplication.MainView.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal, () =>
                     {
-                        UpdateUi(_lastApiData);
+                        if (_lastApiData != null)
+                            UpdateUi(_lastApiData);
                         MainInnerContentGrid.Visibility = Visibility.Visible;
                     }
                 );
@@ -307,7 +309,7 @@ namespace FluentWeather.Views
         private Storyboard _storyboard2;
         private bool _isImage1Active;
 
-        private void CrossfadeToImage(Uri newImageUri)
+        private void CrossfadeToImage(Uri? newImageUri)
         {
             BitmapImage newImage = newImageUri == null ? new() : new(newImageUri);
 
@@ -471,6 +473,8 @@ namespace FluentWeather.Views
 
         private async void LoadHourlyData(DateTimeOffset dayToLoad)
         {
+            if (_lastApiData == null) return;
+
             List<HourDataAdapter> hourlyDataAdapters = [];
 
             WetUnits currentUnits = await VariousUtils.GetUnitsCode();
@@ -512,6 +516,8 @@ namespace FluentWeather.Views
 
         private async void LoadInsightsData(DateTimeOffset dayToLoad)
         {
+            if (_lastApiData == null) return;
+
             /*var indexOfDay =
                 lastApiData.v2idxDriveDaypart10days.drivingDifficultyIndex12hour.fcstValidLocal.IndexOf(dayToLoad.Date);*/
 

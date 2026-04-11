@@ -16,11 +16,11 @@ namespace FluentWeather.Services
     {
         private readonly App _app;
         private readonly Type _defaultNavItem;
-        private readonly Lazy<UIElement> _shell;
+        private readonly Lazy<UIElement>? _shell;
 
-        private object _lastActivationArgs;
+        private object? _lastActivationArgs;
 
-        public ActivationService(App app, Type defaultNavItem, Lazy<UIElement> shell = null)
+        public ActivationService(App app, Type defaultNavItem, Lazy<UIElement>? shell = null)
         {
             _app = app;
             _shell = shell;
