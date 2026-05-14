@@ -130,7 +130,7 @@
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Ok</value>
+    <value>확인</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
@@ -185,7 +185,7 @@
     <value>일일 예보</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>매시간</value>
+    <value>시간별</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>날씨 정보</value>
@@ -259,7 +259,7 @@
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
     <value>먼저 FluentWeather를 시작 메뉴에 고정해야 합니다.
 
-라이브 타일은 Windows 10에서만 네이티브로 사용할 수 있습니다.</value>
+라이브 타일은 Windows 10에서만 기본으로 지원됩니다.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>다음 시간:</value>
@@ -286,15 +286,15 @@
     <value>12시간</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>검색 중...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>배경화면</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>자동 새로고침</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>네트워크 에러, 인터넷 연결을 확인해 주세요.</value>
   </data>
 </root>
