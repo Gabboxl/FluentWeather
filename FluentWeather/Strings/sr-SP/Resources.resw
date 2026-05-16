@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>Временска прогноза</value>
+    <value>FluentWeather
+Временска прогноза</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
@@ -186,7 +187,7 @@ Windows апликација за временску прогнозу</value>
     <value>Дневна прогноза</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Прогноза по сату</value>
+    <value>Hourly</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Увид у временску прогнозу</value>
@@ -231,7 +232,7 @@ Windows апликација за временску прогнозу</value>
     <value>Заслуге</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>Git Hub Пројекат</value>
+    <value/>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
     <value>Метричке јединице</value>
