@@ -161,7 +161,7 @@
     <value>干性皮肤</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>需水量</value>
+    <value>饮水需要</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>风速</value>
