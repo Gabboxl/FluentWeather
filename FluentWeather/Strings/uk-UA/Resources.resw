@@ -146,7 +146,7 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Знайдіть місце...</value>
+    <value>Знайдіть населений пункт...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>Відчувається як</value>
@@ -161,7 +161,7 @@
     <value>Суха шкіра</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Потрібен полив</value>
+    <value>Потреба в поливі</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Вітер</value>
@@ -182,7 +182,7 @@
     <value>УФ-індекс</value>
   </data>
   <data name="DailyForecastTitleTextBlock.Text" xml:space="preserve">
-    <value>Щоденний прогноз</value>
+    <value>Прогноз на день</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
     <value>Погодинно</value>
@@ -212,7 +212,7 @@
     <value>Місяць</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
-    <value>Місячний підйом</value>
+    <value>Схід місяця</value>
   </data>
   <data name="MoonsetSubtitle.Text" xml:space="preserve">
     <value>Захід місяця</value>
@@ -242,7 +242,7 @@
     <value>Гібридна</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
-    <value>Дизайн UI натхненний роботами</value>
+    <value>Дизайн інтерфейсу натхненний роботами</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
     <value>розроблено</value>
@@ -254,15 +254,15 @@
     <value>Оновлено </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Погодний живий тайл</value>
+    <value>Живі плитки погоди</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ви маєте спочатку додати FluentWeather до меню "Пуск"
+    <value>Ви маєте спочатку додати FluentWeather до меню "Пуск".
 
-Живі тайли працюють лише на Windows 10</value>
+Живі плитки працюють лише на Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
-    <value>Наступні години:</value>
+    <value>Найближчим часом:</value>
   </data>
   <data name="TimeFormatSettingsTitle.Text" xml:space="preserve">
     <value>Формат часу</value>
@@ -271,7 +271,7 @@
     <value>Хмарність</value>
   </data>
   <data name="RainAmountChipControl.Title" xml:space="preserve">
-    <value>Кількість дощу</value>
+    <value>Кількість опадів</value>
   </data>
   <data name="HourlyDetailedDataTitle.Text" xml:space="preserve">
     <value>Детальні дані</value>
@@ -286,15 +286,15 @@
     <value>12 годин</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>...</value>
+    <value>Пошук...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value/>
+    <value>Тло</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value/>
+    <value>Оновлювати</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value/>
+    <value>Помилка мережі, будь ласка, перевірте інтернет з'єднання.</value>
   </data>
 </root>
