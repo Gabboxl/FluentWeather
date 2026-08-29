@@ -134,7 +134,7 @@
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Søg din sted nedenfor:</value>
+    <value>Søg og vælg din placering nedenfor:</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
@@ -142,11 +142,11 @@
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Lad os gå!</value>
+    <value>Start!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Søg et sted...</value>
+    <value>Søg efter et sted...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>Føles som</value>
@@ -155,13 +155,13 @@
     <value>Kører</value>
   </data>
   <data name="DrivingInsightTitle" xml:space="preserve">
-    <value>Kører</value>
+    <value>Kørsel</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
     <value>Tør hud</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
-    <value>Krav til vanding</value>
+    <value>Behov for vanding</value>
   </data>
   <data name="WindChipControl.Title" xml:space="preserve">
     <value>Vind</value>
@@ -173,7 +173,7 @@
     <value>Luftfugtighed</value>
   </data>
   <data name="VisibilityChipControl.Title" xml:space="preserve">
-    <value>Synlighed</value>
+    <value>Sigtbarhed</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
     <value>Dugpunkt</value>
@@ -218,7 +218,7 @@
     <value>Månenedgang</value>
   </data>
   <data name="LunarphaseSubtitle.Text" xml:space="preserve">
-    <value>Måne fase</value>
+    <value>Månefase</value>
   </data>
   <data name="UnitsSettingsTitle.Text" xml:space="preserve">
     <value>Enheder</value>
@@ -245,7 +245,7 @@
     <value>UI design inspireret fra</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>udviklet af</value>
+    <value>Udviklet af</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>Oversæt denne app</value>
@@ -280,21 +280,21 @@ Live Tiles er kun tilgængelige på Windows 10.</value>
     <value>Se alle ændringer</value>
   </data>
   <data name="Segmented24hours.Content" xml:space="preserve">
-    <value>24 hours</value>
+    <value>24 timer</value>
   </data>
   <data name="Segmented12hours.Content" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 timer</value>
   </data>
   <data name="AutoSuggestBoxSearchHeader.Text" xml:space="preserve">
-    <value>Searching...</value>
+    <value>Søger...</value>
   </data>
   <data name="BackgroundImageSettingsTitle.Text" xml:space="preserve">
-    <value>Background image</value>
+    <value>Baggrundsbillede</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Auto refresh</value>
+    <value>Opdater automatisk</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
-    <value>Network error, please check your internet connection.</value>
+    <value>Netværksfejl, tjek venligst din internetforbindelse.</value>
   </data>
 </root>

@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>FluentWeather</value>
+    <value>FluentWeather
+Временска прогноза</value>
     <comment>Application display name</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
@@ -131,7 +132,7 @@ Windows апликација за временску прогнозу</value>
     <comment>What's new prompt message title</comment>
   </data>
   <data name="WhatsNewDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Uredu</value>
+    <value>ОК</value>
     <comment>What's new prompt message primary button text</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
@@ -143,14 +144,14 @@ Windows апликација за временску прогнозу</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">
-    <value>Иди напред!</value>
+    <value>Напред!</value>
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
     <value>Претражите место...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
-    <value>Осећа се као</value>
+    <value>Субјективни осећај</value>
   </data>
   <data name="RunningInsightTitle" xml:space="preserve">
     <value>Трчање</value>
@@ -159,7 +160,7 @@ Windows апликација за временску прогнозу</value>
     <value>Вожња</value>
   </data>
   <data name="DrySkinInsightTitle" xml:space="preserve">
-    <value>Суво</value>
+    <value>Сува кожа</value>
   </data>
   <data name="WateringNeedInsightTitle" xml:space="preserve">
     <value>Потреба за заливањем</value>
@@ -177,7 +178,7 @@ Windows апликација за временску прогнозу</value>
     <value>Видљивост</value>
   </data>
   <data name="DewPointChipControl.Title" xml:space="preserve">
-    <value>Роса</value>
+    <value>Тачка росе</value>
   </data>
   <data name="UVIndexChipControl.Title" xml:space="preserve">
     <value>УВ индекс</value>
@@ -186,7 +187,7 @@ Windows апликација за временску прогнозу</value>
     <value>Дневна прогноза</value>
   </data>
   <data name="HourlyTitleText.Text" xml:space="preserve">
-    <value>Прогноза по сату</value>
+    <value>Hourly</value>
   </data>
   <data name="WeatherInsightsTitleText.Text" xml:space="preserve">
     <value>Увид у временску прогнозу</value>
@@ -210,7 +211,7 @@ Windows апликација за временску прогнозу</value>
     <value>Излазак сунца</value>
   </data>
   <data name="MoonInsightTitle.Text" xml:space="preserve">
-    <value>Месечина</value>
+    <value>Месец</value>
   </data>
   <data name="MoonriseSubtitle.Text" xml:space="preserve">
     <value>Излазак месеца</value>
@@ -225,41 +226,41 @@ Windows апликација за временску прогнозу</value>
     <value>Мерне јединице</value>
   </data>
   <data name="AcrylicEffectsSettingsTitle.Text" xml:space="preserve">
-    <value>Ефекти акрила</value>
+    <value>Акрилни ефекти</value>
   </data>
   <data name="CreditsSettingsTitle.Text" xml:space="preserve">
     <value>Заслуге</value>
   </data>
   <data name="GithubProjectButton.Text" xml:space="preserve">
-    <value>GitHub Пројекат</value>
+    <value/>
   </data>
   <data name="MetricUnitsItem.Content" xml:space="preserve">
-    <value>Метри</value>
+    <value>Метричке јединице</value>
   </data>
   <data name="ImperialUnitsItem.Content" xml:space="preserve">
-    <value>Империјал</value>
+    <value>Империјалне јединице</value>
   </data>
   <data name="HybridUnitsItem.Content" xml:space="preserve">
-    <value>Хибрид</value>
+    <value>Хибридно</value>
   </data>
   <data name="InspiredByRun.Text" xml:space="preserve">
     <value>Дизајн корисничког интерфејса инспирисан радом</value>
   </data>
   <data name="DevelopedByRun.Text" xml:space="preserve">
-    <value>Развијено од стране</value>
+    <value>развијено од стране</value>
   </data>
   <data name="TranslateAppText.Text" xml:space="preserve">
     <value>Преведите апликацију</value>
   </data>
   <data name="UpdatedOnText" xml:space="preserve">
-    <value>Ажурирано</value>
+    <value>Ажурирано </value>
   </data>
   <data name="WeatherLiveTileSettingsText.Text" xml:space="preserve">
-    <value>Уживо плочица времена</value>
+    <value>Време уживо</value>
   </data>
   <data name="LiveTileInfoIcon.ToolTipService.ToolTip" xml:space="preserve">
     <value>Прво морате да закачите FluentWeather на старт мени.
-Живе плочице су изворно доступне само за Windows 10.</value>
+Време уживо је изворно доступно само за Windows 10.</value>
   </data>
   <data name="NextHours" xml:space="preserve">
     <value>У наредним сатима:</value>
@@ -292,7 +293,7 @@ Windows апликација за временску прогнозу</value>
     <value>Слика позадине</value>
   </data>
   <data name="AutoRefreshSettingsTitle.Text" xml:space="preserve">
-    <value>Аутоматски освјежи</value>
+    <value>Аутоматски освежи</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
     <value>Грешка на мрежи, молимо вас да проверите своју интернет везу.</value>
