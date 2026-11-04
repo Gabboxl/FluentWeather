@@ -46,10 +46,7 @@ namespace FluentWeather.Views
 
         private readonly AppViewModel _appViewModel = AppViewModelHolder.GetViewModel();
 
-        private static readonly HttpClient SharedClient = new()
-        {
-            BaseAddress = new Uri("https://api.weather.com/"),
-        };
+        private static readonly HttpClient SharedClient = ApiUtils.CreateClient("https://api.weather.com/");
 
         // The language chosen in the app settings, otherwise the Windows display language.
         private static readonly string SystemLanguage = !string.IsNullOrEmpty(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride)
@@ -268,7 +265,7 @@ namespace FluentWeather.Views
             {
                 try
                 {
-                    var response = await SharedClient.GetAsync("v3/location/searchflat?query=" + sender.Text +
+                    var response = await ApiUtils.GetWithRetryAsync(SharedClient, "v3/location/searchflat?query=" + sender.Text +
                                                                "&language=" +
                                                                SystemLanguage +
                                                                "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230&format=json");
