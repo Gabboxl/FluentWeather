@@ -16,6 +16,10 @@ namespace FluentWeather.Services
 
         public static ElementTheme Theme { get; set; } = ElementTheme.Default;
 
+        // The theme of the main page when it differs from the app theme
+        // (the "Background contrast" setting). The title bar buttons use it to stay readable.
+        public static ElementTheme? TitleBarTheme { get; set; }
+
         public static async Task InitializeAsync()
         {
             Theme = await LoadThemeFromSettingsAsync();
@@ -39,7 +43,7 @@ namespace FluentWeather.Services
                     {
                         frameworkElement.RequestedTheme = Theme;
 
-                        bool IsDark = frameworkElement.ActualTheme == ElementTheme.Dark;
+                        bool IsDark = (TitleBarTheme ?? frameworkElement.ActualTheme) == ElementTheme.Dark;
                         bool IsHighContrast = new AccessibilitySettings().HighContrast;
 
                         Color ForegroundColor = IsDark || IsHighContrast ? Colors.White : Colors.Black;

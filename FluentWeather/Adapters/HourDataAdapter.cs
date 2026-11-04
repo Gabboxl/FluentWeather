@@ -1,6 +1,7 @@
 ﻿using FluentWeather.Models;
 using FluentWeather.Utils;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
 using WinRT;
@@ -8,7 +9,7 @@ using WinRT;
 namespace FluentWeather.Adapters
 {
     [GeneratedBindableCustomPropertyAttribute]
-    internal partial class HourDataAdapter(V3WxForecastHourly fcst, int itemIndex, WetUnits wetUnits)
+    internal partial class HourDataAdapter(V3WxForecastHourly fcst, int itemIndex, WetUnits wetUnits, bool showDay = false)
     {
         public string Temperature
         {
@@ -107,7 +108,11 @@ namespace FluentWeather.Adapters
             {
                 //using task.run to avoid deadlock
                 var result = Task.Run(() => VariousUtils.GetTimeBasedOnUserSettings(fcst.validTimeLocal[itemIndex].DateTime));
-                return result.Result;
+
+                // Lists longer than one day show the weekday where a new day begins.
+                return showDay
+                    ? fcst.validTimeLocal[itemIndex].ToString("ddd", CultureInfo.CurrentUICulture) + " " + result.Result
+                    : result.Result;
                 
             }
         }

@@ -187,6 +187,14 @@
             </Grid>
         </ParallaxView>
 
+        <!-- Darkens or lightens the background image, so the text keeps enough contrast.
+             Color and opacity are set in code from the "Background contrast" setting. -->
+        <Rectangle x:Name="BackgroundScrim"
+                   Grid.RowSpan="10"
+                   Fill="Black"
+                   Opacity="0"
+                   IsHitTestVisible="False" />
+
 
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
@@ -221,12 +229,14 @@
                            Margin="0,0,0,0" />
             </Grid>
 
+            <!-- The widths of the named columns in the top bar are set in UpdateTitleBarLayout,
+                 so the buttons and the search box never cover the app name or the window buttons. -->
             <Grid HorizontalAlignment="Stretch"
                   Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="190"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition x:Name="SettingsRightColumn" Width="190" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -251,6 +261,11 @@
                                             <ScrollViewer VerticalScrollBarVisibility="Visible"
                                                           HorizontalScrollMode="Disabled"
                                                           HorizontalScrollBarVisibility="Disabled">
+                                                <!-- The Viewbox draws the settings at 80% of their size.
+                                                     Its width is set in SettingsViewbox_Loaded. -->
+                                                <Viewbox Stretch="Uniform"
+                                                         HorizontalAlignment="Left"
+                                                         Loaded="SettingsViewbox_Loaded">
                                                 <StackPanel VerticalAlignment="Center" Margin="16">
                                                     <TextBlock x:Uid="UnitsSettingsTitle"
                                                                Style="{ThemeResource SubtitleTextBlockStyle}" />
@@ -282,6 +297,69 @@
                                                         <controls1:SegmentedItem x:Uid="Segmented12hours" />
                                                     </controls1:Segmented>
 
+                                                    <!-- Size of the text and pictures in the main area -->
+                                                    <TextBlock x:Uid="UiSizeSettingsTitle"
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                    <!-- Buttons, because a drop-down list does not take mouse clicks
+                                                         reliably inside this flyout. -->
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Margin="8,8,0,0"
+                                                                Spacing="8"
+                                                                d:DataContext="{d:DesignInstance views:MainPage }">
+                                                        <Button MinWidth="44"
+                                                                Content="&#x2212;"
+                                                                ToolTipService.ToolTip="Ctrl+Minus"
+                                                                Click="UiScaleSmallerButton_OnClick" />
+                                                        <TextBlock Tag="UiScaleValue"
+                                                                   Text="{Binding UiScaleText}"
+                                                                   MinWidth="52"
+                                                                   TextAlignment="Center"
+                                                                   VerticalAlignment="Center"
+                                                                   FontWeight="SemiBold" />
+                                                        <Button MinWidth="44"
+                                                                Content="+"
+                                                                ToolTipService.ToolTip="Ctrl+Plus"
+                                                                Click="UiScaleLargerButton_OnClick" />
+                                                        <Button Content="100%"
+                                                                ToolTipService.ToolTip="Ctrl+0"
+                                                                Click="UiScaleResetButton_OnClick" />
+                                                    </StackPanel>
+
+                                                    <TextBlock x:Uid="UiSizeSettingsHint"
+                                                               Margin="0,4,0,0"
+                                                               Opacity="0.7"
+                                                               TextWrapping="WrapWholeWords"
+                                                               MaxWidth="300"
+                                                               HorizontalAlignment="Left"
+                                                               Style="{ThemeResource CaptionTextBlockStyle}" />
+
+                                                    <!-- How many hours the hourly forecast shows -->
+                                                    <TextBlock x:Uid="HourlyRangeSettingsTitle"
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                    <controls1:Segmented
+                                                        SelectedIndex="{Binding SettingsHourlyRangeSelectedIndex}"
+                                                        Margin="0,8,0,0"
+                                                        x:Name="HourlyRangeSegmented"
+                                                        SelectionChanged="HourlyRangeSegmented_OnSelectionChanged"
+                                                        d:DataContext="{d:DesignInstance views:MainPage }">
+                                                        <controls1:SegmentedItem x:Uid="HourlyRangeDay" />
+                                                        <controls1:SegmentedItem x:Uid="HourlyRange24" />
+                                                        <controls1:SegmentedItem x:Uid="HourlyRange36" />
+                                                        <controls1:SegmentedItem x:Uid="HourlyRange48" />
+                                                    </controls1:Segmented>
+
+                                                    <TextBlock x:Uid="HourlyRangeHint"
+                                                               Margin="0,4,0,0"
+                                                               Opacity="0.7"
+                                                               TextWrapping="WrapWholeWords"
+                                                               MaxWidth="300"
+                                                               HorizontalAlignment="Left"
+                                                               Style="{ThemeResource CaptionTextBlockStyle}" />
+
 
                                                     <!-- toggle control to enable/disable acrylic effect -->
                                                     <TextBlock x:Uid="AcrylicEffectsSettingsTitle"
@@ -304,19 +382,92 @@
                                                                   IsOn="{Binding BackgroundImageToggleStatus}"
                                                                   Toggled="BackgroundImageToggle_OnToggled" />
 
+                                                    <!-- Contrast between the background image and the text -->
+                                                    <TextBlock x:Uid="BackgroundContrastSettingsTitle"
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                    <controls1:Segmented
+                                                        SelectedIndex="{Binding SettingsBackgroundContrastSelectedIndex}"
+                                                        Margin="0,8,0,0"
+                                                        x:Name="BackgroundContrastSegmented"
+                                                        SelectionChanged="BackgroundContrastSegmented_OnSelectionChanged"
+                                                        d:DataContext="{d:DesignInstance views:MainPage }">
+                                                        <controls1:SegmentedItem x:Uid="BackgroundContrastOriginal" />
+                                                        <controls1:SegmentedItem x:Uid="BackgroundContrastDark" />
+                                                        <controls1:SegmentedItem x:Uid="BackgroundContrastDarker" />
+                                                        <controls1:SegmentedItem x:Uid="BackgroundContrastLight" />
+                                                        <controls1:SegmentedItem x:Uid="BackgroundContrastLighter" />
+                                                    </controls1:Segmented>
+
+                                                    <TextBlock x:Uid="BackgroundContrastHint"
+                                                               Margin="0,4,0,0"
+                                                               Opacity="0.7"
+                                                               TextWrapping="WrapWholeWords"
+                                                               MaxWidth="300"
+                                                               HorizontalAlignment="Left"
+                                                               Style="{ThemeResource CaptionTextBlockStyle}" />
+
 
                                                     <TextBlock x:Uid="AutoRefreshSettingsTitle"
                                                                Margin="0,16,0,0"
                                                                Style="{ThemeResource SubtitleTextBlockStyle}" />
 
-                                                    <ComboBox x:Name="AutoRefreshDataComboBox"
-                                                              Margin="8,8,0,0"
-                                                              d:DataContext="{d:DesignInstance views:MainPage }"
-                                                              ItemsSource="{Binding AutoRefreshStepsValues}"
-                                                              SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex, Mode=OneWay}"
-                                                              SelectionChanged="AutoRefreshComboBox_OnSelectionChanged">
+                                                    <!-- Option buttons instead of a drop-down list,
+                                                         which does not take mouse clicks reliably inside this flyout. -->
+                                                    <controls1:Segmented
+                                                        SelectedIndex="{Binding AutoRefreshPeriodSelectedIndex, Mode=OneWay}"
+                                                        Margin="0,8,0,0"
+                                                        x:Name="AutoRefreshSegmented"
+                                                        SelectionChanged="AutoRefreshSegmented_OnSelectionChanged"
+                                                        d:DataContext="{d:DesignInstance views:MainPage }">
+                                                        <controls1:SegmentedItem Content="Off" />
+                                                        <controls1:SegmentedItem Content="5 min" />
+                                                        <controls1:SegmentedItem Content="10 min" />
+                                                        <controls1:SegmentedItem Content="15 min" />
+                                                        <controls1:SegmentedItem Content="30 min" />
+                                                        <controls1:SegmentedItem Content="1 h" />
+                                                    </controls1:Segmented>
 
-                                                    </ComboBox>
+                                                    <!-- Tray icons: temperature and weather picture in the notification area -->
+                                                    <StackPanel d:DataContext="{d:DesignInstance views:MainPage }"
+                                                                Visibility="{Binding TrayIconsSettingVisibility}">
+                                                        <TextBlock x:Uid="TrayIconsSettingsTitle"
+                                                                   Margin="0,16,0,0"
+                                                                   Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                        <controls1:Segmented
+                                                            SelectedIndex="{Binding TrayIconsSelectedIndex, Mode=OneWay}"
+                                                            Margin="0,8,0,0"
+                                                            x:Name="TrayIconsSegmented"
+                                                            SelectionChanged="TrayIconsSegmented_OnSelectionChanged">
+                                                            <controls1:SegmentedItem x:Uid="TrayIconsOff" />
+                                                            <controls1:SegmentedItem x:Uid="TrayIconsOn" />
+                                                        </controls1:Segmented>
+
+                                                        <TextBlock x:Uid="TrayIconsHint"
+                                                                   Margin="0,4,0,0"
+                                                                   Opacity="0.7"
+                                                                   TextWrapping="WrapWholeWords"
+                                                                   MaxWidth="300"
+                                                                   HorizontalAlignment="Left"
+                                                                   Style="{ThemeResource CaptionTextBlockStyle}" />
+                                                    </StackPanel>
+
+                                                    <!-- Language of the app and of the weather text -->
+                                                    <TextBlock x:Uid="LanguageSettingsTitle"
+                                                               Margin="0,16,0,0"
+                                                               Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                                                    <!-- Opens a separate window with the full list of languages.
+                                                         A long drop-down list does not scroll well inside this flyout. -->
+                                                    <Button x:Name="LanguageButton"
+                                                            Margin="8,8,0,0"
+                                                            MinWidth="220"
+                                                            HorizontalContentAlignment="Left"
+                                                            d:DataContext="{d:DesignInstance views:MainPage }"
+                                                            Content="{Binding CurrentLanguageName}"
+                                                            Click="LanguageButton_OnClick" />
 
                                                     <TextBlock x:Uid="CreditsSettingsTitle"
                                                                Margin="0,16,0,0"
@@ -406,6 +557,7 @@
                                                     </StackPanel>
 
                                                 </StackPanel>
+                                                </Viewbox>
                                             </ScrollViewer>
                                         </ControlTemplate>
                                     </MenuFlyoutItem.Template>
@@ -434,9 +586,9 @@
 
             <Grid Grid.Row="0" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition x:Name="RefreshLeftColumn" Width="140" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="270" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <muxc:ProgressRing x:Name="DataProgressRing"
@@ -458,7 +610,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition x:Name="LeftMarginColumn" Width="190" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="240" />
+                    <ColumnDefinition x:Name="SearchRightColumn" Width="240" />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1" MaxWidth="500">
@@ -494,7 +646,10 @@
 
                                     <TextBlock x:Name="text1" Text="{x:Bind address}"
                                                Margin="8,0,0,0"
-                                               RelativePanel.RightOf="icon" />
+                                               TextWrapping="WrapWholeWords"
+                                               RelativePanel.RightOf="icon"
+                                               RelativePanel.AlignRightWithPanel="True"
+                                               RelativePanel.AlignVerticalCenterWithPanel="True" />
                                 </RelativePanel>
                             </DataTemplate>
                         </AutoSuggestBox.ItemTemplate>
@@ -506,7 +661,10 @@
         </Grid>
 
 
-        <Grid Grid.Row="1" x:Name="MainInnerContentGrid"
+        <!-- The content is drawn at the size chosen in "Text and picture size".
+             The Canvas does not limit the size of its child, so the scaled grid is not clipped twice. -->
+        <Canvas Grid.Row="1" x:Name="ZoomHost" SizeChanged="ZoomHost_SizeChanged">
+        <Grid x:Name="MainInnerContentGrid"
               Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -546,12 +704,18 @@
 
                         <Grid Grid.Row="0"
                               Margin="0,0,0,16">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <RelativePanel
+                                Grid.Row="0"
                                 Grid.Column="0"
                                 Margin="4,0,0,0">
                                 <FontIcon x:Name="PlaceIcon"
@@ -564,6 +728,21 @@
                                            Margin="8,0,0,0"
                                            RelativePanel.RightOf="PlaceIcon" />
 
+                                <!-- Pin or unpin the location that is shown -->
+                                <Button x:Name="SaveLocationButton"
+                                        Margin="6,0,0,0"
+                                        Padding="6,4,6,4"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        RelativePanel.RightOf="PlaceText"
+                                        RelativePanel.AlignVerticalCenterWith="PlaceText"
+                                        Click="SaveLocationButton_OnClick">
+                                    <FontIcon x:Name="SaveLocationIcon"
+                                              FontSize="16"
+                                              FontFamily="{StaticResource FluentIcons}"
+                                              Glyph="&#xE734;" />
+                                </Button>
+
                                 <TextBlock x:Name="UpdatedOnText" Text="updatedOn"
                                            Style="{StaticResource CaptionTextBlockStyle}"
                                            Opacity="{ThemeResource TextControlBackgroundThemeOpacity}"
@@ -572,6 +751,86 @@
                                            RelativePanel.AlignLeftWith="PlaceText" />
 
                             </RelativePanel>
+
+                            <!-- Saved locations. Click to switch. Right-click for more options. -->
+                            <ScrollViewer x:Name="SavedLocationsScroll"
+                                          Grid.Row="1"
+                                          Grid.Column="0"
+                                          Grid.ColumnSpan="2"
+                                          Margin="0,12,40,0"
+                                          Visibility="Collapsed"
+                                          HorizontalScrollMode="Enabled"
+                                          HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollMode="Disabled"
+                                          VerticalScrollBarVisibility="Disabled">
+                                <muxc:ItemsRepeater x:Name="SavedLocationsRepeater"
+                                                    Margin="0,0,0,8">
+                                    <muxc:ItemsRepeater.Layout>
+                                        <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
+                                    </muxc:ItemsRepeater.Layout>
+
+                                    <muxc:ItemsRepeater.ItemTemplate>
+                                        <DataTemplate x:DataType="models:SavedLocation">
+                                            <ToggleButton DataContext="{x:Bind}"
+                                                          IsChecked="{x:Bind IsActive}"
+                                                          ToolTipService.ToolTip="{x:Bind ToolTipText}"
+                                                          AutomationProperties.Name="{x:Bind FullName}"
+                                                          CornerRadius="16"
+                                                          Padding="14,5,14,6"
+                                                          Click="SavedLocationChip_OnClick"
+                                                          ContextRequested="SavedLocationChip_OnContextRequested">
+                                                <TextBlock Text="{x:Bind Label}"
+                                                           MaxWidth="240"
+                                                           TextTrimming="CharacterEllipsis" />
+                                            </ToggleButton>
+                                        </DataTemplate>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
+                            </ScrollViewer>
+
+                            <!-- How to save locations. The text is set in code. With no saved locations it is
+                                 always shown. With saved locations it is a short tip that can be hidden. -->
+                            <!-- A Grid, so the text wraps to the width of the window. -->
+                            <Grid x:Name="SavedLocationsHintPanel"
+                                  Grid.Row="2"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  HorizontalAlignment="Left"
+                                  MaxWidth="680"
+                                  Margin="4,10,40,0"
+                                  Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0"
+                                          FontSize="14"
+                                          Margin="0,3,0,0"
+                                          VerticalAlignment="Top"
+                                          Opacity="0.85"
+                                          FontFamily="{StaticResource FluentIcons}"
+                                          Glyph="&#xE734;" />
+                                <TextBlock x:Name="SavedLocationsHintText"
+                                           Grid.Column="1"
+                                           Margin="8,0,0,0"
+                                           VerticalAlignment="Top"
+                                           Opacity="0.85"
+                                           TextWrapping="WrapWholeWords"
+                                           Style="{StaticResource BodyTextBlockStyle}" />
+                                <Button x:Name="SavedLocationsHintCloseButton"
+                                        Grid.Column="2"
+                                        Margin="8,0,0,0"
+                                        Padding="6,4,6,4"
+                                        VerticalAlignment="Top"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Click="SavedLocationsHintCloseButton_OnClick">
+                                    <FontIcon FontSize="10"
+                                              FontFamily="{StaticResource FluentIcons}"
+                                              Glyph="&#xE711;" />
+                                </Button>
+                            </Grid>
 
                         </Grid>
 
@@ -1331,6 +1590,7 @@
             </RefreshContainer>
 
         </Grid>
+        </Canvas>
 
     </Grid>
 

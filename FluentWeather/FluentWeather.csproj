@@ -63,4 +63,39 @@
       <ILCompilerPackVersion Condition="'%(KnownILCompilerPack.TargetFramework)' == 'net10.0'">10.0.2</ILCompilerPackVersion>
     </KnownILCompilerPack>
   </ItemGroup>-->
+
+  <!--
+    Tray icons. FluentWeatherTray.csproj builds the tray icons program for .NET Framework 4.8 (AnyCPU).
+    Its output goes into the FluentWeatherTray folder of the package, where Package.appxmanifest
+    expects FluentWeatherTray\FluentWeatherTray.exe. Build with /p:IncludeTrayIcons=false to leave it out
+    (then also remove the tray entries from Package.appxmanifest).
+  -->
+  <PropertyGroup>
+    <IncludeTrayIcons Condition="'$(IncludeTrayIcons)' == ''">true</IncludeTrayIcons>
+    <TrayIconsProject>$(MSBuildThisFileDirectory)..\FluentWeatherTray\FluentWeatherTray.csproj</TrayIconsProject>
+    <TrayIconsOutDir>$(MSBuildThisFileDirectory)..\FluentWeatherTray\bin\Package\</TrayIconsOutDir>
+    <_TrayIconsRemoveProperties>RuntimeIdentifier;SelfContained;PublishAot;PublishTrimmed;PublishProfile;TargetFramework;AppxBundle;AppxBundlePlatforms;UapAppxPackageBuildMode;GenerateAppxPackageOnBuild;AppxPackageSigningEnabled;PackageCertificateThumbprint;AppxPackageDir;AppxSymbolPackageEnabled</_TrayIconsRemoveProperties>
+  </PropertyGroup>
+
+  <Target Name="BuildTrayIcons" Condition="'$(IncludeTrayIcons)' == 'true' and '$(DesignTimeBuild)' != 'true'">
+    <!-- The tray project has its own target framework and platform, so these values of the app build are not passed on. -->
+    <MSBuild Projects="$(TrayIconsProject)" Targets="Restore"
+             Properties="Configuration=$(Configuration);Platform=AnyCPU;MSBuildRestoreSessionId=$([System.Guid]::NewGuid())"
+             RemoveProperties="$(_TrayIconsRemoveProperties)" />
+    <MSBuild Projects="$(TrayIconsProject)" Targets="Build"
+             Properties="Configuration=$(Configuration);Platform=AnyCPU"
+             RemoveProperties="$(_TrayIconsRemoveProperties)" />
+  </Target>
+
+  <Target Name="IncludeTrayIcons" BeforeTargets="AssignTargetPaths" DependsOnTargets="BuildTrayIcons"
+          Condition="'$(IncludeTrayIcons)' == 'true' and '$(DesignTimeBuild)' != 'true'">
+    <ItemGroup>
+      <_TrayIconsFile Include="$(TrayIconsOutDir)*.exe;$(TrayIconsOutDir)*.dll;$(TrayIconsOutDir)*.exe.config" />
+      <Content Include="@(_TrayIconsFile)"
+               Link="FluentWeatherTray\%(_TrayIconsFile.Filename)%(_TrayIconsFile.Extension)"
+               CopyToOutputDirectory="PreserveNewest"
+               CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+    <Error Condition="!Exists('$(TrayIconsOutDir)FluentWeatherTray.exe')" Text="The tray icons program was not built: $(TrayIconsOutDir)FluentWeatherTray.exe is missing." />
+  </Target>
 </Project>

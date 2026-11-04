@@ -115,6 +115,13 @@ namespace FluentWeather
 
         protected override async void OnBackgroundActivated(BackgroundActivatedEventArgs args)
         {
+            // The 5-minute refresh for the tray icons. It runs without a window.
+            if (TrayRefreshService.CanHandle(args.TaskInstance))
+            {
+                TrayRefreshService.Handle(args.TaskInstance);
+                return;
+            }
+
             await ActivationService.ActivateAsync(args);
         }
     }

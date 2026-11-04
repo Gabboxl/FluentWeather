@@ -30,7 +30,12 @@ namespace FluentWeather.Services
                     var newApiData = System.Text.Json.JsonSerializer.Deserialize(jsonResponse, FluentWeatherJsonContext.Default.RootV3Response);
 
                     if (newApiData != null)
+                    {
+                        // Tray data first, awaited, so the background task does not finish before the files are written.
+                        await TrayWeatherFile.TryWriteAsync(newApiData);
+                        await TrayWeatherFile.RefreshAllSavedAsync(false);
                         UpdateWeatherMainTile(newApiData);
+                    }
                 }
             }
             catch (Exception e)
@@ -46,6 +51,9 @@ namespace FluentWeather.Services
 
         public async void UpdateWeatherMainTile(RootV3Response apiDataResponse)
         {
+            // Current conditions for the tray icons, when they are turned on.
+            await TrayWeatherFile.TryWriteAsync(apiDataResponse);
+
             var newIconUri = new Uri("ms-appx:///Assets/weticons/" + apiDataResponse.v3wxobservationscurrent.iconCode + ".svg");
 
             string cityName = string.Join(", ",
