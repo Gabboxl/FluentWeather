@@ -13,8 +13,8 @@
 // C:\Program Files\FluentWeatherLocal. It starts at sign-in from your Startup folder.
 //
 // It shows two icons side by side in the notification area, the number on the left:
-//   1. the weather picture for the current conditions, one of 14: sunny, clear night (the moon in
-//      its current phase), partly cloudy, partly cloudy night, cloudy, fog, light rain, rain,
+//   1. the weather picture for the current conditions, one of 15: sunny, clear night (the moon in
+//      its current phase), partly cloudy, partly cloudy night, cloudy, cloudy night, fog, light rain, rain,
 //      heavy rain, ice or mixed, thunderstorm, severe storm, light snow and heavy snow.
 //      The pictures are drawn in code (WeatherArt).
 //   2. the temperature or the "feels like" temperature, as a number
@@ -73,8 +73,8 @@ using Windows.Storage;
 [assembly: System.Reflection.AssemblyProduct("FluentWeather Local")]
 [assembly: System.Reflection.AssemblyCompany("Built on this PC by FluentWeatherLocal Setup")]
 #endif
-[assembly: System.Reflection.AssemblyVersion("1.15.1.0")]
-[assembly: System.Reflection.AssemblyFileVersion("1.15.1.0")]
+[assembly: System.Reflection.AssemblyVersion("1.18.1.0")]
+[assembly: System.Reflection.AssemblyFileVersion("1.18.1.0")]
 
 namespace FluentWeatherLocal
 {
@@ -218,6 +218,7 @@ namespace FluentWeatherLocal
         public int Feels;
         public string Unit = string.Empty;
         public int IconCode = -1;
+        public bool IsNight;           // "daynight=N" from the app
         public double Latitude = 45;   // north of the equator unless the app says otherwise
         public string Phrase = string.Empty;
         public DateTime ObservedLocal;
@@ -251,6 +252,10 @@ namespace FluentWeatherLocal
             new[] { "Snow24h", "Snow, last 24 h" },
             new[] { "Sunrise", "Sunrise" },
             new[] { "Sunset", "Sunset" },
+            // The tray works out the moon phase itself. The app writes the next moonrise and moonset.
+            new[] { "Moon", "Moon phase" },
+            new[] { "Moonrise", "Moonrise" },
+            new[] { "Moonset", "Moonset" },
             new[] { "Observed", "Observed at" },
             // The nearest official station that reports (usually an airport). weather.com blends many
             // sources for the exact location, so the conditions are not taken from this station alone.
@@ -259,8 +264,11 @@ namespace FluentWeatherLocal
 
         public static readonly string[] Defaults =
         {
-            "Conditions", "Temperature", "FeelsLike", "HighLow", "Humidity", "Wind", "UV", "Rain24h", "Sunrise", "Sunset", "Observed"
+            "Conditions", "Temperature", "FeelsLike", "HighLow", "Humidity", "Wind", "UV", "Rain24h", "Sunrise", "Sunset", "Moon", "Observed"
         };
+
+        // Raised when a new detail joins the defaults. Saved choices from an older version get it once.
+        public const int Version = 2;
     }
 
     // The 14 weather pictures of the tray icon and the hover panel. They are drawn in code on a
@@ -282,7 +290,8 @@ namespace FluentWeatherLocal
         Fog = 10,
         Severe = 11,
         ClearNight = 12,
-        PartlyCloudyNight = 13
+        PartlyCloudyNight = 13,
+        CloudyNight = 14
     }
 
     internal static class WeatherArt
@@ -334,9 +343,13 @@ namespace FluentWeatherLocal
         //   - the code shows rain or snow and the text names the strength. weather.com uses code 11
         //     for "Showers" and "Light Rain", and code 12 for "Rain" and "Heavy Rain".
         // The text is English unless the app language is changed. In other languages the code decides.
-        internal static WeatherKind FromReading(int code, string phrase)
+        // weather.com sends the same "Cloudy" code by day and by night. At night (daynight=N from the
+        // app) the picture shows the edge of the moon behind the cloud.
+        internal static WeatherKind FromReading(int code, string phrase, bool night = false)
         {
             var kind = FromIconCode(code);
+            if (night && kind == WeatherKind.Cloudy)
+                kind = WeatherKind.CloudyNight;
             if (kind == WeatherKind.None || string.IsNullOrEmpty(phrase))
                 return kind;
 
@@ -352,7 +365,7 @@ namespace FluentWeatherLocal
 
             var isRain = kind == WeatherKind.LightRain || kind == WeatherKind.Rain || kind == WeatherKind.HeavyRain;
             var isSnow = kind == WeatherKind.LightSnow || kind == WeatherKind.HeavySnow;
-            var isDry = kind == WeatherKind.Sunny || kind == WeatherKind.ClearNight || kind == WeatherKind.Cloudy ||
+            var isDry = kind == WeatherKind.Sunny || kind == WeatherKind.ClearNight || kind == WeatherKind.Cloudy || kind == WeatherKind.CloudyNight ||
                         kind == WeatherKind.PartlyCloudy || kind == WeatherKind.PartlyCloudyNight || kind == WeatherKind.Fog;
 
             if (thunder && (isDry || isRain || isSnow || kind == WeatherKind.Ice))
@@ -390,6 +403,7 @@ namespace FluentWeatherLocal
                 case WeatherKind.Sunny: return "Sunny";
                 case WeatherKind.PartlyCloudy: return "Partly cloudy";
                 case WeatherKind.Cloudy: return "Cloudy";
+                case WeatherKind.CloudyNight: return "Cloudy night";
                 case WeatherKind.LightRain: return "Light rain";
                 case WeatherKind.Rain: return "Rain";
                 case WeatherKind.HeavyRain: return "Heavy rain";
@@ -475,6 +489,9 @@ namespace FluentWeatherLocal
                     break;
                 case WeatherKind.Cloudy:
                     DrawCloud(g, 6, 14, 1.2f, false, light, detailed);
+                    break;
+                case WeatherKind.CloudyNight:
+                    DrawCloudyNight(g, light, detailed, latitude);
                     break;
                 // In the three rain pictures the cloud ends 40% down from the top, so the drops have
                 // the lower 60% and stay easy to count at 16 pixels: 2, 4 or 7 drops.
@@ -717,18 +734,54 @@ namespace FluentWeatherLocal
             }
         }
 
+        // Overcast at night: the edge of the moon shows behind the cloud, on the moon's lit side, so the
+        // visible part is the lit edge. At tray sizes more of the moon shows, so it stays visible at 16 px.
+        private static void DrawCloudyNight(Graphics g, bool light, bool detailed, double latitude)
+        {
+            var waxing = MoonPhase(DateTime.UtcNow) < 0.5;
+            var litRight = waxing != (latitude < 0);
+            if (litRight)
+            {
+                if (detailed)
+                {
+                    DrawStar(g, 14, 14, 4, light);
+                    DrawMoon(g, 69, 27, 21, light, true, latitude);
+                    DrawCloud(g, 6, 20, 1.14f, false, light, true);
+                }
+                else
+                {
+                    DrawMoon(g, 75, 25, 22, light, false, latitude);
+                    DrawCloud(g, 2, 24, 1.1f, false, light, false);
+                }
+            }
+            else
+            {
+                if (detailed)
+                {
+                    DrawStar(g, 86, 14, 4, light);
+                    DrawMoon(g, 31, 31, 21, light, true, latitude);
+                    DrawCloud(g, 8, 20, 1.14f, false, light, true);
+                }
+                else
+                {
+                    DrawMoon(g, 25, 25, 22, light, false, latitude);
+                    DrawCloud(g, 10, 24, 1.1f, false, light, false);
+                }
+            }
+        }
+
         // The moon in its phase today. The lit part grows on the right while waxing and shrinks
         // toward the left while waning, as seen north of the equator. South of it, the sides swap.
         private static void DrawMoon(Graphics g, float cx, float cy, float r, bool light, bool detailed, double latitude)
         {
             var phase = MoonPhase(DateTime.UtcNow);                 // 0 new, 0.25 first quarter, 0.5 full, 0.75 last quarter
             var disc = new RectangleF(cx - r, cy - r, 2 * r, 2 * r);
-            var edgeColor = Edge(light, Color.FromArgb(255, 120, 110, 70));
+            var edgeColor = Edge(light, Color.FromArgb(255, 96, 88, 78));
             using (var edge = new Pen(edgeColor, 4f))
                 g.DrawEllipse(edge, disc);
 
             // The dark part of the moon stays faintly visible, so the round shape is clear in every phase.
-            using (var dark = new SolidBrush(light ? Color.FromArgb(255, 150, 158, 172) : Color.FromArgb(255, 70, 78, 92)))
+            using (var dark = new SolidBrush(light ? Color.FromArgb(255, 94, 96, 106) : Color.FromArgb(255, 64, 68, 78)))
                 g.FillEllipse(dark, disc);
 
             using (var lit = LitPath(cx, cy, r, phase, latitude < 0))
@@ -740,15 +793,15 @@ namespace FluentWeatherLocal
                     using (var brush = new PathGradientBrush(lit))
                     {
                         brush.CenterPoint = new PointF(cx, cy);
-                        // A deeper gold on a light background, so the moon stands out.
-                        brush.CenterColor = light ? Color.FromArgb(255, 255, 240, 170) : Color.FromArgb(255, 255, 252, 230);
-                        brush.SurroundColors = new[] { light ? Color.FromArgb(255, 232, 196, 90) : Color.FromArgb(255, 238, 226, 170) };
+                        // A light brown moon. A deeper brown on a light background, so the moon stands out.
+                        brush.CenterColor = light ? Color.FromArgb(255, 226, 200, 162) : Color.FromArgb(255, 240, 222, 194);
+                        brush.SurroundColors = new[] { light ? Color.FromArgb(255, 180, 146, 104) : Color.FromArgb(255, 200, 172, 134) };
                         g.FillPath(brush, lit);
                     }
                     // A few craters on the lit part.
                     var state = g.Save();
                     g.SetClip(lit);
-                    using (var crater = new SolidBrush(Color.FromArgb(70, 160, 150, 110)))
+                    using (var crater = new SolidBrush(Color.FromArgb(70, 150, 126, 96)))
                     {
                         g.FillEllipse(crater, cx - r * 0.45f, cy - r * 0.35f, r * 0.32f, r * 0.32f);
                         g.FillEllipse(crater, cx + r * 0.15f, cy + r * 0.10f, r * 0.42f, r * 0.42f);
@@ -759,7 +812,7 @@ namespace FluentWeatherLocal
                 }
                 else
                 {
-                    using (var brush = new SolidBrush(light ? Color.FromArgb(255, 240, 205, 90) : Color.FromArgb(255, 252, 240, 190)))
+                    using (var brush = new SolidBrush(light ? Color.FromArgb(255, 184, 150, 108) : Color.FromArgb(255, 226, 202, 166)))
                         g.FillPath(brush, lit);
                 }
             }
@@ -920,6 +973,7 @@ namespace FluentWeatherLocal
                     break;
                 case WeatherKind.ClearNight:
                 case WeatherKind.PartlyCloudyNight:
+                case WeatherKind.CloudyNight:
                     top = light ? Color.FromArgb(220, 224, 244) : Color.FromArgb(16, 24, 52);
                     bottom = light ? Color.FromArgb(244, 245, 252) : Color.FromArgb(34, 36, 48);
                     break;
@@ -947,6 +1001,20 @@ namespace FluentWeatherLocal
         private Bitmap _art;
         private bool _light;
 
+        // Dragging: hold the left mouse button on the panel and move it. After the drop the panel
+        // opens at that place, until "Hover panel next to the icons" in the tray menu is chosen.
+        private bool _dragging;
+        private Point _dragStartCursor;
+        private Point _dragStartLocation;
+
+        /// <summary>The saved top-left corner in screen pixels, or null for "next to the icons".</summary>
+        public Point? CustomLocation;
+
+        /// <summary>Raised after a drag ends, with the new top-left corner.</summary>
+        public event Action<Point> Moved;
+
+        public bool IsDragging { get { return _dragging; } }
+
         public HoverPanel()
         {
             FormBorderStyle = FormBorderStyle.None;
@@ -955,6 +1023,66 @@ namespace FluentWeatherLocal
             TopMost = true;
             DoubleBuffered = true;
             AutoScaleMode = AutoScaleMode.None;
+            Cursor = Cursors.SizeAll;   // shows that the panel can be dragged
+        }
+
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            if (e.Button != MouseButtons.Left)
+                return;
+            _dragging = true;
+            _dragStartCursor = Cursor.Position;
+            _dragStartLocation = Location;
+            Capture = true;
+        }
+
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (!_dragging)
+                return;
+            var p = Cursor.Position;
+            Location = new Point(_dragStartLocation.X + p.X - _dragStartCursor.X, _dragStartLocation.Y + p.Y - _dragStartCursor.Y);
+        }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            base.OnMouseUp(e);
+            if (!_dragging || e.Button != MouseButtons.Left)
+                return;
+            _dragging = false;
+            Capture = false;
+            // A click without a real move does not save a place.
+            var p = Cursor.Position;
+            var drag = SystemInformation.DragSize;
+            if (Math.Abs(p.X - _dragStartCursor.X) < drag.Width && Math.Abs(p.Y - _dragStartCursor.Y) < drag.Height)
+            {
+                Location = _dragStartLocation;
+                return;
+            }
+            Location = KeepOnScreen(Location);
+            CustomLocation = Location;
+            var handler = Moved;
+            if (handler != null)
+                handler(Location);
+        }
+
+        protected override void OnMouseCaptureChanged(EventArgs e)
+        {
+            base.OnMouseCaptureChanged(e);
+            _dragging = false;   // for example when another window takes the mouse
+        }
+
+        // Moves the panel fully into the working area of the screen it is mostly on. This also
+        // brings back a saved place after a monitor was removed or the resolution changed.
+        private Point KeepOnScreen(Point topLeft)
+        {
+            var center = new Point(topLeft.X + Width / 2, topLeft.Y + Height / 2);
+            var area = Screen.FromPoint(center).WorkingArea;
+            var x = Math.Max(area.Left, Math.Min(topLeft.X, area.Right - Width));
+            var y = Math.Max(area.Top, Math.Min(topLeft.Y, area.Bottom - Height));
+            return new Point(x, y);
         }
 
         protected override bool ShowWithoutActivation
@@ -1144,6 +1272,13 @@ namespace FluentWeatherLocal
         // Places the panel next to the notification area, on whichever side the taskbar is.
         public void ShowNear(Point cursor)
         {
+            if (CustomLocation.HasValue)
+            {
+                Location = KeepOnScreen(CustomLocation.Value);
+                if (!Visible) Show();
+                return;
+            }
+
             var area = Screen.FromPoint(cursor).WorkingArea;
             var gap = Scale(8);
             int x = cursor.X - Width / 2;
@@ -1192,6 +1327,9 @@ namespace FluentWeatherLocal
         private readonly System.Windows.Forms.Timer _hoverShow = new System.Windows.Forms.Timer();
         private readonly System.Windows.Forms.Timer _hoverWatch = new System.Windows.Forms.Timer();
         private Point _hoverPoint;
+        private DateTime _hoverLeftUtc = DateTime.MinValue;   // when the pointer left the icons and the panel
+        private static readonly TimeSpan HoverGrace = TimeSpan.FromMilliseconds(1200);
+        private Point? _hoverLocation;                        // saved panel place, null = next to the icons
         private DateTime _keepMenuOpenUntil = DateTime.MinValue;
         private string _trayCity = AppCity;   // "app" = same city as the app, otherwise a saved placeId
         private const string AppCity = "app";
@@ -1398,7 +1536,7 @@ namespace FluentWeatherLocal
             }
             else
             {
-                newPicture = LoadWeatherIcon(reading.IconCode, reading.Phrase, reading.Latitude, size, light) ?? LoadAppIcon(size);
+                newPicture = LoadWeatherIcon(reading.IconCode, reading.Phrase, reading.IsNight, reading.Latitude, size, light) ?? LoadAppIcon(size);
                 var value = _showFeelsLike ? reading.Feels : reading.Temp;
                 newNumber = RenderNumber(value.ToString(CultureInfo.InvariantCulture), size, light);
                 tip = BuildTooltip(reading);
@@ -1435,11 +1573,32 @@ namespace FluentWeatherLocal
             _hoverWatch.Interval = 150;
             _hoverWatch.Tick += delegate
             {
-                // Hide once the pointer leaves the icons.
+                // The panel stays open while the pointer is on the icons or on the panel, and while
+                // it is dragged. After the pointer leaves both, it stays 1.2 seconds more, so the
+                // pointer can move from the icons to a panel at a saved place to drag it again.
+                if (_menu.Visible)
+                {
+                    HideHover();
+                    return;
+                }
                 var p = Cursor.Position;
                 var limit = NativeMethods.GetSmallIconSize() * 2;
-                if (Math.Abs(p.X - _hoverPoint.X) > limit || Math.Abs(p.Y - _hoverPoint.Y) > limit || _menu.Visible)
+                var onIcons = Math.Abs(p.X - _hoverPoint.X) <= limit && Math.Abs(p.Y - _hoverPoint.Y) <= limit;
+                if (onIcons || _hover.IsDragging || _hover.Bounds.Contains(p))
+                {
+                    _hoverLeftUtc = DateTime.MinValue;
+                    return;
+                }
+                if (_hoverLeftUtc == DateTime.MinValue)
+                    _hoverLeftUtc = DateTime.UtcNow;
+                else if (DateTime.UtcNow - _hoverLeftUtc > HoverGrace)
                     HideHover();
+            };
+            _hover.CustomLocation = _hoverLocation;
+            _hover.Moved += delegate (Point location)
+            {
+                _hoverLocation = location;
+                SaveSettings();
             };
             _menu.Opening += delegate { HideHover(); };
             // Keep the menu open while ticking hover details, so several can be changed at once.
@@ -1461,6 +1620,7 @@ namespace FluentWeatherLocal
         {
             _hoverShow.Stop();
             _hoverWatch.Stop();
+            _hoverLeftUtc = DateTime.MinValue;
             if (_hover.Visible) _hover.Hide();
         }
 
@@ -1478,9 +1638,19 @@ namespace FluentWeatherLocal
             var rows = new List<KeyValuePair<string, string>>();
             foreach (var entry in DetailCatalog.All)
             {
+                if (!_hoverDetails.Contains(entry[0]))
+                    continue;
                 string value;
-                if (_hoverDetails.Contains(entry[0]) && r.Details.TryGetValue(entry[0], out value))
+                if (entry[0] == "Moon")
+                {
+                    var phase = WeatherArt.MoonPhase(DateTime.UtcNow);
+                    var lit = (int)Math.Round(100 * (1 - Math.Cos(2 * Math.PI * phase)) / 2);
+                    rows.Add(new KeyValuePair<string, string>(entry[1], WeatherArt.MoonPhaseName(phase) + ", " + lit + "% lit"));
+                }
+                else if (r.Details.TryGetValue(entry[0], out value))
+                {
                     rows.Add(new KeyValuePair<string, string>(entry[1], value));
+                }
             }
             if (rows.Count == 0)
                 rows.Add(new KeyValuePair<string, string>("Temperature", r.Temp + Degree + r.Unit + ", feels like " + r.Feels + Degree + r.Unit));
@@ -1488,13 +1658,7 @@ namespace FluentWeatherLocal
             var title = string.IsNullOrEmpty(r.FullPlace) ? r.Place : r.FullPlace;
             var footer = (_trayCity == AppCity ? "Same city as the app. " : "Chosen in the tray. ") +
                          "Updated " + r.WrittenUtc.ToLocalTime().ToString("t", CultureInfo.CurrentCulture);
-            var kind = WeatherArt.FromReading(r.IconCode, r.Phrase);
-            if (kind == WeatherKind.ClearNight || kind == WeatherKind.PartlyCloudyNight)
-            {
-                var phase = WeatherArt.MoonPhase(DateTime.UtcNow);
-                var lit = (int)Math.Round(100 * (1 - Math.Cos(2 * Math.PI * phase)) / 2);
-                rows.Add(new KeyValuePair<string, string>("Moon", WeatherArt.MoonPhaseName(phase) + ", " + lit + "% lit"));
-            }
+            var kind = WeatherArt.FromReading(r.IconCode, r.Phrase, r.IsNight);
             _hover.SetContent(title, rows, footer, kind, light, r.Latitude);
         }
 
@@ -1572,9 +1736,9 @@ namespace FluentWeatherLocal
         }
 
         // One of the eight weather pictures, drawn for the taskbar color. Null for an unknown code.
-        private static Icon LoadWeatherIcon(int iconCode, string phrase, double latitude, int size, bool lightTaskbar)
+        private static Icon LoadWeatherIcon(int iconCode, string phrase, bool night, double latitude, int size, bool lightTaskbar)
         {
-            var kind = WeatherArt.FromReading(iconCode, phrase);
+            var kind = WeatherArt.FromReading(iconCode, phrase, night);
             if (kind == WeatherKind.None)
                 return null;
             try
@@ -1751,6 +1915,7 @@ namespace FluentWeatherLocal
                 return null;
             int icon;
             r.IconCode = TryInt(values, "icon", out icon) ? icon : -1;
+            r.IsNight = string.Equals(Get(values, "daynight"), "N", StringComparison.OrdinalIgnoreCase);
             double latitude;
             if (double.TryParse(Get(values, "lat"), NumberStyles.Float, CultureInfo.InvariantCulture, out latitude))
                 r.Latitude = latitude;
@@ -1854,6 +2019,8 @@ namespace FluentWeatherLocal
             {
                 if (!File.Exists(SettingsPath))
                     return;
+                var version = 1;
+                var hadDetails = false;
                 foreach (var line in File.ReadAllLines(SettingsPath))
                 {
                     var eq = line.IndexOf('=');
@@ -1863,12 +2030,30 @@ namespace FluentWeatherLocal
                     if (k.Equals("show", StringComparison.OrdinalIgnoreCase))
                         _showFeelsLike = v.Equals("feels", StringComparison.OrdinalIgnoreCase);
                     else if (k.Equals("details", StringComparison.OrdinalIgnoreCase))
+                    {
                         _hoverDetails = new List<string>(v.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+                        hadDetails = true;
+                    }
+                    else if (k.Equals("detailsversion", StringComparison.OrdinalIgnoreCase))
+                        int.TryParse(v, NumberStyles.Integer, CultureInfo.InvariantCulture, out version);
                     else if (k.Equals("city", StringComparison.OrdinalIgnoreCase) && v.Length > 0)
                         _trayCity = v;
                     else if (k.Equals("quickrefresh", StringComparison.OrdinalIgnoreCase))
                         _quickRefresh = !v.Equals("off", StringComparison.OrdinalIgnoreCase);
+                    else if (k.Equals("hoverpos", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // "hoverpos=x,y" in screen pixels, or "hoverpos=auto" for next to the icons.
+                        var parts = v.Split(',');
+                        int px, py;
+                        if (parts.Length == 2 &&
+                            int.TryParse(parts[0].Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out px) &&
+                            int.TryParse(parts[1].Trim(), NumberStyles.Integer, CultureInfo.InvariantCulture, out py))
+                            _hoverLocation = new Point(px, py);
+                    }
                 }
+                // Version 2 added "Moon phase" to the defaults. Before, the moon line showed by itself at night.
+                if (hadDetails && version < 2 && !_hoverDetails.Contains("Moon"))
+                    _hoverDetails.Add("Moon");
             }
             catch (Exception)
             {
@@ -1885,7 +2070,11 @@ namespace FluentWeatherLocal
                     "show=" + (_showFeelsLike ? "feels" : "temp") + "\r\n" +
                     "city=" + _trayCity + "\r\n" +
                     "details=" + string.Join(",", _hoverDetails) + "\r\n" +
-                    "quickrefresh=" + (_quickRefresh ? "on" : "off") + "\r\n");
+                    "detailsversion=" + DetailCatalog.Version.ToString(CultureInfo.InvariantCulture) + "\r\n" +
+                    "quickrefresh=" + (_quickRefresh ? "on" : "off") + "\r\n" +
+                    "hoverpos=" + (_hoverLocation.HasValue
+                        ? _hoverLocation.Value.X.ToString(CultureInfo.InvariantCulture) + "," + _hoverLocation.Value.Y.ToString(CultureInfo.InvariantCulture)
+                        : "auto") + "\r\n");
             }
             catch (Exception)
             {
@@ -1980,6 +2169,17 @@ namespace FluentWeatherLocal
                     e.Cancel = true;
             };
             _menu.Items.Add(details);
+
+            var nextToIcons = new ToolStripMenuItem("Hover panel next to the icons");
+            nextToIcons.Checked = !_hoverLocation.HasValue;
+            nextToIcons.ToolTipText = "Drag the hover panel to move it. It then opens at that place until you choose this item.";
+            nextToIcons.Click += delegate
+            {
+                _hoverLocation = null;
+                _hover.CustomLocation = null;
+                SaveSettings();
+            };
+            _menu.Items.Add(nextToIcons);
             _menu.Items.Add(new ToolStripSeparator());
 
             var locations = ReadSavedLocations();

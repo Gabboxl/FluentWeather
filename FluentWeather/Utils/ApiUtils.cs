@@ -81,17 +81,26 @@ namespace FluentWeather.Utils
             return [stationName, stationId, km, mi];
         }
 
-        /// <summary>Current conditions and place name only. Much smaller than GetFullData.</summary>
+        /// <summary>
+        /// Current conditions, place name and the 3-day forecast (for moonrise and moonset), about 6 KB.
+        /// Much smaller than GetFullData. If the request with the forecast fails, it is sent again
+        /// without it, so the current conditions still arrive.
+        /// </summary>
         public static async Task<HttpResponseMessage> GetCurrentConditions(string placeId)
         {
             if (string.IsNullOrEmpty(placeId))
                 throw new ArgumentNullException(nameof(placeId));
 
-            var response = await SharedClient.GetAsync(
-                "aggcommon/v3-wx-observations-current;v3-location-point?format=json&placeid="
-                + Uri.EscapeDataString(placeId)
-                + "&units=" + await VariousUtils.GetUnitsCode()
-                + "&language=" + SystemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230");
+            var query = "?format=json&placeid=" + Uri.EscapeDataString(placeId)
+                        + "&units=" + await VariousUtils.GetUnitsCode()
+                        + "&language=" + SystemLanguage + "&apiKey=793db2b6128c4bc2bdb2b6128c0bc230";
+
+            var response = await SharedClient.GetAsync("aggcommon/v3-wx-observations-current;v3-location-point;v3-wx-forecast-daily-3day" + query);
+            if (!response.IsSuccessStatusCode)
+            {
+                response.Dispose();
+                response = await SharedClient.GetAsync("aggcommon/v3-wx-observations-current;v3-location-point" + query);
+            }
 
             response.EnsureSuccessStatusCode();
 
