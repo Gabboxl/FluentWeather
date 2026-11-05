@@ -73,8 +73,8 @@ using Windows.Storage;
 [assembly: System.Reflection.AssemblyProduct("FluentWeather Local")]
 [assembly: System.Reflection.AssemblyCompany("Built on this PC by FluentWeatherLocal Setup")]
 #endif
-[assembly: System.Reflection.AssemblyVersion("1.18.1.0")]
-[assembly: System.Reflection.AssemblyFileVersion("1.18.1.0")]
+[assembly: System.Reflection.AssemblyVersion("1.25.1.0")]
+[assembly: System.Reflection.AssemblyFileVersion("1.25.1.0")]
 
 namespace FluentWeatherLocal
 {
@@ -1164,10 +1164,41 @@ namespace FluentWeatherLocal
                 return (int)Math.Round(value * g.DpiX / 96f);
         }
 
-        // The large weather picture at the right side of the panel.
-        private int PictureSize { get { return Scale(96); } }
+        // The weather picture at the right side of the panel.
+        private int PictureSize { get { return Scale(72); } }
 
-        private int PictureColumn { get { return _art == null ? 0 : PictureSize + Scale(14); } }
+        private int PictureColumn { get { return _art == null ? 0 : PictureSize + Scale(12); } }
+
+        // Text is measured and drawn without the extra space Windows adds around each piece of text,
+        // so the panel fits its content closely.
+        private const TextFormatFlags TextFlags = TextFormatFlags.NoPrefix | TextFormatFlags.NoPadding;
+
+        // Layout values from ResizeToContent, used by OnPaint.
+        private int _labelWidth;
+        private int _lineHeight;
+        private int _titleHeight;
+        private int _footerHeight;
+
+        private static int TextWidth(Graphics g, string text, Font font)
+        {
+            return string.IsNullOrEmpty(text) ? 0 : TextRenderer.MeasureText(g, text, font, Size.Empty, TextFlags).Width;
+        }
+
+        // Height of the text wrapped at word boundaries to the given width.
+        private static int WrappedHeight(Graphics g, string text, Font font, int width)
+        {
+            if (string.IsNullOrEmpty(text))
+                return 0;
+            return TextRenderer.MeasureText(g, text, font, new Size(Math.Max(1, width), int.MaxValue),
+                TextFlags | TextFormatFlags.WordBreak).Height;
+        }
+
+        // The panel has one fixed width. A long location name, a long detail and the bottom line wrap
+        // onto more lines. Only the height changes with the content.
+        private int PanelWidth { get { return Scale(340); } }
+
+        // Height of each detail line from ResizeToContent, used by OnPaint.
+        private readonly List<int> _rowHeights = new List<int>();
 
         private void ResizeToContent()
         {
@@ -1175,24 +1206,47 @@ namespace FluentWeatherLocal
             using (var title = TitleFont)
             using (var body = BodyFont)
             {
-                var pad = Scale(12);
-                var labelWidth = 0;
-                var valueWidth = 0;
+                var pad = Scale(11);
+                var gap = Scale(14);
+                var picture = PictureColumn;
+                var width = PanelWidth;
+                _lineHeight = TextRenderer.MeasureText(g, "Ag", body, Size.Empty, TextFlags).Height + Scale(3);
+
+                _labelWidth = 0;
+                foreach (var row in _rows)
+                    _labelWidth = Math.Max(_labelWidth, TextWidth(g, row.Key, body));
+                // Keep at least half of the width for the values.
+                _labelWidth = Math.Min(_labelWidth, (width - 2 * pad) / 2);
+
+                _titleHeight = WrappedHeight(g, _title, title, width - pad - picture - pad);
+                var y = pad + _titleHeight + Scale(7);
+
+                _rowHeights.Clear();
                 foreach (var row in _rows)
                 {
-                    labelWidth = Math.Max(labelWidth, TextRenderer.MeasureText(g, row.Key, body).Width);
-                    valueWidth = Math.Max(valueWidth, TextRenderer.MeasureText(g, row.Value, body).Width);
+                    var right = width - pad - (BesidePicture(y) ? picture : 0);
+                    var valueWidth = right - (pad + _labelWidth + gap);
+                    var h = Math.Max(_lineHeight, WrappedHeight(g, row.Value, body, valueWidth) + Scale(3));
+                    _rowHeights.Add(h);
+                    y += h;
                 }
-                var titleSize = TextRenderer.MeasureText(g, _title, title);
-                var footerSize = TextRenderer.MeasureText(g, _footer, body);
-                var lineHeight = TextRenderer.MeasureText(g, "Ag", body).Height + Scale(2);
 
-                var textWidth = Math.Max(titleSize.Width, Math.Max(labelWidth + Scale(16) + valueWidth, footerSize.Width));
-                var textHeight = titleSize.Height + Scale(8) + _rows.Count * lineHeight + (_footer.Length > 0 ? Scale(6) + lineHeight : 0);
-                var width = pad + textWidth + PictureColumn + pad;
-                var height = pad + Math.Max(textHeight, _art == null ? 0 : PictureSize) + pad;
-                Size = new Size(Math.Min(width, Scale(660)), height);
+                _footerHeight = 0;
+                if (_footer.Length > 0)
+                {
+                    var footerTop = y + Scale(6);
+                    _footerHeight = WrappedHeight(g, _footer, body, width - pad - (BesidePicture(footerTop) ? picture : 0) - pad);
+                    y = footerTop + _footerHeight;
+                }
+                var height = Math.Max(y, _art == null ? 0 : pad + PictureSize) + pad;
+                Size = new Size(width, height);
             }
+        }
+
+        // True when a line that starts at this height sits beside the weather picture.
+        private bool BesidePicture(int lineTop)
+        {
+            return _art != null && lineTop < Scale(11) + PictureSize + Scale(3);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
@@ -1220,14 +1274,14 @@ namespace FluentWeatherLocal
             using (var pen = new Pen(BorderColor))
                 g.DrawRectangle(pen, 0, 0, Width - 1, Height - 1);
 
-            var pad = Scale(12);
+            var pad = Scale(11);
             var textRight = Width - pad - PictureColumn;
             if (_art != null)
             {
                 var picture = new Rectangle(Width - pad - PictureSize, pad, PictureSize, PictureSize);
 
                 // A soft glow behind the weather picture.
-                var glow = Rectangle.Inflate(picture, Scale(10), Scale(10));
+                var glow = Rectangle.Inflate(picture, Scale(8), Scale(8));
                 using (var path = new GraphicsPath())
                 {
                     path.AddEllipse(glow);
@@ -1247,25 +1301,29 @@ namespace FluentWeatherLocal
             using (var body = BodyFont)
             {
                 var y = pad;
-                var headerHeight = TextRenderer.MeasureText(g, _title, title).Height;
-                TextRenderer.DrawText(g, _title, title, new Rectangle(pad, y, textRight - pad, headerHeight), fore,
-                    TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix);
-                y += headerHeight + Scale(8);
+                var gap = Scale(14);
+                TextRenderer.DrawText(g, _title, title, new Rectangle(pad, y, textRight - pad, _titleHeight), fore,
+                    TextFlags | TextFormatFlags.WordBreak);
+                y += _titleHeight + Scale(7);
 
-                var lineHeight = TextRenderer.MeasureText(g, "Ag", body).Height + Scale(2);
-                var labelWidth = 0;
-                foreach (var row in _rows)
-                    labelWidth = Math.Max(labelWidth, TextRenderer.MeasureText(g, row.Key, body).Width);
-                foreach (var row in _rows)
+                for (var i = 0; i < _rows.Count; i++)
                 {
-                    TextRenderer.DrawText(g, row.Key, body, new Point(pad, y), dim, TextFormatFlags.NoPrefix);
-                    TextRenderer.DrawText(g, row.Value, body, new Rectangle(pad + labelWidth + Scale(16), y, textRight - pad - labelWidth - Scale(16), lineHeight),
-                        fore, TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix);
-                    y += lineHeight;
+                    var row = _rows[i];
+                    var h = i < _rowHeights.Count ? _rowHeights[i] : _lineHeight;
+                    var right = BesidePicture(y) ? textRight : Width - pad;
+                    TextRenderer.DrawText(g, row.Key, body, new Rectangle(pad, y, _labelWidth + Scale(2), _lineHeight), dim,
+                        TextFlags | TextFormatFlags.EndEllipsis);
+                    TextRenderer.DrawText(g, row.Value, body, new Rectangle(pad + _labelWidth + gap, y, right - pad - _labelWidth - gap, h),
+                        fore, TextFlags | TextFormatFlags.WordBreak);
+                    y += h;
                 }
                 if (_footer.Length > 0)
-                    TextRenderer.DrawText(g, _footer, body, new Rectangle(pad, y + Scale(6), textRight - pad, lineHeight), dim,
-                        TextFormatFlags.EndEllipsis | TextFormatFlags.NoPrefix);
+                {
+                    var footerTop = y + Scale(6);
+                    var right = BesidePicture(footerTop) ? textRight : Width - pad;
+                    TextRenderer.DrawText(g, _footer, body, new Rectangle(pad, footerTop, right - pad, _footerHeight), dim,
+                        TextFlags | TextFormatFlags.WordBreak);
+                }
             }
         }
 
@@ -1328,7 +1386,9 @@ namespace FluentWeatherLocal
         private readonly System.Windows.Forms.Timer _hoverWatch = new System.Windows.Forms.Timer();
         private Point _hoverPoint;
         private DateTime _hoverLeftUtc = DateTime.MinValue;   // when the pointer left the icons and the panel
-        private static readonly TimeSpan HoverGrace = TimeSpan.FromMilliseconds(1200);
+        private static readonly TimeSpan HoverGrace = TimeSpan.FromMilliseconds(900);
+        private static readonly TimeSpan HoverOpenDelay = TimeSpan.FromMilliseconds(1200);
+        private DateTime _hoverStartUtc = DateTime.MinValue;                 // when the pointer came onto the icons
         private Point? _hoverLocation;                        // saved panel place, null = next to the icons
         private DateTime _keepMenuOpenUntil = DateTime.MinValue;
         private string _trayCity = AppCity;   // "app" = same city as the app, otherwise a saved placeId
@@ -1561,11 +1621,22 @@ namespace FluentWeatherLocal
 
         private void InitHover()
         {
-            _hoverShow.Interval = 350;   // short pause before showing, like a tooltip
+            // The panel opens only after the pointer has stayed on the icons for the whole 1.2 seconds.
+            // The pointer is checked 10 times a second. If it leaves the icons earlier, nothing opens,
+            // and the next visit starts a new 1.2 seconds.
+            _hoverShow.Interval = 100;
             _hoverShow.Tick += delegate
             {
+                var p = Cursor.Position;
+                var limit = NativeMethods.GetSmallIconSize();
+                if (_menu.Visible || Math.Abs(p.X - _hoverPoint.X) > limit || Math.Abs(p.Y - _hoverPoint.Y) > limit)
+                {
+                    _hoverShow.Stop();   // left the icons before the time was up
+                    return;
+                }
+                if (DateTime.UtcNow - _hoverStartUtc < HoverOpenDelay)
+                    return;
                 _hoverShow.Stop();
-                if (_menu.Visible) return;
                 UpdateHoverContent();
                 _hover.ShowNear(_hoverPoint);
                 _hoverWatch.Start();
@@ -1574,7 +1645,7 @@ namespace FluentWeatherLocal
             _hoverWatch.Tick += delegate
             {
                 // The panel stays open while the pointer is on the icons or on the panel, and while
-                // it is dragged. After the pointer leaves both, it stays 1.2 seconds more, so the
+                // it is dragged. After the pointer leaves both, it stays 0.9 seconds more, so the
                 // pointer can move from the icons to a panel at a saved place to drag it again.
                 if (_menu.Visible)
                 {
@@ -1613,7 +1684,10 @@ namespace FluentWeatherLocal
         {
             _hoverPoint = Cursor.Position;
             if (!_hover.Visible && !_hoverShow.Enabled)
+            {
+                _hoverStartUtc = DateTime.UtcNow;
                 _hoverShow.Start();
+            }
         }
 
         private void HideHover()
@@ -2239,13 +2313,17 @@ namespace FluentWeatherLocal
             }
 
             // The Store updates the packaged build, and the app starts its tray icons itself.
+            // A direct install (FluentWeather-Setup.exe) has no update script, so it has no update item.
             if (!TrayHost.Packaged)
             {
-                var update = new ToolStripMenuItem("Check for updates now");
-                update.Click += delegate { RunUpdate(); };
-                _menu.Items.Add(update);
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Update FluentWeather.cmd")))
+                {
+                    var update = new ToolStripMenuItem("Check for updates now");
+                    update.Click += delegate { RunUpdate(); };
+                    _menu.Items.Add(update);
 
-                _menu.Items.Add(new ToolStripSeparator());
+                    _menu.Items.Add(new ToolStripSeparator());
+                }
 
                 var restart = new ToolStripMenuItem("Restart FluentWeather (app and tray icons)");
                 restart.Click += delegate { RestartAll(); };
