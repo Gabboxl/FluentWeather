@@ -10,4 +10,7 @@
     <Platform Solution="*|x86" Project="x86" />
     <Deploy />
   </Project>
+  <Project Path="FluentWeatherTray/FluentWeatherTray.csproj">
+    <Platform Project="AnyCPU" />
+  </Project>
 </Solution>

@@ -104,6 +104,7 @@ namespace FluentWeather.Services
             yield return Singleton<LiveTileService>.Instance;
             yield return Singleton<BackgroundTaskService>.Instance;
             yield return Singleton<ToastNotificationsService>.Instance;
+            yield return new ProtocolActivationHandler();
         }
 
         private bool IsInteractive(object args)

@@ -146,7 +146,7 @@
     <comment>First use prompt message primary button text</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
-    <value>Search a place...</value>
+    <value>Search a location...</value>
   </data>
   <data name="FeelsLikeText" xml:space="preserve">
     <value>Feels like</value>
@@ -296,5 +296,122 @@ Live Tiles are available natively on Windows 10 only.</value>
   </data>
   <data name="AutoSuggestBoxSearchErrorText.Text" xml:space="preserve">
     <value>Network error, please check your internet connection.</value>
+  </data>
+  <data name="PinLocationTooltip" xml:space="preserve">
+    <value>Save this location</value>
+  </data>
+  <data name="UnpinLocationTooltip" xml:space="preserve">
+    <value>Remove this location from saved locations</value>
+  </data>
+  <data name="SavedLocationsEmptyHint" xml:space="preserve">
+    <value>To save this location, click the star next to its name. Saved locations appear here as buttons. Click a button to switch to that location. Search for another location and click its star to add it.</value>
+  </data>
+  <data name="SavedLocationsTip" xml:space="preserve">
+    <value>Click the star next to the location name to save or remove it. Right-click a location button to move or remove it. Ctrl+1 to Ctrl+9 switch locations.</value>
+  </data>
+  <data name="SavedLocationsHintClose" xml:space="preserve">
+    <value>Hide this tip</value>
+  </data>
+  <data name="BackgroundContrastSettingsTitle.Text" xml:space="preserve">
+    <value>Background contrast</value>
+  </data>
+  <data name="BackgroundContrastOriginal.Content" xml:space="preserve">
+    <value>Original</value>
+  </data>
+  <data name="BackgroundContrastDark.Content" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="BackgroundContrastDarker.Content" xml:space="preserve">
+    <value>Darker</value>
+  </data>
+  <data name="BackgroundContrastLight.Content" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="BackgroundContrastLighter.Content" xml:space="preserve">
+    <value>Lighter</value>
+  </data>
+  <data name="BackgroundContrastHint.Text" xml:space="preserve">
+    <value>Dark and Darker shade the background image and keep light text. Light and Lighter brighten the image and use dark text.</value>
+  </data>
+  <data name="LanguageSettingsTitle.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LanguageDefaultItem" xml:space="preserve">
+    <value>Windows default</value>
+  </data>
+  <data name="LanguagePickerTitle" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LanguagePickerUse" xml:space="preserve">
+    <value>Use this language</value>
+  </data>
+  <data name="LanguagePickerCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="LanguageRestartTitle" xml:space="preserve">
+    <value>Restart FluentWeather?</value>
+  </data>
+  <data name="LanguageRestartText" xml:space="preserve">
+    <value>The new language applies after FluentWeather restarts.</value>
+  </data>
+  <data name="LanguageRestartNow" xml:space="preserve">
+    <value>Restart now</value>
+  </data>
+  <data name="LanguageRestartLater" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="TrayIconsSettingsTitle.Text" xml:space="preserve">
+    <value>Tray icons</value>
+  </data>
+  <data name="TrayIconsOff.Content" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="TrayIconsOn.Content" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="TrayIconsHint.Text" xml:space="preserve">
+    <value>Shows the temperature and a weather picture in the notification area. Hover for details. Right-click for options. The icons start at sign-in.</value>
+  </data>
+  <data name="HourlyRangeSettingsTitle.Text" xml:space="preserve">
+    <value>Hourly forecast</value>
+  </data>
+  <data name="HourlyRangeDay.Content" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="HourlyRange24.Content" xml:space="preserve">
+    <value>24 h</value>
+  </data>
+  <data name="HourlyRange36.Content" xml:space="preserve">
+    <value>36 h</value>
+  </data>
+  <data name="HourlyRange48.Content" xml:space="preserve">
+    <value>48 h</value>
+  </data>
+  <data name="HourlyRangeHint.Text" xml:space="preserve">
+    <value>Day shows the hours of the selected day. 24, 36 and 48 hours start now for today and at midnight for other days.</value>
+  </data>
+  <data name="UiSizeSettingsTitle.Text" xml:space="preserve">
+    <value>Text and picture size</value>
+  </data>
+  <data name="UiSizeSettingsHint.Text" xml:space="preserve">
+    <value>Ctrl+Minus and Ctrl+Plus also change the size in 5% steps. Ctrl+0 returns to 100%.</value>
+  </data>
+  <data name="SavedLocationMoveLeft" xml:space="preserve">
+    <value>Move left</value>
+  </data>
+  <data name="SavedLocationMoveRight" xml:space="preserve">
+    <value>Move right</value>
+  </data>
+  <data name="SavedLocationRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SavedLocationShortcutHint" xml:space="preserve">
+    <value>Ctrl+{0}</value>
+  </data>
+  <data name="SavedLocationsFullTitle" xml:space="preserve">
+    <value>Saved locations limit reached</value>
+  </data>
+  <data name="SavedLocationsFullText" xml:space="preserve">
+    <value>You can save up to {0} locations. Remove a location to add a new one.</value>
   </data>
 </root>

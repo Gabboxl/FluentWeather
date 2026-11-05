@@ -4,6 +4,8 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(RootV3Response))]
 [JsonSerializable(typeof(SearchLocationResponse))]
+[JsonSerializable(typeof(System.Collections.Generic.List<SavedLocation>))]
+[JsonSerializable(typeof(CurrentConditionsResponse))]
 [JsonSerializable(typeof(bool?))]
 [JsonSourceGenerationOptions(
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,

@@ -5,7 +5,9 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/templatestudio"
-  IgnorableNamespaces="uap mp genTemplate">
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap mp genTemplate desktop rescap">
 
   <Identity
     Name="26937gabboxl.61420B4860E86"
@@ -42,11 +44,32 @@
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\Square44x44LogoBadge.png"/>
       </uap:VisualElements>
+      <Extensions>
+        <!-- Tray icons (off by default, see Services/TrayIconsService.cs). -->
+        <!-- The tray icons program. The app starts it with FullTrustProcessLauncher. -->
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="FluentWeatherTray\FluentWeatherTray.exe" />
+        <!-- Starts the tray icons program at sign-in. The app turns it on only with the setting on. -->
+        <desktop:Extension Category="windows.startupTask" Executable="FluentWeatherTray\FluentWeatherTray.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="FluentWeatherTray" Enabled="false" DisplayName="FluentWeather tray icons" />
+        </desktop:Extension>
+        <!-- The tray icons program asks the app for new data every 5 minutes while the window is closed. -->
+        <uap:Extension Category="windows.appService">
+          <uap:AppService Name="FluentWeatherTrayRefresh" />
+        </uap:Extension>
+        <!-- fluentweather:switch?placeId=... opens the app at a saved location. -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="fluentweather">
+            <uap:DisplayName>FluentWeather</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <!-- Needed for the tray icons program (windows.fullTrustProcess). -->
+    <rescap:Capability Name="runFullTrust" />
   </Capabilities>
 
   <genTemplate:Metadata>

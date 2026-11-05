@@ -16,5 +16,13 @@ namespace FluentWeather.ViewModels
             UpdateUiAction?.Invoke();
         }
 
+        // Raised when something outside the main page (for example a protocol link) asks to show a saved location.
+        public event Action<string>? SwitchLocationRequested;
+
+        public void RequestSwitchLocation(string placeId)
+        {
+            SwitchLocationRequested?.Invoke(placeId);
+        }
+
     }
 }

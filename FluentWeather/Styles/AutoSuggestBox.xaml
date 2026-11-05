@@ -416,8 +416,11 @@
                             UseSystemFocusVisuals="{TemplateBinding UseSystemFocusVisuals}" />
 
                         <Popup x:Name="SuggestionsPopup">
+                            <!-- MinWidth keeps the list readable when the search box is narrow.
+                                 MinWidth wins over the width the control sets to match the box. -->
                             <Border
                                 x:Name="SuggestionsContainer"
+                                MinWidth="340"
                                 Padding="{ThemeResource AutoSuggestListMargin}"
                                 Background="{ThemeResource AutoSuggestBoxSuggestionsListBackground}"
                                 BorderBrush="{ThemeResource AutoSuggestBoxSuggestionsListBorderBrush}"
