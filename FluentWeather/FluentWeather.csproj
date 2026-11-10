@@ -41,7 +41,7 @@
     <PackageReference Include="CommunityToolkit.Uwp.Controls.Primitives" Version="8.2.251219" />
     <PackageReference Include="CommunityToolkit.Uwp.Controls.Segmented" Version="8.2.251219" />
     <PackageReference Include="CommunityToolkit.Uwp.Helpers" Version="8.2.251219" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
     <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.7" />
